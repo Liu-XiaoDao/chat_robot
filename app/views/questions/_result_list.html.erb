@@ -1,0 +1,8 @@
+<ul id="result">
+  <% articles.each_with_hit do |record, hit| %>
+    <li>
+      <%= link_to hit.highlight.title ? (raw hit.highlight.title[0]) : record.title, question_path(record.id), class: 'title' %>
+      <%= content_tag :div, hit.highlight.content ? (raw hit.highlight.content[0]) : record.content[0..5], class: 'content' %>
+    </li>
+  <% end %>
+</ul>
