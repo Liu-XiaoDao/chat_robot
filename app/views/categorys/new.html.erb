@@ -1,0 +1,8 @@
+<%= form_for @category, url: categorys_path, html: { class: "form-horizontal row-fluid", id: "create_category_form" }  do |c| %>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">Category Name</label>
+    <div class="controls">
+      <%= c.text_field  :category_name, placeholder: "Type something here...", class: "span8" %>
+    </div>
+  </div>
+<% end %>

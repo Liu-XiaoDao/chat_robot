@@ -3,15 +3,15 @@
 
     <ul class="widget widget-menu unstyled">
       <li class="active">
-        <a href="index.html">
+        <a href="<%= questions_path %>">
           <i class="menu-icon icon-dashboard"></i>
-          Dashboard
+          常见问题
         </a>
       </li>
       <li>
-        <a href="activity.html">
+        <a href="<%= new_question_path %>">
           <i class="menu-icon icon-bullhorn"></i>
-          News Feed
+          新建帮助
         </a>
       </li>
       <li>
@@ -47,6 +47,12 @@
           More Pages
         </a>
         <ul id="togglePages" class="collapse unstyled">
+          <li>
+            <a href="<%= categorys_path %>">
+              <i class="icon-inbox"></i>
+              问题分类
+            </a>
+          </li>
           <li>
             <a href="other-login.html">
               <i class="icon-inbox"></i>

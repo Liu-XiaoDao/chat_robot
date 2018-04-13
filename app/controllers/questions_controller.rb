@@ -13,6 +13,23 @@ class QuestionsController < ApplicationController
    # render json: ( @articles.map_with_hit {|record, hit| Hash[ id: record.id, label: record.title, name: record.content]})
   end
 
+
+  def new
+    @question = Question.new
+    @categorys = Category.all
+  end
+  
+  def create
+    @question = Question.create(question_params)
+    redirect_to questions_path 
+  end
+
+  private
+    def question_params
+      params.require(:question).permit(:title, :content, :category_id, :author)
+    end
+
+
 end
 
 

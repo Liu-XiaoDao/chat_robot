@@ -1,0 +1,68 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+
+      <%= render 'shared/left' %>
+
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+              <div class="module-head">
+                <h3>新建帮助文档</h3>
+              </div>
+              <div class="module-body">
+
+                <% if @question && @question.errors.any? %>
+                  <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>Oh snap!</strong><%= @question.errors.full_messages[0] %>
+                  </div>
+                  <br />
+                <% end %>
+
+                <%= form_for @question, url: questions_path, html: { class: "form-horizontal row-fluid", id: "create_question_form" }  do |q| %>
+                  <div class="control-group">
+                    <label class="control-label" for="basicinput">Title</label>
+                    <div class="controls">
+                      <%= q.text_field  :title, placeholder: "Type something here...", class: "span8" %>
+                      <span class="help-inline">Minimum 5 Characters</span>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="basicinput">Content</label>
+                    <div class="controls">
+                      <%= q.text_area  :content, rows: 8, class: "span8" %>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="basicinput">Dropdown</label>
+                    <div class="controls">
+                      <%= q.select :category_id, options_from_collection_for_select(@categorys, "id", "category_name"), options = { include_blank: true }, class: "span8", "data-placeholder": "Select here..",tabindex: "1" %>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="basicinput">Author</label>
+                    <div class="controls">
+                      <%= q.text_field  :author, placeholder: "input author...", class: "span8" %>
+                      <span class="help-inline">Minimum 5 Characters</span>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn btn-primary">Submit Form</button>
+                    </div>
+                  </div>
+                <% end %>
+            </div>
+          </div>
+
+        </div><!--/.content-->
+      </div><!--/.span9-->
+
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
