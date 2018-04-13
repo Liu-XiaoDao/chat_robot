@@ -35,8 +35,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 # 搜索
 gem "elasticsearch"
-gem "elasticsearch-model"          
+gem "elasticsearch-model"
 gem "elasticsearch-rails"
+
+# 部署
+gem "capistrano", "~> 3.10"
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rvm',   '~> 0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
