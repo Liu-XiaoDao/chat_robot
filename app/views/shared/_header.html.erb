@@ -70,3 +70,26 @@
     </div>
   </div><!-- /navbar-inner -->
 </div><!-- /navbar -->
+
+<script type="text/javascript">
+
+  $("#search").on("click", function() {
+  });
+  $("#search-form").on("click", function() {
+    //return false;
+  });
+
+  $("#search_in_keyword").on("input", function() {
+    $("#search").click();
+  });
+</script>
+
+<style>
+  li strong {
+    color: #eb592c;
+  }
+  .navbar #search-result li>a:hover {
+    background: #f9f9f9;
+    color: #555
+  }
+</style>
