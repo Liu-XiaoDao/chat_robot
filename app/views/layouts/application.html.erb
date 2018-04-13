@@ -6,23 +6,17 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-<!--     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/demo/bootstrap_admin201710252053/bootstrap/css/bootstrap.min.css">
-	<link type="text/css" href="http://www.jq22.com/demo/bootstrap_admin201710252053/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link type="text/css" href="http://www.jq22.com/demo/bootstrap_admin201710252053/css/theme.css" rel="stylesheet">
-	<link type="text/css" href="http://www.jq22.com/demo/bootstrap_admin201710252053/images/icons/css/font-awesome.css" rel="stylesheet">
-	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'> -->
+	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'> 
 
   </head>
 
   <body>
+    <%= render 'shared/header' %>
     <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 
-<!--   	<script src="http://www.jq22.com/demo/bootstrap_admin201710252053/scripts/jquery-1.9.1.min.js"></script>
-	<script src="http://www.jq22.com/demo/bootstrap_admin201710252053/scripts/jquery-ui-1.10.1.custom.min.js"></script>
-	<script src="http://www.jq22.com/demo/bootstrap_admin201710252053/bootstrap/js/bootstrap.min.js"></script>
-	<script src="http://www.jq22.com/demo/bootstrap_admin201710252053/scripts/datatables/jquery.dataTables.js"></script> -->
+
 	<script>
 		$(document).ready(function() {
 			$('.datatable-1').dataTable();
