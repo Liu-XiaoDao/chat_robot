@@ -1,0 +1,20 @@
+<%= form_for @link, url: link_path(@link), html: { class: "form-horizontal row-fluid", id: "create_category_form" }  do |c| %>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">Link Name</label>
+    <div class="controls">
+      <%= c.text_field  :title, placeholder: "Type something here...", class: "span8" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">Link Url</label>
+    <div class="controls">
+      <%= c.text_field  :url_link, placeholder: "Type something here...", class: "span8" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">Link Icon</label>
+    <div class="controls">
+      <%= c.text_field  :icon, placeholder: "Type something here...", class: "span8" %>
+    </div>
+  </div>
+<% end %>

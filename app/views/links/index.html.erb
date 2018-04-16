@@ -1,0 +1,98 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'shared/left' %>
+
+      <div class="span9">
+        <div class="content">
+          <div class="module message">
+            <div class="module-head">
+               <h3>链接</h3>
+            </div>
+            <div class="module-option clearfix">
+               <div class="pull-left">
+                  <div class="btn-group">
+                     <button class="btn">Inbox</button>
+                     <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu">
+                       <li><a href="#">Inbox(11)</a></li>
+                       <li><a href="#">Sent</a></li>
+                       <li><a href="#">Draft(2)</a></li>
+                       <li><a href="#">Trash</a></li>
+                       <li class="divider"></li>
+                       <li><a href="#">Settings</a></li>
+                     </ul>
+                  </div>
+                </div>
+                <div class="pull-right">
+                   <%= link_to 'Create', new_link_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+                </div>
+            </div>
+            <div class="module-body table">
+              <table class="table table-message">
+                <tbody>
+                  <tr class="heading">
+                    <td class="cell-author hidden-phone hidden-tablet">ID</td>
+                    <td class="cell-title">标题</td>
+                    <td class="cell-title">链接</td>
+                    <td class="cell-title">图标</td>
+                    <td class="cell-time align-right">Action</td>
+                  </tr>
+                  <% @links.each do |link| %>
+                    <tr class="unread">
+                      <td class="cell-author hidden-phone hidden-tablet"><%= link.id %></td>
+                      <td class="cell-title"><%= link.title %></td>
+                      <td class="cell-title"><%= link.url_link %></td>
+                      <td class="cell-title"><%= link.icon %></td>
+                      <td class="cell-time align-right"><%= link_to 'Edit', edit_link_path(link), class: "btn","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="module-foot"></div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+
+
+<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>Edit Category</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('create_category_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+<script>
+  $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+
+<style type="text/css">
+.modal-backdrop, .modal-backdrop.fade.in {
+  background: #000000;
+  opacity: .8
+}
+</style>
