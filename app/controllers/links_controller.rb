@@ -6,6 +6,7 @@ class LinksController < ApplicationController
 
   def display_list
     @links = Link.all
+    render layout: false
   end
 
   def new
