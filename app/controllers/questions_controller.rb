@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   def index
+    @questions = Question.all
   end
 
   def search
@@ -18,10 +19,10 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @categorys = Category.all
   end
-  
+
   def create
     @question = Question.create(question_params)
-    redirect_to questions_path 
+    redirect_to questions_path
   end
 
   private
