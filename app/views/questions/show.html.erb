@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'shared/left' %>
+      <div class="span9">
+				<div class="content">
+					<div class="module">
+						<div class="module-head">
+							<h3>帮助</h3>
+						</div>
+						<div class="module-body" style="padding:0px;">
+								<div class="media stream">
+									<div class="media-body">
+										<div class="stream-headline">
+											<h5 class="stream-author"><%= @question.title %><small>作者：<%= @question.author %></small></h5>
+											<div class="stream-text"><%= @question.content %></div>
+										</div><!--/.stream-headline-->
+										<div class="stream-options">
+											<a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>赞</a>
+											<a href="#" class="btn btn-small"><i class="icon-thumbs-down shaded"></i>踩</a>
+										</div>
+									</div>
+								</div><!--/.media .stream-->
+						</div><!--/.module-body-->
+					</div><!--/.module-->
+				</div><!--/.content-->
+			</div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
