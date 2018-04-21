@@ -2,6 +2,8 @@ class Question < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  belongs_to :category, optional: true
+
   class << self
     # 根据关键字搜索已发布的文章
     # 最多返回100条记录
@@ -12,11 +14,11 @@ class Question < ApplicationRecord
         query: {
           bool: {
             must: [
-              { multi_match: 
+              { multi_match:
                 {
                   query: token.to_s,
                   fields: ['title', 'content']
-                } 
+                }
               }
             ]
           }

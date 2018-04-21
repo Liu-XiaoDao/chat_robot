@@ -29,7 +29,7 @@
 									</div>
 								</div>
 								<div class="pull-right">
-									<a href="<%= new_question_path %>" class="btn btn-primary">Create Task</a>
+									<a href="<%= new_question_path %>" class="btn btn-primary"> 新建帮助</a>
 								</div>
 							</div>
 							<div class="module-body table">
@@ -37,25 +37,32 @@
 								<table class="table table-message">
 									<tbody>
                     <% @questions.each do |question| %>
-                      <tr class="task">
-                        <td class="cell-title">
-                          <div><h4 style="margin-bottom:0px;margin-right:10px;di"><%= question.title %></h4></div>
-                          <div><%= question.content %></div>
-                        </td>
+                      <tr class="task" date-href="<%= question_path(question) %>">
+  											<td class="cell-title"><div><h4 style="margin-bottom:0px;margin-right:10px;"><%= question.title %></h4></div></td>
+  											<td class="cell-status hidden-phone hidden-tablet"><b class="due"><%= question.category.try :category_name %></b></td>
+  											<td class="cell-time align-right"><%= question.author %></td>
                       </tr>
                     <% end %>
+
 									</tbody>
 								</table>
-
 
 							</div>
 							<div class="module-foot">
 							</div>
 						</div>
-
 					</div><!--/.content-->
 				</div><!--/.span9-->
-
     </div>
   </div><!--/.container-->
 </div><!--/.wrapper-->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.table-message tbody tr').click(
+      function()
+      {
+        window.location.href = $(this).attr('date-href');
+      }
+    );
+  } );
+</script>
