@@ -14,6 +14,19 @@ class QuestionsController < ApplicationController
    # render json: ( @articles.map_with_hit {|record, hit| Hash[ id: record.id, label: record.title, name: record.content]})
   end
 
+  def advanced_search
+    if request.xhr?
+      @articles = Question.search_by_token params[:term]
+      @article_size = @articles.size
+      respond_to do |format|
+        format.js { render :show }
+        format.html { render :articles, layout: 'community' }
+      end
+    else
+      @categorys = Category.all
+    end
+  end
+
 
   def new
     @question = Question.new

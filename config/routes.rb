@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'questions/search' => 'questions#search'
   resources :questions do
     post 'upload_img', on: :collection
+    get  'advanced_search', on: :collection
   end
   resources :categorys
 

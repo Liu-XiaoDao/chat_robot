@@ -1,0 +1,138 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+
+      <%= render 'shared/left' %>
+
+      <div class="span9">
+        <div class="content">
+            <div class="module">
+                <div class="module-head">
+                    <h3>高级搜索</h3>
+                </div>
+                <div class="module-option clearfix">
+                    <%= form_tag advanced_search_questions_path, method: 'GET', remote: true do %>
+                      <div class="input-append pull-left">
+                          <input type="text" class="span6" name="search_name" placeholder="Filter by name...">
+                          <button type="submit" class="btn">
+                              <i class="icon-search"></i>
+                          </button>
+                      </div>
+                    <% end %>
+                    <div class="btn-group pull-right" data-toggle="buttons-radio">
+                      <% @categorys.each do |category| %>
+                        <button type="button" class="btn"><%= category.category_name %></button>
+                      <% end %>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <div class="media user">
+                                <div class="media-body">
+                                    <h3 class="media-title">
+                                        John Donga
+                                    </h3>
+                                    <p>
+                                        <small class="muted">Pakistan</small></p>
+                                    <div class="media-option btn-group shaded-icon">
+                                        <button class="btn btn-small">
+                                            <i class="icon-envelope"></i>
+                                        </button>
+                                        <button class="btn btn-small">
+                                            <i class="icon-share-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="media user">
+                                <div class="media-body">
+                                    <h3 class="media-title">
+                                        Donga John</h3>
+                                    <p>
+                                        <small class="muted">Pakistan</small></p>
+                                    <div class="media-option btn-group shaded-icon">
+                                        <button class="btn btn-small">
+                                            <i class="icon-envelope"></i>
+                                        </button>
+                                        <button class="btn btn-small">
+                                            <i class="icon-share-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/.row-fluid-->
+                    <br>
+                    <div class="pagination pagination-centered">
+                        <ul>
+                            <li><a href="#"><i class="icon-double-angle-left"></i></a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+
+
+
+								<div class="stream-list">
+
+									<!--/.media .stream-->
+									<!--/.media .stream-->
+
+									<!--/.media .stream-->
+									<div class="media stream">
+										<a href="#" class="media-avatar medium pull-left">
+											<img src="images/user.png">
+										</a>
+										<div class="media-body">
+											<div class="stream-headline">
+												<h5 class="stream-author">
+													John Donga
+													<small>08 July, 2014</small>
+												</h5>
+												<div class="stream-text">
+													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+												</div>
+											</div><!--/.stream-headline-->
+
+											<div class="stream-options">
+												<a href="#" class="btn btn-small">
+													<i class="icon-thumbs-up shaded"></i>
+													Like
+												</a>
+												<a href="#" class="btn btn-small">
+													<i class="icon-reply shaded"></i>
+													Reply
+												</a>
+												<a href="#" class="btn btn-small">
+													<i class="icon-retweet shaded"></i>
+													Repost
+												</a>
+											</div>
+										</div>
+									</div><!--/.media .stream-->
+
+                                    <!--/.media .stream-->
+									<!--/.media .stream-->
+
+									<div class="media stream load-more">
+										<a href="#">
+											<i class="icon-refresh shaded"></i>
+											show more...
+										</a>
+									</div>
+								</div><!--/.stream-list-->
+
+
+                </div>
+            </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
