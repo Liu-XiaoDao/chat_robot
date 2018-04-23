@@ -17,7 +17,7 @@ class Question < ApplicationRecord
               { multi_match:
                 {
                   query: token.to_s,
-                  fields: ['title', 'content']
+                  fields: ['title', 'content_html']
                 }
               }
             ]

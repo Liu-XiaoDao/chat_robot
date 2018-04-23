@@ -48,6 +48,7 @@
                     <label class="control-label" for="basicinput">Content</label>
                     <div class="controls">
                       <%= q.text_area  :content, rows: 8, class: "span8", style: "display:none;" %>
+                      <%= q.text_area  :content_html, rows: 8, class: "span8", style: "display:none;" %>
                       <div id="editor">
                       </div>
                     </div>
@@ -105,14 +106,17 @@ var quill = new Quill('#editor', {
     var E = window.wangEditor
     var editor = new E('#editor')
     var $text1 = $('#question_content')
+    var $text1_html = $('#question_content_html')
     editor.customConfig.onchange = function (html) {
         // 监控变化，同步更新到 textarea
-        $text1.val(html)
+        $text1.val(editor.txt.text())
+        $text1_html.val(html)
     }
     // 配置图片上传
     editor.customConfig.uploadImgServer = '/questions/upload_img'
     editor.customConfig.uploadFileName = 'fileimg'
     editor.create()
     // 初始化 textarea 的值
-    $text1.val(editor.txt.html())
+    $text1.val(editor.txt.text())
+    $text1_html.val(editor.txt.html())
 </script>

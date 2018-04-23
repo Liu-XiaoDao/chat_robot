@@ -59,14 +59,7 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:title, :content, :category_id, :author)
+      params.require(:question).permit(:title, :content, :content_html, :category_id, :author)
     end
 
-
 end
-
-
-
-
-
-#  return render js: "$('#error-info').html('添加子类成功').css('display','block');"

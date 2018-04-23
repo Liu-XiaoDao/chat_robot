@@ -13,7 +13,7 @@
 									<div class="media-body">
 										<div class="stream-headline">
 											<h5 class="stream-author"><%= @question.title %><small>作者：<%= @question.author %></small></h5>
-											<div class="stream-text"><%= @question.content.html_safe %></div>
+											<div class="stream-text"><%= @question.content_html.html_safe %></div>
 										</div><!--/.stream-headline-->
 										<div class="stream-options">
 											<a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>赞</a>
