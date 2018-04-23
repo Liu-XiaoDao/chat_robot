@@ -3,20 +3,12 @@
     title = hit.highlight.title ? (raw hit.highlight.title[0]) : record.title
     content = hit.highlight.content ? (raw hit.highlight.content[0]) : record.content[0..5]
    %>
-  <div class="span6">
-      <div class="media user">
-          <div class="media-body">
-              <h3 class="media-title"><%= title %></h3>
-              <p><small class="muted"><%= content %></small></p>
-              <div class="media-option btn-group shaded-icon">
-                  <button class="btn btn-small">
-                      <i class="icon-envelope"></i>
-                  </button>
-                  <button class="btn btn-small">
-                      <i class="icon-share-alt"></i>
-                  </button>
-              </div>
-          </div>
-      </div>
-  </div>
+   <div class="media stream">
+     <div class="media-body">
+       <div class="stream-headline">
+         <h5 class="stream-author"><%= title %><small>08 July, 2014</small></h5>
+         <div class="stream-text"><%= content %></div>
+       </div><!--/.stream-headline-->
+     </div>
+   </div><!--/.media .stream-->
 <% end %>

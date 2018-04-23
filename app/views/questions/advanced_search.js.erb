@@ -1,8 +1,5 @@
 <% if @articles.any? %>
-   $(".row-fluid").append("<%= j render('advanced_search_list', articles: @articles) %>");
+   $(".stream-list").append("<%= j render('advanced_search_list', articles: @articles) %>");
 <% else %>
-   $("#search-result #result").remove();
-   $("#no-result").css("display", "block");
-   $("#no-result i").removeClass("fa-search");
-   $("#no-result i").addClass("fa-frown-o");
+   $(".stream").remove();
 <% end %>
