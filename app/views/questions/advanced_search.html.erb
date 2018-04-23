@@ -30,7 +30,7 @@
                       <div class="media stream">
                         <div class="media-body">
                           <div class="stream-headline">
-                            <h5 class="stream-author"><%= question.title %><small><%= question.author %>&nbsp;&nbsp;<%= question.created_at %></small></h5>
+                            <h4 class="stream-author"><%= question.title %><small><%= question.author %>&nbsp;&nbsp;<%= question.created_at %></small></h4>
                             <div class="stream-text"><%= question.content %></div>
                           </div>
                         </div>
@@ -52,12 +52,8 @@
   </div><!--/.container-->
 </div><!--/.wrapper-->
 <style>
-  li strong {
+  .stream strong {
     color: #eb592c;
-  }
-  .navbar #search-result li>a:hover {
-    background: #f9f9f9;
-    color: #555
   }
 </style>
 <!-- 分页代码 -->
