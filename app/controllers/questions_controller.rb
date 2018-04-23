@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
 
   def advanced_search
     if request.xhr?
-      @articles = Question.search_by_token params[:term]
+      @articles = Question.search_by_token params[:search_text]
       @article_size = @articles.size
       respond_to do |format|
         format.js { render :show }
