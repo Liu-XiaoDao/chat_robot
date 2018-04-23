@@ -16,9 +16,9 @@
 											<div class="stream-text"><%= @question.content_html.html_safe %></div>
 										</div><!--/.stream-headline-->
 										<div class="stream-options">
-                      <a href="#" class="btn btn-small"><i class="icon-eye-open shaded"></i><%= @question.view_count %></a>
-											<a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i><%= @question.praise_count %></a>
-											<a href="#" class="btn btn-small"><i class="icon-thumbs-down shaded"></i><%= @question.rubbish_count %></a>
+                      <a href="#" class="btn btn-small" data-remote="true"><i class="icon-eye-open shaded"></i><%= @question.view_count %></a>
+											<a href="<%= praise_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-up shaded"></i><%= @question.praise_count %></a>
+											<a href="<%= rubbish_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-down shaded"></i><%= @question.rubbish_count %></a>
 										</div>
 									</div>
 								</div><!--/.media .stream-->

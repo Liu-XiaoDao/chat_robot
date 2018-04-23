@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :questions do
     post 'upload_img', on: :collection
     get  'advanced_search', on: :collection
+    get  'praise', on: :member
+    get  'rubbish', on: :member
   end
   resources :categorys
 
