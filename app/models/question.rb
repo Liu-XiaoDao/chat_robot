@@ -8,7 +8,7 @@ class Question < ApplicationRecord
     # 根据关键字搜索已发布的文章
     # 最多返回100条记录
     # user限制搜索范围
-    def search_by_token(token)
+    def search_by_token(token, category_id = nil)
       opts = {
         size: 100,
         query: {
@@ -34,6 +34,7 @@ class Question < ApplicationRecord
           }
         }
       }
+      opts[:query][:bool][:must].push({ match: { category_id: category_id } }) unless category_id.blank?
       search(opts).records
     end
 
