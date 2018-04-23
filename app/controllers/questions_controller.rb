@@ -24,6 +24,7 @@ class QuestionsController < ApplicationController
       end
     else
       @categorys = Category.all
+      @questions = Question.order(:view_count).first(10)
     end
   end
 

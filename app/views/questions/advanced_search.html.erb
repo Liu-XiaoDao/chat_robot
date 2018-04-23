@@ -26,23 +26,20 @@
                 </div>
                 <div class="module-body" style="padding-top: 0px;">
   								<div class="stream-list" style="margin-top: 0px;">
-  									<div class="media stream">
-  										<div class="media-body">
-  											<div class="stream-headline">
-  												<h5 class="stream-author">
-  													John Donga
-  													<small>08 July, 2014</small>
-  												</h5>
-  												<div class="stream-text">
-  													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-  												</div>
-  											</div><!--/.stream-headline-->
-  										</div>
-  									</div><!--/.media .stream-->
+                    <% @questions.each do |question| %>
+                      <div class="media stream">
+                        <div class="media-body">
+                          <div class="stream-headline">
+                            <h5 class="stream-author"><%= question.title %><small><%= question.author %>&nbsp;&nbsp;<%= question.created_at %></small></h5>
+                            <div class="stream-text"><%= question.content %></div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
   									<div class="media stream load-more">
   										<a href="#">
-  											<i class="icon-refresh shaded"></i>
-  											show more...
+  											<i class="icon-search shaded"></i>
+  											输入内容搜索
   										</a>
   									</div>
   								</div><!--/.stream-list-->
