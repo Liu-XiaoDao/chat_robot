@@ -12,15 +12,14 @@
                 <div class="module-option clearfix" style="border-bottom: 0px solid #e5e5e5;">
                     <%= form_tag advanced_search_questions_path, method: 'GET', remote: true do %>
                       <div class="input-append pull-left">
-                          <input type="text" class="span6" name="search_text" placeholder="Filter by name...">
-                          <button type="submit" class="btn">
-                              <i class="icon-search"></i>
-                          </button>
+                          <input type="text" class="span4" name="search_text" placeholder="搜索本站内容">
+                          <input type="hidden" name="category_text" id="category_text_id">
+                          <button type="submit" class="btn"><i class="icon-search"></i></button>
                       </div>
                     <% end %>
                     <div class="btn-group pull-right" data-toggle="buttons-radio">
                       <% @categorys.each do |category| %>
-                        <button type="button" class="btn"><%= category.category_name %></button>
+                        <button type="button" class="btn" date-val="<%= category.id %>"><%= category.category_name %></button>
                       <% end %>
                     </div>
                 </div>
@@ -66,3 +65,10 @@
         <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
     </ul>
 </div> -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.btn-group .btn').click(function(){
+        $("#category_text_id").val($(this).attr('date-val'));
+      });
+  } );
+</script>
