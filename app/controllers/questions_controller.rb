@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
       @articles = Question.search_by_token params[:search_text]
       @article_size = @articles.size
       respond_to do |format|
-        format.js { render :show }
+        format.js { render :advanced_search }
         format.html { render :articles, layout: 'community' }
       end
     else
