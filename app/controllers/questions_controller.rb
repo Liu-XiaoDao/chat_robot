@@ -39,6 +39,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @question.view_count += 1
+    @question.save
   end
 
   #保存图片
