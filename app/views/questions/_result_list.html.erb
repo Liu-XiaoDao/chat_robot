@@ -5,7 +5,7 @@
       content = hit.highlight.content ? (raw hit.highlight.content[0]) : record.content[0..5]
      %>
     <a href="<%= question_path(record.id) %>">
-      <h1><%= title %></h1>
+      <h4><%= title %></h4>
       <p><%= content %></p>
     </a>
   </li>
