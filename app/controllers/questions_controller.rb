@@ -59,6 +59,18 @@ class QuestionsController < ApplicationController
     render json: {"errno": 0, "data": ["#{dir_path}/#{file_rename}"]}
   end
 
+  def praise
+    @question = Question.find(params[:id])
+    @question.praise_count += 1
+    @question.save
+  end
+
+  def rubbish
+    @question = Question.find(params[:id])
+    @question.rubbish_count += 1
+    @question.save
+  end
+
   private
     def question_params
       params.require(:question).permit(:title, :content, :content_html, :category_id, :author)
