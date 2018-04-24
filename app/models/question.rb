@@ -37,6 +37,35 @@ class Question < ApplicationRecord
       opts[:query][:bool][:must].push({ match: { category_id: category_id } }) unless category_id.blank?
       search(opts).records
     end
+    #只搜索title
+    def search_title_by_token(token)
+      opts = {
+        size: 100,
+        query: {
+          bool: {
+            must: [
+              { multi_match:
+                {
+                  query: token.to_s,
+                  fields: ['title']
+                }
+              }
+            ]
+          }
+        },
+        highlight: {
+          pre_tags: ["<strong>"],
+          post_tags: ["</strong>"],
+          number_of_fragments: 1,
+          fragment_size: 100,
+          fields: {
+              title: { number_of_fragments: 0 },
+              content: {}
+          }
+        }
+      }
+      search(opts).records
+    end
 
   end
 end

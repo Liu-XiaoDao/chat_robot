@@ -4,11 +4,10 @@ class QuestionsController < ApplicationController
   end
 
   def search
-    @articles = Question.search_by_token params[:term]
+    @articles = Question.search_title_by_token params[:term]
     @article_size = @articles.size
     respond_to do |format|
       format.js { render :show }
-      format.html { render :articles, layout: 'community' }
     end
   end
 
@@ -18,7 +17,6 @@ class QuestionsController < ApplicationController
       @article_size = @articles.size
       respond_to do |format|
         format.js { render :advanced_search }
-        format.html { render :articles, layout: 'community' }
       end
     else
       @categorys = Category.all
