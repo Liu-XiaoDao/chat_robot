@@ -3,7 +3,7 @@
     title = hit.highlight.title ? (raw hit.highlight.title[0]) : record.title
     content = hit.highlight.content ? (raw hit.highlight.content[0]) : record.content[0..100]
    %>
-   <div class="media stream">
+   <div class="media stream" date-href="<%= question_path(question) %>">
      <div class="media-body">
        <div class="stream-headline">
          <h5 class="stream-author" style="font-size: 15px;"><%= title %><small>作者:<%= record.author %>&nbsp;&nbsp;时间:<%= record.created_at %></small></h5>

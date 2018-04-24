@@ -26,17 +26,12 @@
                 <div class="module-body" style="padding-top: 0px;">
   								<div class="stream-list" style="margin-top: 0px;">
                     <% @questions.each do |question| %>
-                      <div class="media stream">
+                      <div class="media stream" date-href="<%= question_path(question) %>">
                         <div class="media-body">
                           <div class="stream-headline">
                             <h5 class="stream-author" style="font-size: 15px;"><%= question.title %><small>作者:<%= question.author %>&nbsp;&nbsp;时间:<%= question.created_at %></small></h5>
                             <div class="stream-text"><%= question.content[0..100] %></div>
                           </div>
-                          <div class="stream-options">
-    												<a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like</a>
-    												<a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply</a>
-    												<a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>Repost</a>
-    											</div>
                         </div>
                       </div>
                     <% end %>
@@ -59,6 +54,10 @@
   .stream strong {
     color: #eb592c;
   }
+  .stream-list .stream:hover{
+    background: #E8F6E4;
+  	cursor: pointer
+  }
 </style>
 <!-- 分页代码 -->
 <!-- <div class="pagination pagination-centered">
@@ -75,5 +74,8 @@
     $('.btn-group .btn').click(function(){
         $("#category_text_id").val($(this).attr('date-val'));
       });
-  } );
+    $('.stream-list .stream').click(function(){
+        window.location.href = $(this).attr('date-href');
+      });
+  });
 </script>
