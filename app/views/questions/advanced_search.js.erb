@@ -1,6 +1,7 @@
 <% if @articles.any? %>
    $(".stream").remove();
    $(".stream-list").append("<%= j render('advanced_search_list', articles: @articles) %>");
+   $('.stream-list .stream').click(function(){window.location.href = $(this).attr('date-href');});
 <% else %>
    $(".stream").remove();
    $(".stream-list").append("<div class='media stream load-more'><a href='#'><i class='icon-circle-blank shaded'></i>没有匹配内容</a></div>");
