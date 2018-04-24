@@ -11,15 +11,18 @@
 
       <div class="nav-collapse collapse navbar-inverse-collapse">
         <ul class="nav nav-icons">
-          <li class="active"><a href="<%= questions_path %>">
-            <i class="icon-dashboard"></i>
-          </a></li>
-          <li><a href="<%= advanced_search_questions_path %>">
-            <i class="icon-eye-open"></i>
-          </a></li>
-          <li><a href="#">
-            <i class="icon-bar-chart"></i>
-          </a></li>
+          <li class="active">
+            <a href="<%= questions_path %>"><i class="icon-dashboard"></i></a>
+          </li>
+          <li>
+            <a href="<%= advanced_search_questions_path %>"><i class="icon-eye-open"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="icon-bar-chart"></i></a>
+          </li>
+          <li>
+            <a href="<%= links_path %>"><i class="icon-bold"></i></a>
+          </li>
         </ul>
 
         <form class="navbar-search pull-left input-append dropdown" action="/questions/search" accept-charset="UTF-8" data-remote="true" method="get" id="search-form" >
