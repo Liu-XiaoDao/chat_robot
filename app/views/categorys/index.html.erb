@@ -10,22 +10,6 @@
                <h3>分类</h3>
             </div>
             <div class="module-option clearfix">
-               <div class="pull-left">
-                  <div class="btn-group">
-                     <button class="btn">Inbox</button>
-                     <button class="btn dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                     </button>
-                     <ul class="dropdown-menu">
-                       <li><a href="#">Inbox(11)</a></li>
-                       <li><a href="#">Sent</a></li>
-                       <li><a href="#">Draft(2)</a></li>
-                       <li><a href="#">Trash</a></li>
-                       <li class="divider"></li>
-                       <li><a href="#">Settings</a></li>
-                     </ul>
-                  </div>
-                </div>
                 <div class="pull-right">
                    <%= link_to 'Create', new_category_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
                 </div>
@@ -45,17 +29,6 @@
                       <td class="cell-time align-right"><%= link_to 'Edit', edit_category_path(category), class: "btn","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
                     </tr>
                   <% end %>
-                  <tr class="unread">
-                    <td class="cell-author hidden-phone hidden-tablet">
-                      John Donga
-                    </td>
-                    <td class="cell-title">
-                      Sample Work
-                    </td>
-                    <td class="cell-time align-right">
-                      <button type="submit" class="btn">Edit</button>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
