@@ -3,7 +3,7 @@ class Question < ApplicationRecord
   include Elasticsearch::Model::Callbacks
 
   belongs_to :category, optional: true
-
+  has_many :count_records
   class << self
     # 根据关键字搜索已发布的文章
     # 最多返回100条记录

@@ -16,9 +16,9 @@
 											<div class="stream-text"><%= @question.content_html.html_safe %></div>
 										</div><!--/.stream-headline-->
 										<div class="stream-options">
-                      <a href="#" class="btn btn-small" data-remote="true"><i class="icon-eye-open shaded"></i><%= @question.view_count %></a>
-											<a href="<%= praise_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-up shaded"></i><%= @question.praise_count %></a>
-											<a href="<%= rubbish_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-down shaded"></i><%= @question.rubbish_count %></a>
+                      <a href="javascript:void(0)" class="btn btn-small" data-remote="true"><i class="icon-eye-open shaded"></i><span id="view_count"><%= @question.view_count %></span></a>
+											<a href="<%= praise_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-up shaded"></i><span id="praise_count"><%= @question.praise_count %></span></a>
+											<a href="<%= rubbish_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-down shaded"></i><span id="rubbish_count"><%= @question.rubbish_count %></span></a>
 										</div>
 									</div>
 								</div><!--/.media .stream-->

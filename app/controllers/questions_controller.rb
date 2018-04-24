@@ -41,6 +41,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.view_count += 1
     @question.save
+    @count_record = @question.count_records.create(ip: request.remote_ip,type: "view_count")#这种类型是查看的记录
   end
 
   #保存图片
@@ -61,14 +62,28 @@ class QuestionsController < ApplicationController
 
   def praise
     @question = Question.find(params[:id])
-    @question.praise_count += 1
-    @question.save
+    @praise_record = @question.count_records.where(ip: request.remote_ip,type: "praise_count").first
+    if @praise_record.blank?
+      @count_record = @question.count_records.create(ip: request.remote_ip,type: "praise_count")#这种类型是点赞的记录
+      @question.praise_count += 1
+      @question.save
+      render js: "$('#praise_count').html(#{@question.praise_count});"
+    else
+      render js: "alert('您已经点过赞了');"
+    end
   end
 
   def rubbish
     @question = Question.find(params[:id])
-    @question.rubbish_count += 1
-    @question.save
+    @praise_record = @question.count_records.where(ip: request.remote_ip,type: "rubbish_count").first
+    if @praise_record.blank?
+      @question.rubbish_count += 1
+      @question.save
+      @count_record = @question.count_records.create(ip: request.remote_ip,type: "rubbish_count")#这种类型是踩的记录
+      render js: "$('#rubbish_count').html(#{@question.praise_count});"
+    else
+      render js: "alert('您已经踩过了');"
+    end
   end
 
   private
