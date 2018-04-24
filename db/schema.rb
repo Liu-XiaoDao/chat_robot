@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423143426) do
+ActiveRecord::Schema.define(version: 20180423155016) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "category_name"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20180423143426) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.string "author"
-    t.integer "view_count"
-    t.integer "praise_count"
-    t.integer "rubbish_count"
-    t.integer "is_check"
+    t.integer "view_count", default: 0
+    t.integer "praise_count", default: 0
+    t.integer "rubbish_count", default: 0
+    t.integer "is_check", default: 0
     t.text "content_html"
   end
 
