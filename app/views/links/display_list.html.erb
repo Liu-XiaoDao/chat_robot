@@ -13,12 +13,12 @@
         <div class="row">
           <% @links.each do |link| %>
             <div class="span4">
-               <a href="#" dinghref="<%= link.url_link %>" class="btn-box small span4"><i class="<%= link.icon %>"></i><b><%= link.title %></b></a>
+               <a href="javascript:void(0)" dinghref="<%= link.url_link %>" class="btn-box small span4"><i class="<%= link.icon %>"></i><b><%= link.title %></b></a>
             </div>
           <% end %>
         </div>
       </div><!--/.container-->
-
+<h3 id="menu-openDefaultBrowser">打开系统默认浏览器</h3><span class="desc">打开系统默认浏览器（仅支持PC端）</span> <button class="btn btn_primary" data-type="openDefaultBrowser">openDefaultBrowser</button>
     <style type="text/css">
       .dingwrapper {
         background: #eee;
@@ -44,6 +44,8 @@
 
     <script>
 
+    var signUrl = "http://work.weixin.qq.com/api/jsapidemo";
+      var ticket = "";
 
   /*
    * 注意：
@@ -95,27 +97,39 @@
       ]
   });
   </script>
+  <!-- <script type="text/javascript" src="//rescdn.qqmail.com/node/ww/wwopenmng/js/3rd/zepto.min$43c1b894.js"></script> <script type="text/javascript" src="//rescdn.qqmail.com/node/ww/wwopenmng/js/jsapi/demo$93362bd6.js"></script> -->
+
     <script>
 
-    wx.checkJsApi({
-    jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-    success: function(res) {
-      alert(1);
-        // 以键值对的形式返回，可用的api值true，不可用为false
-        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-    }
-});
+
       $(".btn-box").click(function () {
-// alert(1);
-        wx.invoke('openDefaultBrowser', {
-          'url': "https://open.weixin.qq.com/connect/oauth2/authorize?appid=CORPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&agentid=AGENTID&state=STATE#wechat_redirect", // 在默认浏览器打开redirect_uri，并附加code参数；也可以直接指定要打开的url，此时不会附带上code参数。
-          }, function(res){
-          if(res.err_msg != "openDefaultBrowser:ok"){
-              //错误处理
-          }
-      });
+            alert(1);
+            // wx.invoke('openDefaultBrowser', {
+            //     'url': "https://open.weixin.qq.com/connect/oauth2/authorize?appid=CORPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&agentid=AGENTID&state=STATE#wechat_redirect", // 在默认浏览器打开redirect_uri，并附加code参数；也可以直接指定要打开的url，此时不会附带上code参数。
+            //     }, function(res){
+            //     if(res.err_msg != "openDefaultBrowser:ok"){
+            //         //错误处理
+            //     }
+            // });
+            wx.checkJsApi({
+                jsApiList: ['openDefaultBrowser'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                success: function(res) {
+                  alert(1);
+                    // 以键值对的形式返回，可用的api值true，不可用为false
+                    // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+                }
+            });
 
       });
+
+
+// wx.invoke("openDefaultBrowser",{
+//   url:"https://open.work.weixin.qq.com"
+// },function(a){
+//   alert(a.err_msg)
+// });
+
+
     </script>
   </body
 </html>
