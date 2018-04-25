@@ -25,7 +25,7 @@
         padding: 30px 0
       }
     </style>
-    <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script>
+    <!-- <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script>
     <script>
       $(".btn-box").click(function () {
         DingTalkPC.biz.util.openLink({
@@ -37,6 +37,84 @@
               window.location.reload()
             }
         });
+      });
+    </script> -->
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+    <script>
+
+
+  /*
+   * 注意：
+   * 所有的JS接口只能在应用配置的安全域名下面使用。
+   *
+   */
+  wx.config({
+      debug: true,
+      beta: true,
+      appId: 'ww9d06281775f4358f',
+      timestamp: 1524634913,
+      nonceStr: '61stoqrm251m7vi',
+      signature: '172eefafefd8e9e23dba563972e50ec08c4b378f',
+      jsApiList: [
+        'checkJsApi',
+        'onMenuShareAppMessage',
+        'onMenuShareWechat',
+        'onMenuShareTimeline',
+        'shareAppMessage',
+        'shareWechatMessage',
+        'startRecord',
+        'stopRecord',
+        'onVoiceRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'closeWindow',
+        'scanQRCode',
+        'previewFile',
+        'openEnterpriseChat',
+        'selectEnterpriseContact',
+        'onHistoryBack',
+        'openDefaultBrowser',
+      ]
+  });
+  </script>
+    <script>
+
+    wx.checkJsApi({
+    jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+    success: function(res) {
+      alert(1);
+        // 以键值对的形式返回，可用的api值true，不可用为false
+        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+    }
+});
+      $(".btn-box").click(function () {
+// alert(1);
+        wx.invoke('openDefaultBrowser', {
+          'url': "https://open.weixin.qq.com/connect/oauth2/authorize?appid=CORPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&agentid=AGENTID&state=STATE#wechat_redirect", // 在默认浏览器打开redirect_uri，并附加code参数；也可以直接指定要打开的url，此时不会附带上code参数。
+          }, function(res){
+          if(res.err_msg != "openDefaultBrowser:ok"){
+              //错误处理
+          }
+      });
+
       });
     </script>
   </body
