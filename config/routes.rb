@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :categorys
 
+  resource :chatbot
   resources :links do
     get 'display_list', on: :collection
   end
