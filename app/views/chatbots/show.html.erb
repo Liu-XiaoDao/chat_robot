@@ -9,98 +9,51 @@
 							<div class="module-head">
 								<h3>在线客服</h3>
 							</div>
-							<div class="module-body">
+							<div class="module-body" style="padding-top: 0px;">
 
 
 								<div class="stream-list" style="border-bottom: 1px solid #e5e5e5;margin: 0px -15px -15px;border-top: 0px solid #e5e5e5;height: 500px;overflow-y: auto;">
 
 									<div class="media stream">
-										<a href="#" class="media-avatar medium pull-left">
-											<img src="images/201804/1.png">
-										</a>
-										<div class="media-body">
-											<div class="stream-headline">
-												<div class="stream-text" style="width:600px;">
-													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-                        </div>
-											</div><!--/.stream-headline-->
-										</div>
+                    <div style="background:#eee;border-radius: 3px;float:left;padding-left: 10px;padding-right: 10px;max-width:500px;">
+                      <div style="margin:5px;">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                    </div>
+                    </div>
 									</div><!--/.media .stream-->
-
-                  <div class="media stream">
-										<a href="#" class="media-avatar medium pull-left" style="float: right;margin-left: 20px;">
-											<img src="images/201804/1.png">
-										</a>
-										<div class="media-body" style="float: right;">
-											<div class="stream-headline">
-												<div class="stream-text" style="width:600px;">
-													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-                        </div>
-											</div><!--/.stream-headline-->
-										</div>
-									</div><!--/.media .stream-->
-
-                  <div class="media stream">
-										<a href="#" class="media-avatar medium pull-left" style="float: right;margin-left: 20px;">
-											<img src="images/201804/1.png">
-										</a>
-										<div class="media-body" style="float: right;">
-											<div class="stream-headline">
-												<div class="stream-text" style="width:600px;">
-													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-                        </div>
-											</div><!--/.stream-headline-->
-										</div>
-									</div><!--/.media .stream-->
-                  <div class="media stream">
-                    <a href="#" class="media-avatar medium pull-left">
-                      <img src="images/201804/1.png">
-                    </a>
-                    <div class="media-body">
-                      <div class="stream-headline">
-                        <div class="stream-text" style="width:600px;">
-                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-                        </div>
-                      </div><!--/.stream-headline-->
+                  <div class="media stream" style="text-align: right;">
+                    <div style="background:#eee;border-radius: 3px;float:right;padding-left: 10px;padding-right: 10px;max-width:500px;">
+                      <div style="margin:5px;">
+                        ttext ever since the 1500s, when an unknown
+                      </div>
                     </div>
                   </div><!--/.media .stream-->
-                  <div class="media stream">
-										<a href="#" class="media-avatar medium pull-left">
-											<img src="images/201804/1.png">
-										</a>
-										<div class="media-body">
-											<div class="stream-headline">
-												<div class="stream-text" style="width:600px;">
-													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-                        </div>
-											</div><!--/.stream-headline-->
-										</div>
-									</div><!--/.media .stream-->
 								</div><!--/.stream-list-->
 
 
                 <div class="stream-composer media" style="padding:15px 0px 0px;">
 									<div class="media-body">
-										<div class="row-fluid">
-											<textarea class="span12" style="height: 70px; resize: none;"></textarea>
-										</div>
-										<div class="clearfix">
-											<a href="#" class="btn btn-primary pull-right">
-												发送
-											</a>
-											<a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Upload a photo">
-												<i class="icon-user shaded"></i>严峻
-											</a>
-											<a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Upload a video">
-												<i class="icon-user shaded"></i>胡笑利
-											</a>
-                      <a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Pin your location">
-												<i class="icon-user shaded"></i>陈俊强
-											</a>
-                      <a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id=liuchunliang669" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Pin your location">
-												<i class="icon-user shaded"></i>刘春良
-											</a>
-										</div>
+                    <%= form_tag get_answer_chatbot_path, method: 'GET', remote: true do %>
+
+  										<div class="row-fluid">
+  											<textarea class="span12" style="height: 70px; resize: none;"></textarea>
+  										</div>
+  										<div class="clearfix">
+                        <button type="submit" class="btn btn-small pull-right" style="padding-left: 20px;padding-right: 20px;">发送</button>
+  											<a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Upload a photo">
+  												<i class="icon-user shaded"></i>严峻
+  											</a>
+  											<a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Upload a video">
+  												<i class="icon-user shaded"></i>胡笑利
+  											</a>
+                        <a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Pin your location">
+  												<i class="icon-user shaded"></i>陈俊强
+  											</a>
+                        <a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id=liuchunliang669" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Pin your location">
+  												<i class="icon-user shaded"></i>刘春良
+  											</a>
+  										</div>
+                    <% end %>
 									</div>
 								</div>
 
