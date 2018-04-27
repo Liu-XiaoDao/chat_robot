@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   end
   resources :categorys
 
-  resource :chatbot
+  resource :chatbot do
+    get 'get_answer', on: :collection
+  end
   resources :links do
     get 'display_list', on: :collection
   end

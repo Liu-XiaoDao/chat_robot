@@ -1,425 +1,130 @@
-<html id="auto-id-1524751457169"><head>
-<title>在线客服</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="访客系统 - 在线客服">
-<meta name="keywords" content="访客系统 - 在线客服">
-<meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="https://qiyukf.nosdn.127.net/sdk/r/pt_client_base_d837abee7f6f013ce086a29b24b664d9.css">
-<link rel="stylesheet" href="https://qiyukf.nosdn.127.net/sdk/r/pt_client_index_929f38192b5b1728582dd3bf0fe3ff9d.css">
-<style>
-/**
-* ===========================
-* 访客端-皮肤变量主题色-公共布局
-* ===========================
-*/
-/* trade */
-.g-mask{background-color: #F96868;}
-.g-slide .slide_hd{background-color: #F96868;}
-.g-body .body_hd{background-color: #F96868;}
-.m-msglist .msg_right .bot .arrow{border-left-color:#F96868;}
-.m-msglist .msg_right .bot .text+.arrow:before{border-left-color:#F96868;}
-.m-msglist .msg_right .bot .bot-bd{
-border-color: #F96868;}
-/* trade end */
-.g-hd{background-color: #F96868;}
-.g-td.now_robot .u-btn,
-.g-td.now_robot .u-btn:link,
-.g-td.now_robot .u-btn:hover,
-.g-td.now_robot .u-btn:active{background-color: #F96868; -moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-.g-td.now_robot .form_cnt_send .u-btn{background-color: #F96868;}
-.g-td.now_robot .form_cnt_send .u-btn:link{background-color:#F96868; -moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-.g-td.now_robot .form_cnt_send .u-btn:hover{background-color:#F96868; -moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;}
-.g-td.now_robot .form_cnt_send .u-btn:active{background-color:#F96868; -moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-/**
-* ==================
-* 模块
-* ==================
-*/
-.m-msglist .msg_right .text,
-.m-msglist .msg_right .image,
-.m-msglist .msg_right .qa,
-.m-msglist .msg_right .qa-list,
-.m-msglist .msg_right .action,
-.m-msglist .msg_right .rich,
-.m-msglist .msg_right .question{background-color: #F96868;border-color: #F96868;}
-.m-msglist .msg_right .text .arrow,
-.m-msglist .msg_right .text .arrow:before,
-.m-msglist .msg_right .image .arrow,
-.m-msglist .msg_right .image .arrow:before,
-.m-msglist .msg_right .qa .arrow,
-.m-msglist .msg_right .qa .arrow:before,
-.m-msglist .msg_right .qa-list .arrow,
-.m-msglist .msg_right .qa-list .arrow:before,
-.m-msglist .msg_right .action .arrow,
-.m-msglist .msg_right .action .arrow:before,
-.m-msglist .msg_right .rich .arrow,
-.m-msglist .msg_right .rich .arrow:before,
-.m-msglist .msg_right .question .arrow,
-.m-msglist .msg_right .question .arrow:before,
-.m-msglist .msg_right .crm-thirdorder .arrow{border-left-color:#F96868;}
-.m-msglist .msg_right .crm-thirdorder .text+.arrow:before{border-left-color:#F96868;}
-.m-msglist .msg_right .crm-thirdorder-bd{
-border-color: #F96868;}
-.m-msglist .msg_right .productinfo .product-wrap {border:1px solid #F96868;}
-.m-msglist .msg_right .productinfo .product-wrap .arrow {border-left-color: #F96868;}
-.m-msglist .msg_left .u-icon-avater{background-color: #fff;}
-.m-msglist .msg_right .u-icon-avater{background-color: #F96868;}
-.m-modal .modal_hd{border-bottom:1px solid #F96868;}
-.m-modal-confirmphoto .modal_ft{border-top: 1px solid #F96868;}
-.m-modal-confirmphoto .ok{background-color: #F96868;}
-.m-modal-confirmphoto .ok:hover{background-color:#F96868; -moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;}
-.m-modal-confirmphoto .ok:active{background-color:#F96868; -moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-.m-modal-filetrans .ok{background-color: #F96868;}
-.m-modal-filetrans .ok:hover{background-color:#F96868; -moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;}
-.m-modal-filetrans .ok:active{background-color:#F96868; -moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-.m-comment .comment_btn{background-color: #F96868;}
-.m-comment .comment_btn:hover{background-color:#F96868; -moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;}
-.m-comment .comment_btn:active{background-color:#F96868; -moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-.m-botentry li {border-color : #F96868; color:#F96868};
-/**
-* ==================
-* 元件
-* ==================
-*/
-.z-disabled button,
-.z-disabled button:link,
-.z-disabled button:hover,
-.z-disabled button:active{background-color: #F96868; -moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-/* 按钮相关 */
-.u-btn,
-.u-btn:link,
-.u-btn:hover{background-color:#F96868;}
-.u-btn:active,
-.u-btn.z-disabled,
-.u-btn.z-disabled:hover,
-.u-btn.z-disabled:active,
-.u-btn.z-disabled:link{background-color: #F96868; -moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-.u-btn-disabled,
-.u-btn-disabled:link,
-.u-btn-disabled:hover,
-.u-btn-disabled:active{background-color: #F96868;-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}
-</style>
-<style type="text/css">
-::-webkit-scrollbar {
-width: 7px;
-height:7px;
-}
-::-webkit-scrollbar-button {
-display: none;
-}
-::-webkit-scrollbar-thumb {
-border-radius: 3px;
-background: #dddfe0;
-}
-::-webkit-scrollbar-track {
-width: 7px;
-height: 7px;
-}
-::-webkit-scrollbar-track-piece {
-background: transparent;
-}
-</style>
-<!--[if lt IE 10]>
-<style>
-.m-msglist .file .progress-size{
-display: none
-}
-.m-msglist .file .progress-bar{
-display: none;
-}
-.m-msglist .file .abort{
-display: none;
-}
-.m-modal-filetrans .icon{
-display: none;
-}
-.m-modal-filetrans .size{
-display: none;
-}
-</style>
-<![endif]-->
-<!--[if lte IE 8]>
-<style>
-.m-modal-filetrans .modal_dialog{
-width: 245px;
-top: 115px;
-margin-left: -122px;
-}
-.m-msglist .crm-thirdorder .icon{
-display: none;
-}
-</style>
-<![endif]-->
-<script type="text/javascript">
-(function(){
-var style = document.createElement('style'),
-head = document.head || document.getElementsByTagName("head")[0];;
-style.type = 'text/css';
-head.appendChild(style);
-var query2object = function(str){
-var obj = {},
-queries = (str||'').split('&');
-for(var i = 0; i < queries.length; i++){
-var item = queries[i],
-temp = item.split('=');
-if (!temp||!temp.length) return;
-var key = temp.shift();
-if (!key) return;
-obj[decodeURIComponent(key)] = decodeURIComponent(temp.join('='));
-}
-return obj;
-};
-var addCss = function(selector, attr, value){
-if(!selector || !value) return;
-// auto add '#'
-value = '#' + value;
-if(!attr){
-var cssText = selector+'{'+value+'}';
-}else{
-cssText = selector+'{'+attr+':'+value+'}';
-}
-if (style.styleSheet) { // for IE
-style.styleSheet.cssText += cssText;
-}else{
-var textNode = document.createTextNode(cssText);
-style.appendChild(textNode);
-}
-};
-var bgColorDisabled = "-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;",
-bgColorActive = "-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;",
-bgColorHover = "-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;";
-var tagReg = /<\/?[^>]*>/g,
-search = location.search.replace(tagReg, '');
-if(search){
-search = query2object(location.search.substr(1));
-}
-var topbarBgColor = search['topbarBgColor'],
-chatPanelBgColor = search['chatPanelBgColor'],
-editorColor = search['editorColor'],
-editorBgColor = search['editorBgColor'],
-lMsgColor = search['lMsgColor'],
-rMsgColor = search['rMsgColor'],
-lMsgBgColor = search['lMsgBgColor'],
-rMsgBgColor = search['rMsgBgColor'],
-buttonColor = search['buttonColor'],
-buttonBgColor = search['buttonBgColor'],
-corpInfoColor = search['corpInfoColor'],
-corpInfoTitleColor = search['corpInfoTitleColor'],
-corpInfoBgColor = search['corpInfoBgColor'],
-tipColor = search['tipColor'],
-linkColor = search['linkColor'],
-borderColor = search['borderColor'];
-/*topbar*/
-addCss('.g-hd', 'background', topbarBgColor);
-/*chatPanel*/
-addCss('.g-bd .bd_left', 'background', chatPanelBgColor);
-// editor
-addCss('.m-iptbox', 'background', editorBgColor);
-addCss('.m-iptbox .textarea', 'background', editorBgColor);
-/*corpInfo*/
-addCss('.g-bd .bd_right', 'background', corpInfoBgColor);
-//title
-addCss('.m-announce .announce_tlt', 'color', corpInfoTitleColor);
-addCss('.m-comquestions h1', 'color', corpInfoTitleColor);
-//content
-addCss('.m-announce .announce_cnt', 'color', corpInfoColor);
-addCss('.m-comquestions .itm .title', 'color', corpInfoColor);
-addCss('.m-comquestions .itm .answer', 'color', corpInfoColor);
-/*left msg*/
-// text
-addCss('.m-msglist .msg_left .msg_wrapper', 'color', lMsgColor);
-// background
-addCss('.m-msglist .msg_left .msg_wrapper', 'background-color', lMsgBgColor);
-addCss('.m-msglist .msg_left .crm-thirdorder-bd', 'background-color', lMsgBgColor);
-addCss('.m-msglist .msg_left .crm-thirdorder-ft', 'background-color', lMsgBgColor);
-// border
-addCss('.m-msglist .msg_left .msg_wrapper', 'border-color', lMsgBgColor);
-addCss('.m-msglist .msg_left .crm-thirdorder-bd', 'border-color', lMsgBgColor);
-addCss('.m-msglist .msg_left .crm-thirdorder-ft', 'border-color', lMsgBgColor);
-// arrow
-addCss('.m-msglist .msg_left .msg_wrapper .arrow', 'border-right-color', lMsgBgColor);
-addCss('.m-msglist .msg_left .msg_wrapper .arrow:before', 'border-right-color', lMsgBgColor);
-// avator
-addCss('.m-msglist .msg_left .u-icon-avater', 'background-color', lMsgBgColor);
-/*right msg*/
-// text
-addCss('.m-msglist .msg_right .msg_wrapper', 'color', rMsgColor);
-// background
-addCss('.m-msglist .msg_right .msg_wrapper', 'background-color', rMsgBgColor);
-// border
-addCss('.m-msglist .msg_right .msg_wrapper', 'border-color', rMsgBgColor);
-// arrow
-addCss('.m-msglist .msg_right .msg_wrapper .arrow', 'border-left-color', rMsgBgColor);
-addCss('.m-msglist .msg_right .msg_wrapper .arrow:before', 'border-left-color', rMsgBgColor);
-// avator
-addCss('.m-msglist .msg_right .u-icon-avater', 'background-color', rMsgBgColor);
-/* modal */
-addCss('.m-modal .modal_hd', 'border-bottom-color', buttonBgColor);
-addCss('.m-modal .modal_ft', 'border-bottom-color', buttonBgColor);
-addCss('.m-modal .ok', 'background-color', buttonBgColor);
-addCss('.m-modal .ok:hover', 'background-color', buttonBgColor);
-addCss('.m-modal .ok:active', 'background-color', buttonBgColor);
-/*button*/
-addCss('.u-btn, .u-btn:hover, .u-btn:link, .u-btn:active', 'background-color', buttonBgColor);
-addCss('.u-btn:active', '', bgColorActive);
-addCss('.u-btn.z-disabled, .u-btn.z-disabled:hover, .u-btn.z-disabled:link, .u-btn.z-disabled:active', '', bgColorDisabled);
-addCss('.u-btn.z-disabled:hover', '', bgColorDisabled);
-addCss('.u-btn.z-disabled:link', '', bgColorDisabled);
-addCss('.u-btn.z-disabled:active', '', bgColorDisabled);
-addCss('.u-btn-disabled, .u-btn-disabled:hover, .u-btn-disabled:active, .u-btn-disabled:link', '', bgColorDisabled);
-addCss('.u-btn-disabled:hover', '', bgColorDisabled);
-addCss('.u-btn-disabled:active', '', bgColorDisabled);
-addCss('.u-btn-disabled:link', '', bgColorDisabled);
-addCss('.z-disabled button,.z-disabled button:link,.z-disabled button:hover,.z-disabled button:active', 'background-color', buttonBgColor);
-/*评价邀请*/
-addCss('.m-comment .comment_btn, .m-comment .comment_btn:hover, .m-comment .comment_btn:active', 'background-color', buttonBgColor);
-addCss('.m-comment .comment_btn:hover', '', bgColorHover);
-addCss('.m-comment .comment_btn:active', '', bgColorActive);
-/*botEntry*/
-addCss('.m-botentry li', 'color', buttonBgColor);
-addCss('.m-botentry li', 'border-color', buttonBgColor);
-/*leave*/
-addCss('.g-bd', 'background', chatPanelBgColor);
-addCss('.m-leavemessage .message', 'color', buttonColor);
-addCss('.m-form .formitm .lab', 'color', buttonColor);
-/*scrollbar*/
-//addCss('::-webkit-scrollbar-thumb', 'background', lMsgBgColor);
-/*tips*/
-addCss('.c-tip-text', 'color', tipColor);
-addCss('.c-tip-bg', 'background-color', chatPanelBgColor);
-addCss('.m-msglist .info h2', 'color', tipColor);
-addCss('.m-msglist .info span', 'color', tipColor);
-addCss('.m-msglist .info h2', 'background-color', chatPanelBgColor);
-addCss('.m-msglist .info span', 'background-color', chatPanelBgColor);
-addCss('.m-msglist .date span', 'background-color', chatPanelBgColor);
-/*七鱼底部logo*/
-//addCss('.g-td', 'background-color', chatPanelBgColor);
-/*link*/
-addCss('.g-bd a', 'color', linkColor);
-addCss('.m-msglist a', 'color', linkColor);
-addCss('.m-msglist a:hover', 'color', linkColor);
-addCss('.m-msglist a:hover', '', bgColorHover);
-addCss('.u-msg a:active, .u-msg a:link', 'color', linkColor);
-/*border*/
-addCss('.g-hd', 'border-bottom-color', borderColor);
-addCss('.g-bd .bd_left', 'border-right-color', borderColor);
-addCss('.m-iptbox', 'border-top-color', borderColor);
-addCss('.m-announce .announce_tlt', 'border-bottom-color', borderColor);
-addCss('.m-comquestions h1', 'border-bottom-color', borderColor);
-addCss('.m-comquestions .itm', 'border-bottom-color', borderColor);
-})();
-</script><style type="text/css">.u-btn:active{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.u-btn.z-disabled, .u-btn.z-disabled:hover, .u-btn.z-disabled:link, .u-btn.z-disabled:active{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.u-btn.z-disabled:hover{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.u-btn.z-disabled:link{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.u-btn.z-disabled:active{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.u-btn-disabled, .u-btn-disabled:hover, .u-btn-disabled:active, .u-btn-disabled:link{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.u-btn-disabled:hover{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.u-btn-disabled:active{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.u-btn-disabled:link{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.m-comment .comment_btn:hover{#-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;}.m-comment .comment_btn:active{#-moz-opacity:0.6;-khtml-opacity: 0.6;opacity: 0.6;}.m-msglist a:hover{#-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;}</style>
-<style type="text/css">.auto-1524751457012{font-size:12px;line-height:160%;} .auto-1524751457012 a{margin:0 2px;padding:2px 8px;color:#333;border:1px solid #aaa;text-decoration:none;} .auto-1524751457012 .js-disabled{cursor:default;} .auto-1524751457012 .js-selected{cursor:default;background-color:#bbb;} .auto-1524751457023-parent{position:relative;} .auto-1524751457026{position:absolute;width:0;height:0;overflow:hidden;} .m-check-item { cursor: pointer; display: inline-block; position: relative; height: 26px; line-height: 16px; width: 120px; font-size: 14px; color: #333333; border: 1px solid #e8e8e8; border-radius: 2px; padding: 4px 20px; box-sizing: border-box; text-align: center; margin-top: 10px; margin-right: 9px; } .m-check-item:last-child { margin-right: 0px; } .m-check-item.checked { border-color: #5092e1; } .m-check-item>input { display: inline-block\9; position: absolute; left: 5px; top: 3px; } .m-check-item>span { display: inline-block; width: 100%; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: ellipsis; } .m-check-item>i { position: absolute; display: none; top: 6px; right: 4px; } .m-check-item.checked>i { border-color: #5092e1; display: block; }</style></head>
-<body id="auto-id-1524751457070">
-<audio src="https://qiyukf.nosdn.127.net/sdk/res/audio/message_92be25847e14e832622bc76761f393e9.mp3" autoplay="" muted="" id="notify-sound-url"></audio>
-<!--[if lte IE 8]>
-<div class="browser-tip" id="browser-tip">
-<p>当前浏览器无法获得最佳显示效果，推荐使用现代浏览器访问</p>
-<span class="close" onclick="document.getElementById('browser-tip').style.display='none'"></span>
-</div>
-<![endif]-->
-<table class="g-tablefs" id="auto-id-1524751457168">
-<tbody id="auto-id-1524751457167">
-<tr id="auto-id-1524751457166">
-<td id="auto-id-1524751457165">
-<div class="g-main g-main-visitor " id="gbody">
-<div class="g-hd">
-<div class="minimize" data-action="hideIframe" title="最小化">
-<i></i>
-</div>
-<button id="comment_btn" type="button" class="u-comment_enter f-dn" disabled="disabled" data-action="comment" data-initial="1" data-log="fk-cm" style="">
-<i class="u-icon-comment"></i>
-<span>评价</span>
-</button>
-<button id="action_btn" type="button" class="u-action_enter" data-action="applyKf">
-<span>人工客服</span>
-</button>
-<div class="logo">
-<span class="name pl20">哈哈</span>
-</div>
-</div>
-<div class="g-bd j-flag" id="auto-id-1524751457164">
-<div class="bd_left j-chat" id="auto-id-1524751457163">
-<div class="u-headtip j-tip"></div>
-<div class="u-errtip j-tip f-dn"><img src="https://qiyukf.nosdn.127.net/sdk/res/default/loading_3782900ab9d04a1465e574a7d50af408.gif"> 正在连接客服，请稍等...</div>
-<div class="f-scrocnt" id="auto-id-1524751457073">
-<div class="j-flagpush"></div>
-<div class="msg-upscroll j-upscroll"></div>
-<div class="m-msglist j-flag" id="auto-id-1524751457067"><div class="info"><h2> <span>机器人</span>为您服务</h2></div><div id="23969248481524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="text msg_wrapper"><p>您好，请问有什么可以帮助您？</p><div class="arrow"></div></div></div></div><div id="23969352581524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>hh</p><div class="arrow"></div></div></div></div><div id="411086954#d729701e58d94666a42e4af9a1bcd5d41524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">哈喽~</div></div><div class="arrow"></div></div></div></div><div id="23969373251524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>111111111</p><div class="arrow"></div></div></div></div><div id="15247514571581524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="rich msg_wrapper"><div class="p" data-action="richContentDelegate">对不起，您的问题我暂时无法解答，您可以联系<a href="#" data-id="1524751457158" data-name="kefu">人工客服</a></div><div class="arrow"></div></div></div></div><div id="23969391461524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>11</p><div class="arrow"></div></div></div></div><div id="411086954#c4f5a8b5f1224b1cac3ba9a384848f141524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">你说2就不能是4</div></div><div class="arrow"></div></div></div></div><div id="23969420641524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>2</p><div class="arrow"></div></div></div></div><div id="411086954#f63f9529ab5c4f11a9b629cc4efd53781524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">3</div></div><div class="arrow"></div></div></div></div><div id="23969420971524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>3</p><div class="arrow"></div></div></div></div><div id="411086954#3c5f39ca52454445b7586adbc6b5cf771524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">4</div></div><div class="arrow"></div></div></div></div><div id="23969344001524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>4</p><div class="arrow"></div></div></div></div><div id="411086954#7f6c4b77741849269ba8b9115650ca901524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">您好，请问有什么可以帮您</div></div><div class="arrow"></div></div></div></div><div id="auto-15247514571701524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>1</p><div class="arrow"></div></div></div></div><div id="411086954#b11e66daf2ce42139352e3345ecda27b1524751457041" class="msg msg_left f-cb"><div class="msg_main " id="auto-id-1524751457206"><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">2</div></div><div class="arrow"></div></div></div></div><div id="auto-15247514571731524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>lims</p><div class="arrow"></div></div></div></div><div id="411086954#c3379c5b9a4c4eddbd19ebb2ad4292fc1524751457041" class="msg msg_left f-cb"><div class="msg_main " id="auto-id-1524751457180"><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa-list msg_wrapper" id="auto-id-1524751457179"><div class="p" id="auto-id-1524751457178"><div class="qa_label" data-action="richContentDelegate">您是想问？</div><ul class="list" id="auto-id-1524751457177"><li id="auto-id-1524751457176"><span class="dot"></span><a class="robot_child" href="#" data-id="1524751457174" data-action="selRobot" id="auto-id-1524751457175">lims访问速度慢</a></li></ul></div><div class="arrow"></div></div></div></div><div id="15247514571821524751457041" class="msg msg_right f-cb"><div class="msg_main " id="auto-id-1524751457185"><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper" id="auto-id-1524751457184"><p>lims访问速度慢</p><div class="arrow"></div></div></div></div><div id="411086954#484889a97a184447b5537855e89e1cf41524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">男男女女娜娜</div><div class="qa_eval_wrapper"><div class="qa_eval"><div class="eval-up eval-robot-answer " data-action="evalRobotAnswer" data-id="411086954#484889a97a184447b5537855e89e1cf4" data-sid="411086954" data-idclient="411086954#484889a97a184447b5537855e89e1cf4" data-evaluation="2"><i class="icon-eval-up"></i><span>有用</span></div><div class="eval-down eval-robot-answer " data-action="evalRobotAnswer" data-id="411086954#484889a97a184447b5537855e89e1cf4" data-sid="411086954" data-idclient="411086954#484889a97a184447b5537855e89e1cf4" data-evaluation="3"><i class="icon-eval-down"></i><span>没用</span></div></div></div></div><div class="arrow"></div></div></div></div><div id="auto-15247514571831524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>你好</p><div class="arrow"></div></div></div></div><div id="411086954#9cb6f95071d14575b0fe8eef2f9bb0ae1524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">您好，很高兴为您服务，请问您有什么问题呢~</div></div><div class="arrow"></div></div></div></div><div id="auto-15247514571861524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>lims访问速度慢</p><div class="arrow"></div></div></div></div><div id="411086954#7011503ff2f94cf4b23b499785a21c081524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">男男女女娜娜</div><div class="qa_eval_wrapper"><div class="qa_eval"><div class="eval-up eval-robot-answer " data-action="evalRobotAnswer" data-id="411086954#7011503ff2f94cf4b23b499785a21c08" data-sid="411086954" data-idclient="411086954#7011503ff2f94cf4b23b499785a21c08" data-evaluation="2"><i class="icon-eval-up"></i><span>有用</span></div><div class="eval-down eval-robot-answer " data-action="evalRobotAnswer" data-id="411086954#7011503ff2f94cf4b23b499785a21c08" data-sid="411086954" data-idclient="411086954#7011503ff2f94cf4b23b499785a21c08" data-evaluation="3"><i class="icon-eval-down"></i><span>没用</span></div></div></div></div><div class="arrow"></div></div></div></div><div id="auto-15247514571871524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>lims访问速</p><div class="arrow"></div></div></div></div><div id="411086954#6a4a1eaead95452089e4155123d9fd601524751457041" class="msg msg_left f-cb"><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa-list msg_wrapper"><div class="p"><div class="qa_label" data-action="richContentDelegate">您是想问？</div><ul class="list"><li><span class="dot"></span><a class="robot_child" href="#" data-id="1524751457188" data-action="selRobot">lims访问速度慢</a></li></ul></div><div class="arrow"></div></div></div></div><div id="auto-15247514571891524751457041" class="msg msg_right f-cb"><div class="msg_main "><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>lims</p><div class="arrow"></div></div></div></div><div id="411086954#797194d74b384d90bd6f972467c4c5cf1524751457041" class="msg msg_left f-cb"><div class="msg_main " id="auto-id-1524751457199"><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper" id="auto-id-1524751457198"><div class="p" id="auto-id-1524751457197"><div class="qa_label" data-action="richContentDelegate" id="auto-id-1524751457196">男男女女娜娜</div><div class="qa_eval_wrapper"><div class="qa_eval"><div class="eval-up eval-robot-answer " data-action="evalRobotAnswer" data-id="411086954#797194d74b384d90bd6f972467c4c5cf" data-sid="411086954" data-idclient="411086954#797194d74b384d90bd6f972467c4c5cf" data-evaluation="2"><i class="icon-eval-up"></i><span>有用</span></div><div class="eval-down eval-robot-answer z-sel" data-action="evalRobotAnswer" data-id="411086954#797194d74b384d90bd6f972467c4c5cf" data-sid="411086954" data-idclient="411086954#797194d74b384d90bd6f972467c4c5cf" data-evaluation="3"><i class="icon-eval-down"></i><span>没用</span></div></div></div></div><div class="arrow"></div></div></div></div><div id="auto-15247514572001524751457041" class="msg msg_right f-cb"><div class="msg_main " id="auto-id-1524751457208"><i class="u-icon-avater visitor"><img src="/sdk/res/skin/default/ico-kefu@2x.png"></i><div class="text msg_wrapper"><p>lims</p><div class="arrow"></div></div></div></div><div id="411086954#ae94c701f4ac4dcfbb526275df7b64c61524751457041" class="msg msg_left f-cb"><div class="msg_main " id="auto-id-1524751457205"><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="qa msg_wrapper" id="auto-id-1524751457204"><div class="p" id="auto-id-1524751457203"><div class="qa_label" data-action="richContentDelegate" id="auto-id-1524751457202"><a href="http://robot.liuxiaodao.top" target="_blank" id="auto-id-1524751457201">男男女女娜娜</a></div><div class="qa_eval_wrapper"><div class="qa_eval"><div class="eval-up eval-robot-answer " data-action="evalRobotAnswer" data-id="411086954#ae94c701f4ac4dcfbb526275df7b64c6" data-sid="411086954" data-idclient="411086954#ae94c701f4ac4dcfbb526275df7b64c6" data-evaluation="2"><i class="icon-eval-up"></i><span>有用</span></div><div class="eval-down eval-robot-answer " data-action="evalRobotAnswer" data-id="411086954#ae94c701f4ac4dcfbb526275df7b64c6" data-sid="411086954" data-idclient="411086954#ae94c701f4ac4dcfbb526275df7b64c6" data-evaluation="3"><i class="icon-eval-down"></i><span>没用</span></div></div></div></div><div class="arrow"></div></div></div></div><div id="145542656481524751457041" class="msg msg_left f-cb"><div class="date"><span>22:38</span><div class="line"></div></div><div class="msg_main "><i class="u-icon-avater"><img src="/sdk/res/default/robot_portrait@2x.png"></i><div class="text msg_wrapper"><p>您好，请问有什么可以帮助您？</p><div class="arrow"></div></div></div></div></div>
-</div>
-<div class="editor_bot j-flag-bot"></div>
-<div class="editor_cnt j-flag" id="auto-id-1524751457162"><div class="m-iptbox" id="auto-id-1524751457083">
-    <label id="portrait_btn" class="portrait_label f-dn" title="发送表情"><i class="u-icon u-icon-portrait"></i></label>
-    <label class="photo_label j-flag f-dn" title="发送图片" id="auto-id-1524751457082" for="1524751457079-0" data-log="fk-sp"><i class="u-icon u-icon-photo"></i></label>
-    <label class="file_label j-fflag f-dn" title="发送文件" id="auto-id-1524751457090" for="1524751457115-0"><i class="u-icon u-icon-file"></i></label>
-    <div class="textarea j-richflag u-status-robot">
-      <div class="textarea-mn j-flag auto-1524751457023-parent"><iframe frameborder="0" id="auto-id-1524751457084" src="about:blank"></iframe><div class="u-scrollbar auto-1524751457023 m-scrollbar" id="auto-id-1524751457134" style="visibility: hidden;"><span class="thumb" id="auto-id-1524751457148" style="height: 78px; top: 0px;">&nbsp;</span></div><div class="empty" id="auto-id-1524751457088">输入消息...</div></div>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'shared/left' %>
+      <div class="span9">
+					<div class="content">
+
+						<div class="module">
+							<div class="module-head">
+								<h3>在线客服</h3>
+							</div>
+							<div class="module-body">
+
+
+								<div class="stream-list" style="border-bottom: 1px solid #e5e5e5;margin: 0px -15px -15px;border-top: 0px solid #e5e5e5;height: 500px;overflow-y: auto;">
+
+									<div class="media stream">
+										<a href="#" class="media-avatar medium pull-left">
+											<img src="images/201804/1.png">
+										</a>
+										<div class="media-body">
+											<div class="stream-headline">
+												<div class="stream-text" style="width:600px;">
+													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                        </div>
+											</div><!--/.stream-headline-->
+										</div>
+									</div><!--/.media .stream-->
+
+                  <div class="media stream">
+										<a href="#" class="media-avatar medium pull-left" style="float: right;margin-left: 20px;">
+											<img src="images/201804/1.png">
+										</a>
+										<div class="media-body" style="float: right;">
+											<div class="stream-headline">
+												<div class="stream-text" style="width:600px;">
+													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                        </div>
+											</div><!--/.stream-headline-->
+										</div>
+									</div><!--/.media .stream-->
+
+                  <div class="media stream">
+										<a href="#" class="media-avatar medium pull-left" style="float: right;margin-left: 20px;">
+											<img src="images/201804/1.png">
+										</a>
+										<div class="media-body" style="float: right;">
+											<div class="stream-headline">
+												<div class="stream-text" style="width:600px;">
+													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                        </div>
+											</div><!--/.stream-headline-->
+										</div>
+									</div><!--/.media .stream-->
+                  <div class="media stream">
+                    <a href="#" class="media-avatar medium pull-left">
+                      <img src="images/201804/1.png">
+                    </a>
+                    <div class="media-body">
+                      <div class="stream-headline">
+                        <div class="stream-text" style="width:600px;">
+                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                        </div>
+                      </div><!--/.stream-headline-->
+                    </div>
+                  </div><!--/.media .stream-->
+                  <div class="media stream">
+										<a href="#" class="media-avatar medium pull-left">
+											<img src="images/201804/1.png">
+										</a>
+										<div class="media-body">
+											<div class="stream-headline">
+												<div class="stream-text" style="width:600px;">
+													 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                        </div>
+											</div><!--/.stream-headline-->
+										</div>
+									</div><!--/.media .stream-->
+								</div><!--/.stream-list-->
+
+
+                <div class="stream-composer media" style="padding:15px 0px 0px;">
+									<div class="media-body">
+										<div class="row-fluid">
+											<textarea class="span12" style="height: 70px; resize: none;"></textarea>
+										</div>
+										<div class="clearfix">
+											<a href="#" class="btn btn-primary pull-right">
+												发送
+											</a>
+											<a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Upload a photo">
+												<i class="icon-user shaded"></i>严峻
+											</a>
+											<a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Upload a video">
+												<i class="icon-user shaded"></i>胡笑利
+											</a>
+                      <a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id={id}" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Pin your location">
+												<i class="icon-user shaded"></i>陈俊强
+											</a>
+                      <a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id=liuchunliang669" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Pin your location">
+												<i class="icon-user shaded"></i>刘春良
+											</a>
+										</div>
+									</div>
+								</div>
+
+
+							</div><!--/.module-body-->
+						</div><!--/.module-->
+
+					</div><!--/.content-->
+				</div><!--/.span9-->
+
+
+
+
+
+
+
+
     </div>
-    <button type="submit" class="u-btn u-btn-send j-flag u-btn-disabled" id="auto-id-1524751457086" disabled="">发送</button>
-    <form class="form j-flag" id="auto-id-1524751457080" data-id="1524751457079"><div class="auto-1524751457026 " id="auto-id-1524751457081"><input type="file" accept="image/*" contenteditable="false" id="1524751457079-0"></div></form>
-    <div class="disabled"></div>
-  </div></div>
-<div class="g-td" data-action="toqiyu" data-log="fk-lt" id="auto-id-1524751457172">
-<img class="taillogo" src="https://qiyukf.nosdn.127.net/sdk/res/img/tailLogo@2x_51a85b19099da606135ca68d814c5d6e.png" alt="网易七鱼提供服务支持" id="auto-id-1524751457171">
-</div>
-</div>
-<div class="bd_right j-companyinfo-right ">
-</div>
-</div>
-<div class="f-dn pc_portrait auto-1524751457023-parent" id="auto-id-1524751457092">
-  	<div class="j-flag portrait_cnt" id="auto-id-1524751457097">    <div class="portrait_list f-clr j-list">                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_01" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_01.png" data-id="emoticon_emoji_01" title="[可爱]" alt="[可爱]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_00" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_00.png" data-id="emoticon_emoji_0" title="[大笑]" alt="[大笑]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_02" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_02.png" data-id="emoticon_emoji_02" title="[色]" alt="[色]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_03" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_03.png" data-id="emoticon_emoji_03" title="[嘘]" alt="[嘘]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_04" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_04.png" data-id="emoticon_emoji_04" title="[亲]" alt="[亲]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_05" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_05.png" data-id="emoticon_emoji_05" title="[呆]" alt="[呆]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_06" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_06.png" data-id="emoticon_emoji_06" title="[口水]" alt="[口水]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_145" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_145.png" data-id="emoticon_emoji_145" title="[汗]" alt="[汗]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_07" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_07.png" data-id="emoticon_emoji_07" title="[呲牙]" alt="[呲牙]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_08" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_08.png" data-id="emoticon_emoji_08" title="[鬼脸]" alt="[鬼脸]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_09" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_09.png" data-id="emoticon_emoji_09" title="[害羞]" alt="[害羞]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_10" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_10.png" data-id="emoticon_emoji_10" title="[偷笑]" alt="[偷笑]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_11" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_11.png" data-id="emoticon_emoji_11" title="[调皮]" alt="[调皮]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_12" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_12.png" data-id="emoticon_emoji_12" title="[可怜]" alt="[可怜]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_13" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_13.png" data-id="emoticon_emoji_13" title="[敲]" alt="[敲]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_14" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_14.png" data-id="emoticon_emoji_14" title="[惊讶]" alt="[惊讶]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_15" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_15.png" data-id="emoticon_emoji_15" title="[流感]" alt="[流感]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_16" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_16.png" data-id="emoticon_emoji_16" title="[委屈]" alt="[委屈]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_17" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_17.png" data-id="emoticon_emoji_17" title="[流泪]" alt="[流泪]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_18" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_18.png" data-id="emoticon_emoji_18" title="[嚎哭]" alt="[嚎哭]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_19" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_19.png" data-id="emoticon_emoji_19" title="[惊恐]" alt="[惊恐]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_20" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_20.png" data-id="emoticon_emoji_20" title="[怒]" alt="[怒]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_21" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_21.png" data-id="emoticon_emoji_21" title="[酷]" alt="[酷]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_22" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_22.png" data-id="emoticon_emoji_22" title="[不说]" alt="[不说]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_23" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_23.png" data-id="emoticon_emoji_23" title="[鄙视]" alt="[鄙视]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_24" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_24.png" data-id="emoticon_emoji_24" title="[阿弥陀佛]" alt="[阿弥陀佛]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_25" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_25.png" data-id="emoticon_emoji_25" title="[奸笑]" alt="[奸笑]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_26" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_26.png" data-id="emoticon_emoji_26" title="[睡着]" alt="[睡着]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_27" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_27.png" data-id="emoticon_emoji_27" title="[口罩]" alt="[口罩]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_28" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_28.png" data-id="emoticon_emoji_28" title="[生气]" alt="[生气]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_29" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_29.png" data-id="emoticon_emoji_29" title="[抠鼻孔]" alt="[抠鼻孔]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_30" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_30.png" data-id="emoticon_emoji_30" title="[疑问]" alt="[疑问]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_31" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_31.png" data-id="emoticon_emoji_31" title="[怒骂]" alt="[怒骂]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_32" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_32.png" data-id="emoticon_emoji_32" title="[晕]" alt="[晕]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_33" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_33.png" data-id="emoticon_emoji_33" title="[呕吐]" alt="[呕吐]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_160" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_160.png" data-id="emoticon_emoji_160" title="[拜一拜]" alt="[拜一拜]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_161" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_161.png" data-id="emoticon_emoji_161" title="[惊喜]" alt="[惊喜]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_162" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_162.png" data-id="emoticon_emoji_162" title="[流汗]" alt="[流汗]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_163" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_163.png" data-id="emoticon_emoji_163" title="[卖萌]" alt="[卖萌]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_164" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_164.png" data-id="emoticon_emoji_164" title="[默契眨眼]" alt="[默契眨眼]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_165" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_165.png" data-id="emoticon_emoji_165" title="[烧香拜佛]" alt="[烧香拜佛]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_166" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_166.png" data-id="emoticon_emoji_166" title="[晚安]" alt="[晚安]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_01" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_01.png" data-id="emoticon_emoji_116" title="[撇嘴]" alt="[撇嘴]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f641" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f641.png" data-id="emoticon_emoji_117" title="[难过]" alt="[难过]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f628" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f628.png" data-id="emoticon_emoji_118" title="[冷汗]" alt="[冷汗]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f629" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f629.png" data-id="emoticon_emoji_119" title="[抓狂]" alt="[抓狂]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f615" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f615.png" data-id="emoticon_emoji_120" title="[傲慢]" alt="[傲慢]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f62a" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f62a.png" data-id="emoticon_emoji_121" title="[困]" alt="[困]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f616" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f616.png" data-id="emoticon_emoji_123" title="[疯了]" alt="[疯了]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_02" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_02.png" data-id="emoticon_emoji_124" title="[白眼]" alt="[白眼]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_05" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_05.png" data-id="emoticon_emoji_125" title="[衰]" alt="[衰]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_06" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_06.png" data-id="emoticon_emoji_126" title="[再见]" alt="[再见]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f63e" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f63e.png" data-id="emoticon_emoji_127" title="[哼哼]" alt="[哼哼]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_03" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_03.png" data-id="emoticon_emoji_129" title="[饥饿]" alt="[饥饿]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_10" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_10.png" data-id="emoticon_emoji_143" title="[飞吻]" alt="[飞吻]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f642" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f642.png" data-id="emoticon_emoji_144" title="[微笑]" alt="[微笑]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_13" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_13.png" data-id="emoticon_emoji_145" title="[泪中带笑]" alt="[泪中带笑]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f61d" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f61d.png" data-id="emoticon_emoji_146" title="[吐舌头]" alt="[吐舌头]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_11" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_11.png" data-id="emoticon_emoji_147" title="[忧郁]" alt="[忧郁]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f630" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f630.png" data-id="emoticon_emoji_148" title="[尴尬]" alt="[尴尬]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f60c" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f60c.png" data-id="emoticon_emoji_149" title="[舒适]" alt="[舒适]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f612" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f612.png" data-id="emoticon_emoji_150" title="[不悦]" alt="[不悦]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_09" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_09.png" data-id="emoticon_emoji_155" title="[拍掌]" alt="[拍掌]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_07" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_07.png" data-id="emoticon_emoji_156" title="[糗大了]" alt="[糗大了]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f4aa-1f3fc" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f4aa-1f3fc.png" data-id="emoticon_emoji_122" title="[奋斗]" alt="[奋斗]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_23" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_23.png" data-id="emoticon_emoji_130" title="[乒乓]" alt="[乒乓]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f437" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f437.png" data-id="emoticon_emoji_131" title="[猪头]" alt="[猪头]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_25" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_25.png" data-id="emoticon_emoji_132" title="[玫瑰]" alt="[玫瑰]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_24" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_24.png" data-id="emoticon_emoji_133" title="[凋谢]" alt="[凋谢]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f41e" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f41e.png" data-id="emoticon_emoji_134" title="[瓢虫]" alt="[瓢虫]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_30" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_30.png" data-id="emoticon_emoji_135" title="[月亮]" alt="[月亮]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_28" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_28.png" data-id="emoticon_emoji_136" title="[礼物]" alt="[礼物]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_08" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_08.png" data-id="emoticon_emoji_137" title="[拥抱]" alt="[拥抱]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_18" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_18.png" data-id="emoticon_emoji_138" title="[抱拳]" alt="[抱拳]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_19" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_19.png" data-id="emoticon_emoji_139" title="[勾引]" alt="[勾引]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_20" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_20.png" data-id="emoticon_emoji_140" title="[差劲]" alt="[差劲]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_21" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_21.png" data-id="emoticon_emoji_141" title="[爱你]" alt="[爱你]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_new_emoji_22" data-src="https://qiyukf.com/sdk/res/portrait/emoji/new_emoji_22.png" data-id="emoticon_emoji_142" title="[NO]" alt="[NO]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f47b" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f47b.png" data-id="emoticon_emoji_151" title="[幽灵]" alt="[幽灵]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f49d" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f49d.png" data-id="emoticon_emoji_152" title="[礼盒]" alt="[礼盒]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f64f-1f3fc" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f64f-1f3fc.png" data-id="emoticon_emoji_153" title="[拜托]" alt="[拜托]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_1f388" data-src="https://qiyukf.com/sdk/res/portrait/emoji/1f388.png" data-id="emoticon_emoji_154" title="[气球]" alt="[气球]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_34" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_34.png" data-id="emoticon_emoji_34" title="[强]" alt="[强]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_35" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_35.png" data-id="emoticon_emoji_35" title="[弱]" alt="[弱]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_36" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_36.png" data-id="emoticon_emoji_36" title="[OK]" alt="[OK]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_37" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_37.png" data-id="emoticon_emoji_37" title="[拳头]" alt="[拳头]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_38" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_38.png" data-id="emoticon_emoji_38" title="[胜利]" alt="[胜利]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_39" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_39.png" data-id="emoticon_emoji_39" title="[鼓掌]" alt="[鼓掌]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_167" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_167.png" data-id="emoticon_emoji_167" title="[握手]" alt="[握手]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_40" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_40.png" data-id="emoticon_emoji_40" title="[发怒]" alt="[发怒]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_41" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_41.png" data-id="emoticon_emoji_41" title="[骷髅]" alt="[骷髅]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_42" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_42.png" data-id="emoticon_emoji_42" title="[便便]" alt="[便便]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_43" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_43.png" data-id="emoticon_emoji_43" title="[火]" alt="[火]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_44" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_44.png" data-id="emoticon_emoji_44" title="[溜]" alt="[溜]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_45" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_45.png" data-id="emoticon_emoji_45" title="[爱心]" alt="[爱心]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_46" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_46.png" data-id="emoticon_emoji_46" title="[心碎]" alt="[心碎]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_47" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_47.png" data-id="emoticon_emoji_47" title="[钟情]" alt="[钟情]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_48" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_48.png" data-id="emoticon_emoji_48" title="[唇]" alt="[唇]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_49" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_49.png" data-id="emoticon_emoji_49" title="[戒指]" alt="[戒指]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_50" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_50.png" data-id="emoticon_emoji_50" title="[钻石]" alt="[钻石]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_51" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_51.png" data-id="emoticon_emoji_51" title="[太阳]" alt="[太阳]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_52" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_52.png" data-id="emoticon_emoji_52" title="[有时晴]" alt="[有时晴]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_53" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_53.png" data-id="emoticon_emoji_53" title="[多云]" alt="[多云]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_54" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_54.png" data-id="emoticon_emoji_54" title="[雷]" alt="[雷]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_55" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_55.png" data-id="emoticon_emoji_55" title="[雨]" alt="[雨]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_56" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_56.png" data-id="emoticon_emoji_56" title="[雪花]" alt="[雪花]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_57" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_57.png" data-id="emoticon_emoji_57" title="[爱人]" alt="[爱人]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_58" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_58.png" data-id="emoticon_emoji_58" title="[帽子]" alt="[帽子]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_59" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_59.png" data-id="emoticon_emoji_59" title="[皇冠]" alt="[皇冠]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_60" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_60.png" data-id="emoticon_emoji_60" title="[篮球]" alt="[篮球]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_61" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_61.png" data-id="emoticon_emoji_61" title="[足球]" alt="[足球]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_62" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_62.png" data-id="emoticon_emoji_62" title="[垒球]" alt="[垒球]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_63" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_63.png" data-id="emoticon_emoji_63" title="[网球]" alt="[网球]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_64" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_64.png" data-id="emoticon_emoji_64" title="[台球]" alt="[台球]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_65" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_65.png" data-id="emoticon_emoji_65" title="[咖啡]" alt="[咖啡]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_66" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_66.png" data-id="emoticon_emoji_66" title="[啤酒]" alt="[啤酒]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_67" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_67.png" data-id="emoticon_emoji_67" title="[干杯]" alt="[干杯]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_68" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_68.png" data-id="emoticon_emoji_68" title="[柠檬汁]" alt="[柠檬汁]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_69" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_69.png" data-id="emoticon_emoji_69" title="[餐具]" alt="[餐具]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_70" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_70.png" data-id="emoticon_emoji_70" title="[汉堡]" alt="[汉堡]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_71" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_71.png" data-id="emoticon_emoji_71" title="[鸡腿]" alt="[鸡腿]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_72" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_72.png" data-id="emoticon_emoji_72" title="[面条]" alt="[面条]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_73" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_73.png" data-id="emoticon_emoji_73" title="[冰淇淋]" alt="[冰淇淋]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_74" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_74.png" data-id="emoticon_emoji_74" title="[沙冰]" alt="[沙冰]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_75" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_75.png" data-id="emoticon_emoji_75" title="[生日蛋糕]" alt="[生日蛋糕]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_76" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_76.png" data-id="emoticon_emoji_76" title="[蛋糕]" alt="[蛋糕]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_77" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_77.png" data-id="emoticon_emoji_77" title="[糖果]" alt="[糖果]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_78" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_78.png" data-id="emoticon_emoji_78" title="[葡萄]" alt="[葡萄]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_79" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_79.png" data-id="emoticon_emoji_79" title="[西瓜]" alt="[西瓜]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_80" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_80.png" data-id="emoticon_emoji_80" title="[光碟]" alt="[光碟]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_81" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_81.png" data-id="emoticon_emoji_81" title="[手机]" alt="[手机]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_82" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_82.png" data-id="emoticon_emoji_82" title="[电话]" alt="[电话]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_83" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_83.png" data-id="emoticon_emoji_83" title="[电视]" alt="[电视]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_84" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_84.png" data-id="emoticon_emoji_84" title="[声音开启]" alt="[声音开启]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_85" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_85.png" data-id="emoticon_emoji_85" title="[声音关闭]" alt="[声音关闭]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_86" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_86.png" data-id="emoticon_emoji_86" title="[铃铛]" alt="[铃铛]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_87" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_87.png" data-id="emoticon_emoji_87" title="[锁头]" alt="[锁头]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_88" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_88.png" data-id="emoticon_emoji_88" title="[放大镜]" alt="[放大镜]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_89" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_89.png" data-id="emoticon_emoji_89" title="[灯泡]" alt="[灯泡]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_90" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_90.png" data-id="emoticon_emoji_90" title="[锤头]" alt="[锤头]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_91" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_91.png" data-id="emoticon_emoji_91" title="[烟]" alt="[烟]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_92" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_92.png" data-id="emoticon_emoji_92" title="[炸弹]" alt="[炸弹]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_93" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_93.png" data-id="emoticon_emoji_93" title="[枪]" alt="[枪]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_94" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_94.png" data-id="emoticon_emoji_94" title="[刀]" alt="[刀]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_95" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_95.png" data-id="emoticon_emoji_95" title="[药]" alt="[药]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_96" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_96.png" data-id="emoticon_emoji_96" title="[打针]" alt="[打针]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_97" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_97.png" data-id="emoticon_emoji_97" title="[钱袋]" alt="[钱袋]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_98" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_98.png" data-id="emoticon_emoji_98" title="[钞票]" alt="[钞票]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_99" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_99.png" data-id="emoticon_emoji_99" title="[银行卡]" alt="[银行卡]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_100" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_100.png" data-id="emoticon_emoji_100" title="[手柄]" alt="[手柄]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_101" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_101.png" data-id="emoticon_emoji_101" title="[麻将]" alt="[麻将]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_102" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_102.png" data-id="emoticon_emoji_102" title="[调色板]" alt="[调色板]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_103" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_103.png" data-id="emoticon_emoji_103" title="[电影]" alt="[电影]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_104" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_104.png" data-id="emoticon_emoji_104" title="[麦克风]" alt="[麦克风]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_105" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_105.png" data-id="emoticon_emoji_105" title="[耳机]" alt="[耳机]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_106" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_106.png" data-id="emoticon_emoji_106" title="[音乐]" alt="[音乐]"></i></li>        <!-- 行结束 -->                </ul>                <!-- 行结束end -->                <!-- 行开始 -->                <ul class="f-clr">                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_107" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_107.png" data-id="emoticon_emoji_107" title="[吉他]" alt="[吉他]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_108" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_108.png" data-id="emoticon_emoji_108" title="[火箭]" alt="[火箭]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_109" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_109.png" data-id="emoticon_emoji_109" title="[飞机]" alt="[飞机]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_110" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_110.png" data-id="emoticon_emoji_110" title="[火车]" alt="[火车]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_111" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_111.png" data-id="emoticon_emoji_111" title="[公交]" alt="[公交]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_112" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_112.png" data-id="emoticon_emoji_112" title="[轿车]" alt="[轿车]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_113" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_113.png" data-id="emoticon_emoji_113" title="[出租车]" alt="[出租车]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_114" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_114.png" data-id="emoticon_emoji_114" title="[警车]" alt="[警车]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->                <!-- 行开始 -->                <!-- 行开始end -->            <li><i class="portrait_img portrait_icon_emoji_115" data-src="https://qiyukf.com/sdk/res/portrait/emoji/emoji_115.png" data-id="emoticon_emoji_115" title="[自行车]" alt="[自行车]"></i></li>        <!-- 行结束 -->                <!-- 行结束end -->            </ul></div></div>
-  <div class="u-scrollbar auto-1524751457023 m-scrollbar" id="auto-id-1524751457094" style="visibility: hidden;"><span class="thumb" id="auto-id-1524751457108" style="height: 0px; top: 0px;">&nbsp;</span></div></div></div>
-</td>
-</tr>
-</tbody>
-</table>
-
+  </div><!--/.container-->
+</div><!--/.wrapper-->
 <script type="text/javascript">
-window.timeOffset = 1524751455773 - (+new Date);
-window.theme = 1;
-window.qiyuInfoSwitch = 1;
-window.setting = {
-portrait:'',
-bgColor:""
-};
-window.KNOWLEDGE_STATISTICS = 1
+  $(document).ready(function(){
+    $('.table-message tbody tr').click(function(){
+        window.location.href = $(this).attr('date-href');
+      });
+  });
 </script>
-<script>
-window.appConfig = {protocol:{sdk:"https",boss:"https",kefu:"https",supr:"https"},domain:{sdk:"qiyukf.com",boss:"qiyukf.com",kefu:"qiyukf.com",supr:"qiyukf.com"},path:{sdk:"\/sdk/",boss:"\/prd/",kefu:"\/prd/",supr:"\/sup/"},online:{sdk:"\/sdk/",boss:"\/prd/",kefu:"\/prd/",supr:"\/sup/"}};
-window.leaveInfo = '当前客服不在线，如需帮助请留言';
-window.leaveOffTips = '';
-window.leaveType = 1;
-window.globalSetting = {heartbeatCycle:8000};
-</script>
-<script>
-window.logSetting = {serverAddr: 'https://qy-swallow.qiyukf.com', version: '3.14' }
-if(window.localStorage){
-window.localStorage.setItem('debug', '');
-window.localStorage.setItem('debugNums', 0);
-}
-</script>
-<script src="https://qiyukf.nosdn.127.net/sdk/res/lib/debug_b6c5f5a8cac89c4abc648c23ecda7b40.js"></script>
-<script type="text/javascript">
-window.resourceConfig = {
-sdk : 'https://qiyukf.com'+'/sdk/' + '/res/img/',
-satisfy : 'https://qiyukf.com'+'/sdk/' + 'res/img/satisfy/'
-}
-window.__YSFDAROOT__ = "https://da.qiyukf.com/webda/da.gif";
-window.QIYU_SESSION_CACHE = {};
-window.MIN_LBS = 'https://lbs.netease.im/lbs/webconf.jsp?devflag=qyonline';
-window.MIN_DEBUG_MODE = false;
-window.companyInfo = {announcementContent:"",announcementTitle:"",visitorSwitch:0,name:"哈哈",questions:[],logoSwitch:0};
-</script>
-<script src="https://qiyukf.nosdn.127.net/sdk/res/lib/nim_base_v2.8.3_79cfdc608a2dfb460956d6a0486d1a86.js"></script>
-<script src="https://qiyukf.nosdn.127.net/sdk/res/lib/nim_v2.8.3_6a146422b08441b15e02c1a774162047.js"></script>
-<script src="https://qiyukf.nosdn.127.net/sdk/r/pt_client_base_824125b15266d464b2f7782051ef7eac.js"></script><form class="auto-1524751457026 " id="auto-id-1524751457116" data-id="1524751457115"><input type="file" multiple="true" accept="*" contenteditable="false" id="1524751457115-0"></form>
-<div class="resource-preload" style="visibility: hidden; position: fixed;">
-<i class="u-icon-loading" style="display: inline;"></i>
-<i class="u-icon-failure" style="display: inline;"></i>
-</div>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-</script>
-
-</body></html>
