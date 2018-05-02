@@ -14,17 +14,15 @@
 								<div class="pull-left">
 									Filter : &nbsp;
 									<div class="btn-group">
-										<button class="btn">All</button>
+										<button class="btn"><%= @category_name %></button>
 										<button class="btn dropdown-toggle" data-toggle="dropdown">
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu">
-											<li><a href="#">All</a></li>
-											<li><a href="#">In Progress</a></li>
-											<li><a href="#">Done</a></li>
-											<li class="divider"></li>
-											<li><a href="#">New task</a></li>
-											<li><a href="#">Overdue Task</a></li>
+                      <li><a href="/questions">全部</a></li>
+                      <% @categorys.each do |category| %>
+                        <li><a href="?category=<%= category.id %>"><%= category.category_name %></a></li>
+                      <% end %>
 										</ul>
 									</div>
 								</div>

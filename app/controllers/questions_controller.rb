@@ -1,6 +1,13 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    if params[:category].present?
+      @questions = Question.where(category_id: params[:category])
+      @category_name = Category.find(params[:category]).try :category_name
+    else
+      @questions = Question.all
+      @category_name = "全部"
+    end
+    @categorys = Category.all
   end
 
   def search
