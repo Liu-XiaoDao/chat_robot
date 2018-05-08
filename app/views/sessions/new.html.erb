@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="module module-login span4 offset4">
+        <%= form_for :session, url: signin_path, class: "form-vertical",role: "form" do |f| %>
+          <div class="module-head">
+            <h3>Sign In</h3>
+          </div>
+          <div class="module-body">
+            <div class="control-group">
+              <div class="controls row-fluid">
+                <%= f.text_field  :username, placeholder: "Username", value: "admin", class: "span12" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls row-fluid">
+                <%= f.password_field :password, placeholder: "Password", class: "span12", required: "required" %>
+              </div>
+            </div>
+          </div>
+          <div class="module-foot">
+            <div class="control-group">
+              <div class="controls clearfix">
+                <button type="submit" class="btn btn-primary pull-right">Login</button>
+                <label class="checkbox">
+                  <input type="checkbox"> Remember me
+                </label>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div><!--/.wrapper-->
