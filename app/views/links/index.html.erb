@@ -38,6 +38,7 @@
                     <td class="cell-title">标题</td>
                     <td class="cell-title">链接</td>
                     <td class="cell-title">图标</td>
+                    <td class="cell-title">显示顺序</td>
                     <td class="cell-time align-right">Action</td>
                   </tr>
                   <% @links.each do |link| %>
@@ -46,6 +47,7 @@
                       <td class="cell-title"><%= link.title %></td>
                       <td class="cell-title"><%= link.url_link %></td>
                       <td class="cell-title"><%= link.icon %></td>
+                      <td class="cell-title"><%= link.display_order %></td>
                       <td class="cell-time align-right"><%= link_to 'Edit', edit_link_path(link), class: "btn","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
                     </tr>
                   <% end %>

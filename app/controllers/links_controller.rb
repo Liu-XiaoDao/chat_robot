@@ -5,7 +5,7 @@ class LinksController < ApplicationController
   end
 
   def display_list
-    @links = Link.all
+    @links = Link.all.order(:display_order)
     render layout: false
   end
 
@@ -29,7 +29,8 @@ class LinksController < ApplicationController
   	@link = Link.find(params[:id])
     @link.title = params[:link][:title]
     @link.url_link = params[:link][:url_link]
-  	@link.icon = params[:link][:icon]
+    @link.icon = params[:link][:icon]
+  	@link.display_order = params[:link][:display_order]
 
   	@link.save
     redirect_to links_path
@@ -37,6 +38,6 @@ class LinksController < ApplicationController
 
   private
     def category_params
-      params.require(:link).permit(:title, :url_link, :icon)
+      params.require(:link).permit(:title, :url_link, :icon, :display_order)
     end
 end

@@ -2,19 +2,25 @@
   <div class="control-group">
     <label class="control-label" for="basicinput">Link Name</label>
     <div class="controls">
-      <%= c.text_field  :title, placeholder: "Type something here...", class: "span8" %>
+      <%= c.text_field  :title, placeholder: "Link Name", class: "span8" %>
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="basicinput">Link Url</label>
     <div class="controls">
-      <%= c.text_field  :url_link, placeholder: "Type something here...", class: "span8" %>
+      <%= c.text_field  :url_link, placeholder: "Link Url", class: "span8" %>
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="basicinput">Link Icon</label>
     <div class="controls">
-      <%= c.text_field  :icon, placeholder: "Type something here...", class: "span8" %>
+      <%= c.text_field  :icon, placeholder: "Link Icon", class: "span8" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">Display Order</label>
+    <div class="controls">
+      <%= c.text_field  :display_order, placeholder: "Display Order", class: "span8" %>
     </div>
   </div>
 <% end %>
