@@ -1,0 +1,71 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'shared/left' %>
+
+      <div class="span9">
+        <div class="content">
+          <div class="module message">
+            <div class="module-head">
+               <h3>图标选择</h3>
+            </div>
+            <div class="module-body table">
+              <table class="table table-message">
+                <tbody>
+                  <tr class="heading">
+                    <td class="cell-title">icon_string</td>
+                    <td class="cell-time align-right">icon</td>
+                  </tr>
+                  <% @icons.each do |icon| %>
+                    <tr class="unread">
+                      <td class="cell-title"><%= icon %></td>
+                      <td class="cell-time align-right"><%= link_to "<i class='#{icon}'></i>".html_safe, "#", class: "btn btn-large" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="module-foot"></div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+
+
+<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>Edit Category</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('create_category_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+<script>
+  $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+
+<style type="text/css">
+.modal-backdrop, .modal-backdrop.fade.in {
+  background: #000000;
+  opacity: .8
+}
+</style>
