@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChatRobot</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	  <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+  </head>
+
+  <body class="dingwrapper">
+      <div class="container">
+        <div class="row">
+
+        </div>
+      </div><!--/.container-->
+    <style type="text/css">
+      .dingwrapper {
+        background: #eee;
+        padding: 30px 0
+      }
+    </style>
+    <script src="http://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js"></script>
+    <script>
+      // $(".btn-box").click(function () {
+      //   DingTalkPC.biz.util.openLink({
+      //       url: $(this).attr("dinghref"),//要打开链接的地址
+      //       onSuccess : function(result) {
+      //         window.location.reload()
+      //       },
+      //       onFail : function() {
+      //         window.location.reload()
+      //       }
+      //   });
+      // });
+      dd.ready(function(){
+        dd.device.notification.confirm({
+        message: "你爱我吗",
+        title: "提示",
+        buttonLabels: ['爱', '不爱'],
+        onSuccess : function(result) {
+            //onSuccess将在点击button之后回调
+            /*
+            {
+                buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
+            }
+            */
+        },
+        onFail : function(err) {}
+        });
+    });
+    </script>
+  </body
+</html>
