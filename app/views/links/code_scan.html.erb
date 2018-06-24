@@ -12,7 +12,64 @@
   <body class="dingwrapper">
       <div class="container">
         <div class="row">
-          <button class="btn" id="display1"></button>
+
+          <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <span id="display1"></span>
+          </div>
+
+                <div class="span12">
+                  <div class="content">
+                    <div class="module">
+                        <div class="module-head">
+                          <h3>冰箱温度</h3>
+                        </div>
+                        <div class="module-body">
+
+
+                          <%= form_for :bingxiang, url: "#", html: { class: "form-horizontal row-fluid", id: "create_question_form" }  do |q| %>
+                            <div class="control-group">
+                              <label class="control-label" for="basicinput">Title</label>
+                              <div class="controls">
+                                <%= q.text_field  :title, placeholder: "Type something here...", class: "span8" %>
+                                <!-- <span class="help-inline">Minimum 5 Characters</span> -->
+                              </div>
+                            </div>
+
+                            <div class="control-group">
+                              <label class="control-label" for="basicinput">Author</label>
+                              <div class="controls">
+                                <%= q.text_field  :author, placeholder: "input author...", class: "span8" %>
+                                <!-- <span class="help-inline">Minimum 5 Characters</span -->
+                              </div>
+                            </div>
+
+                            <div class="control-group">
+                              <label class="control-label" for="basicinput">Content</label>
+                              <div class="controls">
+                                <%= q.text_area  :content, rows: 8, class: "span8", style: "display:none;" %>
+                                <%= q.text_area  :content_html, rows: 8, class: "span8", style: "display:none;" %>
+                                <div id="editor">
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <div class="control-group">
+                              <div class="controls">
+                                <button type="submit" class="btn btn-primary">Submit Form</button>
+                              </div>
+                            </div>
+                          <% end %>
+                      </div>
+                    </div>
+
+                  </div><!--/.content-->
+                </div><!--/.span9-->
+
+
+
+
         </div>
       </div><!--/.container-->
     <style type="text/css">
