@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :links do
     get 'display_list', on: :collection
     get 'display_icon', on: :collection
+    get 'code_scan', on: :collection
   end
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
