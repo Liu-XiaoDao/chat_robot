@@ -13,3 +13,11 @@ class RedisService
   end
 
 end
+
+
+
+# begin
+#   @redis.get(name)
+# rescue Redis::CannotConnectError
+#   nil
+# end
