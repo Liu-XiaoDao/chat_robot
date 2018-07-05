@@ -46,6 +46,12 @@ gem 'capistrano-rvm',   '~> 0.1'
 
 gem 'will_paginate', '3.1.5'   #分页
 
+#redis
+gem 'redis', '~> 4.0', '>= 4.0.1'
+
+#调试
+gem 'pry', '~> 0.11.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

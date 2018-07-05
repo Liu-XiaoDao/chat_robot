@@ -15,6 +15,11 @@ class LinksController < ApplicationController
   end
 
   def phone_number
+    # @users = RedisService.new.get_value(:users)
+    # if @users.blank?
+    #   @users = User.all
+    #   RedisService.new.set_value(:users,@users)
+    # end
     render layout: false
   end
 
