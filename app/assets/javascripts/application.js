@@ -16,4 +16,17 @@
 //= require jquery-ui-1.10.1.custom.min
 //= require bootstrap.min
 //= require jquery.dataTables
+
+// 这几个是图形
+//= require jquery.flot
+//= require jquery.flot.pie
+//= require jquery.flot.resize
+
+//= require common
+
+
+
+
+
+// 这个是简单富文本编辑器
 //= require wangEditor.min
