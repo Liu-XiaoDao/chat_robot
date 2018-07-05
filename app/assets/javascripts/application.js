@@ -18,9 +18,9 @@
 //= require jquery.dataTables
 
 // 这几个是图形
-//= require jquery.flot
-//= require jquery.flot.pie
-//= require jquery.flot.resize
+//= require flot/jquery.flot
+//= require flot/jquery.flot.pie
+//= require flot/jquery.flot.resize
 
 //= require common
 
