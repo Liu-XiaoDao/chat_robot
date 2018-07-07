@@ -434,7 +434,7 @@
                   <td class="center">U</td>
                 </tr>
               </tbody>
-              <!-- <tfoot>
+              <tfoot>
                 <tr>
                   <th>Rendering engine</th>
                   <th>Browser</th>
@@ -442,7 +442,7 @@
                   <th>Engine version</th>
                   <th>CSS grade</th>
                 </tr>
-              </tfoot> -->
+              </tfoot>
             </table>
           </div>
         </div><!--/.module-->
@@ -458,9 +458,10 @@
   }
 </style>
 
-<script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script>
+<!-- <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script> -->
+<script src="http://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" charset="utf-8"></script>
 <%= javascript_include_tag "ding/app" %>
-<script>
+<!-- <script>
   $(".btn-box").click(function () {
     DingTalkPC.biz.util.openLink({
         url: $(this).attr("dinghref"),//要打开链接的地址
@@ -472,4 +473,13 @@
         }
     });
   });
-</script>
+</script> -->
+<script>
+		$(document).ready(function() {
+			$('.datatable-1').dataTable();
+			$('.dataTables_paginate').addClass("btn-group datatable-pagination");
+			$('.dataTables_paginate > a').wrapInner('<span />');
+			$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+			$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+		} );
+	</script>

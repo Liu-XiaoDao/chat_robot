@@ -17,12 +17,11 @@
 //= require bootstrap.min
 //= require jquery.dataTables
 
-// 这几个是图形
-//= require flot/jquery.flot
-//= require flot/jquery.flot.pie
-//= require flot/jquery.flot.resize
-
-//= require common
+// 这几个是图形,不再这里引入，在画图是单独引入
+// require flot/jquery.flot
+// require flot/jquery.flot.pie
+// require flot/jquery.flot.resize
+// require common
 
 
 
