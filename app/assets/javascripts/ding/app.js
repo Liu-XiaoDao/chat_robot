@@ -157,8 +157,9 @@
             openLink(url);
         });
 
-        $('.item').on('click',function(){
-
+        $('.username').on('click',function(){
+          const url = 'https://alimarket.m.taobao.com/markets/dingtalk/cydd?lwfrom=20161118115327653';
+          openLink(url);
         });
         dd.error(function(err){
             alert(JSON.stringify(err));
