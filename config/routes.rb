@@ -20,6 +20,13 @@ Rails.application.routes.draw do
     get 'code_scan', on: :collection
     get 'phone_number', on: :collection
   end
+
+  resources :apis do
+    get 'getuserid', on: :collection
+    get 'get_userinfo', on: :collection
+    get 'jsapi_oauth', on: :collection
+  end
+
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'

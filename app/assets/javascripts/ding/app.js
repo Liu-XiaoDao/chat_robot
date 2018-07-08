@@ -167,9 +167,9 @@
         var originalUrl = location.href;
         var corpId = parseCorpId(originalUrl, 'corpId');
         var jsApiList = [];
-        console.log(OPENAPIHOST + '/getOapiByName.php?event=jsapi-oauth&href='+encodeURIComponent(location.href));
+        console.log(OPENAPIHOST + '/apis/getOapiByName?event=jsapi-oauth&href='+encodeURIComponent(location.href));
         var signRequest = {
-            url: OPENAPIHOST + '/getOapiByName.php?event=jsapi-oauth&href='+encodeURIComponent(location.href),
+            url: OPENAPIHOST + '/apis/getOapiByName?event=jsapi-oauth&href='+encodeURIComponent(location.href),
             type: 'GET',
             dataType: 'json',
             success: function(response){
