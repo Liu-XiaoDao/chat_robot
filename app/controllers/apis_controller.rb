@@ -2,6 +2,7 @@ class ApisController < ApplicationController
 
   def initialize
     @auth = AuthService.new
+    @user = UserService.new
   end
 
   def index
@@ -9,7 +10,11 @@ class ApisController < ApplicationController
   end
 
   def getuserid
-
+    accessToken = @auth.getAccessToken()
+    code = params["code"]
+    userInfo = @user.getUserInfo(accessToken, code)
+    # Log::i("[USERINFO-getuserid]".json_encode($userInfo))
+    render json: userInfo
   end
 
   def get_userinfo

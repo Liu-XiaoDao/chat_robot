@@ -25,7 +25,6 @@ class AuthService
       # @this->check($response);
       @jsticket = @response['ticket'];
       @cache.setJsTicket(@jsticket);
-      binding.pry
     end
     return @jsticket;
   end
@@ -42,23 +41,18 @@ class AuthService
     # {
     #     Log::e("[getConfig] ERR: no corp access token");
     # }
-    @ticket = getTicket(corpAccessToken);
-    @signature = sign(ticket, nonceStr, timeStamp, url);
+    ticket = getTicket(corpAccessToken);
+    signature = sign(ticket, nonceStr, timeStamp, url)
 
-    @config = array(
-        'url' => @url,
-        'nonceStr' => @nonceStr,
-        'agentId' => @agentId,
-        'timeStamp' => @timeStamp,
-        'corpId' => @corpId,
-        'signature' => @signature);
-    return @config;
+    config = {'url' => url,'nonceStr' => nonceStr,'agentId' => agentId, 'timeStamp' => timeStamp, 'corpId' => corpId, 'signature' => signature}
+    return config
   end
 
   def sign(ticket, nonceStr, timeStamp, url)
     # require 'digest/sha1'
     # sha1 = Digest::SHA1.hexdigest('something secret')
-    plain = 'jsapi_ticket=' + ticket + '&noncestr=' + $nonceStr + '&timestamp=' + $timeStamp + '&url=' + $url;
+    # plain = 'jsapi_ticket=' + ticket + '&noncestr=' + nonceStr + '&timestamp=' + timeStamp + '&url=' + url
+    plain = "jsapi_ticket=#{ticket}&noncestr=#{nonceStr}&timestamp=#{timeStamp}&url=#{url}"
     return Digest::SHA1.hexdigest(plain);
   end
 

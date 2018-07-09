@@ -93,11 +93,12 @@
         authCode(corpId).then(function(result){
             var code = result.code;
             var getUserIdRequest = {
-                url: OPENAPIHOST + '/getOapiByName.php?event=getuserid',
+                url: OPENAPIHOST + '/apis/getuserid',
                 type: 'POST',
                 data:{code:code},
                 dataType: 'json',
                 success: function(response){
+                  console.log(response);
                     if (response.errcode === 0){
                         proper.userId = response.userid;
                     } else {
@@ -167,9 +168,9 @@
         var originalUrl = location.href;
         var corpId = parseCorpId(originalUrl, 'corpId');
         var jsApiList = [];
-        console.log(OPENAPIHOST + '/apis/getOapiByName?event=jsapi-oauth&href='+encodeURIComponent(location.href));
+        console.log(OPENAPIHOST + '/apis/jsapi_oauth?href='+encodeURIComponent(location.href));
         var signRequest = {
-            url: OPENAPIHOST + '/apis/getOapiByName?event=jsapi-oauth&href='+encodeURIComponent(location.href),
+            url: OPENAPIHOST + '/apis/jsapi_oauth?href='+encodeURIComponent(location.href),
             type: 'GET',
             dataType: 'json',
             success: function(response){
