@@ -31,7 +31,7 @@ class AuthService
 
   def getConfig(href)
     corpId = @config['corpid'];
-    agentId = @config['secret'];
+    agentId = @config['agentid'];
     nonceStr = 'abcdefg';
     timeStamp = Time.now.to_i;
     # url = urldecode(href);
