@@ -18,7 +18,11 @@ class ApisController < ApplicationController
   end
 
   def get_userinfo
-
+    accessToken = @auth.getAccessToken()
+    userid = params["userid"]
+    userInfo = @user.get(accessToken, userid)
+    # Log::i("[get_userinfo]".json_encode($userInfo));
+    render json: userInfo
   end
 
   def jsapi_oauth

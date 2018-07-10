@@ -133,7 +133,7 @@
 
     function getUserInfo(userid){
         var getUserInfoRequest = {
-            url: OPENAPIHOST + '/getOapiByName.php?event=get_userinfo&userid='+userid,
+            url: OPENAPIHOST + '/apis/get_userinfo?userid='+userid,
             type: 'POST',
             data:{userid:userid},
             dataType: 'json',

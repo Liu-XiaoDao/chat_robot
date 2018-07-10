@@ -1,4 +1,6 @@
 class HttpService
+  require 'net/https'
+  require 'uri'
 
   def initialize
     @config = YAML.load( File.read(Rails.root.to_s + "/config/dingconfig.yml"))
