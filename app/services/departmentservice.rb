@@ -9,12 +9,12 @@ class DepartmentService
     return response
   end
 
-  def listDept($accessToken)
+  def listDept(accessToken)
     response = @http.get("/department/list?", {access_token: accessToken})
     return response
   end
 
-  def deleteDept($accessToken, $id)
+  def deleteDept(accessToken, id)
     response = @http.get("/department/delete?",{access_token: accessToken, id: id})
     return response
   end

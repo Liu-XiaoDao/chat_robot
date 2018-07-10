@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :apis do
     post 'getuserid', on: :collection
     post 'get_userinfo', on: :collection
+    get 'get_department', o: :collection
     get 'jsapi_oauth', on: :collection
   end
 

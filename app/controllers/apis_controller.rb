@@ -25,6 +25,13 @@ class ApisController < ApplicationController
     render json: userInfo
   end
 
+  def get_department
+    accessToken = @auth.getAccessToken()
+    department = DepartmentService.new.listDept(accessToken)
+    # Log::i("[get_userinfo]".json_encode($userInfo));
+    render json: department
+  end
+
   def jsapi_oauth
     href = params["href"]
     configs = @auth.getConfig(href)
