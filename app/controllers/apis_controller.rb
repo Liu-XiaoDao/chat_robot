@@ -28,6 +28,9 @@ class ApisController < ApplicationController
   def get_department
     accessToken = @auth.getAccessToken()
     department = DepartmentService.new.listDept(accessToken)
+    department_ids = DepartmentService.new.list_ids(accessToken)
+    department_info = DepartmentService.new.department_info(accessToken)
+    userlist = @user.list(accessToken, 66950253)
     # Log::i("[get_userinfo]".json_encode($userInfo));
     render json: department
   end

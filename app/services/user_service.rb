@@ -18,4 +18,10 @@ class UserService
     response = @http.get("/user/simplelist", {access_token: accessToken,department_id: deptId});
     return response;
   end
+
+  def list(accessToken,deptId)
+    response = @http.get("/user/list", {access_token: accessToken,department_id: deptId})
+    return response
+  end
+
 end

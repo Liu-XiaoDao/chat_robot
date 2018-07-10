@@ -14,6 +14,16 @@ class DepartmentService
     return response
   end
 
+  def list_ids(accessToken)
+    response = @http.get("/department/list_ids?", {access_token: accessToken})
+    return response
+  end
+
+  def department_info(accessToken)
+    response = @http.get("/department/get?", {access_token: accessToken,id: 66950253})
+    return response
+  end
+
   def deleteDept(accessToken, id)
     response = @http.get("/department/delete?",{access_token: accessToken, id: id})
     return response
