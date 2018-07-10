@@ -9,7 +9,7 @@ class RedisService
     ensure
       @redis = FileCache.new
     end
-
+binding.pry
   end
 
   def setJsTicket(ticket)
