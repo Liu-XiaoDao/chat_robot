@@ -9,7 +9,7 @@ class RedisService
     ensure
       @redis = FileCache.new
     end
-binding.pry
+
   end
 
   def setJsTicket(ticket)
@@ -57,9 +57,9 @@ class FileCache
   end
 
   def get(key)
-    if key
+    if key.present?
       data = get_file(Rails.root.to_s + "/config/filecache.yml")
-      if data && data.has_key?(key)
+      if data.present? && data.has_key?(key)
           item = data["#{key}"]
           return false  if !item
           if item['expire_time']>0 && item['expire_time'] < Time.now.to_i
@@ -76,7 +76,7 @@ class FileCache
   def get_file(filename)
     if !File.exist?(filename)
       file = File.open(filename, "w")
-      file.write("")
+      file.write("{}")
       file.close
       return
     else
