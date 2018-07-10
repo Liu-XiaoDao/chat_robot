@@ -86,7 +86,7 @@
         + '<div class="admin-hello">'
         + nb.wh
         + '</div>';
-        $('.admin-manager').html(html);
+        $('.username').html(html);
     }
 
     function getUserId(corpId){
