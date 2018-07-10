@@ -201,6 +201,7 @@
             type: 'GET',
             dataType: 'json',
             success: function(response){
+              $('.department').html(22222);
                 if (response.errcode === 0){
                     alert(response);
                 } else {
@@ -212,5 +213,6 @@
             }
         };
         $.ajax(signRequest1);
+
     });
 })();
