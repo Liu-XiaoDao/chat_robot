@@ -68,13 +68,10 @@
         if(name){
             if (dateTime >= 5 && dateTime <= 12) {
                 nb.wh = isAdmin ? '早上好，管理员，' + name : '早上好，' + name;
-                nb.whImage = 'https://gw.alicdn.com/tps/TB1ubtjOFXXXXbzXpXXXXXXXXXX-36-36.jpg';
             } else if (dateTime > 12 && dateTime <= 18) {
                 nb.wh = isAdmin ? '下午好，管理员，' + name : '下午好，' + name;
-                nb.whImage = 'https://gw.alicdn.com/tps/TB1ubtjOFXXXXbzXpXXXXXXXXXX-36-36.jpg';
             } else {
                 nb.wh = isAdmin ? '晚上好，管理员，' + name : '晚上好，' + name;
-                nb.whImage = 'https://gw.alicdn.com/tps/TB15FNwOFXXXXbqXXXXXXXXXXXX-36-36.jpg';
             }
         }
         return nb;
@@ -82,10 +79,7 @@
 
     function updateUI(){
         var nb = updateName();
-        var html = '<img src="'+ nb.whImage+'" class="admin-image">'
-        + '<div class="admin-hello">'
-        + nb.wh
-        + '</div>';
+        var html = nb.wh;
         $('.username').html(html);
     }
 
@@ -153,11 +147,6 @@
 
     $(function(){
 
-        $('.banner-image').on('click',function(){
-            const url = 'https://alimarket.m.taobao.com/markets/dingtalk/cydd?lwfrom=20161118115327653';
-            openLink(url);
-        });
-
         $('.username').on('click',function(){
           const url = 'https://alimarket.m.taobao.com/markets/dingtalk/cydd?lwfrom=20161118115327653';
           openLink(url);
@@ -168,7 +157,6 @@
         var originalUrl = location.href;
         var corpId = parseCorpId(originalUrl, 'corpId');
         var jsApiList = [];
-        console.log(OPENAPIHOST + '/apis/jsapi_oauth?href='+encodeURIComponent(location.href));
         var signRequest = {
             url: OPENAPIHOST + '/apis/jsapi_oauth?href='+encodeURIComponent(location.href),
             type: 'GET',
