@@ -21,6 +21,7 @@ ee https://help.github.com/articles/ignoring-files for more about ignoring files
 /config/email.yml
 /config/database.yml
 /config/secrets.yml
+/config/filecache.yml
 
 # Ignore all .sass-cache files
 /.sass-cache/**
