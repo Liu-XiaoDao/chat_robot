@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     get 'phone_number', on: :collection
   end
 
+  resources :departments do
+    get 'update_department', on: :collection
+  end
+
   resources :apis do
     post 'getuserid', on: :collection
     post 'get_userinfo', on: :collection
