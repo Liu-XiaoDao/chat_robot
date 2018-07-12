@@ -2,8 +2,7 @@ class EmployeesController < ApplicationController
   before_action :init_locals, :only => :update_employee
 
   def index
-    @departments = Department.all
-    # @employees =
+    @employees =  Employee.all
   end
 
   def show
@@ -11,33 +10,47 @@ class EmployeesController < ApplicationController
   end
 
   def update_employee
-    accessToken = @auth.getAccessToken()
-    department_res = @user.simplelist(accessToken,1)
+    accessToken = @auth.getAccessToken() #获取token
 
-    binding.pry
+    @departments = Department.all
+    @departments.each do |department|
+      department_employees = @user.list(accessToken,department.id)
+      if department_employees["errmsg"] == "ok" && department_employees["errcode"] == 0
+        department_employee_lists = department_employees["userlist"]
 
-
-
-
-    # department_res = @departmentService.listDept(accessToken)
-    # if department_res["errmsg"] == "ok" && department_res["errcode"] == 0
-    #   department_list = department_res["department"]
-    #   department_list.each do |department|
-    #     if Department.find(department["id"]).blank?
-    #       Department.create(id: department["id"], name: department["name"], parentid: department["parentid"])
-    #     else
-    #       Department.find(department["id"]).update(name: department["name"], parentid: department["parentid"])
-    #     end
-    #
-    #   end
-    #   return render plain: "共有部门#{department_list.count}个，更新个部门"
-    # else
-    #   return render plain: department_res["errmsg"]
-    # end
+        department_employee_lists.each do |employee|
+          if Employee.find_by_userid(employee["userid"]).blank?
+            Employee.create(parse_employee(employee))
+          else
+            Employee.find_by_userid(employee["userid"]).update(parse_employee(employee))
+          end
+        end
+        flash[:success] = "更新员工成功"
+      else
+        flash[:danger] = department_employees["errmsg"]
+      end
+    end
+    redirect_to :index
   end
 
   def init_locals
     @auth = AuthService.new
     @user = UserService.new
+  end
+
+  def parse_employee(employee)
+    {
+      position: employee["position"],
+      department: employee["department"],
+      unionid: employee["unionid"],
+      userid: employee["userid"],
+      dingid: employee["dingid"],
+      name: employee["name"],
+      isleader: employee["isleader"],
+      active: employee["active"],
+      openid: employee["openid"],
+      avatar: employee["avatar"],
+      isadmin: employee["isadmin"]
+    }
   end
 end
