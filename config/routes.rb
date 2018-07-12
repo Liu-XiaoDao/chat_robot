@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     get 'update_department', on: :collection
   end
 
+  resources :employees do
+    get 'update_employee', on: :collection
+  end
+
   resources :apis do
     post 'getuserid', on: :collection
     post 'get_userinfo', on: :collection
