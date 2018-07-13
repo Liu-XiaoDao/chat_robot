@@ -1,8 +1,0 @@
-#配置文件
-oapi_host: https://oapi.dingtalk.com
-corpid: ding4e97ac09cf15a1d2
-secret: iqUgckAMzn5d1GxykKX1QNxYs3V_AqfqDJUncgDfdMVLx7lrxJSwttq2cxnJffBt
-
-agentid: 180734473 #必填，在创建微应用的时候会分配
-encoding_aes_key: 123456 #加解密需要用到的token，普通企业可以随机填写,例如:123456
-token: 111111111111111111111111111111111 #数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成
