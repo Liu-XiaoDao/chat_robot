@@ -30,7 +30,7 @@ class EmployeesController < ApplicationController
         flash[:danger] = department_employees["errmsg"]
       end
     end
-    redirect_to :index
+    redirect_to employees_path
   end
 
   def init_locals
@@ -41,16 +41,16 @@ class EmployeesController < ApplicationController
   def parse_employee(employee)
     {
       position: employee["position"],
-      department: employee["department"],
+      department: employee["department"].join(","),
       unionid: employee["unionid"],
       userid: employee["userid"],
-      dingid: employee["dingid"],
+      dingid: employee["dingId"],
       name: employee["name"],
-      isleader: employee["isleader"],
+      isleader: employee["isLeader"],
       active: employee["active"],
-      openid: employee["openid"],
+      openid: employee["openId"],
       avatar: employee["avatar"],
-      isadmin: employee["isadmin"]
+      isadmin: employee["isAdmin"]
     }
   end
 end

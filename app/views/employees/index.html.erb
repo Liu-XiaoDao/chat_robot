@@ -1,0 +1,67 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'shared/left' %>
+
+        <div class="span9">
+           <div class="content">
+              <div class="module message">
+                <div class="module-head">
+                  <h3>员工</h3>
+                </div>
+                <div class="module-option clearfix">
+                  <div class="pull-left">
+                    <div class="btn-group">
+                      <button class="btn">Inbox</button>
+                      <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Inbox(11)</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Settings</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pull-right"><a href="/employees/update_employee" class="btn btn-primary">同步员工</a></div>
+                </div>
+                <div class="module-body table">
+                  <% flash.each do |name, msg| %>
+                    <div class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                      <strong><%= name %>!</strong> <%= msg %>
+                    </div>
+                  <% end %>
+                  <table class="table table-message">
+                    <tbody>
+                      <tr class="heading">
+                        <td class="cell-check">ID</td>
+                        <td class="cell-author hidden-phone hidden-tablet">姓名</td>
+                        <td class="cell-title"> 部门</td>
+                        <td class="cell-time align-right">领导？</td>
+                      </tr>
+                      <% @employees.each do |employee| %>
+                        <tr class="unread">
+                          <td class="cell-title"><%= employee.id %></td>
+                          <td class="cell-author hidden-phone hidden-tablet"><%= employee.name %></td>
+                          <td class="cell-title"><%= employee.department_name %></td>
+                          <td class="cell-time align-right"><%= employee.isleader %></td>
+                        </tr>
+                       <% end %>
+                      <!-- <tr class="unread starred">
+                        <td class="cell-icon"><i class="icon-star"></i></td>
+                        <td class="cell-author hidden-phone hidden-tablet">John Donga</td>
+                        <td class="cell-title">Test Title</td>
+                        <td class="cell-icon hidden-phone hidden-tablet"><i class="icon-paper-clip-no"></i></td>
+                        <td class="cell-time align-right">18:01</td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+                <div class="module-foot"></div>
+              </div>
+            </div><!--/.content-->
+          </div><!--/.span9-->
+      </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
