@@ -37,7 +37,7 @@
                       <% @departments.each do |department| %>
                         <tr class="unread">
                           <td class="cell-title"><%= department.id %></td>
-                          <td class="cell-author hidden-phone hidden-tablet">ssss<%= department.leaderid %></td>
+                          <td class="cell-author hidden-phone hidden-tablet"><%= department.manager_name %></td>
                           <td class="cell-title"><%= department.name %></td>
                           <td class="cell-time align-right"><%= department.updated_at.try(:strftime, "%Y-%m-%d") %></td>
                         </tr>
@@ -52,7 +52,8 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="module-foot"></div>
+                <div class="module-foot" style="padding:0;"><!-- 本来是个table的footer，现在当做横线用 --></div>
+                <%= will_paginate @departments, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
               </div>
             </div><!--/.content-->
           </div><!--/.span9-->

@@ -2,7 +2,7 @@ class DepartmentsController < ApplicationController
   before_action :init_locals, :only => :update_department
 
   def index
-    @departments = Department.all
+    @departments = Department.all.paginate page: params[:page], per_page: 15
   end
 
   def show

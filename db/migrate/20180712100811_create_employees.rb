@@ -2,7 +2,7 @@ class CreateEmployees < ActiveRecord::Migration[5.1]
   def change
     create_table :employees do |t|
       t.string  :position
-      t.integer :department
+      t.integer :department_id
       t.string  :unionid
       t.string  :userid
       t.string  :dingid

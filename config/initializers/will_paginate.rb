@@ -5,12 +5,14 @@ module WillPaginate
     class BlogLinkRenderer < LinkRenderer
       protected
       def html_container(html)
-        tag :ul, html, class: "pagination"
+        tag :div, tag(:ul, html), class: "pagination pagination-centered"
       end
 
       def page_number(page)
         if page == current_page
-          tag :li, link(page, page, rel: rel_value(page)),  class: 'disabled'
+          # tag :li, link(page, page, rel: rel_value(page)),  class: 'disabled'
+          # tag :li, link(page, page,{rel: rel_value(page), disabled: "disabled"}),  class: 'disabled'
+          tag :li, link(page, "javascript:void(0)", rel: rel_value(page)),  class: 'disabled'
         else
           tag :li, link(page, page, rel: rel_value(page))
         end

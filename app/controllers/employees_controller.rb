@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
   before_action :init_locals, :only => :update_employee
 
   def index
-    @employees =  Employee.all
+    @employees =  Employee.all.paginate page: params[:page], per_page: 15
   end
 
   def show
@@ -41,7 +41,7 @@ class EmployeesController < ApplicationController
   def parse_employee(employee)
     {
       position: employee["position"],
-      department: employee["department"].join(","),
+      department_id: employee["department"].join(","),
       unionid: employee["unionid"],
       userid: employee["userid"],
       dingid: employee["dingId"],

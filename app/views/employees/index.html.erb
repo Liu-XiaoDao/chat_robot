@@ -58,7 +58,8 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="module-foot"></div>
+                <div class="module-foot" style="padding:0;"><!-- 本来是个table的footer，现在当做横线用 --></div>
+                <%= will_paginate @employees, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
               </div>
             </div><!--/.content-->
           </div><!--/.span9-->

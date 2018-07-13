@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180712100811) do
 
   create_table "employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "position"
-    t.integer "department"
+    t.integer "department_id"
     t.string "unionid"
     t.string "userid"
     t.string "dingid"
