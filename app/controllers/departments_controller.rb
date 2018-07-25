@@ -1,4 +1,6 @@
 class DepartmentsController < ApplicationController
+  include ActionController::Live
+
   before_action :init_locals, :only => :update_department
 
   def index
@@ -6,7 +8,13 @@ class DepartmentsController < ApplicationController
   end
 
   def show
-
+    response.headers['Content-Type'] = 'text/event-stream'
+    10.times {
+      response.stream.write "hello world\n"
+      sleep 1
+    }
+  ensure
+    response.stream.close
   end
 
   def update_department
