@@ -23,10 +23,10 @@ class DepartmentsController < ApplicationController
     if department_res["errmsg"] == "ok" && department_res["errcode"] == 0
       department_list = department_res["department"]
       department_list.each do |department|
-        if Department.find(department["id"]).blank?
+        if Department.find_by_id(department["id"]).blank?
           Department.create(id: department["id"], name: department["name"], parentid: department["parentid"])
         else
-          Department.find(department["id"]).update(name: department["name"], parentid: department["parentid"])
+          Department.find_by_id(department["id"]).update(name: department["name"], parentid: department["parentid"])
         end
 
       end
