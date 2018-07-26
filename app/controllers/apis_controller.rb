@@ -42,6 +42,20 @@ class ApisController < ApplicationController
     render json: configs
   end
 
+  def send_message
+    accessToken = @auth.getAccessToken()
+    data = {
+      "touser":130841175621040386,
+      "agentid":180734473,
+      "msgtype":"text",
+      "text": {
+        "content":"哈哈哈，测试消息#{Time.now}"
+      }
+    }
+    msg = MessageService.new.send(accessToken,data)
+    render plain: msg
+  end
+
 end
 
 

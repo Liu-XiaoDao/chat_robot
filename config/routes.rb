@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     post 'get_userinfo', on: :collection
     get 'get_department', on: :collection
     get 'jsapi_oauth', on: :collection
+    get 'send_message', on: :collection
   end
 
   get '/signin' => 'sessions#new'

@@ -10,7 +10,7 @@ class MessageService
   end
 
   def send(accessToken, opt)
-    response = @http.post("/message/send?",{access_token: accessToken}, opt.to_json)
+    response = @http.post("/message/send",{access_token: accessToken}, opt.to_json)
     return response
   end
 end

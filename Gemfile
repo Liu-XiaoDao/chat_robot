@@ -49,6 +49,8 @@ gem 'will_paginate', '3.1.5'   #分页
 #redis
 gem 'redis', '~> 4.0', '>= 4.0.1'
 
+#网络请求
+gem 'rest-client'
 #调试
 gem 'pry', '~> 0.11.3'
 

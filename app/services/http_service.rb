@@ -16,16 +16,24 @@ class HttpService
     return nil
   end
 
-  def post
-
+  def post(url, params, data)
+    res = RestClient.post joinParams(url, params), data, :content_type => :json, :accept => :json
   end
 
   # def execUri(uri,params)
   #   res = Net::HTTP.get_response(uri)
   # end
 
-  # def joinParams(path,params)
-  #   url = @config['oapi_host'] + path
-  # end
+  def joinParams(path,params)
+    url = "#{@config['oapi_host']}#{path}"
+    if params.count > 0
+      url = url + "?"
+      params.each do |key,value|
+        url = url + key.to_s + "=" + value.to_s + "&";
+      end
+      url.last == "&" &&  url.chop!
+    end
+    return url
+  end
 
 end
