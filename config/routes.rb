@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'display_icon', on: :collection
     get 'code_scan', on: :collection
     get 'phone_number', on: :collection
+    get 'express_list', on: :collection
   end
 
   resources :departments do

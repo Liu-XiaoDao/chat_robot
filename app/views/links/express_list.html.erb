@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>通讯录</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+  </head>
+
+  <body class="dingwrapper">
+    <div class="container">
+      <div class="row" style="margin:0px;">
+        <div class="module">
+          <div class="module-head">
+            <h3>
+              <%= Date.today.try(:strftime, "%Y-%m-%d") %> 宜康快递查询
+            </h3>
+          </div>
+          <div class="module-body table">
+            <div><label>Search: <input type="text" style="margin-bottom: 0px;"></label></div>
+            <table class="table table-striped">
+								  <thead>
+									<tr>
+									  <th>#</th>
+									  <th>姓名</th>
+									  <th>哈哈哈</th>
+									  <th>日期</th>
+									</tr>
+								  </thead>
+								  <tbody>
+									<tr>
+									  <td>1</td>
+									  <td>Mark</td>
+									  <td>Otto</td>
+									  <td>@mdo</td>
+									</tr>
+									<tr>
+									  <td>2</td>
+									  <td>Jacob</td>
+									  <td>Thornton</td>
+									  <td>@fat</td>
+									</tr>
+									<tr>
+									  <td>3</td>
+									  <td>Larry</td>
+									  <td>the Bird</td>
+									  <td>@twitter</td>
+									</tr>
+								  </tbody>
+								</table>
+          </div>
+        </div><!--/.module-->
+      </div>
+    </div><!--/.container-->
+  </body>
+</html>
+
+<style type="text/css">
+  .dingwrapper {
+    background: #eee;
+    padding: 30px 0
+  }
+</style>
+
+<script>
+		$(document).ready(function() {
+			$('.datatable-1').dataTable();
+			$('.dataTables_paginate').addClass("btn-group datatable-pagination");
+			$('.dataTables_paginate > a').wrapInner('<span />');
+			$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+			$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+		} );
+	</script>
