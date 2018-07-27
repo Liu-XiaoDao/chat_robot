@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>通讯录</title>
+    <title>宜康快递查询</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -20,7 +20,12 @@
           <div class="module-body table">
             <div>
               <label style="padding:0 15px;">
-                Search: <input type="text" style="margin-bottom: 0px;"><a class="btn" style="float:right;" href="/expresses/new">录入快递信息</a>
+                <form action="/expresses" accept-charset="UTF-8" method="get">
+                  搜索：<input type="text" style="margin-bottom: 0px;" name="search_name" placeholder="输入姓名">
+                  <button type="submit" class="btn">搜索</button>
+                  <a class="btn" style="float:right;display: none;" href="/expresses/new">录入快递信息</a>
+                </form>
+
               </label>
 
             </div>

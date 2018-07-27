@@ -1,6 +1,10 @@
 class ExpressesController < ApplicationController
   def index
-    @expresses = Express.all
+    if params[:search_name].present?
+      @expresses = Express.where(employee_id: Employee.find_by_name(params[:search_name]).id)
+    else
+      @expresses = Express.all
+    end
     render layout: false
   end
 
