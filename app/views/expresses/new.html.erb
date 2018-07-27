@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>通讯录</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+  </head>
+
+  <body class="dingwrapper">
+    <div class="container">
+      <div class="row" style="margin:0px;">
+        <div class="module">
+          <div class="module-head">
+            <h3>录入快递信息</h3>
+          </div>
+          <div class="module-body">
+
+            <form class="form-horizontal row-fluid" action="/expresses/batch_create" accept-charset="UTF-8" method="post">
+              <div class="control-group">
+                <label class="control-label">快递种类</label>
+                <div class="controls">
+                  <label class="radio inline">
+                    <input type="radio" name="expresses_type" id="expresses_type1" value="普通快递" checked="">普通快递
+                  </label>
+                  <label class="radio inline">
+                    <input type="radio" name="expresses_type" id="expresses_type2" value="基因快递">基因快递
+                  </label>
+                  <label class="radio inline">
+                    <input type="radio" name="expresses_type" id="expresses_type3" value="其他">其他
+                  </label>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="basicinput">姓名</label>
+                <div class="controls">
+                  <textarea class="span8" rows="5" name="name_list"></textarea>
+                  <span class="help-inline">姓名之间用','分隔</span>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <button type="submit" class="btn">提交</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div><!--/.module-->
+        <% if @name_list.present? || @suc_name_list.present? || @err_name_list.present? %>
+          <div class="module">
+            <div class="module-head">
+              <h3>成功录入提醒</h3>
+            </div>
+            <div class="module-body">
+              录入内容:<%= @name_list.join(",") %>
+              <br>
+              成功:<%= @suc_name_list.join(",") %>
+              <br>
+              失败:<%= @err_name_list.join(",") %>
+            </div>
+          </div><!--/.module-->
+        <% end %>
+      </div>
+    </div><!--/.container-->
+  </body>
+</html>
+
+<style type="text/css">
+  .dingwrapper {
+    background: #eee;
+    padding: 30px 0
+  }
+</style>
+
+<script>
+    $(document).ready(function() {
+      $('.datatable-1').dataTable();
+      $('.dataTables_paginate').addClass("btn-group datatable-pagination");
+      $('.dataTables_paginate > a').wrapInner('<span />');
+      $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+      $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+    } );
+  </script>

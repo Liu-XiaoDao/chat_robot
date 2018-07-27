@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180712100811) do
+ActiveRecord::Schema.define(version: 20180727041307) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "category_name"
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 20180712100811) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "expresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "employee_id"
+    t.string "express_type"
+    t.boolean "is_send_noti"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
     t.text "url_link"
@@ -58,6 +66,14 @@ ActiveRecord::Schema.define(version: 20180712100811) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "display_order"
+  end
+
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "target_class"
+    t.integer "target_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

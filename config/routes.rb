@@ -37,7 +37,9 @@ Rails.application.routes.draw do
     get 'send_message', on: :collection
   end
 
-  resources :expresses
+  resources :expresses do
+    post 'batch_create', on: :collection
+  end
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
