@@ -1,0 +1,2 @@
+class ExpressesController < ApplicationController
+end
