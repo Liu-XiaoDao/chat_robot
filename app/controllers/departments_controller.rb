@@ -7,15 +7,37 @@ class DepartmentsController < ApplicationController
     @departments = Department.all.paginate page: params[:page], per_page: 15
   end
 
+  # def show
+  #   response.headers['Content-Type'] = 'text/event-stream'
+  #   response.headers['Cache-Control'] = 'no-cache'
+  #   response.headers['Connection'] = 'keep-alive'
+  #   10.times {
+  #     response.stream.write "data: hello world\n\n"
+  #     sleep 1
+  #   }
+  # ensure
+  #   response.stream.close
+  # end
+
+
   def show
-    response.headers['Content-Type'] = 'text/event-stream'
+    response.headers["Content-Type"] = "text/event-stream"
+    response.headers['Cache-Control'] = 'no-cache'
+    response.headers['Connection'] = 'keep-alive'
+    data = '111111'
     10.times {
-      response.stream.write "hello world\n"
+      response.stream.write("event: messages.create\n")
+      response.stream.write("data: #{data}\n\n")
       sleep 1
-    }
+     }
+  rescue IOError
+    logger.info "Stream closed"
   ensure
     response.stream.close
   end
+
+
+
 
   def update_department
     accessToken = @auth.getAccessToken()
