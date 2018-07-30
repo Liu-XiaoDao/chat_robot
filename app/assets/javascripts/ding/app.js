@@ -148,7 +148,7 @@
     $(function(){
 
         $('.username').on('click',function(){
-          const url = 'https://alimarket.m.taobao.com/markets/dingtalk/cydd?lwfrom=20161118115327653';
+          url = 'https://alimarket.m.taobao.com/markets/dingtalk/cydd?lwfrom=20161118115327653';
           openLink(url);
         });
         dd.error(function(err){
@@ -163,7 +163,7 @@
             dataType: 'json',
             success: function(response){
                 if (response.errcode === 0){
-                    const config = {
+                    config = {
                         agentId: response.agentId || '',
                         corpId: response.corpId || '',
                         timeStamp: response.timeStamp || '',
