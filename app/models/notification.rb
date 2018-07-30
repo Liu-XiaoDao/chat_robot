@@ -15,9 +15,10 @@ class Notification < ApplicationRecord
     data = {
       "touser":express.employee.userid,
       "agentid":180734473,
-      "msgtype":"text",
-      "text": {
-        "content":content
+      "msgtype":"markdown",
+      "markdown": {
+        "title": "快递来了!!!",
+        "text": "#{content}"
       }
     }
     msg = MessageService.new.send(accessToken,data)
