@@ -45,7 +45,7 @@
                     <tr class="unread">
                       <td class="cell-author hidden-phone hidden-tablet"><%= link.id %></td>
                       <td class="cell-title"><%= link.title %></td>
-                      <td class="cell-title"><%= link.url_link %></td>
+                      <td class="cell-title"><%= truncate link.url_link, length: 80 %></td>
                       <td class="cell-title"><%= link.icon %></td>
                       <td class="cell-title"><%= link.display_order %></td>
                       <td class="cell-time align-right"><%= link_to 'Edit', edit_link_path(link), class: "btn","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
