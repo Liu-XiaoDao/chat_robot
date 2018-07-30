@@ -41,7 +41,7 @@ gem "elasticsearch-rails"
 # 部署
 gem "capistrano", "~> 3.10"
 gem 'capistrano-rails', '~> 1.1'
-
+gem 'capistrano-bundler', '~> 1.1'
 gem 'capistrano-rvm',   '~> 0.1'
 
 gem 'will_paginate', '3.1.5'   #分页
