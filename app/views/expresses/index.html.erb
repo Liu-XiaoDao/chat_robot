@@ -32,7 +32,6 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>姓名</th>
                   <th>快递类型</th>
                   <th>日期</th>
@@ -41,7 +40,6 @@
               <tbody>
                 <% @expresses.each do |express| %>
                   <tr>
-                    <td><%= express.id %></td>
                     <td><%= express.employee.name %></td>
                     <td><%= express.express_type %></td>
                     <td><%= express.created_at.try(:strftime, "%Y-%m-%d %H:%M:%S") %></td>
