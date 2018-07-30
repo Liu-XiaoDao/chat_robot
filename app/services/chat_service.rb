@@ -19,8 +19,8 @@ class ChatService
     return response
   end
 
-  def callback(accessToken, opt)
-    response = $this->http->post("/call_back/register_call_back", {access_token: accessToken}, opt.to_json)
-    return response
-  end
+  # def callback(accessToken, opt)
+  #   response = $this->http->post("/call_back/register_call_back", {access_token: accessToken}, opt.to_json)
+  #   return response
+  # end
 end
