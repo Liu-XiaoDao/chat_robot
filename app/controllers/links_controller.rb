@@ -20,6 +20,7 @@ class LinksController < ApplicationController
     #   @users = User.all
     #   RedisService.new.set_value(:users,@users)
     # end
+    @employees =  Employee.all
     render layout: false
   end
 
