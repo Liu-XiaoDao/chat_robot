@@ -9,6 +9,30 @@ class EmployeesController < ApplicationController
 
   end
 
+  def phone_number
+    # @users = RedisService.new.get_value(:users)
+    # if @users.blank?
+    #   @users = User.all
+    #   RedisService.new.set_value(:users,@users)
+    # end
+    @employees =  Employee.all
+    render layout: false
+  end
+
+  def set_phone_number
+    @employee =  Employee.find params[:id]
+    if params[:type] == "extension_number"
+      @employee.extension_number = params[:number]
+    else
+      @employee.linear_telephone = params[:number]
+    end
+    @employee.save
+  end
+
+  def show_phone_number
+    @employees =  Employee.all.paginate page: params[:page], per_page: 40
+  end
+
   def update_employee
     accessToken = @auth.getAccessToken() #获取token
 

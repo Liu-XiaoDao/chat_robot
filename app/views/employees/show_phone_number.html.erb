@@ -1,0 +1,94 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'shared/left' %>
+
+        <div class="span9">
+           <div class="content">
+              <div class="module message">
+                <div class="module-head">
+                  <h3>设置员工电话</h3>
+                </div>
+                <div class="module-option clearfix">
+                  <div class="pull-left">
+                    <div class="btn-group">
+                      <button class="btn">Inbox</button>
+                      <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Inbox(11)</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Settings</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="module-body table">
+                  <% flash.each do |name, msg| %>
+                    <div class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                      <strong><%= name %>!</strong> <%= msg %>
+                    </div>
+                  <% end %>
+                  <table class="table table-message">
+                    <tbody>
+                      <tr class="heading">
+                        <td class="cell-check">ID</td>
+                        <td class="cell-author hidden-phone hidden-tablet">姓名</td>
+                        <td class="cell-title"> 部门</td>
+                        <td class="cell-title">分机号</td>
+                        <td class="cell-title">直线电话</td>
+                      </tr>
+                      <% @employees.each do |employee| %>
+                        <tr class="unread">
+                          <td class="cell-title"><%= employee.id %></td>
+                          <td class="cell-author hidden-phone hidden-tablet"><%= employee.name %></td>
+                          <td class="cell-title"><%= employee.department_name %></td>
+                          <td class="cell-title extension_number">
+                            <input type="text" data-employee-id="<%= employee.id %>" style="width:102px;height:20px;margin:0px;padding:0px;" name="extension_number" value="<%= employee.extension_number %>">
+                          </td>
+                          <td class="cell-title linear_telephone">
+                            <input type="text" data-employee-id="<%= employee.id %>" style="width:102px;height:20px;margin:0px;padding:0px;" name="linear_telephone" value="<%= employee.linear_telephone %>">
+                          </td>
+                        </tr>
+                       <% end %>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="module-foot" style="padding:0;"><!-- 本来是个table的footer，现在当做横线用 --></div>
+                <%= will_paginate @employees, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
+              </div>
+            </div><!--/.content-->
+          </div><!--/.span9-->
+      </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+<script type="text/javascript">
+  $(".extension_number input").change(function(){
+    var number = $(this).val();
+    var id = $(this).attr('data-employee-id');
+    set_phone_number(id,number,"extension_number");
+  });
+
+  $(".linear_telephone input").change(function(){
+    var number = $(this).val();
+    var id = $(this).attr('data-employee-id');
+    set_phone_number(id,number,"linear_telephone");
+  });
+
+  var set_phone_number = function (id,number,type) {
+    $.ajax({
+      type : "POST",
+      url : "/employees/" + id + "/set_phone_number",
+      data : {
+          'number':number,
+          'type':type
+      },
+      dataType : "JSON",
+      success : function(result){
+        console.log(result);
+      }
+    });
+  };
+</script>
