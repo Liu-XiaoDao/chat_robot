@@ -27,9 +27,21 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.perform_caching = false
+  ###############邮件设定##################
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "http://han-express.abcam.com" }
+  config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
+  ###########异常通知############
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[宜康快递助手] ",
+    :sender_address => %{<liu_xiaodao@163.com>},
+    :exception_recipients => %w{957419420@qq.com}
+  }
+  ###############################
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

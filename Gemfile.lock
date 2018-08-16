@@ -95,6 +95,9 @@ GEM
       faraday
       multi_json
     erubi (1.7.1)
+    exception_notification (4.2.2)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     execjs (2.7.0)
     faraday (0.10.0)
       multipart-post (>= 1.2, < 3)
@@ -245,6 +248,7 @@ DEPENDENCIES
   elasticsearch
   elasticsearch-model
   elasticsearch-rails
+  exception_notification
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mysql2

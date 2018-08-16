@@ -46,6 +46,9 @@ gem 'capistrano-rvm',   '~> 0.1'
 
 gem 'will_paginate', '3.1.5'   #分页
 
+#发生异常是发送邮件
+gem 'exception_notification'#这个是发生异常后，发送邮件给开发者
+
 #redis
 gem 'redis', '~> 4.0', '>= 4.0.1'
 
