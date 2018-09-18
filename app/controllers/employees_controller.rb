@@ -28,9 +28,9 @@ class EmployeesController < ApplicationController
           end
         end
 
-        @msg = "#{@msg} - #{department_employee_lists.count}"
+        @msg = "#{@msg} - #{department.name}:#{department_employee_lists.count}"
       else
-        @msg = "#{@msg} - error"
+        @msg = "#{@msg} - #{department.name}:error"
       end
     end
 
