@@ -11,8 +11,10 @@ class EmployeesController < ApplicationController
 
   def update_employee
     accessToken = @auth.getAccessToken() #获取token
+    @msg = ""
 
     @departments = Department.all
+
     @departments.each do |department|
       department_employees = @user.list(accessToken,department.id)
       if department_employees["errmsg"] == "ok" && department_employees["errcode"] == 0
@@ -25,11 +27,14 @@ class EmployeesController < ApplicationController
             Employee.find_by_userid(employee["userid"]).update(parse_employee(employee))
           end
         end
-        return render plain: "共有员工#{department_list.count}个"
+
+        @msg = "#{@msg} - #{department_employee_lists.count}"
       else
-        return render plain: department_res["errmsg"]
+        @msg = "#{@msg} - error"
       end
     end
+
+    return render plain: @msg
   end
 
   def init_locals
