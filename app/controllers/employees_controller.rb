@@ -25,12 +25,11 @@ class EmployeesController < ApplicationController
             Employee.find_by_userid(employee["userid"]).update(parse_employee(employee))
           end
         end
-        flash[:success] = "更新员工成功"
+        return render plain: "共有员工#{department_list.count}个"
       else
-        flash[:danger] = department_employees["errmsg"]
+        return render plain: department_res["errmsg"]
       end
     end
-    redirect_to employees_path
   end
 
   def init_locals

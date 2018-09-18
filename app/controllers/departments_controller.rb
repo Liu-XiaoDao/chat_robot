@@ -52,7 +52,7 @@ class DepartmentsController < ApplicationController
         end
 
       end
-      return render plain: "共有部门#{department_list.count}个，更新个部门"
+      return render plain: "共有部门#{department_list.count}个"
     else
       return render plain: department_res["errmsg"]
     end
