@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180814151128) do
+ActiveRecord::Schema.define(version: 20180919144743) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "category_name"
@@ -90,6 +90,29 @@ ActiveRecord::Schema.define(version: 20180814151128) do
     t.integer "rubbish_count", default: 0
     t.integer "is_check", default: 0
     t.text "content_html"
+  end
+
+  create_table "request_stats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "path"
+    t.integer "count"
+    t.text "params_stats"
+    t.float "max_time", limit: 24
+    t.float "min_time", limit: 24
+    t.float "avg_time", limit: 24
+    t.datetime "last_requested_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "request_stat_id"
+    t.string "url"
+    t.float "time", limit: 24
+    t.integer "memory_usage"
+    t.string "path"
+    t.text "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

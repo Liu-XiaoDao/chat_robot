@@ -7,4 +7,17 @@ class ApplicationController < ActionController::Base
 
 	end
 
+  def process_action *args
+    time = Time.now
+    rslt = super
+    filtered_params = request.params.reject{|k, v| k.match('file') || v.empty?}
+    ur=UserRequest.create(
+      :url => request.url,
+      :time => (Time.now-time),
+      :path => request.path.gsub(/\d+/, ':id'),
+      :params => JSON[filtered_params.merge(method: request.method)]
+    )
+    rslt
+  end
+
 end
