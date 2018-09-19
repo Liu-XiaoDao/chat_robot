@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>通讯录</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+  </head>
+
+  <body class="dingwrapper">
+    <div class="container">
+      <div class="row" style="margin-left: 0;">
+        <div class="module">
+          <div class="module-head">
+            <h3>
+              通讯录-Abcam杭州
+              <span class="username">设置我的号码>></span>
+            </h3>
+          </div>
+          <div class="module-body table">
+            <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped   display" width="100%">
+              <thead>
+                <tr>
+                  <th>姓名</th>
+                  <th>部门</th>
+                  <th>分机号</th>
+                  <th>直线电话</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @employees.each do |employee| %>
+                  <tr class="odd gradeX">
+                    <td><%= employee.name %></td>
+                    <td><%= employee.department_name %></td>
+                    <td><%= employee.extension_number %></td>
+                    <td class="center"> <%= employee.linear_telephone %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>姓名</th>
+                  <th>部门</th>
+                  <th>分机号</th>
+                  <th>直线电话</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div><!--/.module-->
+      </div>
+    </div><!--/.container-->
+  </body>
+</html>
+
+<style type="text/css">
+  .dingwrapper {
+    background: #eee;
+    padding: 30px 0
+  }
+</style>
+
+<!-- <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script> -->
+<!-- <script src="http://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" charset="utf-8"></script> -->
+<%#= javascript_include_tag "ding/app" %>
+<script>
+  $('.username').on('click',function(){
+    url = '/employees/set_my_phone_number_page';
+    window.location.href = url;
+  });
+</script>
+<script>
+		$(document).ready(function() {
+			$('.datatable-1').dataTable();
+			$('.dataTables_paginate').addClass("btn-group datatable-pagination");
+			$('.dataTables_paginate > a').wrapInner('<span />');
+			$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+			$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+		} );
+	</script>

@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     get 'display_list', on: :collection
     get 'display_icon', on: :collection
     get 'code_scan', on: :collection
-    get 'phone_number', on: :collection
   end
 
   resources :departments do
@@ -27,6 +26,11 @@ Rails.application.routes.draw do
 
   resources :employees do
     get 'update_employee', on: :collection
+    get 'phone_number', on: :collection
+    post 'set_phone_number',on: :member
+    get 'show_phone_number',on: :collection
+    post 'set_my_phone_number',on: :collection
+    get 'set_my_phone_number_page',on: :collection
   end
 
   resources :apis do

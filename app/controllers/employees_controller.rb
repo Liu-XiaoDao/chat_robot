@@ -9,6 +9,46 @@ class EmployeesController < ApplicationController
 
   end
 
+  def phone_number
+    # @users = RedisService.new.get_value(:users)
+    # if @users.blank?
+    #   @users = User.all
+    #   RedisService.new.set_value(:users,@users)
+    # end
+    @employees =  Employee.all
+    render layout: false
+  end
+
+  def set_phone_number
+    @employee =  Employee.find params[:id]
+    if params[:type] == "extension_number"
+      @employee.extension_number = params[:number]
+    else
+      @employee.linear_telephone = params[:number]
+    end
+    @employee.save
+  end
+
+  def show_phone_number
+    @employees =  Employee.all.paginate page: params[:page], per_page: 15
+  end
+
+  def set_my_phone_number
+    @employee =  Employee.find_by_name params[:employee_name]
+    if @employee.blank?
+      redirect_to set_my_phone_number_page_employees_path, notice: "姓名输入有误，请重新设置"
+    else
+      @employee.extension_number = params[:extension_number]
+      @employee.linear_telephone = params[:linear_telephone]
+      @employee.save
+      redirect_to phone_number_employees_path
+    end
+  end
+
+  def set_my_phone_number_page
+    render layout: false
+  end
+
   def update_employee
     accessToken = @auth.getAccessToken() #获取token
     @msg = ""

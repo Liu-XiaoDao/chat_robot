@@ -134,6 +134,7 @@
             success: function(response){
                 if (response.errcode === 0){
                     proper.userInfo = response;
+                    console.log(response);
                 } else {
                     alert(JSON.stringify(response) + 'getUserInfo');
                 }
@@ -182,25 +183,5 @@
             }
         };
         $.ajax(signRequest);
-
-
-        var signRequest1 = {
-            url: OPENAPIHOST + '/apis/get_department',
-            type: 'GET',
-            dataType: 'json',
-            success: function(response){
-              $('.department').html(22222);
-                if (response.errcode === 0){
-                    alert(response);
-                } else {
-                    alert(JSON.stringify(response) + 'sign');
-                }
-            },
-            error: function(){
-
-            }
-        };
-        $.ajax(signRequest1);
-
     });
 })();
