@@ -34,15 +34,20 @@ class EmployeesController < ApplicationController
   end
 
   def set_my_phone_number
-    @employee =  Employee.find_by_name params[:employee_name]
-    if @employee.blank?
-      redirect_to set_my_phone_number_page_employees_path, notice: "姓名输入有误，请重新设置"
-    else
-      @employee.extension_number = params[:extension_number]
-      @employee.linear_telephone = params[:linear_telephone]
-      @employee.save
-      redirect_to phone_number_employees_path
+    names = params[:employee_name].split("\t")
+
+    names.each do |name|
+      @employee =  Employee.find_by_name name
+      if @employee.blank?
+        redirect_to set_my_phone_number_page_employees_path, notice: "姓名输入有误，请重新设置"
+      else
+        @employee.extension_number = params[:extension_number]
+        @employee.linear_telephone = params[:linear_telephone]
+        @employee.save
+        # redirect_to phone_number_employees_path
+      end
     end
+
   end
 
   def set_my_phone_number_page
