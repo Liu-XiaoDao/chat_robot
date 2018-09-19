@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
       :url => request.url,
       :time => (Time.now-time),
       :path => request.path.gsub(/\d+/, ':id'),
-      :params => JSON[filtered_params.merge(method: request.method)]
+      :params => JSON[filtered_params.merge(method: request.method)],
+      :remote_ip => request.remote_ip
     )
     rslt
   end
