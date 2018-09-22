@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>通讯录</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+  </head>
+
+  <body class="dingwrapper">
+    <div class="container">
+      <div class="row" style="margin-left: 0;">
+        <div class="module module-login span4 offset4">
+          <form class="form-vertical" action="/employees/set_my_phone_number" accept-charset="UTF-8" method="post">
+            <div class="module-head">
+              <h3>设置我的号码</h3>
+            </div>
+            <div class="module-body">
+              <div class="control-group">
+                <% flash.each do |name, msg| -%>
+                  <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>Warning!</strong> <%= msg %>
+                  </div>
+                <% end -%>
+                <div class="controls row-fluid">
+                  <input class="span12" type="text" id="input_employee_name" name="employee_name" placeholder="姓名,eg: 刘春良">
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls row-fluid">
+                  <input class="span12" type="text" id="input_extension_number" name="extension_number" placeholder="号码,eg: 8867">
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls row-fluid">
+                  <input class="span12" type="text" id="input_linear_telephone" name="linear_telephone" placeholder="直线电话,eg: 81592410">
+                </div>
+              </div>
+            </div>
+            <div class="module-foot">
+              <div class="control-group">
+                <div class="controls clearfix">
+                  <button type="submit" class="btn btn-primary pull-right">设置</button>
+                  <label class="checkbox" style="padding-left:0px;">
+                     << 返回通讯录
+                  </label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!--/.container-->
+  </body>
+</html>
+<script>
+  $('.checkbox').on('click',function(){
+    url = '/employees/phone_number';
+    window.location.href = url;
+  });
+</script>
+<style type="text/css">
+  .dingwrapper {
+    background: #eee;
+    padding: 30px 0
+  }
+</style>

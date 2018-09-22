@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get 'phone_number', on: :collection
     post 'set_phone_number',on: :member
     get 'show_phone_number',on: :collection
+    post 'set_my_phone_number',on: :collection
+    get 'set_my_phone_number_page',on: :collection
   end
 
   resources :apis do

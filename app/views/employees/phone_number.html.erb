@@ -14,8 +14,8 @@
         <div class="module">
           <div class="module-head">
             <h3>
-              通讯录-2018.05最新版
-              <span class="username">1111</span>
+              通讯录-Abcam杭州
+              <span class="username">设置我的号码>></span>
             </h3>
           </div>
           <div class="module-body table">
@@ -62,21 +62,14 @@
 </style>
 
 <!-- <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script> -->
-<script src="http://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" charset="utf-8"></script>
-<%= javascript_include_tag "ding/app" %>
-<!-- <script>
-  $(".btn-box").click(function () {
-    DingTalkPC.biz.util.openLink({
-        url: $(this).attr("dinghref"),//要打开链接的地址
-        onSuccess : function(result) {
-          window.location.reload()
-        },
-        onFail : function() {
-          window.location.reload()
-        }
-    });
+<!-- <script src="http://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" charset="utf-8"></script> -->
+<%#= javascript_include_tag "ding/app" %>
+<script>
+  $('.username').on('click',function(){
+    url = '/employees/set_my_phone_number_page';
+    window.location.href = url;
   });
-</script> -->
+</script>
 <script>
 		$(document).ready(function() {
 			$('.datatable-1').dataTable();

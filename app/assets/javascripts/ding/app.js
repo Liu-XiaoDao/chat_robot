@@ -183,24 +183,5 @@
             }
         };
         $.ajax(signRequest);
-
-        // 这个现在用不到了
-        // var signRequest1 = {
-        //     url: OPENAPIHOST + '/apis/get_department',
-        //     type: 'GET',
-        //     dataType: 'json',
-        //     success: function(response){
-        //         if (response.errcode === 0){
-        //             console.log(response);
-        //         } else {
-        //             alert(JSON.stringify(response) + 'sign');
-        //         }
-        //     },
-        //     error: function(){
-        //
-        //     }
-        // };
-        // $.ajax(signRequest1);
-
     });
 })();
