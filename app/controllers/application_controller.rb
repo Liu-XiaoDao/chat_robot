@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :left_data_init
   #侧边数据初始化
   def left_data_init
-
-	end
+  end
 
   def process_action *args
     time = Time.now

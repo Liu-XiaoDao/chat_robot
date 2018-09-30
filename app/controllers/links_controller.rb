@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-
+  http_basic_authenticate_with name: "admin", password: "Abcam123", except: [:display_list, :code_scan]
   def index
     @links = Link.all
   end

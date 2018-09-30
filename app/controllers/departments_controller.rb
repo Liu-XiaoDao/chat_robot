@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   include ActionController::Live
-
+  http_basic_authenticate_with name: "admin", password: "Abcam123", only: :index
   before_action :init_locals, :only => :update_department
 
   def index

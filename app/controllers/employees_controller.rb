@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  http_basic_authenticate_with name: "admin", password: "Abcam123", only: [:index, :show_phone_number, :set_phone_number]
   before_action :init_locals, :only => :update_employee
 
   def index

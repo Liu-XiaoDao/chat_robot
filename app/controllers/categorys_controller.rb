@@ -1,28 +1,29 @@
 class CategorysController < ApplicationController
+  http_basic_authenticate_with name: "admin", password: "Abcam123"
   def index
     @categorys = Category.all
   end
 
   def new
-  	@category = Category.new
-  	render layout: false
+    @category = Category.new
+    render layout: false
   end
 
   def create
-  	# render json: params[:category][:category_name]
+    # render json: params[:category][:category_name]
     @category = Category.create(category_params)
     redirect_to categorys_path
   end
 
   def edit
-  	@category = Category.find(params[:id])
-  	render layout: false
+    @category = Category.find(params[:id])
+    render layout: false
   end
 
   def update
-  	@category = Category.find(params[:id])
-  	@category.category_name = params[:category][:category_name]
-  	@category.save
+    @category = Category.find(params[:id])
+    @category.category_name = params[:category][:category_name]
+    @category.save
     redirect_to categorys_path
   end
 

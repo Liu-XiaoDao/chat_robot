@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  http_basic_authenticate_with name: "admin", password: "Abcam123"
   def index
     if params[:category].present?
       @questions = Question.where(category_id: params[:category])
