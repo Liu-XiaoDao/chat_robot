@@ -8,6 +8,15 @@ class ExpressesController < ApplicationController
     render layout: false
   end
 
+  def statistics
+    if params[:search_name].present?
+      @expresses = Express.where(employee_id: Employee.find_by_name(params[:search_name]).id)
+    else
+      @expresses = Express.all
+    end
+    render layout: false
+  end
+
   def new
     render layout: false
   end

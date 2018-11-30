@@ -67,6 +67,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    chartkick (3.0.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
@@ -104,6 +105,8 @@ GEM
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.1.0)
+      activesupport (>= 4.2)
     hashie (3.5.6)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -244,11 +247,13 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rvm (~> 0.1)
   capybara (~> 2.13)
+  chartkick
   coffee-rails (~> 4.2)
   elasticsearch
   elasticsearch-model
   elasticsearch-rails
   exception_notification
+  groupdate
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mysql2

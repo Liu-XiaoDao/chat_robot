@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
   resources :expresses do
     post 'batch_create', on: :collection
+    get 'statistics',on: :collection
   end
 
   get '/signin' => 'sessions#new'

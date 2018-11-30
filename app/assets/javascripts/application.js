@@ -24,7 +24,9 @@
 // require common
 
 
-
+// 图标使用
+//= require Chart.bundle
+//= require chartkick
 
 
 // 这个是简单富文本编辑器

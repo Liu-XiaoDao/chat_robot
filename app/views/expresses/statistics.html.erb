@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>宜康快递查询</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+  </head>
+
+  <body class="dingwrapper">
+    <div class="container">
+      <div class="row" style="margin:0px;">
+        <div class="module">
+          <div class="module-head">
+            <h3>
+              <%= Date.today.try(:strftime, "%Y-%m-%d") %> 宜康快递查询
+            </h3>
+          </div>
+          <div class="module-body table" style="border-bottom: 1px solid #ddd;padding-bottom: 0px;">
+            <%
+              arr = @expresses.group(:employee_id).group("date(created_at)").count
+              arr.keys.each {|k| arr[[Employee.where(id: k[0]).first.try(:name) || "", k[1]]] = arr[k]; arr.delete(k)}
+             %>
+            <%= line_chart arr, download: true, library: { pieSliceText: 'value' } %>
+          </div>
+        </div><!--/.module-->
+      </div>
+    </div><!--/.container-->
+  </body>
+</html>
