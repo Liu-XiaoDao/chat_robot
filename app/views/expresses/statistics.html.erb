@@ -22,7 +22,7 @@
               arr = @expresses.group(:employee_id).group("date(created_at)").count
               arr.keys.each {|k| arr[[Employee.where(id: k[0]).first.try(:name) || "", k[1]]] = arr[k]; arr.delete(k)}
              %>
-            <%= line_chart arr, download: true, library: { pieSliceText: 'value' } %>
+            <%= line_chart arr, legend: false, download: true, library: { pieSliceText: 'value' } %>
           </div>
         </div><!--/.module-->
       </div>
