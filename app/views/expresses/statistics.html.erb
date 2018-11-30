@@ -23,6 +23,9 @@
               arr.keys.each {|k| arr[[Employee.where(id: k[0]).first.try(:name) || "", k[1]]] = arr[k]; arr.delete(k)}
              %>
             <%= line_chart arr, legend: false, download: true, library: { pieSliceText: 'value' } %>
+
+            <%= column_chart @expresses.group(:employee_id).count.map {|x| [Employee.where(id: x[0]).first.try(:name), x[1]]}, download: true, library: { pieSliceText: 'value' } %>
+
           </div>
         </div><!--/.module-->
       </div>
