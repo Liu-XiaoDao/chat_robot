@@ -12,7 +12,8 @@ class ExpressesController < ApplicationController
     if params[:search_name].present?
       @expresses = Express.where(employee_id: Employee.find_by_name(params[:search_name]).id)
     else
-      @expresses = Express.all
+      top_ids = Express.find_by_sql("select employee_id,count(*) from expresses group by employee_id order by count(*) desc limit 50").pluck(:employee_id)
+      @expresses = Express.where(employee_id: top_ids)
     end
     render layout: false
   end
