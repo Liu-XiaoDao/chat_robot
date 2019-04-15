@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180919165141) do
+ActiveRecord::Schema.define(version: 20190415172923) do
+
+  create_table "blorgh_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "title"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "category_name"
@@ -68,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180919165141) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "display_order"
+    t.boolean "is_able", default: true
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

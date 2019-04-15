@@ -23,4 +23,10 @@
       <%= c.text_field  :display_order, placeholder: "Display Order", class: "span8" %>
     </div>
   </div>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">Is Able</label>
+    <div class="controls">
+      <%= c.select  :is_able, [['Select here...', nil], ['true', true], ['false', false]], { include_blank: false }, { tabindex: "1", placeholder: "Select here..", class: "span8" } %>
+    </div>
+  </div>
 <% end %>
