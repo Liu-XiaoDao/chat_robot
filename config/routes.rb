@@ -46,6 +46,10 @@ Rails.application.routes.draw do
     get 'statistics',on: :collection
   end
 
+  resources :books do
+    
+  end
+
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'

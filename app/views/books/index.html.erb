@@ -1,0 +1,89 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'left' %>
+
+				<div class="span9">
+					<div class="content">
+
+						<div class="module message">
+							<div class="module-head">
+								<h3>全部问题</h3>
+							</div>
+							<div class="module-option clearfix">
+								<div class="pull-left">
+									Filter : &nbsp;
+									<div class="btn-group">
+										<button class="btn"><%= @category_name %></button>
+										<button class="btn dropdown-toggle" data-toggle="dropdown">
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu">
+                      <li><a href="/questions">全部</a></li>
+                      <% @categorys.each do |category| %>
+                        <li><a href="?category=<%= category.id %>"><%= category.category_name %></a></li>
+                      <% end %>
+										</ul>
+									</div>
+								</div>
+								<div class="pull-right">
+									<a href="<%= new_question_path %>" class="btn btn-primary"> 新建帮助</a>
+								</div>
+							</div>
+							<div class="module-body table">
+
+								<table class="table table-message">
+									<tbody>
+                    <% @questions.each do |question| %>
+                      <tr class="task" date-href="<%= question_path(question) %>">
+  											<td class="cell-title"><div><h4 style="margin-bottom:0px;margin-right:10px;"><%= question.title %></h4></div></td>
+  											<td class="cell-status hidden-phone hidden-tablet"><b class="due"><%= question.category.try :category_name %></b></td>
+  											<td class="cell-time align-right"><%= question.author %></td>
+                      </tr>
+                    <% end %>
+
+									</tbody>
+								</table>
+
+							</div>
+							<div class="module-foot">
+							</div>
+						</div>
+					</div><!--/.content-->
+				</div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<!-- <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script> -->
+<!-- <script src="http://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" charset="utf-8"></script> -->
+<script src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.41/dingtalk.open.js"></script>
+<%= javascript_include_tag "ding/app" %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    // dd.ready(function() {
+    //     // dd.ready参数为回调函数，在环境准备就绪时触发，jsapi的调用需要保证在该回调函数触发后调用，否则无效。
+    //     dd.runtime.permission.requestAuthCode({
+    //         corpId: "ding4e97ac09cf15a1d2",
+    //         onSuccess: function(result) {
+    //           alert(result);
+    //         /*{
+    //             code: 'hYLK98jkf0m' //string authCode
+    //         }*/
+    //         },
+    //         onFail : function(err) {}
+    //
+    //     });
+    // });
+
+    $('.table-message tbody tr').click(function(){
+        window.location.href = $(this).attr('date-href');
+      });
+  });
+</script>
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+</style>

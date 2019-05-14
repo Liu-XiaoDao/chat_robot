@@ -157,6 +157,7 @@
         });
         var originalUrl = location.href;
         var corpId = parseCorpId(originalUrl, 'corpId');
+        var corpId = "ding4e97ac09cf15a1d2";
         var jsApiList = [];
         var signRequest = {
             url: OPENAPIHOST + '/apis/jsapi_oauth?href='+encodeURIComponent(location.href),
