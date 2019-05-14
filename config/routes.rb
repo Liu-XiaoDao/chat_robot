@@ -49,7 +49,9 @@ Rails.application.routes.draw do
   resources :books do
     
   end
+  resources :book_classifications
 
+  get '/library' => 'library#index' #图书管理首页
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'

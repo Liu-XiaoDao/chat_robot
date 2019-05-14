@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'library/left' %>
+
+      <div class="span9">
+        <div class="content">
+          <div class="module message">
+            <div class="module-head">
+               <h3>图书分类</h3>
+            </div>
+            <div class="module-option clearfix">
+                <div class="pull-right">
+                   <%= link_to 'Create', new_book_classification_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+                </div>
+            </div>
+            <div class="module-body table">
+              <table class="table table-message">
+                <tbody>
+                  <tr class="heading">
+                    <td class="cell-author hidden-phone hidden-tablet">ID</td>
+                    <td class="cell-title">BookClassification_name</td>
+                    <td class="cell-title">count</td>
+                    <td class="cell-time align-right">Action</td>
+                  </tr>
+                  <% @book_classifications.each do |book_classification| %>
+                    <tr class="unread">
+                      <td class="cell-author hidden-phone hidden-tablet"><%= book_classification.id %></td>
+                      <td class="cell-title"><%= link_to book_classification.name, book_classification_path(book_classification) %></td>
+                      <td class="cell-title"><%= book_classification.books.count %></td>
+                      <td class="cell-time align-right"><%= link_to 'Edit', edit_book_classification_path(book_classification), class: "btn","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="module-foot"></div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+
+
+<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>Edit BookClassification</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('create_book_classification_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+<script>
+  $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+
+<style type="text/css">
+.modal-backdrop, .modal-backdrop.fade.in {
+  background: #000000;
+  opacity: .8
+}
+</style>
