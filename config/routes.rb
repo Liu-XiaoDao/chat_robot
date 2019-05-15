@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
   resources :books do
     get 'index_admin', on: :collection
+    get 'praise',      on: :member
+    get 'rubbish',     on: :member
   end
   resources :book_classifications
 

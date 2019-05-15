@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190514154213) do
+ActiveRecord::Schema.define(version: 20190515202213) do
 
   create_table "blorgh_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20190514154213) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "book_classification_id"
+    t.integer "is_borrowed"
+    t.integer "borrower_id"
+    t.integer "praise_count", default: 0
+    t.integer "rubbish_count", default: 0
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -45,10 +49,12 @@ ActiveRecord::Schema.define(version: 20190514154213) do
   create_table "count_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "ip"
     t.string "count_type"
-    t.bigint "question_id"
+    t.bigint "target_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_count_records_on_question_id"
+    t.string "target_class"
+    t.integer "employee_id"
+    t.index ["target_id"], name: "index_count_records_on_target_id"
   end
 
   create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

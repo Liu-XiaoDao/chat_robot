@@ -3,7 +3,8 @@ class Question < ApplicationRecord
   include Elasticsearch::Model::Callbacks
 
   belongs_to :category, optional: true
-  has_many :count_records
+  has_many :count_records, ->{ where( count_records: { target_class: "question" } ) }, :foreign_key => :target_id
+
   class << self
     # 根据关键字搜索已发布的文章
     # 最多返回100条记录

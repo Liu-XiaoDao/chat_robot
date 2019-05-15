@@ -710,7 +710,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='@topColor', end
 	text-decoration: none!important
 }
 .media .media-avatar {
-
 	border: 1px solid rgba(204, 204, 204, 0.5);
 
 	-webkit-border-radius: 50px;
@@ -1699,3 +1698,24 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', end
 	border-radius: 0 0 3px 0
 }
 @media(max-width:767px){body{padding:0!important}.wrapper{padding:20px 15px}}
+
+
+
+/*自己添加*/
+.media .media-cover {
+  border: 1px solid rgba(204, 204, 204, 0.5);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  height: 100px;
+  width: 100px;
+  margin-right: 20px
+}
+.media .media-cover img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  height: 90px;
+  width: 90px;
+  margin: 5px
+}
