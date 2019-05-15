@@ -37,7 +37,7 @@ Rails.application.configure do
   ###########异常通知############
   Rails.application.config.middleware.use ExceptionNotification::Rack,
   :email => {
-    :email_prefix => "[宜康快递助手] ",
+    :email_prefix => "[宜康钉钉助手] ",
     :sender_address => %{<liu_xiaodao@163.com>},
     :exception_recipients => %w{957419420@qq.com}
   }

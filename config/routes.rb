@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end
 
   resources :books do
-    
+    get 'index_admin', on: :collection
   end
   resources :book_classifications
 

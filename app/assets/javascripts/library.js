@@ -25,63 +25,26 @@
         }
     });
 
-    function parseCorpId(url, param) {
-        var searchIndex = url.indexOf('?');
-        var searchParams = url.slice(searchIndex + 1).split('&');
-        for (var i = 0; i < searchParams.length; i++) {
-            var items = searchParams[i].split('=');
-            if (items[0].trim() == param) {
-                return items[1].trim();
-            }
-        }
-    }
-    function openLink(url, corpId){
-        if(corpId && typeof corpId === 'string'){
-            if (url && url.indexOf('$CORPID$') !== -1) {
-                url = url.replace(/\$CORPID\$/, corpId);
-            }
-        }
-        if (isDingtalk) {
-            dd.biz.util.openLink({
-                url: url,
-                onSuccess: function(){
-                    if(typeof corpId === 'function'){
-                        corpId();
-                    }
-                },
-                onFail: function(){
-                    if(typeof corpId === 'function'){
-                        corpId();
-                    }
-                }
-            });
-        } else {
-            window.open(url);
-        }
-    }
-
-    function updateName(){
-        var dateTime = new Date().getHours();
-        var isAdmin = proper.userInfo.isAdmin;
-        var name = proper.userInfo.name;
-        var nb = {};
-        if(name){
-            if (dateTime >= 5 && dateTime <= 12) {
-                nb.wh = isAdmin ? '早上好，管理员，' + name : '早上好，' + name;
-            } else if (dateTime > 12 && dateTime <= 18) {
-                nb.wh = isAdmin ? '下午好，管理员，' + name : '下午好，' + name;
-            } else {
-                nb.wh = isAdmin ? '晚上好，管理员，' + name : '晚上好，' + name;
-            }
-        }
-        return nb;
-    }
+    // function updateName(){
+    //     var dateTime = new Date().getHours();
+    //     var isAdmin = proper.userInfo.isAdmin;
+    //     var name = proper.userInfo.name;
+    //     var nb = {};
+    //     if(name){
+    //         if (dateTime >= 5 && dateTime <= 12) {
+    //             nb.wh = isAdmin ? '早上好，管理员，' + name : '早上好，' + name;
+    //         } else if (dateTime > 12 && dateTime <= 18) {
+    //             nb.wh = isAdmin ? '下午好，管理员，' + name : '下午好，' + name;
+    //         } else {
+    //             nb.wh = isAdmin ? '晚上好，管理员，' + name : '晚上好，' + name;
+    //         }
+    //     }
+    //     return nb;
+    // }
 
     function updateUI(){
-        var nb = updateName();
-        var html = nb.wh;
-        $('.username').html(html);
-        alert(nb.wh);
+        var avatar_url = proper.userInfo.avatar
+        $('#nav-avatar').attr('src', avatar_url);
     }
 
     function getUserId(corpId){
@@ -135,7 +98,7 @@
             success: function(response){
                 if (response.errcode === 0){
                     proper.userInfo = response;
-                    console.log(response);
+                    $('#info').html(JSON.stringify(response));
                 } else {
                     alert(JSON.stringify(response) + 'getUserInfo');
                 }
@@ -148,16 +111,11 @@
     }
 
     $(function(){
-
-        $('.username').on('click',function(){
-          url = 'https://alimarket.m.taobao.com/markets/dingtalk/cydd?lwfrom=20161118115327653';
-          openLink(url);
-        });
         dd.error(function(err){
             alert(JSON.stringify(err));
         });
         var originalUrl = location.href;
-        var corpId = parseCorpId(originalUrl, 'corpId');
+
         var corpId = "ding4e97ac09cf15a1d2";
         var jsApiList = [];
         var signRequest = {

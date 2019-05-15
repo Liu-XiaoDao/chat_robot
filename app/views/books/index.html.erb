@@ -1,0 +1,67 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= render 'library/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+              <h3>所有图书</h3>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="info" class="span9">
+
+      </div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<script src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.41/dingtalk.open.js"></script>
+<%= javascript_include_tag "library" %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.table-message tbody tr').click(function(){
+        window.location.href = $(this).attr('date-href');
+      });
+  });
+</script>
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+</style>

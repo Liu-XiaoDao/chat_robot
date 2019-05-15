@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <%= render 'left' %>
+      <%= render 'library/left' %>
 
 				<div class="span9">
 					<div class="content">
@@ -41,7 +41,6 @@
   											<td class="cell-time align-right"><%= question.author %></td>
                       </tr>
                     <% end %>
-
 									</tbody>
 								</table>
 
@@ -51,6 +50,9 @@
 						</div>
 					</div><!--/.content-->
 				</div><!--/.span9-->
+        <div id="info" class="span9">
+
+        </div>
     </div>
   </div><!--/.container-->
 </div><!--/.wrapper-->
@@ -58,7 +60,7 @@
 <!-- <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script> -->
 <!-- <script src="http://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" charset="utf-8"></script> -->
 <script src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.41/dingtalk.open.js"></script>
-<%= javascript_include_tag "ding/app" %>
+<%= javascript_include_tag "library" %>
 
 <script type="text/javascript">
   $(document).ready(function(){

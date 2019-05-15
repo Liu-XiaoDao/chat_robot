@@ -48,19 +48,18 @@
               在线客服
             </a></li>
             <li class="nav-user dropdown">
-              <% if session[:admin] == 1%>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理员 <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="<%= links_path %>">钉钉链接管理</a></li>
-                  <li><a href="<%= display_list_links_path %>" target="_blank">钉钉链接显示</a></li>
-                  <li><a href="<%= display_icon_links_path %>" target="_blank">钉钉图标选择</a></li>
-                  <li class="divider"></li>
-                  <li><a href="<%= signout_path %>">退出</a></li>
-                </ul>
-              <% else %>
-                <a href="<%= signin_path %>">登录 </b></a>
-              <% end %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="" class="nav-avatar" id="nav-avatar"><b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= links_path %>">钉钉链接管理</a></li>
+                <li><a href="<%= display_list_links_path %>" target="_blank">钉钉链接显示</a></li>
+                <li><a href="<%= display_icon_links_path %>" target="_blank">钉钉图标选择</a></li>
+                <li class="divider"></li>
+                <li><a href="<%= signout_path %>">退出</a></li>
+              </ul>
             </li>
+
           </ul>
         </div><!-- /.nav-collapse -->
       <% else %>
