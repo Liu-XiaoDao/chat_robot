@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  cattr_accessor :current_employee
 
   belongs_to :department, optional: true
   # has_many :consumablerecords

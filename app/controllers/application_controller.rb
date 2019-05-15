@@ -1,9 +1,17 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
+  include LibraryHelper
 
-  before_action :left_data_init
+  before_action :left_data_init, :check_signed_in
   #侧边数据初始化
   def left_data_init
+  end
+
+  #登录
+  def check_signed_in
+    if signed_in?
+      Employee.current_employee = current_employee
+    end
   end
 
   def process_action *args

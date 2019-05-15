@@ -6,7 +6,11 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+	  <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+    <!-- 钉钉功能 -->
+    <%# TODO: 这里可以再第一次请求钉钉ｉｄ之后不再使用 %>
+    <script src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.41/dingtalk.open.js"></script>
+    <%= javascript_include_tag "library" %>
 
   </head>
 
@@ -14,7 +18,6 @@
     <%= render 'library/header' %>
     <%= yield %>
     <%= render 'library/footer' %>
-    <!-- <script src="https://qiyukf.com/script/e956e8917d4b7873cd82eb77b147d334.js"></script> 网易七于客服-->
   </body>
 
 

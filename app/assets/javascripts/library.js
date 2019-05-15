@@ -25,26 +25,10 @@
         }
     });
 
-    // function updateName(){
-    //     var dateTime = new Date().getHours();
-    //     var isAdmin = proper.userInfo.isAdmin;
-    //     var name = proper.userInfo.name;
-    //     var nb = {};
-    //     if(name){
-    //         if (dateTime >= 5 && dateTime <= 12) {
-    //             nb.wh = isAdmin ? '早上好，管理员，' + name : '早上好，' + name;
-    //         } else if (dateTime > 12 && dateTime <= 18) {
-    //             nb.wh = isAdmin ? '下午好，管理员，' + name : '下午好，' + name;
-    //         } else {
-    //             nb.wh = isAdmin ? '晚上好，管理员，' + name : '晚上好，' + name;
-    //         }
-    //     }
-    //     return nb;
-    // }
-
     function updateUI(){
         var avatar_url = proper.userInfo.avatar
         $('#nav-avatar').attr('src', avatar_url);
+        // $('#info').html(JSON.stringify(proper.userInfo));
     }
 
     function getUserId(corpId){
@@ -98,7 +82,6 @@
             success: function(response){
                 if (response.errcode === 0){
                     proper.userInfo = response;
-                    $('#info').html(JSON.stringify(response));
                 } else {
                     alert(JSON.stringify(response) + 'getUserInfo');
                 }
