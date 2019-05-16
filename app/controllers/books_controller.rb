@@ -77,7 +77,15 @@ class BooksController < ApplicationController
   end
 
   def borrow
-    flash["success"] = "借阅成功"
+    @book = Book.find(params[:id])
+    # TODO: 可以优化
+    if @book.is_borrowed?
+      flash["success"] = "有人正在借阅，您现在不能借阅"
+    else
+      if @book.borrow(params[:borrow][:borrower_time])
+        flash["success"] = "借阅成功"
+      end
+    end
     redirect_to book_path
   end
 
