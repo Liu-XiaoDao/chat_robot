@@ -16,7 +16,7 @@
                   </h4>
                   <p class="profile-brief"><%= @book.intro %></p>
                   <div class="profile-details muted">
-                    <a href="<%= new_book_path %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-plus shaded"></i>借阅</a>
+                    <a href="<%= borrow_view_book_path %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-plus shaded"></i>借阅</a>
                     <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i>ｘｘｘｘ</a>
                     <a href="<%= praise_book_path(@book) %>"  class="btn" data-remote="true"><i class="icon-thumbs-up shaded"></i>赞 <span id="praise_count"><%= @book.praise_count %></span></a>
                     <a href="<%= rubbish_book_path(@book) %>" class="btn" data-remote="true"><i class="icon-thumbs-down shaded"></i>踩 <span id="rubbish_count"><%= @book.rubbish_count %></span></a>
@@ -237,4 +237,3 @@
     </div>
    </div>
 </div>
-

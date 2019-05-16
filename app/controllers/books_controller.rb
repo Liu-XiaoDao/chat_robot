@@ -15,7 +15,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create(book_params)
+    @book = Book.new
+    @book.update_attributes(book_params)
+    if @book.update_attributes(book_params)
+      flash["success"] = "添加成功"
+    else
+      flash["error"] = "添加错误:#{@book.errors.full_messages}"
+    end
     redirect_to index_admin_books_path
   end
 
@@ -25,9 +31,12 @@ class BooksController < ApplicationController
   end
 
   def update
-    binding.pry
     @book = Book.find(params[:id])
-    @book.update_attributes(book_params)
+    if @book.update_attributes(book_params)
+      flash["success"] = "编辑成功"
+    else
+      flash["error"] = "编辑错误:#{@book.errors.full_messages}"
+    end
     redirect_to index_admin_books_path
   end
 
@@ -65,6 +74,11 @@ class BooksController < ApplicationController
   def borrow_view
     @book = Book.find(params[:id])
     render layout: false
+  end
+
+  def borrow
+    flash["success"] = "借阅成功"
+    redirect_to book_path
   end
 
   private
