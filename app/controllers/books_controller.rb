@@ -62,6 +62,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def borrow_view
+    @book = Book.find(params[:id])
+    render layout: false
+  end
+
   private
     def book_params
       params.require(:book).permit(:name, :author, :book_classification_id, :intro, :img_url)

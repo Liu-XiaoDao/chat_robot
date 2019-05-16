@@ -15,20 +15,28 @@
                 </div>
             </div>
             <div class="module-body table">
+              <% flash.each do |type, msg| -%>
+                <div class="alert alert-<%=type%>">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <strong><%=type%>!</strong> &nbsp;&nbsp;<%=msg%>
+                </div>
+              <% end -%>
               <table class="table table-message">
                 <tbody>
                   <tr class="heading">
                     <td class="cell-author hidden-phone hidden-tablet">ID</td>
                     <td class="cell-title">BookClassification_name</td>
                     <td class="cell-title">count</td>
-                    <td class="cell-time align-right">Action</td>
+                    <td class="cell-btn align-right">Action</td>
+                    <td class="cell-btn align-right"></td>
                   </tr>
                   <% @book_classifications.each do |book_classification| %>
                     <tr class="unread">
                       <td class="cell-author hidden-phone hidden-tablet"><%= book_classification.id %></td>
                       <td class="cell-title"><%= link_to book_classification.name, book_classification_path(book_classification) %></td>
                       <td class="cell-title"><%= book_classification.books.count %></td>
-                      <td class="cell-time align-right"><%= link_to 'Edit', edit_book_classification_path(book_classification), class: "btn","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_book_classification_path(book_classification), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Del', book_classification_path(book_classification), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
                     </tr>
                   <% end %>
                 </tbody>

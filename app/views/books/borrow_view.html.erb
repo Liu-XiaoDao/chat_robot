@@ -1,0 +1,39 @@
+<%= form_for @book, url: book_path, html: { class: "form-horizontal row-fluid", id: "create_book_form" }  do |f| %>
+<div class="control-group">
+  <label class="control-label" for="basicinput">Book Name</label>
+  <div class="controls">
+    <%= f.text_field  :name, placeholder: "Type something here...", class: "span8" %>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="basicinput">Author</label>
+  <div class="controls">
+    <%= f.text_field  :author, placeholder: "Type something here...", class: "span8" %>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="basicinput">Category</label>
+  <div class="controls">
+    <%= f.select :book_classification_id, BookClassification.all.pluck(:name, :id), options = { include_blank: true }, class: "span8", "data-placeholder": "Select here..",tabindex: "1" %>
+    <%#= f.select :book_classification_id, options_from_collection_for_select(BookClassification.all, "id", "name"), options = { include_blank: true }, class: "span8", "data-placeholder": "Select here..",tabindex: "1" %>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="basicinput">Content</label>
+  <div class="controls">
+    <%= f.text_area  :intro, rows: 8, class: "span8"%>
+    <%#= q.text_area  :intro_html, rows: 8, class: "span8", style: "display:none;" %>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="basicinput">封面</label>
+  <div class="controls">
+    <%= image_tag(@book.img_url, size: '100') if @book.img_url.present? %>
+    <%= f.file_field :file, class: "span8", "data-placeholder": "Select here..",tabindex: "1" %>
+  </div>
+</div>
+<% end %>

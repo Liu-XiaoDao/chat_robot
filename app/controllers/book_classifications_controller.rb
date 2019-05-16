@@ -26,6 +26,24 @@ class BookClassificationsController < ApplicationController
     redirect_to book_classifications_path
   end
 
+  def show
+    @book_classification = BookClassification.find(params[:id])
+    @classification_books = @book_classification.books
+  end
+
+  def destroy
+    @book_classification = BookClassification.find(params[:id])
+    if @book_classification.has_book?
+      flash["error"] = "分类下有图书禁止删除"
+    else
+      if @book_classification.destroy
+        flash["success"] = "分类:#{@book_classification.name} 删除成功"
+      else
+        flash["error"] = "删除失败"
+      end
+    end
+    redirect_to book_classifications_path
+  end
   private
     def book_classification_params
       params.require(:book_classification).permit(:name)
