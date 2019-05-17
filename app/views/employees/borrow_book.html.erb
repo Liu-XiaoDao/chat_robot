@@ -1,0 +1,55 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'library/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+              <h3>我的借阅</h3>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>简介</th>
+                    <th>分类</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @books.each do |book| %>
+                    <tr>
+                      <td><%= book.id %></td>
+                      <td><%= link_to book.name, book_path(book) %></td>
+                      <td><%= book.author %></td>
+                      <td><%= book.intro %></td>
+                      <td><%= book.classification_name %></td>
+                      <td><%= book.status %></td>
+                      <td><%= link_to '还书', edit_book_path(book), class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= will_paginate @books, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>

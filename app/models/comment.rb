@@ -22,4 +22,12 @@ class Comment < ApplicationRecord
   def comment_time
     created_at.try(:strftime, "%Y-%m-%d %H:%M:%S")
   end
+
+  def book_name
+    book.try(:name)
+  end
+
+  def book_classification
+    book.try(:classification_name)
+  end
 end

@@ -1,0 +1,51 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'library/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+              <h3>我的评论</h3>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>书名</th>
+                    <th>分类</th>
+                    <th>评价</th>
+                    <th>时间</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @comments.each do |comment| %>
+                    <tr>
+                      <td><%= comment.id %></td>
+                      <td><%= link_to comment.book_name, book_path(comment.book) %></td>
+                      <td><%= comment.book_classification %></td>
+                      <td><%= comment.body %></td>
+                      <td><%= comment.comment_time %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= will_paginate @comments, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>

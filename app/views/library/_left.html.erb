@@ -15,19 +15,6 @@
         </a>
       </li>
       <li>
-        <a href="<%= new_question_path %>">
-          <i class="menu-icon icon-bullhorn"></i>
-          新建帮助
-        </a>
-      </li>
-      <li>
-        <a href="<%= advanced_search_questions_path %>">
-          <i class="menu-icon icon-inbox"></i>
-          高级搜索
-        </a>
-      </li>
-
-      <li>
         <a href="<%= book_classifications_path %>">
           <i class="menu-icon icon-tasks"></i>
           图书分类
@@ -51,11 +38,12 @@
         </li>
       <% end %>
 
-
-      <li><a href="/departments"><i class="menu-icon icon-group"></i>部门列表</a></li>
-      <li><a href="/employees"><i class="menu-icon icon-user"></i>员工列表</a></li>
-      <li><a href="/employees/phone_number"><i class="menu-icon icon-user"></i>通讯录</a></li>
-      <li><a href="/employees/show_phone_number"><i class="menu-icon icon-user"></i>号码设置</a></li>
+      <% if signed_in? %>
+        <li><a href="<%= borrow_book_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的借阅</a></li>
+        <li><a href="<%= book_comment_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的评论</a></li>
+        <li><a href="<%= borrow_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>借阅记录</a></li>
+        <li><a href="<%= book_praise_rubbish_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>赞/踩</a></li>
+      <% end %>
 
     </ul>
 

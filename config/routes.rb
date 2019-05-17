@@ -31,6 +31,11 @@ Rails.application.routes.draw do
     get 'show_phone_number',on: :collection
     post 'set_my_phone_number',on: :collection
     get 'set_my_phone_number_page',on: :collection
+    # 下面是图书管理相关
+    get 'borrow_record',       on: :member
+    get 'borrow_book',         on: :member
+    get 'book_praise_rubbish', on: :member
+    get 'book_comment',        on: :member
   end
 
   resources :apis do

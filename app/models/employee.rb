@@ -4,7 +4,10 @@ class Employee < ApplicationRecord
   belongs_to :department, optional: true
   # has_many :consumablerecords
   # has_many :attached_files, ->{ where( attached_files: { target_class: "authorizationservices" } ) }, :foreign_key => :target_id
-  has_many :books
+  has_many :books, :foreign_key => :borrower_id
+  has_many :borrow_records
+  has_many :comments
+  has_many :count_records, ->{ where( count_records: { target_class: "book" } ) }
 
   # def self.current_employee
   #   Thread.current[:employee]

@@ -29,12 +29,73 @@
                 </div>
               </div>
               <ul class="profile-tab nav nav-tabs">
-                <li class="active"><a href="#activity" data-toggle="tab">Feed</a></li>
-                <li><a href="#friends" data-toggle="tab">Friends</a></li>
+                <li class="active"><a href="#detial" data-toggle="tab">详情</a></li>
+                <li><a href="#chapters" data-toggle="tab">目录</a></li>
+                <li><a href="#activity" data-toggle="tab">评论</a></li>
                 <li><a href="#borrow_records" data-toggle="tab">借阅记录</a></li>
               </ul>
               <div class="profile-tab-content tab-content">
-                <div class="tab-pane fade active in" id="activity">
+                <div class="tab-pane fade active in" id="detial">
+                   <div class="module-body">
+                    这里是详情
+                    <br>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="chapters">
+                  <div class="module-option clearfix">
+                    <form>
+                      <div class="input-append pull-left">
+                        <input type="text" class="span3" placeholder="Filter by name...">
+                        <button type="submit" class="btn">
+                          <i class="icon-search"></i>
+                        </button>
+                      </div>
+                    </form>
+                    <div class="btn-group pull-right" data-toggle="buttons-radio">
+                      <button type="button" class="btn">All</button>
+                      <button type="button" class="btn"> Male</button>
+                      <button type="button" class="btn">Female</button>
+                    </div>
+                  </div>
+                  <div class="module-body">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>章节</th>
+                          <th>时间</th>
+                          <th>开始时间</th>
+                          <th>结束时间</th>
+                          <th>哈哈</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>xxx</td>
+                          <td>xxx</td>
+                          <td>xxx</td>
+                          <td>xxx</td>
+                          <td>xxx</td>
+                          <td>xxx</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <div class="pagination pagination-centered">
+                      <ul>
+                        <li><a href="#"><i class="icon-double-angle-left"></i></a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="activity">
                   <div class="stream-list">
                     <% @book.comments.first(3).each do |comment| %>
                       <div class="media stream">
@@ -56,7 +117,7 @@
 
                     <div class="media stream">
                       <a href="#" class="media-avatar medium pull-left">
-                        <img src="<%= current_employee.avatar %>">
+                        <img src="<%= signed_in? ? current_employee.avatar : "" %>">
                       </a>
                       <div class="media-body">
                         <%= form_for [@book, @book.comments.build], html: { class: "form-horizontal row-fluid" }  do |f| %>
@@ -76,81 +137,7 @@
                   </div>
                 </div>
 
-                <div class="tab-pane fade" id="friends">
-                  <div class="module-option clearfix">
-                    <form>
-                      <div class="input-append pull-left">
-                        <input type="text" class="span3" placeholder="Filter by name...">
-                        <button type="submit" class="btn">
-                          <i class="icon-search"></i>
-                        </button>
-                      </div>
-                    </form>
-                    <div class="btn-group pull-right" data-toggle="buttons-radio">
-                      <button type="button" class="btn">All</button>
-                      <button type="button" class="btn"> Male</button>
-                      <button type="button" class="btn">Female</button>
-                    </div>
-                  </div>
-                  <div class="module-body">
-                    <div class="row-fluid">
-                      <div class="span6">
-                        <div class="media user">
-                          <a class="media-avatar pull-left" href="#">
-                            <img src="images/user.png">
-                          </a>
-                          <div class="media-body">
-                            <h3 class="media-title">
-                              John Donga
-                            </h3>
-                            <p><small class="muted">Pakistan</small></p>
-                            <div class="media-option btn  -group shaded-icon">
-                              <button class="btn btn-small">
-                                <i class="icon-envelope"></i>
-                              </button>
-                              <button class="btn btn-small">
-                                <i class="icon-share-alt"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="span6">
-                        <div class="media user">
-                          <a class="media-avatar pull-left" href="#">
-                            <img src="images/user.png">
-                          </a>
-                          <div class="media-body">
-                            <h3 class="media-title">Donga John</h3>
-                            <p><small class="muted">Pakistan</small></p>
-                            <div class="media-option btn-group shaded-icon">
-                              <button class="btn btn-small">
-                                <i class="icon-envelope"></i>
-                              </button>
-                              <button class="btn btn-small">
-                                <i class="icon-share-alt"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="pagination pagination-centered">
-                      <ul>
-                        <li><a href="#"><i class="icon-double-angle-left"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
                 <div class="tab-pane fade" id="borrow_records">
-
                   <div class="module-body">
                     <table class="table table-striped">
                       <thead>

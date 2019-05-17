@@ -1,21 +1,16 @@
 class EmployeesController < ApplicationController
   http_basic_authenticate_with name: "admin", password: "Abcam123", only: [:index, :show_phone_number, :set_phone_number]
   before_action :init_locals, :only => :update_employee
+  layout 'library', only: [:borrow_record, :borrow_book, :book_praise_rubbish, :book_comment]
 
   def index
     @employees =  Employee.all.paginate page: params[:page], per_page: 15
   end
 
   def show
-
   end
 
   def phone_number
-    # @users = RedisService.new.get_value(:users)
-    # if @users.blank?
-    #   @users = User.all
-    #   RedisService.new.set_value(:users,@users)
-    # end
     @employees =  Employee.all
     render layout: false
   end
@@ -50,10 +45,32 @@ class EmployeesController < ApplicationController
     render layout: false
   end
 
+  # 下面是图书管理相关
+  def borrow_record
+    @employee =  Employee.find params[:id]
+    @borrow_records = @employee.borrow_records.paginate page: params[:page], per_page: 8
+  end
+
+  def borrow_book
+    @employee =  Employee.find params[:id]
+    @books = @employee.books.paginate page: params[:page], per_page: 8
+  end
+
+  def book_praise_rubbish
+    @employee =  Employee.find params[:id]
+    @praise_rubbishs = @employee.count_records.paginate page: params[:page], per_page: 10
+  end
+
+  def book_comment
+    @employee =  Employee.find params[:id]
+    @comments = @employee.comments.paginate page: params[:page], per_page: 8
+  end
+
+
+
   def update_employee
     accessToken = @auth.getAccessToken() #获取token
     @msg = ""
-
     @departments = Department.all
 
     @departments.each do |department|
@@ -68,7 +85,6 @@ class EmployeesController < ApplicationController
             Employee.find_by_userid(employee["userid"]).update(parse_employee(employee))
           end
         end
-
         @msg = "#{@msg} - #{department.name}:#{department_employee_lists.count}"
       else
         @msg = "#{@msg} - #{department.name}:error"

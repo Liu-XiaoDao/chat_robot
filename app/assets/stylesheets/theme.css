@@ -1726,6 +1726,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', end
   width: 90px;
   margin: 5px
 }
-.message .table-message tbody td.cell-btn {
+tbody td.cell-btn {
 	width: 40px
 }

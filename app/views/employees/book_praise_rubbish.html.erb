@@ -1,0 +1,48 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'library/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+              <h3>我的评价</h3>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>书名</th>
+                    <th>评价</th>
+                    <th>时间</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @praise_rubbishs.each do |praise_rubbish| %>
+                    <tr>
+                      <td><%= praise_rubbish.id %></td>
+                      <td><%= link_to praise_rubbish.book_name, book_path(praise_rubbish.book) %></td>
+                      <td><%= praise_rubbish.type %></td>
+                      <td><%= praise_rubbish.operation_time %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>

@@ -1,4 +1,6 @@
 class BookClassificationsController < ApplicationController
+  layout 'library'
+
   def index
     @book_classifications = BookClassification.all
   end
