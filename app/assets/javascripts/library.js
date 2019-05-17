@@ -28,6 +28,7 @@
     function updateUI(){
         var avatar_url = proper.userInfo.avatar
         $('#nav-avatar').attr('src', avatar_url);
+        alert("登录成功");
         // $('#info').html(JSON.stringify(proper.userInfo));
     }
 

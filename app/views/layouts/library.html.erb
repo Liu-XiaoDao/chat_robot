@@ -9,8 +9,10 @@
 	  <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <!-- 钉钉功能 -->
     <%# TODO: 这里可以再第一次请求钉钉ｉｄ之后不再使用 %>
-    <script src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.41/dingtalk.open.js"></script>
-    <%#= javascript_include_tag "library" %>
+    <% if current_employee.blank? %>
+      <script src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.41/dingtalk.open.js"></script>
+      <%= javascript_include_tag "library" %>
+    <% end %>
 
   </head>
 

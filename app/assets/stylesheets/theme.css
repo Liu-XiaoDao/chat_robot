@@ -1702,6 +1702,13 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', end
 
 
 /*自己添加*/
+.navbar-library {
+	position: fixed!important;
+	margin: 0!important
+}
+.wrapper-library {
+  margin-top: 60px;
+}
 .media .media-cover {
   border: 1px solid rgba(204, 204, 204, 0.5);
   -webkit-border-radius: 5px;
