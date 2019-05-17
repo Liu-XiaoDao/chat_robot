@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   end
 
   resources :books do
+    resources :comments
     get 'index_admin', on: :collection
     get 'praise',      on: :member
     get 'rubbish',     on: :member

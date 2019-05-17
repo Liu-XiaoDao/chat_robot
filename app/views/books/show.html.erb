@@ -36,25 +36,38 @@
               <div class="profile-tab-content tab-content">
                 <div class="tab-pane fade active in" id="activity">
                   <div class="stream-list">
-                    <div class="media stream">
-                      <a href="#" class="media-avatar medium pull-left">
-                        <img src="images/user.png">
-                      </a>
-                      <div class="media-body">
-                        <div class="stream-headline">
-                          <h5 class="stream-author">
-                            John Donga <small>08 July, 2014</small>
-                          </h5>
-                          <div class="stream-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type.
+                    <% @book.comments.first(3).each do |comment| %>
+                      <div class="media stream">
+                        <a href="#" class="media-avatar medium pull-left">
+                          <img src="<%= comment.employee_avatar %>">
+                        </a>
+                        <div class="media-body">
+                          <div class="stream-headline">
+                            <h5 class="stream-author">
+                              <%= comment.employee_name %> <small><%= comment.comment_time %></small>
+                            </h5>
+                            <div class="stream-text">
+                              <%= comment.body %>
+                            </div>
                           </div>
                         </div>
-                        <div class="stream-options">
-                          <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
-                          <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a><a href="#" class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
-                        </div>
+                      </div>
+                    <% end %>
+
+                    <div class="media stream">
+                      <a href="#" class="media-avatar medium pull-left">
+                        <img src="<%= current_employee.avatar %>">
+                      </a>
+                      <div class="media-body">
+                        <%= form_for [@book, @book.comments.build], html: { class: "form-horizontal row-fluid" }  do |f| %>
+                          <div class="stream-headline">
+                            <%= f.hidden_field :employee_id %>
+                            <%= f.text_area  :body, rows: 4, class: "span8"%>
+                          </div>
+                          <div class="stream-options">
+                            <button type="submit" class="btn btn-small"><i class="icon-retweet shaded"></i>评论</button>
+                          </div>
+                        <% end %>
                       </div>
                     </div>
                     <div class="media stream load-more">

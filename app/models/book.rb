@@ -3,6 +3,7 @@ class Book < ApplicationRecord
   belongs_to :borrower, class_name: 'Employee', optional: true
   has_many :count_records, ->{ where( count_records: { target_class: "book" } ) }, :foreign_key => :target_id
   has_many :borrow_records
+  has_many :comments
 
   def classification_name
     book_classification.try :name

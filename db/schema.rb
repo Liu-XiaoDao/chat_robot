@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190516155547) do
+ActiveRecord::Schema.define(version: 20190517055613) do
 
   create_table "blorgh_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 20190516155547) do
     t.string "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "employee_id"
+    t.string "body"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_comments_on_book_id"
   end
 
   create_table "count_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -157,4 +166,5 @@ ActiveRecord::Schema.define(version: 20190516155547) do
     t.string "remote_ip"
   end
 
+  add_foreign_key "comments", "books"
 end
