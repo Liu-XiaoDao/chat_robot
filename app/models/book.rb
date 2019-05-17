@@ -9,7 +9,11 @@ class Book < ApplicationRecord
   end
 
   def borrow(borrow_time)
-    borrow_records.create(employee_id: 1, borrow_range: borrow_time, borrow_start: Date.today, borrow_end: Date.today + 3.month) && self.update(is_borrowed: 1)
+    borrow_records.create(employee_id: Employee.current_employee.id, borrow_range: borrow_time, borrow_start: Date.today, borrow_end: Date.today + 3.month) && self.update(is_borrowed: 1, borrower_id: Employee.current_employee.id)
+  end
+
+  def borrower_name
+    borrower.try(:name)
   end
 
   def status

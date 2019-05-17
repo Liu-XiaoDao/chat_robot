@@ -48,7 +48,12 @@
             </a></li>
             <li class="nav-user dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="<%= signed_in? ? current_employee.avatar : "/default.jpg" %>" class="nav-avatar" id="nav-avatar"><b class="caret"></b>
+                <% if signed_in? %>
+                  <img src="<%= current_employee.avatar %>" class="nav-avatar" id="nav-avatar">
+                <% else %>
+                  未登录
+                <% end %>
+                <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><a href="<%= links_path %>">钉钉链接管理</a></li>
