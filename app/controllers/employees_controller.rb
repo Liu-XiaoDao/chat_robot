@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
   http_basic_authenticate_with name: "admin", password: "Abcam123", only: [:index, :show_phone_number, :set_phone_number]
   before_action :init_locals, :only => :update_employee
-  layout 'library', only: [:borrow_record, :borrow_book, :book_praise_rubbish, :book_comment]
+  layout 'library', only: [:borrow_record, :return_record, :borrow_book, :book_praise_rubbish, :book_comment]
 
   def index
     @employees =  Employee.all.paginate page: params[:page], per_page: 15
