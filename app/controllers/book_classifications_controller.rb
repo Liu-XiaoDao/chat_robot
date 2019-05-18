@@ -5,6 +5,10 @@ class BookClassificationsController < ApplicationController
     @book_classifications = BookClassification.all
   end
 
+  def index_admin
+    @book_classifications = BookClassification.all
+  end
+
   def new
     @book_classification = BookClassification.new
     render layout: false

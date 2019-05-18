@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     get 'set_my_phone_number_page',on: :collection
     # 下面是图书管理相关
     get 'borrow_record',       on: :member
+    get 'return_record',       on: :member
     get 'borrow_book',         on: :member
     get 'book_praise_rubbish', on: :member
     get 'book_comment',        on: :member
@@ -58,8 +59,11 @@ Rails.application.routes.draw do
     get 'rubbish',     on: :member
     get 'borrow_view', on: :member
     post 'borrow',     on: :member
+    get 'return_book', on: :member
   end
-  resources :book_classifications
+  resources :book_classifications do
+    get 'index_admin', on: :collection
+  end
 
   get '/library' => 'library#index' #图书管理首页
   get '/signin' => 'sessions#new'

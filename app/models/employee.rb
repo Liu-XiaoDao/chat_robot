@@ -6,6 +6,7 @@ class Employee < ApplicationRecord
   # has_many :attached_files, ->{ where( attached_files: { target_class: "authorizationservices" } ) }, :foreign_key => :target_id
   has_many :books, :foreign_key => :borrower_id
   has_many :borrow_records
+  has_many :return_records
   has_many :comments
   has_many :count_records, ->{ where( count_records: { target_class: "book" } ) }
 

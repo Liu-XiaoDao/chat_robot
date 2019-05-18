@@ -2,6 +2,10 @@ class BorrowRecord < ApplicationRecord
   belongs_to :book
   belongs_to :employee
 
+  def update_real_borrow_time
+    update(real_borrow_time: Integer(Date.today - borrow_start))
+  end
+
   def borrower_name
     employee.try :name
   end
@@ -12,5 +16,9 @@ class BorrowRecord < ApplicationRecord
 
   def borrow_length
     "#{borrow_range}个月"
+  end
+
+  def real_borrow_time
+    super || Integer(Date.today - borrow_start)
   end
 end

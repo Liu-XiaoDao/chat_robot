@@ -20,28 +20,35 @@
           图书分类
         </a>
       </li>
+      <li>
+        <a href="<%= index_admin_book_classifications_path %>">
+          <i class="menu-icon icon-tasks"></i>
+          图书分类-管理
+        </a>
+      </li>
     </ul><!--/.widget-nav-->
     <ul class="widget widget-menu unstyled">
-      <% Category.all.each do |category| %>
+      <!-- <%# Category.all.each do |category| %>
         <li>
-          <a class="collapsed" data-toggle="collapse" href="#togglePages_<%= category.id %>">
+          <a class="collapsed" data-toggle="collapse" href="#togglePages_<%#= category.id %>">
             <i class="menu-icon icon-cog"></i>
             <i class="icon-chevron-down pull-right"></i>
             <i class="icon-chevron-up pull-right"></i>
-            <%= category.category_name %>
+            <%#= category.category_name %>
           </a>
-          <ul id="togglePages_<%= category.id %>" class="collapse unstyled">
-            <% category.questions.limit(5).each do |question| %>
-              <li><a href="<%= question_path(question) %>"><i class="icon-paste"></i><%= question.title %></a></li>
-            <% end %>
+          <ul id="togglePages_<%#= category.id %>" class="collapse unstyled">
+            <%# category.questions.limit(5).each do |question| %>
+              <li><a href="<%#= question_path(question) %>"><i class="icon-paste"></i><%#= question.title %></a></li>
+            <%# end %>
           </ul>
         </li>
-      <% end %>
+      <%# end %> -->
 
       <% if signed_in? %>
         <li><a href="<%= borrow_book_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的借阅</a></li>
         <li><a href="<%= book_comment_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的评论</a></li>
         <li><a href="<%= borrow_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>借阅记录</a></li>
+        <li><a href="<%= return_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>归还记录</a></li>
         <li><a href="<%= book_praise_rubbish_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>赞/踩</a></li>
       <% end %>
 

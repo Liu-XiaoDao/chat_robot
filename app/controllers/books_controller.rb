@@ -46,10 +46,10 @@ class BooksController < ApplicationController
 
   def praise
     @book = Book.find(params[:id])
-    @praise_record = @book.count_records.where(ip: request.remote_ip, count_type: "praise_count").first
+    @praise_record = @book.count_records.where(ip: request.remote_ip, count_type: "praise_count", employee_id: current_employee.id).first
 
     if @praise_record.blank?
-      @count_record = @book.count_records.create(ip: request.remote_ip,count_type: "praise_count")#这种类型是点赞的记录
+      @count_record = @book.count_records.create(ip: request.remote_ip,count_type: "praise_count", employee_id: current_employee.id)#这种类型是点赞的记录
       @book.praise_count += 1
       @book.save
       render js: "$('#praise_count').html(#{@book.praise_count});"
@@ -60,9 +60,9 @@ class BooksController < ApplicationController
 
   def rubbish
     @book = Book.find(params[:id])
-    @praise_record = @book.count_records.where(ip: request.remote_ip,count_type: "rubbish_count").first
+    @praise_record = @book.count_records.where(ip: request.remote_ip,count_type: "rubbish_count", employee_id: current_employee.id).first
     if @praise_record.blank?
-      @count_record = @book.count_records.create(ip: request.remote_ip,count_type: "rubbish_count")#这种类型是踩的记录
+      @count_record = @book.count_records.create(ip: request.remote_ip,count_type: "rubbish_count", employee_id: current_employee.id)#这种类型是踩的记录
       @book.rubbish_count += 1
       @book.save
       render js: "$('#rubbish_count').html(#{@book.praise_count});"
@@ -80,13 +80,23 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     # TODO: 可以优化
     if @book.is_borrowed?
-      flash["success"] = "有人正在借阅，您现在不能借阅"
+      flash["error"] = "有人正在借阅，您现在不能借阅"
     else
       if @book.borrow(params[:borrow][:borrower_time])
         flash["success"] = "借阅成功"
       end
     end
     redirect_to book_path
+  end
+
+  def return_book
+    @book = Book.find(params[:id])
+    if @book.return_book
+      flash["success"] = "还书成功"
+    else
+      flash["error"] = "还书失败"
+    end
+    redirect_to request.referer
   end
 
   private

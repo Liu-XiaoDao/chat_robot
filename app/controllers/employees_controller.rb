@@ -51,6 +51,11 @@ class EmployeesController < ApplicationController
     @borrow_records = @employee.borrow_records.paginate page: params[:page], per_page: 8
   end
 
+  def return_record
+    @employee =  Employee.find params[:id]
+    @return_records = @employee.return_records.paginate page: params[:page], per_page: 8
+  end
+
   def borrow_book
     @employee =  Employee.find params[:id]
     @books = @employee.books.paginate page: params[:page], per_page: 8

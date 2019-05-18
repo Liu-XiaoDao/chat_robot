@@ -9,6 +9,7 @@
               <h3>我的借阅</h3>
             </div>
             <div class="module-body">
+              <%= render "library/flash" %>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -30,7 +31,7 @@
                       <td><%= book.intro %></td>
                       <td><%= book.classification_name %></td>
                       <td><%= book.status %></td>
-                      <td><%= link_to '还书', edit_book_path(book), class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td><%= link_to '还书', return_book_book_path(book), class: "btn btn-primary" %></td>
                     </tr>
                   <% end %>
                 </tbody>

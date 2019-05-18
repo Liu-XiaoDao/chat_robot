@@ -9,34 +9,29 @@
               <h3>所有图书</h3>
             </div>
             <div class="module-body">
+              <%= render "library/flash" %>
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>#</th>
                     <th>书名</th>
                     <th>作者</th>
+                    <th>简介</th>
+                    <th>分类</th>
                     <th>状态</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  <% @books.each do |book| %>
+                    <tr>
+                      <td><%= book.id %></td>
+                      <td><%= link_to book.name, book_path(book) %></td>
+                      <td><%= book.author %></td>
+                      <td><%= book.intro %></td>
+                      <td><%= book.classification_name %></td>
+                      <td><%= book.status %></td>
+                    </tr>
+                  <% end %>
                 </tbody>
               </table>
             </div>
@@ -49,16 +44,3 @@
     </div>
   </div><!--/.container-->
 </div><!--/.wrapper-->
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.table-message tbody tr').click(function(){
-        window.location.href = $(this).attr('date-href');
-      });
-  });
-</script>
-<style media="screen">
-  .wrapper {
-    min-height: 0;
-  }
-</style>

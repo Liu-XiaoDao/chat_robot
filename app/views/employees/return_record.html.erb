@@ -6,7 +6,7 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-              <h3>我的借阅记录</h3>
+              <h3>我的还书记录</h3>
             </div>
             <div class="module-body">
               <table class="table table-striped">
@@ -14,26 +14,22 @@
                   <tr>
                     <th>#</th>
                     <th>书名</th>
-                    <th>时间</th>
-                    <th>开始时间</th>
-                    <th>结束时间</th>
-                    <th>实际借阅时间</th>
+                    <th>归还时间</th>
+                    <th>操作</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @borrow_records.each do |borrow_record| %>
+                  <% @return_records.each do |return_record| %>
                     <tr>
-                      <td><%= borrow_record.id %></td>
-                      <td><%= link_to borrow_record.book_name, book_path(borrow_record.book) %></td>
-                      <td><%= borrow_record.borrow_length %></td>
-                      <td><%= borrow_record.borrow_start %></td>
-                      <td><%= borrow_record.borrow_end %></td>
-                      <td><%= borrow_record.real_borrow_time %></td>
+                      <td><%= return_record.id %></td>
+                      <td><%= link_to return_record.book_name, book_path(return_record.book) %></td>
+                      <td><%= return_record.return_time %></td>
+                      <td>已归还</td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
-              <%= will_paginate @borrow_records, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
+              <%= will_paginate @return_records, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
             </div>
           </div>
         </div>

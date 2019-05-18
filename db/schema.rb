@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190517055613) do
-
-  create_table "blorgh_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.string "title"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20190518090730) do
 
   create_table "book_classifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
@@ -48,6 +41,7 @@ ActiveRecord::Schema.define(version: 20190517055613) do
     t.string "borrow_range"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "real_borrow_time"
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -150,6 +144,13 @@ ActiveRecord::Schema.define(version: 20190517055613) do
     t.float "min_time", limit: 24
     t.float "avg_time", limit: 24
     t.datetime "last_requested_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "return_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "book_id"
+    t.integer "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
