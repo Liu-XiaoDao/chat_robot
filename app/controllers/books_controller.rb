@@ -99,6 +99,14 @@ class BooksController < ApplicationController
     redirect_to request.referer
   end
 
+  def search
+    @books = Book.search_name_by_token params[:term]
+    @books_size = @books.size
+    respond_to do |format|
+      format.js { render :show }
+    end
+  end
+
   private
     def book_params
       params.require(:book).permit(:name, :author, :book_classification_id, :intro, :img_url)

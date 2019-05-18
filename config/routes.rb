@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   resources :books do
     resources :comments
     get 'index_admin', on: :collection
+    get 'search',      on: :collection
     get 'praise',      on: :member
     get 'rubbish',     on: :member
     get 'borrow_view', on: :member
