@@ -18,7 +18,7 @@ module LibraryHelper
     #      @current_employee = employee
     #   end
     # end
-    @current_employee = Employee.find 135
+    @current_employee = Employee.find 1
   end
 
   #记住密码

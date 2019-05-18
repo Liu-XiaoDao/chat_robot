@@ -1,0 +1,6 @@
+<% books.each_with_hit do |record, hit| %>
+  <li>
+    <% name = hit.highlight.name ? (raw hit.highlight.name[0]) : record.name %>
+    <a href="<%= book_path(record.id) %>"><%= name %></a>
+  </li>
+<% end %>

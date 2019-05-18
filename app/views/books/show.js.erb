@@ -1,0 +1,10 @@
+<% if @books.any? %>
+   $("#search-form").removeClass("open");	
+   $("#search-result").children("li").remove();
+
+   $("#search-form").addClass("open");
+   $("#search-result").append("<%= j render('result_list', books: @books) %>");
+<% else %>
+   $("#search-form").removeClass("open");	
+   $("#search-result").children("li").remove();
+<% end %>
