@@ -34,7 +34,12 @@ class BookClassificationsController < ApplicationController
 
   def show
     @book_classification = BookClassification.find(params[:id])
-    @classification_books = @book_classification.books
+    @classification_books = @book_classification.books.paginate page: params[:page], per_page: 10
+  end
+
+  def show_admin
+    @book_classification = BookClassification.find(params[:id])
+    @classification_books = @book_classification.books.paginate page: params[:page], per_page: 8
   end
 
   def destroy

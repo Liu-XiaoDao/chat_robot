@@ -64,9 +64,12 @@ Rails.application.routes.draw do
     #批量导入
     post 'import',     on: :collection
     get  'export',     on: :collection
+    #所有评论
+    get  'all_comments',on: :member
   end
   resources :book_classifications do
     get 'index_admin', on: :collection
+    get 'show_admin',  on: :member
   end
 
   get '/library' => 'library#index' #图书管理首页

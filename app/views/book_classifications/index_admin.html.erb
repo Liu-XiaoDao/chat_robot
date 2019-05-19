@@ -30,7 +30,7 @@
                   <% @book_classifications.each do |book_classification| %>
                     <tr>
                       <td><%= book_classification.id %></td>
-                      <td><%= link_to book_classification.name, book_classification_path(book_classification) %></td>
+                      <td><%= link_to book_classification.name, show_admin_book_classification_path(book_classification) %></td>
                       <td><%= book_classification.books.count %></td>
                       <td class="cell-btn align-right"><%= link_to 'Edit', edit_book_classification_path(book_classification), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
                       <td class="cell-btn align-right"><%= link_to 'Del', book_classification_path(book_classification), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
@@ -39,7 +39,6 @@
                 </tbody>
               </table>
             </div>
-            <div class="module-foot"></div>
           </div>
         </div><!--/.content-->
       </div><!--/.span9-->
