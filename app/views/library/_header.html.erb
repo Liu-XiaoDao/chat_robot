@@ -32,19 +32,13 @@
 
           <ul class="nav pull-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">问题 <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">友情链接 <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="<%= questions_path %>">常见问题</a></li>
-                <li><a href="<%= advanced_search_questions_path %>">高级搜索</a></li>
-                <li><a href="<%= new_question_path %>">新建帮助</a></li>
-                <li class="divider"></li>
-                <li><a href="<%= categorys_path %>">问题分类</a></li>
+                <li><a href="">LimsPlus</a></li>
+                <li><a href="">考勤系统</a></li>
+                <li><a href="">匿名建议</a></li>
               </ul>
             </li>
-
-            <li><a href="#">
-              在线客服
-            </a></li>
             <li class="nav-user dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <% if signed_in? %>
@@ -55,11 +49,11 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="<%= links_path %>">钉钉链接管理</a></li>
-                <li><a href="<%= display_list_links_path %>" target="_blank">钉钉链接显示</a></li>
-                <li><a href="<%= display_icon_links_path %>" target="_blank">钉钉图标选择</a></li>
-                <li class="divider"></li>
-                <li><a href="<%= signout_path %>">退出</a></li>
+                <li><a href="<%= borrow_book_employee_path(current_employee) %>">我的借阅</a></li>
+                <li><a href="<%= book_comment_employee_path(current_employee) %>">我的评论</a></li>
+                <li><a href="<%= borrow_record_employee_path(current_employee) %>">借阅记录</a></li>
+                <li><a href="<%= return_record_employee_path(current_employee) %>">归还记录</a></li>
+                <li><a href="<%= book_praise_rubbish_employee_path(current_employee) %>">赞/踩</a></li>
               </ul>
             </li>
 
