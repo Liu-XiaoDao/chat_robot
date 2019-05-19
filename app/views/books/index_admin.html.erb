@@ -9,6 +9,21 @@
               <h3>所有图书-管理</h3>
             </div>
             <div class="module-option clearfix">
+              <div class="pull-left">
+                <div class="btn-group">
+                  <button class="btn">筛选</button>
+                  <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="?">全部</a></li>
+                    <li><a href="?q[is_borrowed_eq]=1">已借出</a></li>
+                    <li><a href="?q[is_borrowed_eq]=0">未接</a></li>
+                    <!-- <li class="divider"></li>
+                    <li><a href="#">Settings</a></li> -->
+                  </ul>
+                </div>
+              </div>
               <div class="pull-right">
                 <%= form_for :import, url: import_books_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
                   <%= f.file_field :file, id: "upload-file-input" %>

@@ -63,6 +63,8 @@ gem "rubyXL", '~> 3.3.29'
 gem "spreadsheet", "~> 1.1.7"
 gem 'roo', "~> 1.13.2"
 
+gem 'ransack', "~> 1.8.8"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

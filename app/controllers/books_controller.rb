@@ -6,7 +6,8 @@ class BooksController < ApplicationController
   end
 
   def index_admin
-    @books = Book.all.paginate page: params[:page], per_page: 8
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true).paginate page: params[:page], per_page: 8
   end
 
   def new
