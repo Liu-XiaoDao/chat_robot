@@ -108,9 +108,18 @@
                 </div>
 
                 <div class="tab-pane fade" id="detial">
-                   <div class="module-body">
-                    这里是详情
-                    <br>
+                   <div class="module-body" style=" overflow:scroll; height:300px;">
+                    <%
+                      begin
+                        html = RestClient.get("https://baike.baidu.com/item/#{@book.name}").body
+                        doc = Nokogiri::HTML.parse(html)
+                        main_content = doc.css('.main-content')
+                        # main_content = doc.css('.lemma-summary > .para')
+                      rescue => e
+                        main_content = "没有获取到百度百科详情"
+                      end
+                    %>
+                    <%= raw main_content %>
                   </div>
                 </div>
 
