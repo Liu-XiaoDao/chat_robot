@@ -2,11 +2,11 @@ class BooksController < ApplicationController
   layout 'library'
   before_action :set_file_url, only: [:create, :update]
   def index
-    @books = Book.all
+    @books = Book.all.paginate page: params[:page], per_page: 10
   end
 
   def index_admin
-    @books = Book.all
+    @books = Book.all.paginate page: params[:page], per_page: 8
   end
 
   def new
@@ -105,6 +105,24 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.js { render :show }
     end
+  end
+
+  #批量上传
+  def import
+    if !params[:import][:file]
+      redirect_to index_admin_books_path, alert: "You need select a file"
+    else
+      Book.import(params[:import][:file])
+      redirect_to index_admin_books_path, notice: "导入成功"
+    end
+  end
+
+  def export
+    @books = Book.all
+    respond_to { |format|
+      format.html
+      format.xlsx { send_data Book.to_xlsx(@books).stream.string, filename: "books.xlsx", disposition: 'attachment' }
+    }
   end
 
   private

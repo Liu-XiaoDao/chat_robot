@@ -10,6 +10,13 @@
             </div>
             <div class="module-option clearfix">
               <div class="pull-right">
+                <%= form_for :import, url: import_books_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
+                  <%= f.file_field :file, id: "upload-file-input" %>
+                  <%= f.submit '', id: "file-submit" %>
+                <% end %>
+
+                <%= link_to '批量导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn" %>
+                <%= link_to '导出', export_books_path(:xlsx), class: "btn btn-primary" %>
                 <%= link_to 'Create', new_book_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
               </div>
             </div>
@@ -41,6 +48,7 @@
                   <% end %>
                 </tbody>
               </table>
+              <%= will_paginate @books, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
             </div>
           </div>
         </div>
@@ -90,3 +98,13 @@
     opacity: .8
   }
 </style>
+
+<script>
+  $("#upload-file-btn").click(function () {
+    $("#upload-file-input").click();
+  });
+  $("#upload-file-input").on("change", function(){
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    $("#file-submit").click();
+  });
+</script>

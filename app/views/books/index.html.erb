@@ -34,6 +34,7 @@
                   <% end %>
                 </tbody>
               </table>
+              <%= will_paginate @books, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
             </div>
           </div>
         </div>

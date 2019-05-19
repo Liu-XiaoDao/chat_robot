@@ -19,10 +19,10 @@
                   <div class="profile-details muted">
                     <% if @book.is_borrowed? %>
                       <a href="" class="btn" >借阅中...(<%= @book.borrower_name %>)</a>
+                      <!-- <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i>联系:xxxx</a> -->
                     <% else %>
                       <a href="<%= borrow_view_book_path %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-plus shaded"></i>借阅</a>
                     <% end %>
-                    <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i>ｘｘｘｘ</a>
                     <a href="<%= praise_book_path(@book) %>"  class="btn" data-remote="true"><i class="icon-thumbs-up shaded"></i>赞 <span id="praise_count"><%= @book.praise_count %></span></a>
                     <a href="<%= rubbish_book_path(@book) %>" class="btn" data-remote="true"><i class="icon-thumbs-down shaded"></i>踩 <span id="rubbish_count"><%= @book.rubbish_count %></span></a>
                   </div>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="chapters">
-                  <div class="module-option clearfix">
+                  <!-- <div class="module-option clearfix">
                     <form>
                       <div class="input-append pull-left">
                         <input type="text" class="span3" placeholder="Filter by name...">
@@ -57,9 +57,10 @@
                       <button type="button" class="btn"> Male</button>
                       <button type="button" class="btn">Female</button>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="module-body">
-                    <table class="table table-striped">
+                    敬请期待
+                    <!-- <table class="table table-striped">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -81,8 +82,8 @@
                         </tr>
                       </tbody>
                     </table>
-                    <br>
-                    <div class="pagination pagination-centered">
+                    <br> -->
+                    <!-- <div class="pagination pagination-centered">
                       <ul>
                         <li><a href="#"><i class="icon-double-angle-left"></i></a></li>
                         <li><a href="#">1</a></li>
@@ -91,7 +92,7 @@
                         <li><a href="#">4</a></li>
                         <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
                       </ul>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
@@ -120,7 +121,7 @@
                         <img src="<%= signed_in? ? current_employee.avatar : "" %>">
                       </a>
                       <div class="media-body">
-                        <%= form_for [@book, @book.comments.build], html: { class: "form-horizontal row-fluid" }  do |f| %>
+                        <%= form_for [@book, @book.comments.build], remote: true, html: { class: "form-horizontal row-fluid" }  do |f| %>
                           <div class="stream-headline">
                             <%= f.hidden_field :employee_id %>
                             <%= f.text_area  :body, rows: 4, class: "span8"%>

@@ -13,6 +13,10 @@ class Book < ApplicationRecord
     book_classification.try :name
   end
 
+  def classification_name= (classification_name)
+    self.book_classification = BookClassification.find_by_name classification_name
+  end
+
   def borrow(borrow_time)
     borrow_records.create(employee_id: Employee.current_employee.id, borrow_range: borrow_time, borrow_start: Date.today, borrow_end: Date.today + 3.month) && self.update(is_borrowed: 1, borrower_id: Employee.current_employee.id)
   end
@@ -31,6 +35,21 @@ class Book < ApplicationRecord
     is_borrowed? ? "借阅中" : "未借阅"
   end
 
+  def self.to_xlsx(records)
+    export_fields = ["name", "author", "intro", "classification_name"]
+    SpreadsheetService.new.generate(export_fields, records)
+  end
+
+  def self.import(file)
+    spreadsheet = SpreadsheetService.new.parse(file)
+    headers = spreadsheet.row(1)
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[headers, spreadsheet.row(i).map(&:to_s)].transpose]
+      book = new
+      book.attributes = row.to_hash.slice(*["name", "author", "intro", "classification_name"])
+      book.save
+    end
+  end
 
   class << self
     # 根据关键字搜索图书

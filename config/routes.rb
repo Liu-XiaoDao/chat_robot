@@ -61,6 +61,9 @@ Rails.application.routes.draw do
     get 'borrow_view', on: :member
     post 'borrow',     on: :member
     get 'return_book', on: :member
+    #批量导入
+    post 'import',     on: :collection
+    get  'export',     on: :collection
   end
   resources :book_classifications do
     get 'index_admin', on: :collection
