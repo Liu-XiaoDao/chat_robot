@@ -2,30 +2,33 @@
   <div class="sidebar">
 
     <ul class="widget widget-menu unstyled">
-      <li class="active">
-        <a href="<%= books_path %>">
-          <i class="menu-icon icon-book"></i>
-          所有图书
-        </a>
-      </li>
-      <li class="active">
-        <a href="<%= index_admin_books_path %>">
-          <i class="menu-icon icon-book"></i>
-          所有图书-管理
-        </a>
-      </li>
-      <li>
-        <a href="<%= book_classifications_path %>">
-          <i class="menu-icon icon-tasks"></i>
-          图书分类
-        </a>
-      </li>
-      <li>
-        <a href="<%= index_admin_book_classifications_path %>">
-          <i class="menu-icon icon-tasks"></i>
-          图书分类-管理
-        </a>
-      </li>
+      <% if signed_in? && current_employee.isadmin? %>
+        <li class="active">
+          <a href="<%= index_admin_books_path %>">
+            <i class="menu-icon icon-book"></i>
+            所有图书-管理
+          </a>
+        </li>
+        <li>
+          <a href="<%= index_admin_book_classifications_path %>">
+            <i class="menu-icon icon-tasks"></i>
+            图书分类-管理
+          </a>
+        </li>
+      <% else %>
+        <li class="active">
+          <a href="<%= books_path %>">
+            <i class="menu-icon icon-book"></i>
+            所有图书
+          </a>
+        </li>
+        <li>
+          <a href="<%= book_classifications_path %>">
+            <i class="menu-icon icon-tasks"></i>
+            图书分类
+          </a>
+        </li>
+      <% end %>
     </ul><!--/.widget-nav-->
     <ul class="widget widget-menu unstyled">
       <!-- <%# Category.all.each do |category| %>
