@@ -88,7 +88,7 @@ class BooksController < ApplicationController
         flash["success"] = "借阅成功"
       end
     end
-    redirect_to book_path
+    redirect_to request.referer
   end
 
   def return_book
