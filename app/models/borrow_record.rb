@@ -2,7 +2,7 @@ class BorrowRecord < ApplicationRecord
   belongs_to :book
   belongs_to :employee
 
-  validates :borrow_start, :borrow_end, :book_id, :employee_id
+  validates :borrow_start, :borrow_end, :book_id, :employee_id, presence: true
 
   def update_real_borrow_time
     update(real_borrow_time: Integer(Date.today - borrow_start))
