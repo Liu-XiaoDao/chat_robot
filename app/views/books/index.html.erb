@@ -19,6 +19,7 @@
                     <th>简介</th>
                     <th>分类</th>
                     <th>状态</th>
+                    <th>操作</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,11 @@
                       <td><%= book.intro %></td>
                       <td><%= book.classification_name %></td>
                       <td><%= book.status %></td>
+                      <td>
+                        <% unless book.is_borrowed? %>
+                          <a href="<%= borrow_view_book_path(book) %>" class="btn btn-primary" data-toggle="modal" data-target="#borrowModal" >借阅</a>
+                        <% end %>
+                      </td>
                     </tr>
                   <% end %>
                 </tbody>
@@ -45,3 +51,42 @@
     </div>
   </div><!--/.container-->
 </div><!--/.wrapper-->
+
+<div class="modal fade" id="borrowModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>借阅</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('borrow_book_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+
+<script type="text/javascript">
+  $("#borrowModal").on("hidden", function() {
+    $(this).removeData("modal");
+
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>
