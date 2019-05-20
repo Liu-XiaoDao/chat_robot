@@ -37,6 +37,15 @@ class Book < ApplicationRecord
     is_borrowed? ? "借阅人:#{borrower.try(:name)}" : "未借阅"
   end
 
+  def return_remind
+    return if borrow_records.blank?
+    return if borrow_records.last.blank?
+
+    if (borrow_records.last.borrow_end + 7.days) > Date.today
+      Notification.create(target_class: self.class.table_name, target_id: self.id, content: "# 还书提醒!!! \n##### Hi,#{employee.name}您借阅图书即将到期,请及时归还,不要有遗漏. \n###### #{Time.now.try(:strftime, "%Y-%m-%d %H:%M:%S")}")
+    end
+  end
+
   def self.to_xlsx(records)
     export_fields = ["name", "author", "intro", "classification_name"]
     SpreadsheetService.new.generate(export_fields, records)
