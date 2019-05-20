@@ -8,6 +8,7 @@ class Book < ApplicationRecord
   has_many :borrow_records
   has_many :return_records
   has_many :comments
+  has_many :notifications, as: :target
 
   scope :top_5, ->{order(:praise_count)}
 
@@ -33,6 +34,10 @@ class Book < ApplicationRecord
     borrower.try(:name)
   end
 
+  def employee
+    borrower
+  end
+
   def status
     is_borrowed? ? "借阅人:#{borrower.try(:name)}" : "未借阅"
   end
@@ -41,8 +46,8 @@ class Book < ApplicationRecord
     return if borrow_records.blank?
     return if borrow_records.last.blank?
 
-    if (borrow_records.last.borrow_end + 7.days) > Date.today
-      Notification.create(target_class: self.class.table_name, target_id: self.id, content: "# 还书提醒!!! \n##### Hi,#{employee.name}您借阅图书即将到期,请及时归还,不要有遗漏. \n###### #{Time.now.try(:strftime, "%Y-%m-%d %H:%M:%S")}")
+    if (Date.today + 7.days) > borrow_records.last.borrow_end
+      Notification.create(target_type: self.class.name, target_id: self.id, content: "# 还书提醒!!! \n##### Hi,#{borrower.name}您借阅图书即将到期,请及时归还,不要有遗漏. \n###### #{Time.now.try(:strftime, "%Y-%m-%d %H:%M:%S")}")
     end
   end
 
