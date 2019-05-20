@@ -15,7 +15,7 @@ class Notification < ApplicationRecord
     }
     msg = MessageService.new.send(accessToken,data)
     if msg.code == 200
-      express.update(is_send_noti: true)
+      target.update(is_send_noti: true) if target.is_a? Express
       LogService.i("[notification_send] SUC: 提醒发送成功,NotificationId:#{self.id}")
     else
       LogService.e("[notification_send] ERR: 提醒发送失败,NotificationId:#{self.id}")
