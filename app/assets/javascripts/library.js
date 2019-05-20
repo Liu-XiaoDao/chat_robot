@@ -119,7 +119,7 @@
                         jsApiList: jsApiList || []
                     };
                     dd.config(config);
-                    getUserId(corpId);
+                    getUserId(response.corpId);
                 } else {
                     alert(JSON.stringify(response) + 'sign');
                 }
