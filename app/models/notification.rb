@@ -1,19 +1,11 @@
 class Notification < ApplicationRecord
-  belongs_to :express, foreign_key: :target_id
+  belongs_to :target, polymorphic: true
   after_create :send_notificaion
-
-
-
-
-
-
-
-
 
   def send_notificaion
     accessToken = AuthService.new.getAccessToken()
     data = {
-      "touser":express.employee.userid,
+      "touser":target.employee.userid,
       "agentid":180734473,
       "msgtype":"markdown",
       "markdown": {
