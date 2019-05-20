@@ -49,11 +49,13 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="<%= borrow_book_employee_path(current_employee) %>">我的借阅</a></li>
-                <li><a href="<%= book_comment_employee_path(current_employee) %>">我的评论</a></li>
-                <li><a href="<%= borrow_record_employee_path(current_employee) %>">借阅记录</a></li>
-                <li><a href="<%= return_record_employee_path(current_employee) %>">归还记录</a></li>
-                <li><a href="<%= book_praise_rubbish_employee_path(current_employee) %>">赞/踩</a></li>
+                <% if signed_in? %>
+                  <li><a href="<%= borrow_book_employee_path(current_employee) %>">我的借阅</a></li>
+                  <li><a href="<%= book_comment_employee_path(current_employee) %>">我的评论</a></li>
+                  <li><a href="<%= borrow_record_employee_path(current_employee) %>">借阅记录</a></li>
+                  <li><a href="<%= return_record_employee_path(current_employee) %>">归还记录</a></li>
+                  <li><a href="<%= book_praise_rubbish_employee_path(current_employee) %>">赞/踩</a></li>
+                <% end %>
               </ul>
             </li>
 
