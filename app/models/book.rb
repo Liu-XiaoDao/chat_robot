@@ -9,6 +9,8 @@ class Book < ApplicationRecord
   has_many :return_records
   has_many :comments
 
+  scope :top_5, ->{order(:praise_count)}
+
   def classification_name
     book_classification.try :name
   end
