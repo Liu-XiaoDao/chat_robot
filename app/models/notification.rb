@@ -14,6 +14,7 @@ class Notification < ApplicationRecord
       }
     }
     msg = MessageService.new.send(accessToken,data)
+    LogService.i("[发送消息反馈通知] INFO: #{msg}")
     if msg.code == 200
       target.update(is_send_noti: true) if target.is_a? Express
       LogService.i("[notification_send] SUC: 提醒发送成功,NotificationId:#{self.id}")
