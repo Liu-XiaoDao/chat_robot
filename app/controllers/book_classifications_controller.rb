@@ -17,7 +17,7 @@ class BookClassificationsController < ApplicationController
   def create
     # render json: params[:book_classification][:book_classification_name]
     @book_classification = BookClassification.create(book_classification_params)
-    redirect_to book_classifications_path
+    redirect_to index_admin_book_classifications_path
   end
 
   def edit
@@ -29,7 +29,7 @@ class BookClassificationsController < ApplicationController
     @book_classification = BookClassification.find(params[:id])
     @book_classification.name = params[:book_classification][:name]
     @book_classification.save
-    redirect_to book_classifications_path
+    redirect_to index_admin_book_classifications_path
   end
 
   def show
