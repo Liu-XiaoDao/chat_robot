@@ -34,7 +34,7 @@ class Book < ApplicationRecord
   end
 
   def status
-    is_borrowed? ? borrower.try(:name) : "未借阅"
+    is_borrowed? ? "借阅人:#{borrower.try(:name)}" : "未借阅"
   end
 
   def self.to_xlsx(records)
