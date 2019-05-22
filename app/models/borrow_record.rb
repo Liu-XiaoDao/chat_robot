@@ -8,6 +8,10 @@ class BorrowRecord < ApplicationRecord
     update(real_borrow_time: Integer(Date.today - borrow_start))
   end
 
+  def update_real_borrow_time_and_note
+    update(real_borrow_time: Integer(Date.today - borrow_start), note: "管理员回收")
+  end
+
   def borrower_name
     employee.try :name
   end

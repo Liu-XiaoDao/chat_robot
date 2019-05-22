@@ -40,6 +40,12 @@ class Book < ApplicationRecord
     borrow_records.last.update_real_borrow_time
   end
 
+  def recycle_book
+    self.update(is_borrowed: 0, borrower_id: nil) && \
+    return_records.create(employee_id: Employee.current_employee.id, note: "管理员回收") && \
+    borrow_records.last.update_real_borrow_time_and_note
+  end
+
   def borrower_name
     borrower.try(:name)
   end

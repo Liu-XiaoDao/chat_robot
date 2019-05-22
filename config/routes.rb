@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     get 'borrow_view', on: :member
     post 'borrow',     on: :member
     get 'return_book', on: :member
+    get 'recycle_book', on: :member
     get 'continue_borrow', on: :member
     #批量导入
     post 'import',     on: :collection
