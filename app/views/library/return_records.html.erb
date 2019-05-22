@@ -14,8 +14,10 @@
                   <tr>
                     <th>#</th>
                     <th>书名</th>
+                    <th>归还人</th>
                     <th>归还时间</th>
-                    <th>操作</th>
+                    <th>状态</th>
+                    <th>备注</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,6 +28,7 @@
                       <td><%= return_record.borrower_name %></td>
                       <td><%= return_record.return_time %></td>
                       <td>已归还</td>
+                      <td><%= return_record.note %></td>
                     </tr>
                   <% end %>
                 </tbody>
