@@ -1,0 +1,55 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'library/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+              <h3>所有借阅记录</h3>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>书名</th>
+                    <th>借阅人</th>
+                    <th>时间</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <th>实际借阅时间</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @borrow_records.each do |borrow_record| %>
+                    <tr>
+                      <td><%= borrow_record.id %></td>
+                      <td><%= link_to borrow_record.book_name, book_path(borrow_record.book) %></td>
+                      <td><%= borrow_record.borrower_name %></td>
+                      <td><%= borrow_record.borrow_length %></td>
+                      <td><%= borrow_record.borrow_start %></td>
+                      <td><%= borrow_record.borrow_end %></td>
+                      <td><%= borrow_record.real_borrow_time %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= will_paginate @borrow_records, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>

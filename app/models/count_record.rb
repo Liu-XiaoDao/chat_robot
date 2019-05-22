@@ -14,4 +14,8 @@ class CountRecord < ApplicationRecord
   def operation_time
     created_at.try(:strftime, "%Y-%m-%d %H:%M:%S")
   end
+
+  def employee_name
+    employee.try :name
+  end
 end
