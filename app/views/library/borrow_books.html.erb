@@ -29,7 +29,7 @@
                       <td><%= book.author %></td>
                       <td><%= book.borrower_name %></td>
                       <td><%= book.borrow_records.last.borrow_end %></td>
-                      <td><%= link_to '收回', return_book_book_path(book), class: "btn btn-primary" %></td>
+                      <td><%= link_to '收回', recycle_book_book_path(book), class: "btn btn-primary" %></td>
                     </tr>
                   <% end %>
                 </tbody>
