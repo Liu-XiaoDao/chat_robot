@@ -25,6 +25,11 @@ class BorrowRecord < ApplicationRecord
   end
 
   def real_borrow_time
-    super || Integer(Date.today - borrow_start)
+    # super || Integer(Date.today - borrow_start)
+    if read_attribute(:real_borrow_time).present?
+      "#{read_attribute(:real_borrow_time)}天"
+    else
+      "借阅中"
+    end
   end
 end
