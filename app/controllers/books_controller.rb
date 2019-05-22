@@ -91,12 +91,32 @@ class BooksController < ApplicationController
     redirect_to request.referer
   end
 
+  def continue_borrow
+    @book = Book.find(params[:id])
+    if @book.continue_borrow
+      flash["success"] = "续借成功"
+    else
+      flash["error"] = "续借失败"
+    end
+    redirect_to request.referer
+  end
+
   def return_book
     @book = Book.find(params[:id])
     if @book.return_book
       flash["success"] = "还书成功"
     else
       flash["error"] = "还书失败"
+    end
+    redirect_to request.referer
+  end
+
+  def recycle_book
+    @book = Book.find(params[:id])
+    if @book.recycle_book
+      flash["success"] = "收回成功"
+    else
+      flash["error"] = "收回失败"
     end
     redirect_to request.referer
   end

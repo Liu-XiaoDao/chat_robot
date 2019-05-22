@@ -6,6 +6,10 @@ class ReturnRecord < ApplicationRecord
     book.try :name
   end
 
+  def borrower_name
+    employee.try :name
+  end
+
   def return_time
     created_at.try(:strftime, "%Y-%m-%d %H:%M:%S")
   end

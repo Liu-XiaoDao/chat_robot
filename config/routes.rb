@@ -61,6 +61,8 @@ Rails.application.routes.draw do
     get 'borrow_view', on: :member
     post 'borrow',     on: :member
     get 'return_book', on: :member
+    get 'recycle_book', on: :member
+    get 'continue_borrow', on: :member
     #批量导入
     post 'import',     on: :collection
     get  'export',     on: :collection
@@ -73,6 +75,12 @@ Rails.application.routes.draw do
   end
 
   get '/library' => 'library#index' #图书管理首页
+  get '/library/borrow_books' => 'library#borrow_books' #图书管理正在被借阅
+  get '/library/borrow_records' => 'library#borrow_records' #图书管理借阅记录
+  get '/library/praise_rubbishs' => 'library#praise_rubbishs' #图书管理评价
+  get '/library/comments' => 'library#comments' #图书管理评论
+  get '/library/return_records' => 'library#return_records' #图书管理归还记录
+
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'
