@@ -14,10 +14,12 @@ namespace :douban do
           # str = li.>('a').attr('href').text
           puts "#{index}---#{li.css('.subject-title').text}"
         end
-        STDOUT.puts "选择正确的图书? (1,2,3...)"
+        STDOUT.puts "选择正确的图书? (1,2,3.../9)"
         input = Integer(STDIN.gets.strip)
-        book.update(douban_url: "https://m.douban.com#{lis.at(input).>('a').attr('href').text}")
-        puts "#{book.name}获取豆瓣链接完成"
+        if input != 9
+          book.update(douban_url: "https://m.douban.com#{lis.at(input).>('a').attr('href').text}")
+          puts "#{book.name}获取豆瓣链接完成"
+        end
       end
     end
   end
