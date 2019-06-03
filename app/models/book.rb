@@ -68,7 +68,7 @@ class Book < ApplicationRecord
   end
 
   def self.to_xlsx(records)
-    export_fields = ["name", "author", "intro", "classification_name"]
+    export_fields = ["name", "author", "intro", "classification_name", "yk_code"]
     SpreadsheetService.new.generate(export_fields, records)
   end
 
@@ -78,7 +78,7 @@ class Book < ApplicationRecord
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[headers, spreadsheet.row(i).map(&:to_s)].transpose]
       book = new
-      book.attributes = row.to_hash.slice(*["name", "author", "intro", "classification_name"])
+      book.attributes = row.to_hash.slice(*["name", "author", "intro", "classification_name", "yk_code"])
       book.save
     end
   end
