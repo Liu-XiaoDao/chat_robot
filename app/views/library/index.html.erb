@@ -28,7 +28,7 @@
                 <thead>
                   <tr>
                     <th style="width:2%">#</th>
-                    <th style="width:8%">书名</th>
+                    <th style="width:15%">书名</th>
                     <th style="width:15%">作者</th>
                     <th style="width:10%">分类</th>
                     <th style="width:15%">点赞次数</th>
@@ -41,7 +41,7 @@
                     <tr>
                       <td><%= book.id %></td>
                       <td><%= link_to book.name, book_path(book) %></td>
-                      <td><%= book.author %></td>
+                      <td title="<%=book.author%>"><%= truncate(book.author,length: 30) %></td>
                       <td><%= book.classification_name %></td>
                       <td><%= book.praise_count %></td>
                       <td><%= book.borrow_records.count %></td>
