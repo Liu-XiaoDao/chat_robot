@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190604000538) do
+ActiveRecord::Schema.define(version: 20190604002837) do
 
   create_table "blorgh_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20190604000538) do
     t.string "yk_code", limit: 20
     t.string "isbn", limit: 20
     t.string "douban_url"
+    t.string "info"
   end
 
   create_table "borrow_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

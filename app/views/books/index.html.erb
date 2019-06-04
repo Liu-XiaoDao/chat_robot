@@ -13,13 +13,13 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th>书名</th>
-                    <th>作者</th>
-                    <th>简介</th>
-                    <th>分类</th>
-                    <th>状态</th>
-                    <th>操作</th>
+                    <th style="width:2%">#</th>
+                    <th style="width:8%">书名</th>
+                    <th style="width:5%">作者</th>
+                    <th style="width:60%">简介</th>
+                    <th style="width:8%">分类</th>
+                    <th style="width:8%">状态</th>
+                    <th style="width:9%">操作</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -28,7 +28,7 @@
                       <td><%= book.id %></td>
                       <td><%= link_to book.name, book_path(book) %></td>
                       <td><%= book.author %></td>
-                      <td><%= book.intro %></td>
+                      <td title="<%=book.intro%>"><%= truncate(book.intro,length: 100) %></td>
                       <td><%= book.classification_name %></td>
                       <td><%= book.status %></td>
                       <td>
