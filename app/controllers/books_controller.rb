@@ -152,6 +152,10 @@ class BooksController < ApplicationController
     @comments = @book.comments
   end
 
+  def scan_barcode
+
+  end
+
   private
     def book_params
       params.require(:book).permit(:name, :author, :book_classification_id, :intro, :img_url)
