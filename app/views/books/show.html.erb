@@ -10,12 +10,13 @@
               <div class="profile-head media">
                 <a href="#" class="media-cover pull-left">
                   <img src="<%= @book.img_url %>">
+                  <span><%= @book.img_url %></span>
                 </a>
                 <div class="media-body">
                   <h4>
                     <%= @book.name %><small><%= @book.author %></small>
                   </h4>
-                  <p class="profile-brief"><%= @book.intro %></p>
+                  <p class="profile-brief" title="<%=@book.intro%>"><%= truncate(@book.intro,length: 100) %></p>
                   <div class="profile-details muted">
                     <% if @book.is_borrowed? %>
                       <a href="" class="btn" >借阅中...(<%= @book.borrower_name %>)</a>
@@ -116,7 +117,7 @@
                         main_content = doc.css('.main-content')
                         # main_content = doc.css('.lemma-summary > .para')
                       rescue => e
-                        main_content = "没有获取到百度百科详情"
+                        main_content = @book.intro
                       end
                     %>
                     <%= raw main_content %>

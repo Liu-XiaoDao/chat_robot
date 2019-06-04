@@ -44,10 +44,10 @@ namespace :douban do
           isbn = info[i_index..-1]
         end
         summary = doc.css('.related_info .intro').text
-        book.update(author: author, intro: summary, isbn: isbn, img_url: img_url)
+        book.update(author: author, intro: summary, isbn: isbn, img_url: img_url, info: info)
         puts "#{book.name}获取豆瓣详情完成"
       rescue => e
-        puts book.name
+        puts "ERROR:#{book.name}------获取豆瓣详情出错"
       end
     end
   end
