@@ -68,6 +68,8 @@ Rails.application.routes.draw do
     get  'export',     on: :collection
     #所有评论
     get  'all_comments',on: :member
+    #扫描条形码
+    get 'scan_barcode', on: :collection
   end
   resources :book_classifications do
     get 'index_admin', on: :collection
