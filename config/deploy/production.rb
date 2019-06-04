@@ -5,14 +5,14 @@ set :application, 'robot'
 set :deploy_to, "/usr/rubyWeb/#{fetch(:application)}"
 set :rails_env, 'production'
 set :branch, "master"
-server "10.8.1.36", user: "clliu", roles: %w{app db web}, my_property: :my_value
+server "106.12.96.28", user: "xiaodao", roles: %w{app db web}, my_property: :my_value
 # set :user, 'clliu'
 # set :password, 'clliu'
 set :use_sudo, true
 set :ssh_options, {
     forward_agent: true,
     #auth_methods: %w(password),
-    # password: 'clliu',
+    password: 'Liu7721628',
     user: 'myuser',
 }
 
