@@ -23,4 +23,32 @@ namespace :douban do
       end
     end
   end
+
+  desc "从豆瓣上抓取详细信息"
+  task(:fetch_book_detail => :environment) do
+    Book.where(isbn: nil).each do |book|
+      # uri = URI.parse()
+      begin
+        html =  RestClient.get(URI.escape(book.douban_url)).body
+        doc  =  Nokogiri::HTML.parse(html)
+
+        img_url = doc.css('.nbg').attr('href').text
+        info = doc.css('.subject > #info').text.gsub("\n", "").gsub("\s", "")
+        if info.present?
+          c_index = info.index("出版社")
+          c_index = c_index.present? ? c_index - 1 : 0
+          author = info[0..c_index]
+
+          i_index = info.index("ISBN")
+          i_index = i_index.present? ? i_index : -1
+          isbn = info[i_index..-1]
+        end
+        summary = doc.css('.related_info .intro').text
+        book.update(author: author, intro: info, isbn: isbn, img_url: img_url)
+        puts "#{book.name}获取豆瓣详情完成"
+      rescue => e
+        pus book.name
+      end
+    end
+  end
 end

@@ -12,7 +12,7 @@ set :use_sudo, true
 set :ssh_options, {
     forward_agent: true,
     #auth_methods: %w(password),
-    # password: 'clliu',
+    # password: 'Liu7721628',
     user: 'myuser',
 }
 
