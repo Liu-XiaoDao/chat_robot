@@ -6,7 +6,7 @@
         <div class="content">
           <div class="btn-controls">
             <div class="btn-box-row row-fluid">
-              <a href="#" class="btn-box big span3" id="scan_barcode">
+              <a href="javascript:void(0);" class="btn-box big span3" id="scan_barcode">
                 <i class="icon-barcode"></i>
                 <b>扫描条形码</b>
               </a>
@@ -17,7 +17,7 @@
         <div class="content">
           <div class="module message">
             <div class="module-head">
-               <h3>图标选择</h3>
+               <h3>图书条码</h3>
             </div>
             <div class="module-body table">
               <table class="table table-message">
@@ -59,11 +59,11 @@
 // });
 
 
-$(".scan_barcode").click(function () {
+$("#scan_barcode").click(function () {
   dd.ready(function(){
     dd.biz.util.scan({
       type: "all",
-      tips: "请扫描冰箱二维码",  //进入扫码页面显示的自定义文案
+      tips: "请扫描书籍条形码",  //进入扫码页面显示的自定义文案
       onSuccess: function(data) {
       //onSuccess将在扫码成功之后回调
         /* data结构
