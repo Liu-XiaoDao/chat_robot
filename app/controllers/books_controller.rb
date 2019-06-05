@@ -153,7 +153,7 @@ class BooksController < ApplicationController
   end
 
   def scan_barcode
-
+    
   end
 
   private
