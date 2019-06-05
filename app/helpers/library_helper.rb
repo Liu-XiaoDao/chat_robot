@@ -8,6 +8,7 @@ module LibraryHelper
   end
 
   def current_employee   #设置并返回当前用户
+    # return Employee.find 1
     if employee_name = session[:employee_name]
       @current_employee ||= Employee.find_by name: employee_name  # ||= 左侧有值就用，那就不用执行右边的方法来，左边无值就在取值
     elsif employee_name = cookies.signed[:employee_name]
