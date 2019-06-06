@@ -1,0 +1,14 @@
+<%= form_for :borrow, url: assign_book_path, html: { class: "form-horizontal row-fluid", id: "borrow_book_form" }  do |f| %>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">借阅时间</label>
+    <div class="controls">
+      <%= f.select :borrower_time, options_for_select([['一个月', 1], ['两个月', 2], ['三个月', 3], ['四个月', 4], ['五个月', 5], ['六个月', 6]], 3), options = { include_blank: true }, class: "span8", "data-placeholder": "Select here..",tabindex: "1" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">借阅人</label>
+    <div class="controls">
+      <%= f.select :borrower_id, options_for_select(Employee.all.map{|e| [e.name, e.id]}), options = { }, class: "span8", "data-placeholder": "Select here..",tabindex: "1" %>
+    </div>
+  </div>
+<% end %>

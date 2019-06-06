@@ -60,6 +60,8 @@ Rails.application.routes.draw do
     get 'rubbish',     on: :member
     get 'borrow_view', on: :member
     post 'borrow',     on: :member
+    get 'assign_view', on: :member
+    post 'assign',     on: :member
     get 'return_book', on: :member
     get 'recycle_book', on: :member
     get 'continue_borrow', on: :member
