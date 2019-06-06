@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new
-    @book.update_attributes(book_params)
+    # @book.update_attributes(book_params)
     if @book.update_attributes(book_params)
       flash["success"] = "添加成功"
     else
@@ -153,7 +153,21 @@ class BooksController < ApplicationController
   end
 
   def scan_barcode
-    
+  end
+
+  def scan_barcode_insert_isbn
+    if params[:isbn].present?
+      @temp_book_isbn = TempBookIsbn.new
+
+      respond_to do |format|
+        if @temp_book_isbn.update_attributes(isbn: params[:isbn])
+          format.json { render json: {status: 1, msg: "扫描成功"} }
+        else
+          format.json { render json: {status: 0, msg: @temp_book_isbn.errors.full_messages[0]} }
+        end
+      end
+
+    end
   end
 
   private

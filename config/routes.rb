@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     get  'all_comments',on: :member
     #扫描条形码
     get 'scan_barcode', on: :collection
+    get 'scan_barcode_insert_isbn', on: :collection
   end
   resources :book_classifications do
     get 'index_admin', on: :collection
