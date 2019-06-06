@@ -91,6 +91,24 @@ class BooksController < ApplicationController
     redirect_to request.referer
   end
 
+  def assign_view
+    @book = Book.find(params[:id])
+    render layout: false
+  end
+
+  def assign
+    @book = Book.find(params[:id])
+    # TODO: 可以优化
+    if @book.is_borrowed?
+      flash["error"] = "有人正在借阅，您现在不能借阅"
+    else
+      if @book.assign(params[:borrow][:borrower_time], params[:borrow][:borrower_id])
+        flash["success"] = "借阅成功"
+      end
+    end
+    redirect_to request.referer
+  end
+
   def continue_borrow
     @book = Book.find(params[:id])
     if @book.continue_borrow

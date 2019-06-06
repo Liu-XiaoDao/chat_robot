@@ -63,6 +63,9 @@
                         <% unless book.is_borrowed? %>
                           <a href="<%= borrow_view_book_path(book) %>" class="btn btn-primary" data-toggle="modal" data-target="#borrowModal" >借阅</a>
                         <% end %>
+                        <% if signed_in? && current_employee.isadmin? %>
+                          <a href="<%= assign_view_book_path(book) %>" class="btn btn-primary" data-toggle="modal" data-target="#borrowModal" >指定借阅</a>
+                        <% end %>
                       </td>
                     </tr>
                   <% end %>

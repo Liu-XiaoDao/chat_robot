@@ -24,6 +24,10 @@ class Book < ApplicationRecord
     borrow_records.create(employee_id: Employee.current_employee.id, borrow_range: borrow_time, borrow_start: Date.today, borrow_end: Date.today + 3.month) && self.update(is_borrowed: 1, borrower_id: Employee.current_employee.id)
   end
 
+  def assign(borrow_time, employee_id)
+    borrow_records.create(employee_id: employee_id, borrow_range: borrow_time, borrow_start: Date.today, borrow_end: Date.today + 3.month) && self.update(is_borrowed: 1, borrower_id: employee_id)
+  end
+
   def continue_borrow
     return if borrow_records.blank?
     return if borrow_records.last.blank?
