@@ -62,6 +62,8 @@ gem 'chartkick'
 gem "rubyXL", '~> 3.3.29'
 gem "spreadsheet", "~> 1.1.7"
 gem 'roo', "~> 1.13.2"
+gem "ruby-progressbar", "~> 1.7.0"
+gem "httparty", "~> 0.13.3"
 
 # gem 'ransack', "~> 1.8.8"
 
