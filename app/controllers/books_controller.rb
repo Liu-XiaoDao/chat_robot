@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new
-    @book.update_attributes(book_params)
+    # @book.update_attributes(book_params)
     if @book.update_attributes(book_params)
       flash["success"] = "添加成功"
     else
@@ -91,6 +91,24 @@ class BooksController < ApplicationController
     redirect_to request.referer
   end
 
+  def assign_view
+    @book = Book.find(params[:id])
+    render layout: false
+  end
+
+  def assign
+    @book = Book.find(params[:id])
+    # TODO: 可以优化
+    if @book.is_borrowed?
+      flash["error"] = "有人正在借阅，您现在不能借阅"
+    else
+      if @book.assign(params[:borrow][:borrower_time], params[:borrow][:borrower_id])
+        flash["success"] = "借阅成功"
+      end
+    end
+    redirect_to request.referer
+  end
+
   def continue_borrow
     @book = Book.find(params[:id])
     if @book.continue_borrow
@@ -153,7 +171,21 @@ class BooksController < ApplicationController
   end
 
   def scan_barcode
-    
+  end
+
+  def scan_barcode_insert_isbn
+    if params[:isbn].present?
+      @temp_book_isbn = TempBookIsbn.new
+
+      respond_to do |format|
+        if @temp_book_isbn.update_attributes(isbn: params[:isbn])
+          format.json { render json: {status: 1, msg: "扫描成功"} }
+        else
+          format.json { render json: {status: 0, msg: @temp_book_isbn.errors.full_messages[0]} }
+        end
+      end
+
+    end
   end
 
   private

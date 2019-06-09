@@ -60,6 +60,8 @@ Rails.application.routes.draw do
     get 'rubbish',     on: :member
     get 'borrow_view', on: :member
     post 'borrow',     on: :member
+    get 'assign_view', on: :member
+    post 'assign',     on: :member
     get 'return_book', on: :member
     get 'recycle_book', on: :member
     get 'continue_borrow', on: :member
@@ -70,6 +72,7 @@ Rails.application.routes.draw do
     get  'all_comments',on: :member
     #扫描条形码
     get 'scan_barcode', on: :collection
+    get 'scan_barcode_insert_isbn', on: :collection
   end
   resources :book_classifications do
     get 'index_admin', on: :collection

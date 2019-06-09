@@ -54,7 +54,7 @@
                     <tr>
                       <td><%= book.id %></td>
                       <td><%= link_to book.name, book_path(book) %></td>
-                      <td><%= book.author %></td>
+                      <td title="<%=book.author%>"><%= truncate(book.author,length: 15) %></td>
                       <td title="<%=book.intro%>"><%= truncate(book.intro,length: 100) %></td>
                       <td><%= book.classification_name %></td>
                       <td><%= book.status %></td>
@@ -62,6 +62,9 @@
                       <td>
                         <% unless book.is_borrowed? %>
                           <a href="<%= borrow_view_book_path(book) %>" class="btn btn-primary" data-toggle="modal" data-target="#borrowModal" >借阅</a>
+                        <% end %>
+                        <% if signed_in? && current_employee.isadmin? %>
+                          <a href="<%= assign_view_book_path(book) %>" class="btn btn-primary" data-toggle="modal" data-target="#borrowModal" >指定借阅</a>
                         <% end %>
                       </td>
                     </tr>

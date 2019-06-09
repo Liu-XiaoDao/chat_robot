@@ -27,7 +27,7 @@
                     <tr>
                       <td><%= book.id %></td>
                       <td><%= link_to book.name, book_path(book) %></td>
-                      <td><%= book.author %></td>
+                      <td title="<%=book.author%>"><%= truncate(book.author,length: 15) %></td>
                       <td title="<%=book.intro%>"><%= truncate(book.intro,length: 100) %></td>
                       <td><%= book.classification_name %></td>
                       <td><%= book.status %></td>

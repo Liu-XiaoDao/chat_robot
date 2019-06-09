@@ -58,6 +58,31 @@
 //   });
 // });
 
+var insert_isbn = function (isbn) {
+  var insertIsbn = {
+      url: '/books/scan_barcode_insert_isbn',
+      type: 'GET',
+      data:{isbn:isbn},
+      dataType: 'json',
+      success: function(response){
+          if (response.status === 1){
+            var insert_html = '<tr class="unread">' +
+            '<td class="cell-title">' +
+            isbn + '插入成功' +
+            '</td>' +
+            '</tr>';
+            $(".heading").after(insert_html);
+          } else {
+              alert(JSON.stringify(response));
+          }
+      },
+      error: function(err){
+          alert(JSON.stringify(err));
+      }
+  }
+  $.ajax(insertIsbn);
+}
+
 
 $("#scan_barcode").click(function () {
   dd.ready(function(){
@@ -69,12 +94,7 @@ $("#scan_barcode").click(function () {
         /* data结构
           { 'text': String}
         */
-        var insert_html = '<tr class="unread">' +
-        '<td class="cell-title">' +
-        data['text'] +
-        '</td>' +
-        '</tr>';
-        $(".heading").after(insert_html);
+        insert_isbn(data['text']);
       },
       onFail : function(err) {
       }
