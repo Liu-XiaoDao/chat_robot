@@ -32,5 +32,9 @@
 			$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
 		} );
 	</script>
-
+  <% if !signed_in? %>
+    <script type="text/javascript">
+      $("body").mLoading();
+    </script>
+  <% end %>
 </html>

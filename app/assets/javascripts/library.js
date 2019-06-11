@@ -29,7 +29,7 @@
         var avatar_url = proper.userInfo.avatar;
         var name = proper.userInfo.name;
         $('#nav-avatar').attr('src', avatar_url);
-        alert(name + ": 登录成功");
+        // alert(name + ": 登录成功");
         window.location.href = "/library";
         // $('#info').html(JSON.stringify(proper.userInfo));
     }

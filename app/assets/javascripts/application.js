@@ -31,3 +31,6 @@
 
 // 这个是简单富文本编辑器
 //= require wangEditor.min
+
+// 加载遮照层
+//= require jquery.mloading
