@@ -35,7 +35,7 @@ class Employee < ApplicationRecord
   def send_annual_blessing_notificaion(number)
     accessToken = AuthService.new.getAccessToken()
     data = {
-      "chatid":'chat13259255df02a579a5f7491b0553bc29',
+      "chatid":'chat7f183dc9f7d420e1bc1892dd4c0df529',
       "agentid":180734473,
       "msgtype":"text",
       "text": {
