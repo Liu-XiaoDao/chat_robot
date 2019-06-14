@@ -105,6 +105,7 @@ class EmployeesController < ApplicationController
   end
 
   def parse_employee(employee)
+    hired_date = Time.at(employee["hiredDate"].present? ? employee["hiredDate"]/1000 : 0)
     {
       position: employee["position"],
       department_id: employee["department"].join(","),
@@ -116,7 +117,8 @@ class EmployeesController < ApplicationController
       active: employee["active"],
       openid: employee["openId"],
       avatar: employee["avatar"],
-      isadmin: employee["isAdmin"]
+      isadmin: employee["isAdmin"],
+      hired_date: hired_date
     }
   end
 end

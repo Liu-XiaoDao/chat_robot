@@ -9,4 +9,11 @@ namespace :sync_dep_emp do
     LogService.i("[sync_employee] #{msg}");
   end
 
+  desc "每天从钉钉上同步部门和员工"
+  task(:annual_blessing => :environment) do
+    Employee.all.each do |employee|
+      employee.annual_blessing
+    end
+  end
+
 end
