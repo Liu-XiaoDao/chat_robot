@@ -77,6 +77,7 @@ class EmployeesController < ApplicationController
     accessToken = @auth.getAccessToken() #获取token
     @msg = ""
     @departments = Department.all
+    Employee.all.update_all(is_leave: 1)
 
     @departments.each do |department|
       department_employees = @user.list(accessToken,department.id)
@@ -118,7 +119,8 @@ class EmployeesController < ApplicationController
       openid: employee["openId"],
       avatar: employee["avatar"],
       isadmin: employee["isAdmin"],
-      hired_date: hired_date
+      hired_date: hired_date,
+      is_leave: 0
     }
   end
 end
