@@ -93,5 +93,32 @@ binding.pry
 
   end
 
+  desc "从豆瓣上下载封面图片"
+  task(:wget_img => :environment) do
+    Book.where(isbn: nil).each do |book|
+      # uri = URI.parse()
+      begin
+        html =  RestClient.get(URI.escape(book.douban_url)).body
+        doc  =  Nokogiri::HTML.parse(html)
+
+        img_url = doc.css('.nbg').attr('href').text
+        info = doc.css('.subject > #info').text.gsub("\n", "").gsub("\s", "")
+        if info.present?
+          c_index = info.index("出版社")
+          c_index = c_index.present? ? c_index - 1 : 0
+          author = info[0..c_index]
+
+          i_index = info.index("ISBN")
+          i_index = i_index.present? ? i_index : -1
+          isbn = info[i_index..-1]
+        end
+        summary = doc.css('.related_info .intro').text
+        book.update(author: author, intro: summary, isbn: isbn, img_url: img_url, info: info)
+        puts "#{book.name}获取豆瓣详情完成"
+      rescue => e
+        puts "ERROR:#{book.name}------获取豆瓣详情出错"
+      end
+    end
+  end
 
 end
