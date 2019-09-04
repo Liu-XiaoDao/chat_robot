@@ -4,7 +4,7 @@ set :application, 'robot'
 
 set :branch, 'master'
 
-set :deploy_to, "/usr/rubyWeb/#{fetch(:application)}"
+set :deploy_to, "/home/ubuntu/web/#{fetch(:application)}"
 set :rails_env, 'staging'
 server "117.50.59.164", user: "ubuntu", roles: %w{app db web}, my_property: :my_value
 
