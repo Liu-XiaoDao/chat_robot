@@ -2,7 +2,7 @@ set :application, 'robot'
 
 # server '10.8.1.36', roles: [:app, :web, :db], primary: true
 
-set :branch, 'master'
+set :branch, 'staging'
 
 set :deploy_to, "/home/ubuntu/web/#{fetch(:application)}"
 set :rails_env, 'staging'
@@ -13,7 +13,7 @@ set :use_sudo, true
 set :ssh_options, {
     forward_agent: true,
     #auth_methods: %w(password),
-    password: 'DuXiao1991Xue',
+    # password: 'clliu',
     user: 'myuser',
 }
 
