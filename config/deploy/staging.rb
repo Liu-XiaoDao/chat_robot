@@ -6,14 +6,14 @@ set :branch, 'master'
 
 set :deploy_to, "/usr/rubyWeb/#{fetch(:application)}"
 set :rails_env, 'staging'
-server "106.12.96.28", user: "xiaodao", roles: %w{app db web}, my_property: :my_value
+server "117.50.59.164", user: "ubuntu", roles: %w{app db web}, my_property: :my_value
 
 
 set :use_sudo, true
 set :ssh_options, {
     forward_agent: true,
     #auth_methods: %w(password),
-    password: 'Liu7721628',
+    password: 'DuXiao1991Xue',
     user: 'myuser',
 }
 
