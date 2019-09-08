@@ -13,4 +13,9 @@ class MessageService
     response = @http.post("/message/send",{access_token: accessToken}, opt.to_json)
     return response
   end
+
+  def send_chat(accessToken, opt)
+    response = @http.post("/chat/send",{access_token: accessToken}, opt.to_json)
+    return response
+  end
 end

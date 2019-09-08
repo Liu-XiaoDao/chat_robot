@@ -1,7 +1,7 @@
 class CountRecord < ApplicationRecord
   belongs_to :employee, optional: true
-  belongs_to :book, foreign_key: "target_id"
-  belongs_to :question, foreign_key: "target_id"
+  belongs_to :book, foreign_key: "target_id", optional: true
+  belongs_to :question, foreign_key: "target_id", optional: true
 
   def book_name
     book.try(:name)

@@ -21,4 +21,32 @@ class Employee < ApplicationRecord
   def department_name
     department.try(:name)
   end
+
+  def annual_blessing
+    return if hired_date.blank?
+    hired_year, hired_month, hired_day = hired_date.year, hired_date.month, hired_date.day
+    current_year, current_month, current_day = Date.today.year, Date.today.month, Date.today.day
+
+    if current_month == hired_month && current_day == hired_day
+      send_annual_blessing_notificaion(current_year - hired_year)
+    end
+  end
+
+  def send_annual_blessing_notificaion(number)
+    accessToken = AuthService.new.getAccessToken()
+    data = {
+      "chatid":'chat9b2fe210aee984aa0f46fb4611afc144',
+      "agentid":180734473,
+      "msgtype":"text",
+      "text": {
+        "content": "恭喜 #{name}入职#{number}周年"
+      }
+    }
+    msg = MessageService.new.send_chat(accessToken,data)
+    if msg.code == 200
+      LogService.i("[notification_send] SUC: 员工祝贺发送成功,姓名:#{self.name}")
+    else
+      LogService.e("[notification_send] ERR: 员工祝贺发送失败,姓名:#{self.name}")
+    end
+  end
 end

@@ -77,6 +77,7 @@ class EmployeesController < ApplicationController
     accessToken = @auth.getAccessToken() #获取token
     @msg = ""
     @departments = Department.all
+    Employee.all.update_all(is_leave: 1)
 
     @departments.each do |department|
       department_employees = @user.list(accessToken,department.id)
@@ -105,6 +106,7 @@ class EmployeesController < ApplicationController
   end
 
   def parse_employee(employee)
+    hired_date = Time.at(employee["hiredDate"].present? ? employee["hiredDate"]/1000 : 0)
     {
       position: employee["position"],
       department_id: employee["department"].join(","),
@@ -116,7 +118,9 @@ class EmployeesController < ApplicationController
       active: employee["active"],
       openid: employee["openId"],
       avatar: employee["avatar"],
-      isadmin: employee["isAdmin"]
+      isadmin: employee["isAdmin"],
+      hired_date: hired_date,
+      is_leave: 0
     }
   end
 end
