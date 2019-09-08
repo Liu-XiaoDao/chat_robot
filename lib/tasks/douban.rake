@@ -56,22 +56,24 @@ namespace :douban do
   task(:fetch_book_detail_use_isbn => :environment) do
     @progress_bar ||= ProgressBar.create(
       :format         => "%t - %c / %C %b>%i %p%% %t",
-      :total          => ['1', '2'].size
+      :total          => TempBookIsbn.count
     )
-    Tempfile.create("s29383634.jpg", encoding: 'ascii-8bit') do |tmpfile|
-      tmpfile << HTTParty.get("https://img3.doubanio.com/view/subject/l/public/s29383634.jpg")
-      tmpfile.flush
-      FileUtils.cp tmpfile, File.join(".", "s29383634.jpg")
-    end
-    binding.pry
+    # 100.times do |i|
+    #   @progress_bar.increment
+    # end
+    # binding.pry
 
     TempBookIsbn.all.each do |isbn|
-      # uri = URI.parse()
       begin
-        html =  RestClient.get(URI.escape("https://book.douban.com/isbn/9787515404769/")).body
+        @progress_bar.increment
+        puts "------begin:#{isbn.isbn}------"
+        html =  RestClient.get(URI.escape("https://book.douban.com/isbn/#{isbn.isbn}/")).body
         doc  =  Nokogiri::HTML.parse(html)
-binding.pry
+
         img_url = doc.css('.nbg').attr('href').text
+        title = doc.css('#wrapper h1 span').text
+        all_intro = doc.css('.related_info .indent .all .intro').text
+        intro = all_intro.present? ? all_intro : doc.css('.related_info .indent .intro').text
         info = doc.css('.subject > #info').text.gsub("\n", "").gsub("\s", "")
         if info.present?
           c_index = info.index("出版社")
@@ -83,14 +85,19 @@ binding.pry
           isbn = info[i_index..-1]
         end
         summary = doc.css('.related_info .intro').text
-        book.update(author: author, intro: summary, isbn: isbn, img_url: img_url, info: info)
-        puts "#{book.name}获取豆瓣详情完成"
+        # Book.create(author: author, intro: summary, isbn: isbn, img_url: img_url, info: info)
+        Tempfile.create("#{isbn.split(":").last}.jpg", encoding: 'ascii-8bit') do |tmpfile|
+          tmpfile << HTTParty.get(img_url)
+          tmpfile.flush
+          FileUtils.cp tmpfile, File.join("public/images/cover/", "#{isbn.split(":").last}.jpg")
+        end
+
+        puts "------#{title}获取豆瓣详情完成------"
+        puts "author: #{author}\nintro: #{intro}\nisbn: #{isbn}\nimg_url: #{img_url}\ninfo: #{info}"
       rescue => e
-        puts "ERROR:#{book.name}------获取豆瓣详情出错"
+        puts "ERROR:#{isbn}------获取豆瓣详情出错"
       end
     end
-
-
   end
 
 
