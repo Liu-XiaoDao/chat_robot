@@ -69,7 +69,7 @@ namespace :douban do
         puts "------begin:#{isbn.isbn}------"
         html =  RestClient.get(URI.escape("https://book.douban.com/isbn/#{isbn.isbn}/")).body
         doc  =  Nokogiri::HTML.parse(html)
-
+        puts "------开始解析"
         img_url = doc.css('.nbg').attr('href').text
         title = doc.css('#wrapper h1 span').text
         all_intro = doc.css('.related_info .indent .all .intro').text
@@ -85,14 +85,15 @@ namespace :douban do
           var_isbn = info[i_index..-1]
         end
         summary = doc.css('.related_info .intro').text
+        puts "------开始插入"
         if Book.create(name: title, author: author, intro: summary, isbn: var_isbn, img_url: img_url, info: info)
           isbn.update(is_scrapy: true)
         end
-        Tempfile.create("#{var_isbn.split(":").last}.jpg", encoding: 'ascii-8bit') do |tmpfile|
-          tmpfile << HTTParty.get(img_url)
-          tmpfile.flush
-          FileUtils.cp tmpfile, File.join("public/images/cover/", "#{var_isbn.split(":").last}.jpg")
-        end
+        # Tempfile.create("#{var_isbn.split(":").last}.jpg", encoding: 'ascii-8bit') do |tmpfile|
+        #   tmpfile << HTTParty.get(img_url)
+        #   tmpfile.flush
+        #   FileUtils.cp tmpfile, File.join("public/images/cover/", "#{var_isbn.split(":").last}.jpg")
+        # end
         puts "------#{title}获取豆瓣详情完成------"
         puts "author: #{author}\nintro: #{intro}\nisbn: #{var_isbn}\nimg_url: #{img_url}\ninfo: #{info}"
       rescue => e
