@@ -130,4 +130,23 @@ namespace :douban do
     end
   end
 
+  desc "从豆瓣上下载封面图片文件"
+  task(:wget_img_file => :environment) do
+    Book.where(img_path: nil).each do |book|
+      puts book.id
+      img_file_name = Digest::SHA256.hexdigest book.name
+      begin
+        Tempfile.create("#{img_file_name}.jpg", encoding: 'ascii-8bit') do |tmpfile|
+          tmpfile << HTTParty.get(book.img_url)
+          tmpfile.flush
+          FileUtils.cp tmpfile, File.join("public/images/cover/", "#{img_file_name}.jpg")
+        end
+        book.update(img_path: "/images/cover/#{img_file_name}.jpg")
+        puts "#{book.id}:suc"
+      rescue => e
+        puts "ERROR:#{book.name}------下载封面失败"
+      end
+    end
+  end
+
 end
