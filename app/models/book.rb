@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-  belongs_to :book_classification
+  belongs_to :book_classification, optional: true
   belongs_to :borrower, class_name: 'Employee', optional: true
   has_many :count_records, ->{ where( count_records: { target_class: "book" } ) }, :foreign_key => :target_id
   has_many :borrow_records

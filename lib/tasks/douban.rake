@@ -63,7 +63,7 @@ namespace :douban do
     # end
     # binding.pry
 
-    TempBookIsbn.all.each do |isbn|
+    TempBookIsbn.where(is_scrapy: false).each do |isbn|
       begin
         @progress_bar.increment
         puts "------begin:#{isbn.isbn}------"
@@ -82,20 +82,21 @@ namespace :douban do
 
           i_index = info.index("ISBN")
           i_index = i_index.present? ? i_index : -1
-          isbn = info[i_index..-1]
+          var_isbn = info[i_index..-1]
         end
         summary = doc.css('.related_info .intro').text
-        # Book.create(author: author, intro: summary, isbn: isbn, img_url: img_url, info: info)
-        Tempfile.create("#{isbn.split(":").last}.jpg", encoding: 'ascii-8bit') do |tmpfile|
+        if Book.create(name: title, author: author, intro: summary, isbn: var_isbn, img_url: img_url, info: info)
+          isbn.update(is_scrapy: true)
+        end
+        Tempfile.create("#{var_isbn.split(":").last}.jpg", encoding: 'ascii-8bit') do |tmpfile|
           tmpfile << HTTParty.get(img_url)
           tmpfile.flush
-          FileUtils.cp tmpfile, File.join("public/images/cover/", "#{isbn.split(":").last}.jpg")
+          FileUtils.cp tmpfile, File.join("public/images/cover/", "#{var_isbn.split(":").last}.jpg")
         end
-
         puts "------#{title}获取豆瓣详情完成------"
-        puts "author: #{author}\nintro: #{intro}\nisbn: #{isbn}\nimg_url: #{img_url}\ninfo: #{info}"
+        puts "author: #{author}\nintro: #{intro}\nisbn: #{var_isbn}\nimg_url: #{img_url}\ninfo: #{info}"
       rescue => e
-        puts "ERROR:#{isbn}------获取豆瓣详情出错"
+        puts "ERROR:#{isbn.isbn}------获取豆瓣详情出错"
       end
     end
   end

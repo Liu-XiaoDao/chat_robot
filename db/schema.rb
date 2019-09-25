@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190623123511) do
+ActiveRecord::Schema.define(version: 20190925005411) do
 
   create_table "blorgh_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20190623123511) do
     t.string "isbn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "is_scrapy", limit: 1, default: 0, comment: "记录此isbn是否抓取"
   end
 
   create_table "user_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
