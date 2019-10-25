@@ -34,3 +34,6 @@
 
 // 加载遮照层
 //= require jquery.mloading
+
+// 提示框
+//= require mTips

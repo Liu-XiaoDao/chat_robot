@@ -55,7 +55,7 @@
                       <td><%= book.id %></td>
                       <td><%= link_to book.name, book_path(book) %></td>
                       <td title="<%=book.author%>"><%= truncate(book.author,length: 10) %></td>
-                      <td title="<%=book.intro%>"><%= truncate(book.intro,length: 30) %></td>
+                      <td title="<%=book.intro%>" data-mtpis='<%= book.intro %>'><%= truncate(book.intro,length: 30) %></td>
                       <td><%= book.classification_name %></td>
                       <td><%= book.status %></td>
                       <td><%= link_to 'Edit', edit_book_path(book), class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
