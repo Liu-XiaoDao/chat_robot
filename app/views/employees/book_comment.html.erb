@@ -14,7 +14,6 @@
                   <tr>
                     <th>#</th>
                     <th>书名</th>
-                    <th>分类</th>
                     <th>评价</th>
                     <th>时间</th>
                   </tr>
@@ -24,7 +23,6 @@
                     <tr>
                       <td><%= comment.id %></td>
                       <td><%= link_to comment.book_name, book_path(comment.book) %></td>
-                      <td><%= comment.book_classification %></td>
                       <td><%= comment.body %></td>
                       <td><%= comment.comment_time %></td>
                     </tr>

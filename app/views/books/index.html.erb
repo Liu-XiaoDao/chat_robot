@@ -14,9 +14,9 @@
                 <thead>
                   <tr>
                     <th style="width:2%">#</th>
-                    <th style="width:8%">书名</th>
-                    <th style="width:5%">作者</th>
-                    <th style="width:60%">简介</th>
+                    <th style="width:20%">书名</th>
+                    <th style="width:13%">作者</th>
+                    <th style="width:40%">简介</th>
                     <th style="width:8%">分类</th>
                     <th style="width:8%">状态</th>
                     <th style="width:9%">操作</th>
@@ -27,8 +27,8 @@
                     <tr>
                       <td><%= book.id %></td>
                       <td><%= link_to book.name, book_path(book) %></td>
-                      <td title="<%=book.author%>"><%= truncate(book.author,length: 15) %></td>
-                      <td title="<%=book.intro%>"><%= truncate(book.intro,length: 100) %></td>
+                      <td title="<%=book.author%>"><%= truncate(book.author,length: 10) %></td>
+                      <td title="<%=book.intro%>"><%= truncate(book.intro,length: 30) %></td>
                       <td><%= book.classification_name %></td>
                       <td><%= book.status %></td>
                       <td>
