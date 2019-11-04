@@ -67,7 +67,7 @@ class Book < ApplicationRecord
     return if borrow_records.last.blank?
 
     if (Date.today + 7.days) > borrow_records.last.borrow_end
-      Notification.create(target_type: self.class.name, target_id: self.id, content: "# 还书提醒!!! \n##### Hi,#{borrower.name}您借阅图书即将到期,请及时归还,不要有遗漏. \n###### #{Time.now.try(:strftime, "%Y-%m-%d %H:%M:%S")}")
+      Notification.create(target_type: self.class.name, target_id: self.id, content: "# 还书提醒!!! \n##### Hi,#{borrower.name}您借阅图书即将到期,请及时归还,不要有遗漏(根据之前登记excel提醒，如果已经还书也请在系统中操作). [使用帮助](dingtalk://dingtalkclient/page/link?url=http%3A%2F%2Fhan-express.abcam.com%2questions%22&pc_slide=true) \n###### #{Time.now.try(:strftime, "%Y-%m-%d %H:%M:%S")}")
     end
   end
 
