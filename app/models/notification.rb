@@ -9,7 +9,7 @@ class Notification < ApplicationRecord
       "agentid":180734473,
       "msgtype":"markdown",
       "markdown": {
-        "title": "快递来了!!!",
+        "title": "还书提醒",
         "text": "#{content}"
       }
     }
