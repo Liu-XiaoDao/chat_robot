@@ -33,8 +33,8 @@ class Book < ApplicationRecord
     return if borrow_records.last.blank?
 
     last_borrow_record = borrow_records.last
-    new_borrow_range = Integer(last_borrow_record.borrow_range) + 1
-    new_borrow_end = last_borrow_record.borrow_end + 1.month
+    new_borrow_range = Integer(last_borrow_record.borrow_range) + 3
+    new_borrow_end = last_borrow_record.borrow_end + 3.month
     last_borrow_record.update(borrow_range: new_borrow_range, borrow_end: new_borrow_end)
   end
 
