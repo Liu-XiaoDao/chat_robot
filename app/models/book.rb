@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   has_many :comments
   has_many :notifications, as: :target
 
-  scope :top_5, ->{order(:praise_count)}
+  scope :top_5, ->{order(praise_count: :desc)}
 
   def classification_name
     book_classification.try :name
