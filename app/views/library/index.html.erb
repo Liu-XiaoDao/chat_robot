@@ -11,7 +11,7 @@
                   <div class="span12">
                     <a href="#" class="btn-box small span4"><i class="icon-book"></i><b>图书: <%= Book.all.count %></b></a>
                     <a href="#" class="btn-box small span4"><i class="icon-tasks"></i><b>分类: <%= BookClassification.all.count %></b></a>
-                    <a href="#" class="btn-box small span4"><i class="icon-group"></i><b>员工：<%= Employee.all.count %></b></a>
+                    <a href="#" class="btn-box small span4"><i class="icon-group"></i><b>员工：<%= Employee.where(is_leave: 0).count %></b></a>
                   </div>
                 </div>
               </div>
