@@ -1,7 +1,8 @@
 class ExpressesController < ApplicationController
   def index
     if params[:search_name].present?
-      @expresses = Express.where(employee_id: Employee.find_by_name(params[:search_name]).id).paginate page: params[:page], per_page: 18
+      @expresses = Express.joins("left join employees on employees.id = expresses.employee_id where employees.name like \"%#{params[:search_name]}%\"").paginate page: params[:page], per_page: 18
+      # @expresses = Express.where(employee_id: Employee.find_by_name(params[:search_name]).id).paginate page: params[:page], per_page: 18
     else
       @expresses = Express.all.paginate page: params[:page], per_page: 18
     end
