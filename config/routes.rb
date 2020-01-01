@@ -86,6 +86,15 @@ Rails.application.routes.draw do
   get '/library/comments' => 'library#comments' #图书管理评论
   get '/library/return_records' => 'library#return_records' #图书管理归还记录
 
+  # 下面是金点子相关
+  get '/golden_idea' => 'golden_idea/application#index'
+  namespace :golden_idea do
+    resources :seasons do
+      get 'index_admin', on: :collection
+      get 'show_admin',  on: :member
+    end
+  end
+
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'

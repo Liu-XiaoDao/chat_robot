@@ -1,0 +1,94 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'library/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+              <h3>图书-<%=@book_classification.name%></h3>
+            </div>
+            <div class="module-option clearfix">
+              <div class="pull-right">
+                <%= link_to 'Create', new_book_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+              </div>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="width:2%">#</th>
+                    <th style="width:20%">书名</th>
+                    <th style="width:13%">作者</th>
+                    <th style="width:50%">简介</th>
+                    <th style="width:5%">状态</th>
+                    <th style="width:10%">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @classification_books.each do |book| %>
+                    <tr>
+                      <td><%= book.id %></td>
+                      <td><%= link_to book.name, book_path(book) %></td>
+                      <td title="<%=book.author%>"><%= truncate(book.author,length: 15) %></td>
+                      <td title="<%=book.intro%>"><%= truncate(book.intro,length: 100) %></td>
+                      <td><%= book.status %></td>
+                      <td><%= link_to 'Edit', edit_book_path(book), class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= will_paginate @classification_books, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="info" class="span9">
+
+      </div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>Edit Book</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('create_book_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+
+
+<script type="text/javascript">
+  $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>
+<div class="">
+  <%=Employee.current_employee.inspect%>
+  <%= session[:employee_name] %>
+</div>

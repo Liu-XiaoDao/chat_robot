@@ -1,0 +1,84 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+               <h3>金点子分类-管理</h3>
+            </div>
+            <div class="module-option clearfix">
+                <div class="pull-right">
+                   <%= link_to 'Create', new_golden_idea_season_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+                </div>
+            </div>
+            <div class="module-body">
+              <%= render "golden_idea/application/flash" %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>分类名</th>
+                    <th>数量</th>
+                    <th class="cell-btn align-right">操作</th>
+                    <th class="cell-btn align-right"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @seasons.each do |season| %>
+                    <tr>
+                      <td><%= season.id %></td>
+                      <td><%= link_to season.name, show_admin_golden_idea_season_path(season) %></td>
+                      <td><%=  %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_season_path(season), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_season_path(season), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+
+
+<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>编辑分类</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('create_book_classification_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+<script>
+  $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+
+<style type="text/css">
+.modal-backdrop, .modal-backdrop.fade.in {
+  background: #000000;
+  opacity: .8
+}
+</style>

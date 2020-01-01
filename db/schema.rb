@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190925015957) do
+ActiveRecord::Schema.define(version: 20191224153146) do
 
   create_table "blorgh_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
@@ -115,6 +115,14 @@ ActiveRecord::Schema.define(version: 20190925015957) do
     t.integer "employee_id"
     t.string "express_type"
     t.boolean "is_send_noti"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "golden_idea_seasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

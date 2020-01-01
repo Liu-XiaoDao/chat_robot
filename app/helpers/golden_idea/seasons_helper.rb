@@ -1,0 +1,2 @@
+module GoldenIdea::SeasonsHelper
+end

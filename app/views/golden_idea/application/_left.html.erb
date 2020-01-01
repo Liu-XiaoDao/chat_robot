@@ -1,0 +1,61 @@
+<div class="span3">
+  <div class="sidebar">
+
+    <ul class="widget widget-menu unstyled">
+      <% if signed_in? && current_employee.isadmin? %>
+        <li class="active">
+          <a href="<%= index_admin_books_path %>">
+            <i class="menu-icon icon-book"></i>
+            所有金点子-管理
+          </a>
+        </li>
+        <li>
+          <a href="<%= index_admin_golden_idea_seasons_path %>">
+            <i class="menu-icon icon-tasks"></i>
+            金点子期-管理
+          </a>
+        </li>
+      <% else %>
+        <li class="active">
+          <a href="<%= books_path %>">
+            <i class="menu-icon icon-book"></i>
+            所有图书
+          </a>
+        </li>
+        <li>
+          <a href="<%= book_classifications_path %>">
+            <i class="menu-icon icon-tasks"></i>
+            图书分类
+          </a>
+        </li>
+      <% end %>
+    </ul><!--/.widget-nav-->
+    <ul class="widget widget-menu unstyled">
+      <% if signed_in? && current_employee.isadmin? %>
+        <li>
+          <a class="collapsed" data-toggle="collapse" href="#togglePages_admin">
+            <i class="menu-icon icon-cog"></i>
+            <i class="icon-chevron-down pull-right"></i>
+            <i class="icon-chevron-up pull-right"></i>
+            管理员
+          </a>
+          <ul id="togglePages_admin" class="collapse unstyled">
+            <li><a href="<%= library_borrow_books_path %>">借阅-管理</a></li>
+            <li><a href="<%= library_comments_path %>">评论-管理</a></li>
+            <li><a href="<%= library_borrow_records_path %>">借阅记录-管理</a></li>
+            <li><a href="<%= library_return_records_path %>">归还记录-管理</a></li>
+            <li><a href="<%= library_praise_rubbishs_path %>">评价-管理</a></li>
+          </ul>
+        </li>
+      <% end %>
+      <% if signed_in? %>
+        <li><a href="<%= borrow_book_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的金点子</a></li>
+        <li><a href="<%= book_comment_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的评论</a></li>
+        <li><a href="<%= borrow_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>借阅记录</a></li>
+        <li><a href="<%= return_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>归还记录</a></li>
+        <li><a href="<%= book_praise_rubbish_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>赞/踩</a></li>
+      <% end %>
+    </ul>
+
+  </div><!--/.sidebar-->
+</div><!--/.span3-->

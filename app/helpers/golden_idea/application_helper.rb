@@ -1,0 +1,2 @@
+module GoldenIdea::ApplicationHelper
+end
