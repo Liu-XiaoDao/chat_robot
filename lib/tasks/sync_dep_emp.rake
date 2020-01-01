@@ -9,10 +9,17 @@ namespace :sync_dep_emp do
     LogService.i("[sync_employee] #{msg}");
   end
 
-  desc "每天从钉钉上同步部门和员工"
+  desc "每天提醒员工周年庆"
   task(:annual_blessing => :environment) do
     Employee.where(is_leave: 0).each do |employee|
-      employee.annual_blessing
+      employee.annual_blessing(true)
+    end
+  end
+
+  desc "每天提醒员工周年庆to chunliang"
+  task(:annual_blessing_to_chunliang => :environment) do
+    Employee.where(is_leave: 0).each do |employee|
+      employee.annual_blessing(false)
     end
   end
 
