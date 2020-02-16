@@ -35,12 +35,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "http://han-express.abcam.com" }
   config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
   ###########异常通知############
-  Rails.application.config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "[宜康钉钉助手] ",
-    :sender_address => %{<liu_xiaodao@163.com>},
-    :exception_recipients => %w{957419420@qq.com}
-  }
+  #Rails.application.config.middleware.use ExceptionNotification::Rack,
+  #:email => {
+  #  :email_prefix => "[宜康钉钉助手] ",
+  #  :sender_address => %{<liu_xiaodao@163.com>},
+  #  :exception_recipients => %w{957419420@qq.com}
+  #}
   ###############################
 
   # Print deprecation notices to the Rails logger.

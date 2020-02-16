@@ -9,8 +9,8 @@
               <div class="span12">
                 <div class="row-fluid">
                   <div class="span12">
-                    <a href="#" class="btn-box small span4"><i class="icon-book"></i><b>图书: <%= Book.all.count %></b></a>
-                    <a href="#" class="btn-box small span4"><i class="icon-tasks"></i><b>分类: <%= BookClassification.all.count %></b></a>
+                    <a href="#" class="btn-box small span4"><i class="icon-book"></i><b>金点子: <%= GoldenIdea::Idea.all.count %></b></a>
+                    <a href="#" class="btn-box small span4"><i class="icon-tasks"></i><b>金点子期数: <%= GoldenIdea::Season.all.count %></b></a>
                     <a href="#" class="btn-box small span4"><i class="icon-group"></i><b>员工：<%= Employee.where(is_leave: 0).count %></b></a>
                   </div>
                 </div>
@@ -27,25 +27,35 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th style="width:2%">#</th>
-                    <th style="width:15%">书名</th>
-                    <th style="width:15%">作者</th>
-                    <th style="width:10%">分类</th>
-                    <th style="width:15%">点赞次数</th>
-                    <th style="width:15%">借阅次数</th>
-                    <th style="width:10%">状态</th>
+                    <th>#</th>
+                    <th>分类</th>
+                    <th>标题</th>
+                    <th>提议人</th>
+                    <th>部门</th>
+                    <th>内容描述</th>
+                    <th class="cell-btn align-right">操作</th>
+                    <th class="cell-btn align-right"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% Book.top_5.first(5).each do |book| %>
+                  <% GoldenIdea::Idea.first(5).each do |golden_idea| %>
                     <tr>
-                      <td><%= book.id %></td>
-                      <td><%= link_to book.name, book_path(book) %></td>
-                      <td title="<%=book.author%>"><%= truncate(book.author,length: 30) %></td>
-                      <td><%= book.classification_name %></td>
-                      <td><%= book.praise_count %></td>
-                      <td><%= book.borrow_records.count %></td>
-                      <td><%= book.status %></td>
+                      <td><%= golden_idea.id %></td>
+                      <td><%= golden_idea.category %></td>
+                      <td><%= link_to golden_idea.title, show_admin_golden_idea_idea_path(golden_idea) %></td>
+                      <td>
+                        <% if golden_idea.proposers.present? %>
+                          <% golden_idea.proposers.split(',').each do |u_id| %>
+                            <% user = Employee.find(u_id) %>
+                            <%= link_to user.name, user %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                      <td><%= golden_idea.department %></td>
+                      <td><%= golden_idea.description %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Content', edit_content_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_idea_path(golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
                     </tr>
                   <% end %>
                 </tbody>

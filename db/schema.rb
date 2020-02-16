@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191224153146) do
+ActiveRecord::Schema.define(version: 20200213164721) do
+
+  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "attachment"
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.string "attachable_type"
+    t.integer "attachable_id"
+    t.text "notes"
+    t.string "attachment_file_size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "blorgh_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
@@ -109,6 +121,7 @@ ActiveRecord::Schema.define(version: 20191224153146) do
     t.string "linear_telephone"
     t.date "hired_date"
     t.integer "is_leave", limit: 1, default: 0, comment: "记录员工是否离职,已离职:1,未离职:0"
+    t.decimal "credits", precision: 8, scale: 3
   end
 
   create_table "expresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -119,12 +132,28 @@ ActiveRecord::Schema.define(version: 20191224153146) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "golden_idea_ideas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "title"
+    t.string "description"
+    t.string "department"
+    t.string "category"
+    t.string "status"
+    t.text "content"
+    t.string "proposer"
+    t.bigint "season_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "score", precision: 8, scale: 3
+    t.index ["season_id"], name: "index_golden_idea_ideas_on_season_id"
+  end
+
   create_table "golden_idea_seasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
   end
 
   create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

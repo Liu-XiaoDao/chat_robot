@@ -1,37 +1,47 @@
 <div class="wrapper wrapper-library">
   <div class="container">
     <div class="row">
-      <%= render 'library/left' %>
+      <%= render 'golden_idea/application/left' %>
       <div class="span9">
         <div class="content">
           <div class="module">
             <div class="module-head">
-              <h3>图书-<%=@book_classification.name%></h3>
+              <h3>金点子-<%=@season.name%></h3>
             </div>
             <div class="module-body">
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th style="width:2%">#</th>
-                    <th style="width:25%">书名</th>
-                    <th style="width:15%">作者</th>
-                    <th style="width:50%">简介</th>
-                    <th style="width:8%">状态</th>
+                    <th>#</th>
+                    <th>分类</th>
+                    <th>标题</th>
+                    <th>提议人</th>
+                    <th>部门</th>
+                    <th>内容描述</th>
+                    <th>得分</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @classification_books.each do |book| %>
+                  <% @ideas.each do |idea| %>
                     <tr>
-                      <td><%= book.id %></td>
-                      <td><%= link_to book.name, book_path(book) %></td>
-                      <td title="<%=book.author%>"><%= truncate(book.author,length: 15) %></td>
-                      <td title="<%=book.intro%>"><%= truncate(book.intro,length: 100) %></td>
-                      <td><%= book.status %></td>
+                      <td><%= idea.id %></td>
+                      <td><%= idea.category %></td>
+                      <td><%= link_to idea.title, show_admin_golden_idea_idea_path(idea) %></td>
+                      <td>
+                        <% if idea.proposers.present? %>
+                          <% idea.proposers.split(',').each do |u_id| %>
+                            <% user = Employee.find(u_id) %>
+                            <%= link_to user.name, user %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                      <td><%= idea.department %></td>
+                      <td><%= idea.description %></td>
+                      <td><%= idea.score %></td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
-              <%= will_paginate @classification_books, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
             </div>
           </div>
         </div>

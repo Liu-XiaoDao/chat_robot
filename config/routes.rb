@@ -93,6 +93,14 @@ Rails.application.routes.draw do
       get 'index_admin', on: :collection
       get 'show_admin',  on: :member
     end
+    resources :ideas do
+      get 'index_admin', on: :collection
+      get 'current_season_index', on: :collection
+      get 'current_season_index_admin', on: :collection
+      get 'show_admin',  on: :member
+      get 'edit_content',on: :member
+      get 'score_view',  on: :member
+    end
   end
 
   get '/signin' => 'sessions#new'

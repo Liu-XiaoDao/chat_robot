@@ -1,0 +1,116 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+               <h3>金点子</h3>
+            </div>
+            <div class="module-option clearfix">
+              <div class="pull-left">
+                <div class="btn-group">
+                  <button class="btn"><%= params[:q].present? && params[:q][:season_id_eq].present? ? current_filter(params[:q][:season_id_eq]) : "筛选"  %></button>
+                  <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="?">全部</a></li>
+                    <% GoldenIdea::Season.all.each do |season| %>
+                      <li><a href="?q[season_id_eq]=<%= season.id %>"><%= season.name %></a></li>
+                    <% end %>
+                    <!-- <li class="divider"></li>
+                    <li><a href="#">Settings</a></li> -->
+                  </ul>
+                </div>
+              </div>
+              <div class="pull-right">
+                <%= link_to 'Create', new_golden_idea_idea_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+              </div>
+            </div>
+            <div class="module-body">
+              <%= render "golden_idea/application/flash" %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>分类</th>
+                    <th>标题</th>
+                    <th>提议人</th>
+                    <th>部门</th>
+                    <th>内容描述</th>
+                    <th>得分</th>
+                    <th class="cell-btn align-right">操作</th>
+                    <th class="cell-btn align-right"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @golden_ideas.each do |golden_idea| %>
+                    <tr>
+                      <td><%= golden_idea.id %></td>
+                      <td><%= golden_idea.category %></td>
+                      <td><%= link_to golden_idea.title, show_admin_golden_idea_idea_path(golden_idea) %></td>
+                      <td>
+                        <% if golden_idea.proposers.present? %>
+                          <% golden_idea.proposers.split(',').each do |u_id| %>
+                            <% user = Employee.find(u_id) %>
+                            <%= link_to user.name, user %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                      <td><%= golden_idea.department %></td>
+                      <td><%= golden_idea.description %></td>
+                      <td><%= golden_idea.score %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Content', edit_content_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_idea_path(golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= will_paginate @golden_ideas, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
+            </div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+
+
+<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>编辑</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('season_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+<script>
+  $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+
+<style type="text/css">
+.modal-backdrop, .modal-backdrop.fade.in {
+  background: #000000;
+  opacity: .8
+}
+</style>

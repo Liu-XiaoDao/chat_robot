@@ -18,6 +18,10 @@ class Employee < ApplicationRecord
   #   Thread.current[:employee] = employee
   # end
 
+  def golden_ideas
+    GoldenIdea::Idea.where("find_in_set(#{id},proposer)")
+  end
+
   def department_name
     department.try(:name)
   end

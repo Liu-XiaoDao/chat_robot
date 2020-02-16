@@ -8,6 +8,9 @@ class EmployeesController < ApplicationController
   end
 
   def show
+    #金点子在使用
+    @employee =  Employee.find params[:id]
+    render layout: 'golden_idea'
   end
 
   def phone_number
@@ -70,6 +73,8 @@ class EmployeesController < ApplicationController
     @employee =  Employee.find params[:id]
     @comments = @employee.comments.paginate page: params[:page], per_page: 8
   end
+
+  #金点子相关
 
 
 

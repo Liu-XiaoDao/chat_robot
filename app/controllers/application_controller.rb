@@ -14,6 +14,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #上传附件
+  def save_attachments
+    params[:attachment_files].each do |attachment|
+      @golden_idea.attachments.create(attachment: attachment)
+    end
+  end
+
   def process_action *args
     time = Time.now
     rslt = super
