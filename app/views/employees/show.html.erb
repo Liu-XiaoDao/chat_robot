@@ -13,9 +13,9 @@
                 </a>
                 <div class="media-body">
                   <h4>
-                    <%= @employee.name %><small><%= '@book.author' %></small>
+                    <%= @employee.name %><small><%#= '@book.author' %></small>
                   </h4>
-                  <p class="profile-brief" title="<%='@book.intro'%>"><%#= truncate(@book.intro,length: 100) %></p>
+                  <p class="profile-brief" title="<%='@book.intro'%>">积分:<span style="color:red;padding-left:5px;"><%= current_employee.score %></span></p>
                   <div class="profile-details muted">
                     <a href="<%#= borrow_view_book_path %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-plus shaded"></i>借阅</a>
                     <a href="<%#= praise_book_path(@book) %>"  class="btn" data-remote="true"><i class="icon-thumbs-up shaded"></i>赞 <span id="praise_count"><%#= @book.praise_count %></span></a>
@@ -26,7 +26,7 @@
               <ul class="profile-tab nav nav-tabs">
                 <!--<li class="active"><a href="#activity" data-toggle="tab">评论</a></li>-->
                 <li class="active"><a href="#borrow_records" data-toggle="tab">金点子</a></li>
-                <!--<li><a href="#detial" data-toggle="tab">详情</a></li>-->
+                <li><a href="#detial" data-toggle="tab">兑换记录</a></li>
                 <!--<li><a href="#chapters" data-toggle="tab">目录</a></li>-->
               </ul>
               <div class="profile-tab-content tab-content">
@@ -74,8 +74,28 @@
                 </div>
 
                 <div class="tab-pane fade" id="detial">
-                   <div class="module-body" style=" overflow:scroll; height:300px;">
-                  </div>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>兑换商品</th>
+                        <th>数量</th>
+                        <th>使用积分</th>
+                        <th>时间</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @employee.exchange_records.each do |exchange_record| %>
+                        <tr>
+                          <td><%= exchange_record.id %></td>
+                          <td><%= exchange_record.good.name %></td>
+                          <td><%= exchange_record.quantity %></td>
+                          <td><%= exchange_record.used_score %></td>
+                          <td><%= exchange_record.created_at %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
                 </div>
 
                 <div class="tab-pane fade" id="chapters">

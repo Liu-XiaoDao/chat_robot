@@ -75,7 +75,17 @@ class EmployeesController < ApplicationController
   end
 
   #金点子相关
+  def golden_ideas
+    @employee = Employee.find params[:id]
+    @golden_ideas = @employee.golden_ideas
+    render layout: "golden_idea"
+  end
 
+  def exchange_records
+    @employee = Employee.find params[:id]
+    @exchange_records = @employee.exchange_records
+    render layout: "golden_idea"
+  end
 
 
   def update_employee

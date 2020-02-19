@@ -3,42 +3,31 @@
     <div class="row">
       <%= render 'golden_idea/application/left' %>
       <div class="span9">
-        <%= render "golden_idea/application/flash" %>
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>过去各期-管理</h3>
-            </div>
-            <div class="module-option clearfix">
-                <div class="pull-right">
-                   <%= link_to 'Create', new_golden_idea_season_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
-                </div>
+               <h3>我的兑换记录</h3>
             </div>
             <div class="module-body">
+              <%= render "golden_idea/application/flash" %>
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>标题</th>
-                    <th>开始时间</th>
-                    <th>结束时间</th>
-                    <th>描述</th>
+                    <th>兑换商品</th>
                     <th>数量</th>
-                    <th class="cell-btn align-right">操作</th>
-                    <th class="cell-btn align-right"></th>
+                    <th>使用积分</th>
+                    <th>时间</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @seasons.each do |season| %>
+                  <% @exchange_records.each do |exchange_record| %>
                     <tr>
-                      <td><%= season.id %></td>
-                      <td><%= link_to season.name, show_admin_golden_idea_season_path(season) %></td>
-                      <td><%= season.start_date %></td>
-                      <td><%= season.end_date %></td>
-                      <td><%= season.description %></td>
-                      <td><%= season.ideas.count %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_season_path(season), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_season_path(season), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
+                      <td><%= exchange_record.id %></td>
+                      <td><%= exchange_record.good.name %></td>
+                      <td><%= exchange_record.quantity %></td>
+                      <td><%= exchange_record.used_score %></td>
+                      <td><%= exchange_record.created_at %></td>
                     </tr>
                   <% end %>
                 </tbody>

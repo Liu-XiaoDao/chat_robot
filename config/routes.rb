@@ -37,6 +37,9 @@ Rails.application.routes.draw do
     get 'borrow_book',         on: :member
     get 'book_praise_rubbish', on: :member
     get 'book_comment',        on: :member
+    # 下面是图书管理相关
+    get 'golden_ideas',        on: :member
+    get 'exchange_records',    on: :member
   end
 
   resources :apis do
@@ -100,6 +103,14 @@ Rails.application.routes.draw do
       get 'show_admin',  on: :member
       get 'edit_content',on: :member
       get 'score_view',  on: :member
+      get 'employee_score_view',  on: :member
+      post 'employee_score',  on: :member
+    end
+    resources :goods do
+      get 'index_admin', on: :collection
+      get 'show_admin',  on: :member
+      get 'exchange_view',  on: :member
+      patch 'exchange',  on: :member
     end
   end
 

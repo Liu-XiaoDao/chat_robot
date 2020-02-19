@@ -3,6 +3,7 @@
     <div class="row">
       <%= render 'golden_idea/application/left' %>
       <div class="span9">
+        <%= render "golden_idea/application/flash" %>
         <div class="content">
           <div class="module">
             <div class="module-head">
@@ -21,7 +22,7 @@
                 <%= link_to 'Edit', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
                 <%= link_to 'Content', edit_content_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
                 <%= link_to '打分', score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
-                <%= link_to '员工积分', score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+                <%= link_to '员工积分', employee_score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#employee_score_modal" %>
               </div>
             </div>
             <div class="module-body">
@@ -66,9 +67,29 @@
    </div>
 </div>
 
-
+<!--员工积分分配弹框-->
+<div class="modal fade" id="employee_score_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>员工积分分配</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('employee_score_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
 <script type="text/javascript">
   $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+  $("#employee_score_modal").on("hidden", function() {
     $(this).removeData("modal");
   });
 

@@ -1,0 +1,11 @@
+<%= form_tag employee_score_golden_idea_idea_path(@golden_idea), { class: "form-horizontal row-fluid", id: "employee_score_form" } do -%>
+  <% @golden_idea.proposers.split(",").each do |employee_id| %>
+    <% employee = Employee.find(employee_id) %>
+    <div class="control-group">
+      <label class="control-label" for="basicinput"><%= employee.name %></label>
+      <div class="controls">
+        <input placeholder="输入积分" class="span8" type="text" name="employees[<%= employee.id %>]">
+      </div>
+    </div>
+  <% end %>
+<% end -%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200213164721) do
+ActiveRecord::Schema.define(version: 20200218015051) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20200213164721) do
     t.date "hired_date"
     t.integer "is_leave", limit: 1, default: 0, comment: "记录员工是否离职,已离职:1,未离职:0"
     t.decimal "credits", precision: 8, scale: 3
+    t.decimal "score", precision: 8, scale: 3
   end
 
   create_table "expresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -130,6 +131,31 @@ ActiveRecord::Schema.define(version: 20200213164721) do
     t.boolean "is_send_noti"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "golden_idea_exchange_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.bigint "good_id"
+    t.bigint "employee_id"
+    t.decimal "used_score", precision: 8, scale: 3
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_golden_idea_exchange_records_on_employee_id"
+    t.index ["good_id"], name: "index_golden_idea_exchange_records_on_good_id"
+  end
+
+  create_table "golden_idea_goods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "quantity"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.integer "score"
   end
 
   create_table "golden_idea_ideas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

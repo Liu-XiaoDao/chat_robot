@@ -2,7 +2,7 @@
   <div class="sidebar">
 
     <ul class="widget widget-menu unstyled">
-      <% if signed_in? && current_employee.isadmin? %>
+      <% if !signed_in? && current_employee.isadmin? %>
         <li class="active">
           <a href="<%= current_season_index_admin_golden_idea_ideas_path %>">
             <i class="menu-icon icon-book"></i>
@@ -22,12 +22,12 @@
           </a>
         </li>
         <li>
-          <a href="<%= index_admin_golden_idea_seasons_path %>">
+          <a href="<%= index_admin_golden_idea_goods_path %>">
             <i class="menu-icon icon-tasks"></i>
             积分兑换-管理
           </a>
         </li>
-      <% #else %>
+      <% else %>
         <li class="active">
           <a href="<%= current_season_index_golden_idea_ideas_path %>">
             <i class="menu-icon icon-book"></i>
@@ -47,9 +47,9 @@
           </a>
         </li>
         <li>
-          <a href="<%= index_admin_golden_idea_seasons_path %>">
+          <a href="<%= golden_idea_goods_path %>">
             <i class="menu-icon icon-tasks"></i>
-            积分兑换-管理
+            积分兑换
           </a>
         </li>
       <% end %>
@@ -73,8 +73,8 @@
         </li>
       <% end %>
       <% if signed_in? %>
-        <li><a href="<%= borrow_book_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的金点子</a></li>
-        <li><a href="<%= book_comment_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的评论</a></li>
+        <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的金点子</a></li>
+        <li><a href="<%= exchange_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的兑换记录</a></li>
         <li><a href="<%= borrow_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>借阅记录</a></li>
         <li><a href="<%= return_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>归还记录</a></li>
         <li><a href="<%= book_praise_rubbish_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>赞/踩</a></li>

@@ -63,6 +63,22 @@ module GoldenIdea
       render layout: false
     end
 
+    def employee_score_view
+      @golden_idea = Idea.find params[:id]
+      render layout: false
+    end
+
+    def employee_score
+      @golden_idea = Idea.find params[:id]
+      employees = params[:employees]
+      employees.each do |i, v|
+        employee = Employee.find(i)
+        employee.update(score: (employee.score.to_i + v.to_i))
+      end
+      flash[:success] = "积分分配成功"
+      redirect_to show_admin_golden_idea_idea_path(@golden_idea)
+    end
+
     private
       def golden_idea_params
         params.require(:golden_idea_idea).permit(:title, :category, {:proposers => []}, :department, :description, :content, :score)

@@ -7,42 +7,57 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>过去各期-管理</h3>
+               <h3>积分兑换-管理</h3>
             </div>
             <div class="module-option clearfix">
-                <div class="pull-right">
-                   <%= link_to 'Create', new_golden_idea_season_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+              <div class="pull-left">
+                <div class="btn-group">
+                  <button class="btn"><%= params[:q].present? && params[:q][:season_id_eq].present? ? current_filter(params[:q][:season_id_eq]) : "筛选"  %></button>
+                  <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="?">全部</a></li>
+                    <% GoldenIdea::Season.all.each do |season| %>
+                      <li><a href="?q[season_id_eq]=<%= season.id %>"><%= season.name %></a></li>
+                    <% end %>
+                  </ul>
                 </div>
+              </div>
+              <div class="pull-right">
+                <%= link_to 'Create', new_golden_idea_good_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+              </div>
             </div>
             <div class="module-body">
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>标题</th>
-                    <th>开始时间</th>
-                    <th>结束时间</th>
+                    <th>名称</th>
                     <th>描述</th>
+                    <th>图片</th>
                     <th>数量</th>
+                    <th>积分</th>
                     <th class="cell-btn align-right">操作</th>
                     <th class="cell-btn align-right"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @seasons.each do |season| %>
+                  <% @goods.each do |good| %>
                     <tr>
-                      <td><%= season.id %></td>
-                      <td><%= link_to season.name, show_admin_golden_idea_season_path(season) %></td>
-                      <td><%= season.start_date %></td>
-                      <td><%= season.end_date %></td>
-                      <td><%= season.description %></td>
-                      <td><%= season.ideas.count %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_season_path(season), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_season_path(season), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
+                      <td><%= good.id %></td>
+                      <td><%= link_to good.name, show_admin_golden_idea_good_path(good) %></td>
+                      <td><%= good.description %></td>
+                      <td><%= image_tag good.avatar.url(:thumb), size:'50' %></td>
+                      <td><%= good.quantity %></td>
+                      <td><%= good.score %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_good_path(good), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_good_path(good), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
+              <%= will_paginate @goods, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
             </div>
           </div>
         </div><!--/.content-->

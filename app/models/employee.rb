@@ -9,6 +9,7 @@ class Employee < ApplicationRecord
   has_many :return_records
   has_many :comments
   has_many :count_records, ->{ where( count_records: { target_class: "book" } ) }
+  has_many :exchange_records, class_name: "GoldenIdea::ExchangeRecord"
 
   # def self.current_employee
   #   Thread.current[:employee]
