@@ -4,9 +4,9 @@ class GoldenIdea::SeasonsController < ApplicationController
     @seasons = GoldenIdea::Season.all
   end
 
-  def index_admin
-    @seasons = GoldenIdea::Season.all
-  end
+  # def index_admin
+    # @seasons = GoldenIdea::Season.all
+  # end
 
   def new
     @season = GoldenIdea::Season.new
@@ -15,7 +15,7 @@ class GoldenIdea::SeasonsController < ApplicationController
 
   def create
     @season = GoldenIdea::Season.create(season_params)
-    redirect_to index_admin_golden_idea_seasons_path
+    redirect_to golden_idea_seasons_path
   end
 
   def edit
@@ -30,7 +30,7 @@ class GoldenIdea::SeasonsController < ApplicationController
     else
       flash["error"] = "编辑错误:#{@season.errors.full_messages}"
     end
-    redirect_to index_admin_golden_idea_seasons_path
+    redirect_to golden_idea_seasons_path
   end
 
   def show
@@ -38,10 +38,10 @@ class GoldenIdea::SeasonsController < ApplicationController
     @ideas = @season.ideas
   end
 
-  def show_admin
-    @season = GoldenIdea::Season.find(params[:id])
-    @ideas = @season.ideas
-  end
+  # def show_admin
+    # @season = GoldenIdea::Season.find(params[:id])
+    # @ideas = @season.ideas
+  # end
 
   private
     def season_params

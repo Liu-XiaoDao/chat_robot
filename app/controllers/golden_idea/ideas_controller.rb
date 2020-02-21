@@ -5,17 +5,17 @@ module GoldenIdea
       @golden_ideas = Idea.ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 10
     end
 
-    def index_admin
-      @golden_ideas = Idea.ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 10
-    end
+    #def index_admin
+    #  @golden_ideas = Idea.ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 10
+    #end
 
     def current_season_index
       @golden_ideas = Idea.where(season_id: Season.last.id)
     end
 
-    def current_season_index_admin
-      @golden_ideas = Idea.where(season_id: Season.last.id)
-    end
+    #def current_season_index_admin
+    #  @golden_ideas = Idea.where(season_id: Season.last.id)
+    #end
 
     def new
       @golden_idea = Idea.new
@@ -38,9 +38,9 @@ module GoldenIdea
       # render layout: false
     end
 
-    def edit_content
-      @golden_idea = Idea.find params[:id]
-    end
+    #def edit_content
+    #  @golden_idea = Idea.find params[:id]
+    #end
 
     def update
       @golden_idea = Idea.find(params[:id])
@@ -58,10 +58,10 @@ module GoldenIdea
       @golden_idea = Idea.find(params[:id])
     end
 
-    def show_admin
-      @golden_idea = Idea.find(params[:id])
-      # @golden_ideas = @season.golden_ideas
-    end
+    #def show_admin
+    #  @golden_idea = Idea.find(params[:id])
+    #  # @golden_ideas = @season.golden_ideas
+    #end
 
     def score_view
       @golden_idea = Idea.find params[:id]
@@ -86,11 +86,14 @@ module GoldenIdea
         employee.update(score: (employee.score.to_i + v.to_i))
       end
       flash[:success] = "积分分配成功"
-      redirect_to show_admin_golden_idea_idea_path(@golden_idea)
+      redirect_to golden_idea_idea_path(@golden_idea)
     end
 
-    def destory
+    def destroy
+      @golden_idea = Idea.find(params[:id])
+      @golden_idea.destroy
 
+      redirect_to current_season_index_golden_idea_ideas_path
     end
 
     private
