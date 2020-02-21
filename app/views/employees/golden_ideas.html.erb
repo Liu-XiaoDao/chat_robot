@@ -29,7 +29,7 @@
                     <tr>
                       <td><%= golden_idea.id %></td>
                       <td><%= golden_idea.category %></td>
-                      <td><%= link_to golden_idea.title, show_admin_golden_idea_idea_path(golden_idea) %></td>
+                      <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
                       <td>
                         <% if golden_idea.proposers.present? %>
                           <% golden_idea.proposers.split(',').each do |u_id| %>
@@ -41,9 +41,13 @@
                       <td><%= golden_idea.department %></td>
                       <td><%= golden_idea.description %></td>
                       <td><%= golden_idea.score %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Content', edit_content_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_idea_path(golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
+                      <% if golden_idea.is_complate? %>
+                        <td class="cell-btn align-right"></td>
+                      <% elsif golden_idea.is_edit?(current_employee.id) %>
+                        <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                      <% else %>
+                        <td class="cell-btn align-right"></td>
+                      <% end %>
                     </tr>
                   <% end %>
                 </tbody>

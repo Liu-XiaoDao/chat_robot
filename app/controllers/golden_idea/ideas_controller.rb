@@ -19,19 +19,23 @@ module GoldenIdea
 
     def new
       @golden_idea = Idea.new
-      render layout: false
+      # render layout: false
     end
 
     def create
-      @golden_idea = Idea.create(golden_idea_params)
-      save_attachments if params[:attachment_files]
-      flash["success"] = "金点子创建成功，点‘击编辑内容’按钮编辑详情"
-      redirect_to golden_idea_idea_path(@golden_idea)
+      @golden_idea = Idea.new(golden_idea_params)
+      if @golden_idea.save
+        save_attachments if params[:attachment_files]
+        flash["success"] = "金点子创建成功，点‘击编辑内容’按钮编辑详情"
+        redirect_to golden_idea_idea_path(@golden_idea)
+      else
+        render :new
+      end
     end
 
     def edit
       @golden_idea = Idea.find params[:id]
-      render layout: false
+      # render layout: false
     end
 
     def edit_content
@@ -43,11 +47,11 @@ module GoldenIdea
       if @golden_idea.update_attributes(golden_idea_params)
         save_attachments if params[:attachment_files]
         flash["success"] = "编辑成功"
+        redirect_to golden_idea_idea_path(@golden_idea)
       else
         flash["error"] = "编辑错误:#{@golden_idea.errors.full_messages}"
+        render :edit
       end
-      # redirect_to index_admin_golden_idea_ideas_path
-      redirect_to golden_idea_idea_path(@golden_idea)
     end
 
     def show

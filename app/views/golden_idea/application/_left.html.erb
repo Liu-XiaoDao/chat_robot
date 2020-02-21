@@ -2,7 +2,34 @@
   <div class="sidebar">
 
     <ul class="widget widget-menu unstyled">
-      <% if !signed_in? && current_employee.isadmin? %>
+      <li class="active">
+        <a href="<%= current_season_index_golden_idea_ideas_path %>">
+          <i class="menu-icon icon-book"></i>
+          本期金点子
+        </a>
+      </li>
+      <li>
+        <a href="<%= golden_idea_seasons_path %>">
+          <i class="menu-icon icon-tasks"></i>
+          历史各期
+        </a>
+      </li>
+      <li>
+        <a href="<%= golden_idea_ideas_path %>">
+          <i class="menu-icon icon-tasks"></i>
+          所有金点子
+        </a>
+      </li>
+      <li>
+        <a href="<%= golden_idea_goods_path %>">
+          <i class="menu-icon icon-tasks"></i>
+          积分兑换
+        </a>
+      </li>
+    </ul><!--/.widget-nav-->
+
+    <ul class="widget widget-menu unstyled">
+      <% if signed_in? && current_employee.isadmin? %>
         <li class="active">
           <a href="<%= current_season_index_admin_golden_idea_ideas_path %>">
             <i class="menu-icon icon-book"></i>
@@ -27,33 +54,9 @@
             积分兑换-管理
           </a>
         </li>
-      <% else %>
-        <li class="active">
-          <a href="<%= current_season_index_golden_idea_ideas_path %>">
-            <i class="menu-icon icon-book"></i>
-            本期金点子
-          </a>
-        </li>
-        <li>
-          <a href="<%= golden_idea_seasons_path %>">
-            <i class="menu-icon icon-tasks"></i>
-            历史各期
-          </a>
-        </li>
-        <li>
-          <a href="<%= golden_idea_ideas_path %>">
-            <i class="menu-icon icon-tasks"></i>
-            所有金点子
-          </a>
-        </li>
-        <li>
-          <a href="<%= golden_idea_goods_path %>">
-            <i class="menu-icon icon-tasks"></i>
-            积分兑换
-          </a>
-        </li>
       <% end %>
     </ul><!--/.widget-nav-->
+
     <ul class="widget widget-menu unstyled">
       <% if signed_in? && current_employee.isadmin? %>
         <li>

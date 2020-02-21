@@ -6,6 +6,8 @@ module GoldenIdea
 
     before_create :set_seasion
 
+    validates :title, :category, :proposers, :department, presence: true
+
     #def proposer=(str)
     #  binding.pry
     #end

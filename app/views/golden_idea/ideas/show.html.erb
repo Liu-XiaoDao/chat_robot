@@ -24,8 +24,7 @@
               <div class="pull-right">
                 <a href="<%= request.referer %>" class="btn btn-primary">返回</a>
                 <% if !@golden_idea.is_complate? && @golden_idea.is_edit?(current_employee.id) %>
-                  <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
-                  <%= link_to '编辑内容', edit_content_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
+                  <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
                   <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
                 <% end %>
               </div>
