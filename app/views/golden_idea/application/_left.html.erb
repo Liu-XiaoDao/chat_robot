@@ -12,7 +12,7 @@
         <li>
           <a href="<%= index_admin_golden_idea_seasons_path %>">
             <i class="menu-icon icon-tasks"></i>
-            过去各期-管理
+            历史各期-管理
           </a>
         </li>
         <li>
@@ -37,7 +37,7 @@
         <li>
           <a href="<%= golden_idea_seasons_path %>">
             <i class="menu-icon icon-tasks"></i>
-            过去各期
+            历史各期
           </a>
         </li>
         <li>
@@ -75,9 +75,6 @@
       <% if signed_in? %>
         <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的金点子</a></li>
         <li><a href="<%= exchange_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的兑换记录</a></li>
-        <li><a href="<%= borrow_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>借阅记录</a></li>
-        <li><a href="<%= return_record_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>归还记录</a></li>
-        <li><a href="<%= book_praise_rubbish_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>赞/踩</a></li>
       <% end %>
     </ul>
 

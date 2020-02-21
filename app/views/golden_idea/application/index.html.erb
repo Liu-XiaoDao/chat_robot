@@ -9,9 +9,9 @@
               <div class="span12">
                 <div class="row-fluid">
                   <div class="span12">
+                    <a href="#" class="btn-box small span4"><i class="icon-lightbulb"></i><b>创建金点子</b></a>
                     <a href="#" class="btn-box small span4"><i class="icon-book"></i><b>金点子: <%= GoldenIdea::Idea.all.count %></b></a>
                     <a href="#" class="btn-box small span4"><i class="icon-tasks"></i><b>金点子期数: <%= GoldenIdea::Season.all.count %></b></a>
-                    <a href="#" class="btn-box small span4"><i class="icon-group"></i><b>员工：<%= Employee.where(is_leave: 0).count %></b></a>
                   </div>
                 </div>
               </div>
@@ -33,12 +33,11 @@
                     <th>提议人</th>
                     <th>部门</th>
                     <th>内容描述</th>
-                    <th class="cell-btn align-right">操作</th>
-                    <th class="cell-btn align-right"></th>
+                    <th>得分</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% GoldenIdea::Idea.first(5).each do |golden_idea| %>
+                  <% GoldenIdea::Idea.top_5.first(5).each do |golden_idea| %>
                     <tr>
                       <td><%= golden_idea.id %></td>
                       <td><%= golden_idea.category %></td>
@@ -53,9 +52,7 @@
                       </td>
                       <td><%= golden_idea.department %></td>
                       <td><%= golden_idea.description %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Content', edit_content_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_idea_path(golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
+                      <td><%= golden_idea.score%></td>
                     </tr>
                   <% end %>
                 </tbody>

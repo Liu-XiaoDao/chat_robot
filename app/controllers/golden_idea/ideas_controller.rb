@@ -24,7 +24,9 @@ module GoldenIdea
 
     def create
       @golden_idea = Idea.create(golden_idea_params)
-      redirect_to index_admin_golden_idea_ideas_path
+      save_attachments if params[:attachment_files]
+      flash["success"] = "金点子创建成功，点‘击编辑内容’按钮编辑详情"
+      redirect_to golden_idea_idea_path(@golden_idea)
     end
 
     def edit
@@ -45,7 +47,11 @@ module GoldenIdea
         flash["error"] = "编辑错误:#{@golden_idea.errors.full_messages}"
       end
       # redirect_to index_admin_golden_idea_ideas_path
-      redirect_to request.referer
+      redirect_to golden_idea_idea_path(@golden_idea)
+    end
+
+    def show
+      @golden_idea = Idea.find(params[:id])
     end
 
     def show_admin
@@ -77,6 +83,10 @@ module GoldenIdea
       end
       flash[:success] = "积分分配成功"
       redirect_to show_admin_golden_idea_idea_path(@golden_idea)
+    end
+
+    def destory
+
     end
 
     private
