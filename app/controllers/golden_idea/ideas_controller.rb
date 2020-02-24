@@ -81,11 +81,15 @@ module GoldenIdea
     def employee_score
       @golden_idea = Idea.find params[:id]
       employees = params[:employees]
+      flash[:success] = "积分分配成功"
       employees.each do |i, v|
         employee = Employee.find(i)
-        employee.update(score: (employee.score.to_i + v.to_i))
+        if employee.update(score: (employee.score.to_i + v.to_i))
+          AssignScoreRecord.create(employee_id: i, idea_id: params[:id], score: v)
+        else
+          flash[:error] = "积分分配失败"
+        end
       end
-      flash[:success] = "积分分配成功"
       redirect_to golden_idea_idea_path(@golden_idea)
     end
 

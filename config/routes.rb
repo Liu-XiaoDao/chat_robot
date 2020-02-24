@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     # 下面是图书管理相关
     get 'golden_ideas',        on: :member
     get 'exchange_records',    on: :member
+    get 'assign_score_records',    on: :member
   end
 
   resources :apis do
@@ -91,6 +92,9 @@ Rails.application.routes.draw do
 
   # 下面是金点子相关
   get '/golden_idea' => 'golden_idea/application#index'
+  get '/golden_idea_exchange_records' => 'golden_idea/application#exchange_records'
+  get '/golden_idea_assign_score_records' => 'golden_idea/application#assign_score_records'
+  get '/golden_idea_user_requests' => 'golden_idea/application#user_requests'
   namespace :golden_idea do
     resources :seasons do
       # get 'index_admin', on: :collection

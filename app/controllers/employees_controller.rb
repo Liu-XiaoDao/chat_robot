@@ -87,6 +87,11 @@ class EmployeesController < ApplicationController
     render layout: "golden_idea"
   end
 
+  def assign_score_records
+    @employee = Employee.find params[:id]
+    @assign_score_records = @employee.assign_score_records
+    render layout: "golden_idea"
+  end
 
   def update_employee
     accessToken = @auth.getAccessToken() #获取token

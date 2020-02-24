@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200218015051) do
+ActiveRecord::Schema.define(version: 20200221090433) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -129,6 +129,14 @@ ActiveRecord::Schema.define(version: 20200218015051) do
     t.integer "employee_id"
     t.string "express_type"
     t.boolean "is_send_noti"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "golden_idea_assign_score_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "employee_id"
+    t.integer "idea_id"
+    t.decimal "score", precision: 8, scale: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

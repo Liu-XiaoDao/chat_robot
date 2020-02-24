@@ -6,7 +6,7 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>我的兑换记录</h3>
+               <h3>积分分配记录</h3>
             </div>
             <div class="module-body">
               <%= render "golden_idea/application/flash" %>
@@ -14,20 +14,20 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>兑换商品</th>
-                    <th>数量</th>
-                    <th>使用积分</th>
+                    <th>金点子</th>
+                    <th>提议人</th>
+                    <th>获得积分</th>
                     <th>时间</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @exchange_records.each do |exchange_record| %>
+                  <% @assign_score_records.each do |assign_score_record| %>
                     <tr>
-                      <td><%= exchange_record.id %></td>
-                      <td><%= link_to exchange_record.good.name, golden_idea_good_path(exchange_record.good) %></td>
-                      <td><%= exchange_record.quantity %></td>
-                      <td><%= exchange_record.used_score %></td>
-                      <td><%= exchange_record.created_at %></td>
+                      <td><%= assign_score_record.id %></td>
+                      <td><%= link_to assign_score_record.idea.title, golden_idea_idea_path(assign_score_record.idea) %></td>
+                      <td><%= link_to assign_score_record.employee.name, employee_path(assign_score_record.employee) %></td>
+                      <td><%= assign_score_record.score %></td>
+                      <td><%= assign_score_record.created_at %></td>
                     </tr>
                   <% end %>
                 </tbody>

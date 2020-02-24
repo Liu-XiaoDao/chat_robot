@@ -1,6 +1,7 @@
 module GoldenIdea
   class Idea < ApplicationRecord
     belongs_to :seasion, optional: true
+    has_many :assign_score_records
 
     scope :top_5, ->{order(score: :desc)}
 

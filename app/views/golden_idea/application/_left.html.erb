@@ -49,17 +49,16 @@
             管理员
           </a>
           <ul id="togglePages_admin" class="collapse unstyled">
-            <li><a href="<%= library_borrow_books_path %>">借阅-管理</a></li>
-            <li><a href="<%= library_comments_path %>">评论-管理</a></li>
-            <li><a href="<%= library_borrow_records_path %>">借阅记录-管理</a></li>
-            <li><a href="<%= library_return_records_path %>">归还记录-管理</a></li>
-            <li><a href="<%= library_praise_rubbishs_path %>">评价-管理</a></li>
+            <li><a href="<%= golden_idea_exchange_records_path %>">兑换记录-管理</a></li>
+            <li><a href="<%= golden_idea_assign_score_records_path %>">积分分配-管理</a></li>
+            <li><a href="<%= golden_idea_user_requests_path %>">操作日志-管理</a></li>
           </ul>
         </li>
       <% end %>
       <% if signed_in? %>
         <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的金点子</a></li>
         <li><a href="<%= exchange_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的兑换记录</a></li>
+        <li><a href="<%= assign_score_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的积分分配记录</a></li>
       <% end %>
     </ul>
 
