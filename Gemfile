@@ -65,7 +65,9 @@ gem 'roo', "~> 1.13.2"
 gem "ruby-progressbar", "~> 1.7.0"
 gem "httparty", "~> 0.13.3"
 
-# gem 'ransack', "~> 1.8.8"
+#上传附件
+gem "paperclip", "~> 6.0.0"
+gem 'ransack', "~> 1.8.8"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

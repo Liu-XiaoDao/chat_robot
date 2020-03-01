@@ -8,6 +8,9 @@ class EmployeesController < ApplicationController
   end
 
   def show
+    #金点子在使用
+    @employee =  Employee.find params[:id]
+    render layout: 'golden_idea'
   end
 
   def phone_number
@@ -71,7 +74,24 @@ class EmployeesController < ApplicationController
     @comments = @employee.comments.paginate page: params[:page], per_page: 8
   end
 
+  #金点子相关
+  def golden_ideas
+    @employee = Employee.find params[:id]
+    @golden_ideas = @employee.golden_ideas
+    render layout: "golden_idea"
+  end
 
+  def exchange_records
+    @employee = Employee.find params[:id]
+    @exchange_records = @employee.exchange_records
+    render layout: "golden_idea"
+  end
+
+  def assign_score_records
+    @employee = Employee.find params[:id]
+    @assign_score_records = @employee.assign_score_records
+    render layout: "golden_idea"
+  end
 
   def update_employee
     accessToken = @auth.getAccessToken() #获取token

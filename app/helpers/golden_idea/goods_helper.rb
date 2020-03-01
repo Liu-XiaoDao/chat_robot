@@ -1,0 +1,2 @@
+module GoldenIdea::GoodsHelper
+end

@@ -1,0 +1,8 @@
+<%= form_for @golden_idea, url: golden_idea_idea_path(@golden_idea), html: { class: "form-horizontal row-fluid", id: "season_form", enctype: "multipart/form-data" }  do |f| %>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">得分</label>
+    <div class="controls">
+      <%= f.text_field  :score, placeholder: "Type something here...", class: "span8" %>
+    </div>
+  </div>
+<% end %>

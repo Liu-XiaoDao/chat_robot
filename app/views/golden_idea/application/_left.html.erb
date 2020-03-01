@@ -1,0 +1,66 @@
+<div class="span3">
+  <div class="sidebar">
+
+    <ul class="widget widget-menu unstyled">
+      <li class="active">
+        <a href="<%= current_season_index_golden_idea_ideas_path %>">
+          <i class="menu-icon icon-book"></i>
+          本期金点子
+        </a>
+      </li>
+      <li>
+        <a href="<%= golden_idea_seasons_path %>">
+          <i class="menu-icon icon-tasks"></i>
+          历史各期
+        </a>
+      </li>
+      <li>
+        <a href="<%= golden_idea_ideas_path %>">
+          <i class="menu-icon icon-tasks"></i>
+          所有金点子
+        </a>
+      </li>
+      <li>
+        <a href="<%= golden_idea_goods_path %>">
+          <i class="menu-icon icon-tasks"></i>
+          积分兑换
+        </a>
+      </li>
+    </ul><!--/.widget-nav-->
+
+    <ul class="widget widget-menu unstyled">
+      <% if signed_in? && current_employee.isadmin? %>
+        <li>
+          <a href="<%= index_admin_golden_idea_goods_path %>">
+            <i class="menu-icon icon-tasks"></i>
+            积分兑换-管理
+          </a>
+        </li>
+      <% end %>
+    </ul><!--/.widget-nav-->
+
+    <ul class="widget widget-menu unstyled">
+      <% if signed_in? && current_employee.isadmin? %>
+        <li>
+          <a class="collapsed" data-toggle="collapse" href="#togglePages_admin">
+            <i class="menu-icon icon-cog"></i>
+            <i class="icon-chevron-down pull-right"></i>
+            <i class="icon-chevron-up pull-right"></i>
+            管理员
+          </a>
+          <ul id="togglePages_admin" class="collapse unstyled">
+            <li><a href="<%= golden_idea_exchange_records_path %>">兑换记录-管理</a></li>
+            <li><a href="<%= golden_idea_assign_score_records_path %>">积分分配-管理</a></li>
+            <li><a href="<%= golden_idea_user_requests_path %>">操作日志-管理</a></li>
+          </ul>
+        </li>
+      <% end %>
+      <% if signed_in? %>
+        <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的金点子</a></li>
+        <li><a href="<%= exchange_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的兑换记录</a></li>
+        <li><a href="<%= assign_score_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的积分分配记录</a></li>
+      <% end %>
+    </ul>
+
+  </div><!--/.sidebar-->
+</div><!--/.span3-->

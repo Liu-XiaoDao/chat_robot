@@ -1,0 +1,160 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-body">
+              <%= render "library/flash" %>
+              <div class="profile-head media">
+                <a href="#" class="media-cover pull-left">
+                  <img src="<%= current_employee.avatar %>">
+                </a>
+                <div class="media-body">
+                  <h4>
+                    <%= @employee.name %><small><%#= '@book.author' %></small>
+                  </h4>
+                  <p class="profile-brief" title="<%='@book.intro'%>">积分:<span style="color:red;padding-left:5px;"><%= current_employee.score %></span></p>
+                  <div class="profile-details muted">
+                    <a href="<%#= borrow_view_book_path %>" class="btn" ><i class="icon-plus shaded"></i>借阅</a>
+                    <a href="<%#= praise_book_path(@book) %>"  class="btn" data-remote="true"><i class="icon-thumbs-up shaded"></i>赞 <span id="praise_count"><%#= @book.praise_count %></span></a>
+                    <a href="<%#= rubbish_book_path(@book) %>" class="btn" data-remote="true"><i class="icon-thumbs-down shaded"></i>踩 <span id="rubbish_count"><%#= @book.rubbish_count %></span></a>
+                  </div>
+                </div>
+              </div>
+              <ul class="profile-tab nav nav-tabs">
+                <!--<li class="active"><a href="#activity" data-toggle="tab">评论</a></li>-->
+                <li class="active"><a href="#borrow_records" data-toggle="tab">金点子</a></li>
+                <li><a href="#detial" data-toggle="tab">兑换记录</a></li>
+                <!--<li><a href="#chapters" data-toggle="tab">目录</a></li>-->
+              </ul>
+              <div class="profile-tab-content tab-content">
+                <div class="tab-pane fade active in" id="borrow_records">
+                  <div class="module-body">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>分类</th>
+                          <th>标题</th>
+                          <th>提议人</th>
+                          <th>部门</th>
+                          <th>内容描述</th>
+                          <th>得分</th>
+                          <th class="cell-btn align-right">操作</th>
+                          <th class="cell-btn align-right"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @employee.golden_ideas.each do |golden_idea| %>
+                          <tr>
+                            <td><%= golden_idea.id %></td>
+                            <td><%= golden_idea.category %></td>
+                            <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
+                            <td>
+                              <% if golden_idea.proposers.present? %>
+                                <% golden_idea.proposers.split(',').each do |u_id| %>
+                                  <% user = Employee.find(u_id) %>
+                                  <%= link_to user.name, user %>
+                                <% end %>
+                              <% end %>
+                            </td>
+                            <td><%= golden_idea.department %></td>
+                            <td><%= golden_idea.description %></td>
+                            <td><%= golden_idea.score %></td>
+                            <% if golden_idea.is_complate? %>
+                              <td class="cell-btn align-right"></td>
+                            <% elsif golden_idea.is_edit?(current_employee.id) %>
+                              <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                            <% else %>
+                              <td class="cell-btn align-right"></td>
+                            <% end %>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="detial">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>兑换商品</th>
+                        <th>数量</th>
+                        <th>使用积分</th>
+                        <th>时间</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @employee.exchange_records.each do |exchange_record| %>
+                        <tr>
+                          <td><%= exchange_record.id %></td>
+                          <td><%= exchange_record.good.name %></td>
+                          <td><%= exchange_record.quantity %></td>
+                          <td><%= exchange_record.used_score %></td>
+                          <td><%= exchange_record.created_at %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="tab-pane fade" id="chapters">
+                  <div class="module-body">
+                    敬请期待
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--/.span9-->
+
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+
+
+<script type="text/javascript">
+  $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>借阅</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('borrow_book_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>

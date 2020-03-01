@@ -37,6 +37,10 @@ Rails.application.routes.draw do
     get 'borrow_book',         on: :member
     get 'book_praise_rubbish', on: :member
     get 'book_comment',        on: :member
+    # 下面是图书管理相关
+    get 'golden_ideas',        on: :member
+    get 'exchange_records',    on: :member
+    get 'assign_score_records',    on: :member
   end
 
   resources :apis do
@@ -85,6 +89,34 @@ Rails.application.routes.draw do
   get '/library/praise_rubbishs' => 'library#praise_rubbishs' #图书管理评价
   get '/library/comments' => 'library#comments' #图书管理评论
   get '/library/return_records' => 'library#return_records' #图书管理归还记录
+
+  # 下面是金点子相关
+  get '/golden_idea' => 'golden_idea/application#index'
+  get '/golden_idea_exchange_records' => 'golden_idea/application#exchange_records'
+  get '/golden_idea_assign_score_records' => 'golden_idea/application#assign_score_records'
+  get '/golden_idea_user_requests' => 'golden_idea/application#user_requests'
+  namespace :golden_idea do
+    resources :seasons do
+      # get 'index_admin', on: :collection
+      # get 'show_admin',  on: :member
+    end
+    resources :ideas do
+      # get 'index_admin', on: :collection
+      get 'current_season_index', on: :collection
+      # get 'current_season_index_admin', on: :collection
+      # get 'show_admin',  on: :member
+      # get 'edit_content',on: :member
+      get 'score_view',  on: :member
+      get 'employee_score_view',  on: :member
+      post 'employee_score',  on: :member
+    end
+    resources :goods do
+      get 'index_admin', on: :collection
+      get 'show_admin',  on: :member
+      get 'exchange_view',  on: :member
+      patch 'exchange',  on: :member
+    end
+  end
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'

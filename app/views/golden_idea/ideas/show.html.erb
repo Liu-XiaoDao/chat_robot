@@ -1,0 +1,116 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <%= render "golden_idea/application/flash" %>
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+              <h3>金点子-<%=@golden_idea.title%><%= "(#{@golden_idea.score})" if @golden_idea.score.present? %></h3>
+            </div>
+            <div class="module-option clearfix">
+              <div class="pull-left">
+                <h5 class="stream-author">分类:<%= @golden_idea.category %>, &nbsp;&nbsp;提议人:<%= @golden_idea.proposers %>, &nbsp;&nbsp;部门:<%= @golden_idea.department %></h5>
+                附件:
+                <% if @golden_idea.attachments.present? %>
+                  <% @golden_idea.attachments.each do |attachment| %>
+                    <%= link_to attachment.attachment_file_name, attachment.attachment.url %>
+                  <% end %>
+                <% else %>
+                  无
+                <% end %>
+              </div>
+              <div class="pull-right">
+                <a href="<%= request.referer %>" class="btn btn-primary">返回</a>
+                <% if current_employee.isadmin? %>
+                  <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
+                  <%= link_to '打分', score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+                  <%= link_to '员工积分', employee_score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#employee_score_modal" %>
+                  <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
+                <% else !@golden_idea.is_complate? && @golden_idea.is_edit?(current_employee.id) %>
+                  <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
+                  <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
+                <% end %>
+              </div>
+            </div>
+            <div class="module-body">
+              <div class="media stream" style="padding-top: 0px;">
+                <div class="media-body">
+                  <div class="stream-headline">
+                    <div class="stream-text"><%= @golden_idea.content.html_safe if @golden_idea.content.present? %></div>
+                  </div><!--/.stream-headline-->
+                  <div class="stream-options">
+                    <a href="javascript:void(0)" class="btn btn-small" data-remote="true"><i class="icon-eye-open shaded"></i><span id="view_count"><%#= @question.view_count %></span></a>
+                    <a href="<%#= praise_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-up shaded"></i><span id="praise_count"><%#= @question.praise_count %></span></a>
+                    <a href="<%#= rubbish_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-down shaded"></i><span id="rubbish_count"><%#= @question.rubbish_count %></span></a>
+                  </div>
+                </div>
+	            </div><!--/.media .stream-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<!--编辑弹框-->
+<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>Edit Golden Idea</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('season_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+
+<!--员工积分分配弹框-->
+<div class="modal fade" id="employee_score_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">x</button>
+       <h3>员工积分分配</h3>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width:10px;height:10px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="submit" class="btn btn-primary" onclick="document.getElementById('employee_score_form').submit();">Submit</button>
+    </div>
+   </div>
+</div>
+<script type="text/javascript">
+  $("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+  $("#employee_score_modal").on("hidden", function() {
+    $(this).removeData("modal");
+  });
+
+  $('#closebtn').on('click', function(){
+    $(".modal-body input[value='Save']").click();
+    setTimeout("location.reload()",500);
+  });
+</script>
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>

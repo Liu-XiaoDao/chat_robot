@@ -1,0 +1,2 @@
+module GoldenIdea::IdeasHelper
+end

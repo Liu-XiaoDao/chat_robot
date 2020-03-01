@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ABCAM·金点子</title>
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	  <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+    <!-- 钉钉功能 -->
+    <%# TODO: 这里可以再第一次请求钉钉ｉｄ之后不再使用 %>
+    <% if !signed_in? %>
+      <script src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.41/dingtalk.open.js"></script>
+      <%= javascript_include_tag "library" %>
+    <% end %>
+
+  </head>
+
+  <body>
+    <%= render 'golden_idea/application/header' %>
+    <%= yield %>
+    <%= render 'golden_idea/application/footer' %>
+  </body>
+
+
+	<script>
+		$(document).ready(function() {
+			$('.datatable-1').dataTable();
+			$('.dataTables_paginate').addClass("btn-group datatable-pagination");
+			$('.dataTables_paginate > a').wrapInner('<span />');
+			$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+			$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+		} );
+	</script>
+  <% if !signed_in? %>
+    <script type="text/javascript">
+      $("body").mLoading();
+    </script>
+  <% end %>
+</html>

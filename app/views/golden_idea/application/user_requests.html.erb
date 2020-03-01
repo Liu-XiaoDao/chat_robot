@@ -1,0 +1,44 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+               <h3>操作日志</h3>
+            </div>
+            <div class="module-body">
+              <%= render "golden_idea/application/flash" %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>url</th>
+                    <th>time</th>
+                    <th>params</th>
+                    <th>remote_ip</th>
+                    <th>created_at</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @user_requests.each do |user_request| %>
+                    <tr>
+                      <td><%= user_request.id %></td>
+                      <td title="<%= user_request.path %>"><%= truncate(user_request.path, length: 30) %></td>
+                      <td title="<%= user_request.time %>"><%= user_request.time %></td>
+                      <td title="<%= user_request.params %>"><%= truncate(user_request.params, length:50) %></td>
+                      <td><%= user_request.remote_ip%></td>
+                      <td><%= user_request.created_at%></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= will_paginate @user_requests, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
+            </div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->

@@ -1,0 +1,67 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <%= render "golden_idea/application/flash" %>
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+              <h3>金点子-<%=@season.name%></h3>
+            </div>
+            <div class="module-option clearfix">
+              <div class="pull-right">
+                <%= link_to '返回', golden_idea_seasons_path, class: "btn btn-primary" %>
+              </div>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>分类</th>
+                    <th>标题</th>
+                    <th>提议人</th>
+                    <th>部门</th>
+                    <th>内容描述</th>
+                    <th>得分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @ideas.each do |idea| %>
+                    <tr>
+                      <td><%= idea.id %></td>
+                      <td><%= idea.category %></td>
+                      <td><%= link_to idea.title, golden_idea_idea_path(idea) %></td>
+                      <td>
+                        <% if idea.proposers.present? %>
+                          <% idea.proposers.split(',').each do |u_id| %>
+                            <% user = Employee.find(u_id) %>
+                            <%= link_to user.name, user %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                      <td><%= idea.department %></td>
+                      <td><%= idea.description %></td>
+                      <td><%= idea.score %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+</style>

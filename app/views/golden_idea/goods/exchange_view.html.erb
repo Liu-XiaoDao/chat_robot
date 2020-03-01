@@ -1,0 +1,8 @@
+<%= form_for @good, url: exchange_golden_idea_good_path(@good), remote: true, html: { class: "form-horizontal row-fluid", id: "exchange_form" }  do |f| %>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">兑换数量</label>
+    <div class="controls">
+      <%= text_field_tag  :exchange_quantity %>
+    </div>
+  </div>
+<% end %>

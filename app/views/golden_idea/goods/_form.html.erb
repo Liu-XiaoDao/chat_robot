@@ -1,0 +1,64 @@
+<div class="control-group">
+  <label class="control-label" for="basicinput">名称</label>
+  <div class="controls">
+    <%= f.text_field  :name, placeholder: "Type something here...", class: "span8" %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="basicinput">商品数量</label>
+  <div class="controls">
+    <%= f.text_field  :quantity, placeholder: "Type something here...", class: "span8" %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="basicinput">兑换积分</label>
+  <div class="controls">
+    <%= f.number_field  :score, placeholder: "Type something here...", class: "span8" %>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="basicinput">商品描述</label>
+  <div class="controls">
+    <%= f.text_area  :description, placeholder: "Type something here...", class: "span8" %>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="basicinput">商品详情</label>
+  <div class="controls">
+    <%= f.text_area  :content, rows: 8, class: "span8", style: "display:none;" %>
+    <div id="editor">
+    </div>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="basicinput">图片</label>
+  <div class="controls">
+    <%= image_tag(@good.avatar.url, size: '100') if @good.avatar.present? %>
+    <%= f.file_field :avatar, class: "span8", "data-placeholder": "Select here..",tabindex: "1" %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('.select2').select2();
+  });
+</script>
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    var $text1 = $('#golden_idea_good_content')
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $text1.val(html)
+    }
+    // 配置图片上传
+    editor.customConfig.uploadImgServer = '/questions/upload_img'
+    editor.customConfig.uploadFileName = 'fileimg'
+    editor.create()
+    E.fullscreen.init('#editor');
+    // 初始化 textarea 的值
+    editor.txt.html($text1.val());
+</script>

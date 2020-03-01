@@ -1,0 +1,79 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="btn-controls">
+            <div class="btn-box-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <div class="span12">
+                    <a href="#" class="btn-box small span4"><i class="icon-lightbulb"></i><b>创建金点子</b></a>
+                    <a href="#" class="btn-box small span4"><i class="icon-book"></i><b>金点子: <%= GoldenIdea::Idea.all.count %></b></a>
+                    <a href="#" class="btn-box small span4"><i class="icon-tasks"></i><b>金点子期数: <%= GoldenIdea::Season.all.count %></b></a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="module">
+            <div class="module-head">
+              <h3>TOP 5</h3>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>标题</th>
+                    <th>分类</th>
+                    <th>提议人</th>
+                    <th>部门</th>
+                    <th>内容描述</th>
+                    <th>得分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% GoldenIdea::Idea.top_5.first(5).each do |golden_idea| %>
+                    <tr>
+                      <td><%= link_to golden_idea.title, show_admin_golden_idea_idea_path(golden_idea) %></td>
+                      <td><%= golden_idea.category %></td>
+                      <td>
+                        <% if golden_idea.proposers.present? %>
+                          <% golden_idea.proposers.split(',').each do |u_id| %>
+                            <% user = Employee.find(u_id) %>
+                            <%= link_to user.name, user %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                      <td><%= golden_idea.department %></td>
+                      <td><%= golden_idea.description %></td>
+                      <td><%= golden_idea.score%></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.table-message tbody tr').click(function(){
+        window.location.href = $(this).attr('date-href');
+      });
+  });
+</script>
+<style media="screen">
+  .wrapper {
+    min-height: 0;
+  }
+</style>

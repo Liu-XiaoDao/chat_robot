@@ -9,6 +9,8 @@ class Employee < ApplicationRecord
   has_many :return_records
   has_many :comments
   has_many :count_records, ->{ where( count_records: { target_class: "book" } ) }
+  has_many :exchange_records, class_name: "GoldenIdea::ExchangeRecord"
+  has_many :assign_score_records, class_name: "GoldenIdea::AssignScoreRecord"
 
   # def self.current_employee
   #   Thread.current[:employee]
@@ -17,6 +19,10 @@ class Employee < ApplicationRecord
   # def self.current_employee=(employee)
   #   Thread.current[:employee] = employee
   # end
+
+  def golden_ideas
+    GoldenIdea::Idea.where("find_in_set(#{id},proposer)")
+  end
 
   def department_name
     department.try(:name)
