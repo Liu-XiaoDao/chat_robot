@@ -64,8 +64,8 @@
                         <td class="cell-btn align-right"><%= link_to '查看', golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                         <td class="cell-btn align-right"></td>
                       <% elsif golden_idea.is_edit?(current_employee.id) %>
-                        <td class="cell-btn align-right"><%= link_to '修改', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
-                        <td class="cell-btn align-right"><%= link_to '编辑内容', edit_content_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                        <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                        <td class="cell-btn align-right"></td>
                       <% else %>
                         <td class="cell-btn align-right"><%= link_to '查看', golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                         <td class="cell-btn align-right"></td>
