@@ -38,7 +38,7 @@
                 <tbody>
                   <% GoldenIdea::Idea.top_5.first(5).each do |golden_idea| %>
                     <tr>
-                      <td><%= link_to golden_idea.title, show_admin_golden_idea_idea_path(golden_idea) %></td>
+                      <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
                       <td><%= golden_idea.category %></td>
                       <td>
                         <% if golden_idea.proposers.present? %>
