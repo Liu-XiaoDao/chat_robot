@@ -11,7 +11,17 @@
             </div>
             <div class="module-option clearfix">
               <div class="pull-left">
-                <h5 class="stream-author">分类:<%= @golden_idea.category %>, &nbsp;&nbsp;提议人:<%= @golden_idea.proposers %>, &nbsp;&nbsp;部门:<%= @golden_idea.department %></h5>
+                <h5 class="stream-author">
+                  分类:<%= @golden_idea.category %>,
+                  &nbsp;&nbsp;提议人:
+                    <% if @golden_idea.proposers.present? %>
+                      <% @golden_idea.proposers.split(',').each do |u_id| %>
+                        <% user = Employee.find(u_id) %>
+                        <%= link_to user.name, user %>
+                      <% end %>
+                    <% end %>,
+                  &nbsp;&nbsp;部门:<%= @golden_idea.department %>
+                </h5>
                 附件:
                 <% if @golden_idea.attachments.present? %>
                   <% @golden_idea.attachments.each do |attachment| %>
