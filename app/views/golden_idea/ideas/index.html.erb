@@ -25,18 +25,18 @@
                 </div>-->
                 <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
                   <% selected = params[:q][:category_eq].split(',') if params[:q] && params[:q][:category_eq] %>
-                  <%= select_tag  'q[category_eq]', options_for_select([['分类', ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'span2'} %>
+                  <%= select_tag  'q[category_eq]', options_for_select([['分类', ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'span1_2'} %>
 
-                  <input type="text" style="margin-bottom: 0;" class="span2" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="标题">
+                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="标题">
 
                   <% selected = params[:q][:season_id_eq_any] if params[:q] && params[:q][:season_id_eq_any] %>
-                  <%= select_tag  'q[season_id_eq_any]', options_for_select(GoldenIdea::Season.all.collect { |s| [ s.name, s.id ] }, :selected => selected), {:multiple => true, :class => 'span2 select2', 'data-placeholder' => '搜索哪一期'} %>
+                  <%= select_tag  'q[season_id_eq_any]', options_for_select(GoldenIdea::Season.all.collect { |s| [ s.name, s.id ] }, :selected => selected), {:multiple => true, :class => 'span1_2 select2', 'data-placeholder' => '搜索哪一期'} %>
 
                   <% selected = params[:q][:proposer] if params[:q] && params[:q][:proposer] %>
-                  <%= select_tag  'q[proposer]', options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:multiple => true, :class => 'span2 select2', 'data-placeholder' => '提议人'} %>
+                  <%= select_tag  'q[proposer]', options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:multiple => true, :class => 'span1_2 select2', 'data-placeholder' => '提议人'} %>
 
-                  <input type="text" style="margin-bottom: 0;" class="span2" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="部门">
-                  <input type="text" style="margin-bottom: 0;" class="span2" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder=">分数">
+                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="部门">
+                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder=">分数">
 
                   <button type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="搜索...">搜索</button>
                 <% end %>
@@ -49,7 +49,8 @@
                   <%= f.submit '', id: "file-submit" %>
                 <% end %>
 
-                <%= link_to '批量导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+                <%= link_to '导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+                <%= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
               </div>
             </div>
             <div class="module-body">
@@ -148,6 +149,9 @@
   }
   .form_contains {
     display: contents;
+  }
+  .span1_2 {
+    width: 100px;
   }
 </style>
 <script>
