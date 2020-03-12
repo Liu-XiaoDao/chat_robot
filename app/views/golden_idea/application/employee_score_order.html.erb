@@ -1,0 +1,39 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+               <h3>员工积分排名</h3>
+            </div>
+            <div class="module-body">
+              <%= render "golden_idea/application/flash" %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>姓名</th>
+                    <th>积分</th>
+                    <th>金点子个数</th>
+                    <th>部门</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% Employee.top_5.each do |employee| %>
+                    <tr>
+                      <td><%= link_to employee.name, employee_path(employee) %></td>
+                      <td><%= employee.score %></td>
+                      <td><%= employee.golden_ideas.count %></td>
+                      <td><%= employee.department.name%></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->

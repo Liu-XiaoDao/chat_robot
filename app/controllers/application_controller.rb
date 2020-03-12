@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include LibraryHelper
 
   before_action :left_data_init, :check_signed_in
+  helper_method :sort_params, :sort_column, :sort_direction
   #侧边数据初始化
   def left_data_init
   end
@@ -35,4 +36,20 @@ class ApplicationController < ActionController::Base
     rslt
   end
 
+  # 字段排序
+  def sort_params
+    return nil unless sort_column
+    return nil unless sort_direction
+
+    "#{sort_column} #{sort_direction}"
+  end
+
+  def sort_column
+    params[:sort]
+    # @current_resource.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+  end
 end

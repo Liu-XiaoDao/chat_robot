@@ -2,7 +2,19 @@ module GoldenIdea
   class IdeasController < ApplicationController
     layout 'golden_idea'
     def index
-      @golden_ideas = Idea.ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 10
+      @golden_ideas = Idea.ransack(params[:q])
+      @golden_ideas.sorts = sort_params || "id DESC"
+      if params[:q] && params[:q][:proposer]
+        sql = ''
+        params[:q][:proposer].each do |p_id|
+          sql += "find_in_set(#{p_id},proposer) or "
+        end
+        sql.slice!(-4, 4) if sql.present?
+        @golden_ideas = @golden_ideas.result(distinct: true).where(sql)
+      else
+        @golden_ideas = @golden_ideas.result(distinct: true)
+      end
+      @golden_ideas = @golden_ideas.paginate page: params[:page], per_page: 10
     end
 
     #def index_admin
@@ -83,8 +95,7 @@ module GoldenIdea
       employees = params[:employees]
       flash[:success] = "积分分配成功"
       employees.each do |i, v|
-        employee = Employee.find(i)
-        if employee.update(score: (employee.score.to_i + v.to_i))
+        if Employee.find(i).assign_score(v.to_i)
           AssignScoreRecord.create(employee_id: i, idea_id: params[:id], score: v)
         else
           flash[:error] = "积分分配失败"
@@ -98,6 +109,16 @@ module GoldenIdea
       @golden_idea.destroy
 
       redirect_to current_season_index_golden_idea_ideas_path
+    end
+
+    #批量上传
+    def import
+      if !params[:import][:file]
+        redirect_to golden_idea_ideas_path, alert: "You need select a file"
+      else
+        Idea.import(params[:import][:file])
+        redirect_to golden_idea_ideas_path, notice: "导入成功"
+      end
     end
 
     private

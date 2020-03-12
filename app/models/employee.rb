@@ -12,6 +12,7 @@ class Employee < ApplicationRecord
   has_many :exchange_records, class_name: "GoldenIdea::ExchangeRecord"
   has_many :assign_score_records, class_name: "GoldenIdea::AssignScoreRecord"
 
+  scope :top_5, ->{order(score: :desc)}
   # def self.current_employee
   #   Thread.current[:employee]
   # end
@@ -76,5 +77,12 @@ class Employee < ApplicationRecord
     else
       LogService.e("[notification_send] ERR: 员工祝贺发送失败,姓名:#{self.name}")
     end
+  end
+
+  # 金点子相关
+  def assign_score(score)
+    return false if score.blank?
+
+    update(score: (score.to_i + score), available_score: (available_score.to_i + score))
   end
 end

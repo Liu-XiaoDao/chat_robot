@@ -94,6 +94,8 @@ Rails.application.routes.draw do
   get '/golden_idea' => 'golden_idea/application#index'
   get '/golden_idea_exchange_records' => 'golden_idea/application#exchange_records'
   get '/golden_idea_assign_score_records' => 'golden_idea/application#assign_score_records'
+  get '/golden_idea_employee_score_order' => 'golden_idea/application#employee_score_order'
+  get '/golden_idea_score_order' => 'golden_idea/application#golden_idea_score_order'
   get '/golden_idea_user_requests' => 'golden_idea/application#user_requests'
   namespace :golden_idea do
     resources :seasons do
@@ -109,6 +111,7 @@ Rails.application.routes.draw do
       get 'score_view',  on: :member
       get 'employee_score_view',  on: :member
       post 'employee_score',  on: :member
+      post 'import',     on: :collection
     end
     resources :goods do
       get 'index_admin', on: :collection

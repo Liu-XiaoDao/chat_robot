@@ -15,8 +15,8 @@ class ApisController < ApplicationController
     userInfo = @user.getUserInfo(accessToken, code)
     # Log::i("[USERINFO-getuserid]".json_encode($userInfo))
     if userInfo.present? && userInfo['errcode'] == 0
-      # sign_in Employee.find_by_userid userInfo['userid']
-      sign_in Employee.find_by_userid '130841175621040386'
+      sign_in Employee.find_by_userid userInfo['userid']
+      # sign_in Employee.find_by_userid '130841175621040386'
     end
     render json: userInfo
   end
