@@ -40,3 +40,5 @@
 
 // select2
 //= require select2.min
+// 图片点击变大
+//= require jquery.fancybox
