@@ -37,6 +37,16 @@ module GoldenIdea
       self.proposer = employee_ids.join(",") if employee_ids.present?
     end
 
+    def season_name
+      season.name
+    end
+
+    def season_name=(str)
+      return if str.blank?
+
+      self.season = Season.find_by_name(str)
+    end
+
     def is_edit?(employee_id)
       return false if proposer.blank? || employee_id.blank?
 
@@ -72,7 +82,7 @@ module GoldenIdea
       (2..spreadsheet.last_row).each do |i|
         row = Hash[[headers, spreadsheet.row(i).map(&:to_s)].transpose]
         idea = new
-        idea.attributes = row.to_hash.slice(*["title", "description", "department", "category", "proposer_names", "score"])
+        idea.attributes = row.to_hash.slice(*["title", "description", "department", "category", "proposer_names", "season_name", "score"])
         idea.save
       end
     end
