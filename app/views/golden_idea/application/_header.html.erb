@@ -33,7 +33,7 @@
           <ul class="nav pull-right">
             <li>
               <% if signed_in? %>
-                <a href="#" >积分:<%= current_employee.score %></a>
+                <a href="#" >总积分:<%= current_employee.score %>,可用积分<%= current_employee.available_score %></a>
               <% end %>
             </li>
             <li class="dropdown">

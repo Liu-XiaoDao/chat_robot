@@ -53,10 +53,10 @@ module GoldenIdea
       quantity = Integer(params[:exchange_quantity])
       required_points = quantity * @good.score
       current_employee = Employee.current_employee
-      current_employee_score = current_employee.score
+      current_employee_available_score = current_employee.available_score
       good_quantity = @good.quantity
-      if current_employee_score >= required_points && good_quantity >= quantity
-        if current_employee.update(score: (current_employee_score - required_points)) && @good.update(quantity: (good_quantity - quantity))
+      if current_employee_available_score >= required_points && good_quantity >= quantity
+        if current_employee.update(available_score: (current_employee_available_score - required_points)) && @good.update(quantity: (good_quantity - quantity))
           ExchangeRecord.create(good_id: @good.id, employee_id:current_employee.id, quantity: quantity, used_score: required_points)
           flash[:success] = "兑换成功"
         else
