@@ -1,0 +1,54 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+               <h3>员工积分</h3>
+            </div>
+            <div class="module-option clearfix">
+              <div class="pull-left">
+                <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
+                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[name_cont]" value='<%= params[:q]["name_cont"] if params[:q] %>' placeholder="姓名">
+                  <button type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="搜索...">搜索</button>
+                <% end %>
+
+              </div>
+              <div class="pull-right">
+              </div>
+            </div>
+            <div class="module-body">
+              <%= render "golden_idea/application/flash" %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>姓名</th>
+                    <th>可用积分</th>
+                    <th>总积分</th>
+                    <th>操作</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @employees.each do |employee| %>
+                    <tr>
+                      <td><%= employee.id %></td>
+                      <td><%= link_to employee.name, employee_path(employee) %></td>
+                      <td><%= employee.score %></td>
+                      <td><%= employee.available_score %></td>
+                      <td class="cell-btn align-right"><%= link_to '加积分', '', class: "btn btn-mini btn-primary" %></td>
+                      <td class="cell-btn align-right"><%= link_to '减积分', '', class: "btn btn-mini btn-primary" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'golden_ideas',        on: :member
     get 'exchange_records',    on: :member
     get 'assign_score_records',    on: :member
+    get 'score_lists',    on: :collection
   end
 
   resources :apis do
@@ -89,6 +90,8 @@ Rails.application.routes.draw do
   get '/library/praise_rubbishs' => 'library#praise_rubbishs' #图书管理评价
   get '/library/comments' => 'library#comments' #图书管理评论
   get '/library/return_records' => 'library#return_records' #图书管理归还记录
+
+  resources :attachments
 
   # 下面是金点子相关
   get '/golden_idea' => 'golden_idea/application#index'

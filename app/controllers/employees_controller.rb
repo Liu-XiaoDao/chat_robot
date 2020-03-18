@@ -93,6 +93,12 @@ class EmployeesController < ApplicationController
     render layout: "golden_idea"
   end
 
+  def score_lists
+    @employees = Employee.ransack(params[:q]).result(distinct: true)
+    @employees = @employees.paginate page: params[:page], per_page: 15
+    render layout: "golden_idea"
+  end
+
   def update_employee
     accessToken = @auth.getAccessToken() #获取token
     @msg = ""
