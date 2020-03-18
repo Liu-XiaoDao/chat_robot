@@ -1,4 +1,5 @@
 class UserRequest < ApplicationRecord
+  belongs_to :employee, optional: true
   after_create :async_flush_request_stats
 
   def path
@@ -12,6 +13,10 @@ class UserRequest < ApplicationRecord
 
     uri = URI.parse url
     CGI.parse(uri.query).reject{|_, v| v.reject(&:empty?).empty?} if uri.query
+  end
+
+  def employee_name
+    employee.try :name
   end
 
   private

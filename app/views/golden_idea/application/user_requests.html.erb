@@ -18,17 +18,19 @@
                     <th>time</th>
                     <th>params</th>
                     <th>remote_ip</th>
+                    <th>name</th>
                     <th>created_at</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @user_requests.each do |user_request| %>
+                  <% @user_requests.order(id: :desc).each do |user_request| %>
                     <tr>
                       <td><%= user_request.id %></td>
                       <td title="<%= user_request.path %>"><%= truncate(user_request.path, length: 30) %></td>
                       <td title="<%= user_request.time %>"><%= user_request.time %></td>
                       <td title="<%= user_request.params %>"><%= truncate(user_request.params, length:50) %></td>
                       <td><%= user_request.remote_ip%></td>
+                      <td><%= user_request.employee_name%></td>
                       <td><%= user_request.created_at%></td>
                     </tr>
                   <% end %>

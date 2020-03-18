@@ -46,7 +46,7 @@
                       <td><%= golden_idea.department %></td>
                       <td><%= golden_idea.description %></td>
                       <td><%= golden_idea.score %></td>
-                      <% if current_employee.isadmin? %>
+                      <% if current_employee.is_golden_idea_admin? %>
                         <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                         <td class="cell-btn align-right"><%= link_to '删除', golden_idea_idea_path(golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
                       <% elsif golden_idea.is_complate? %>
