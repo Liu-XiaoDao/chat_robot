@@ -80,9 +80,14 @@ class Employee < ApplicationRecord
   end
 
   # 金点子相关
-  def assign_score(score)
-    return false if score.blank?
+  GoldenIdeaMembers =  ["任帆", "卢兴超", "魏力", "何沙", "胡灶顺", "徐梦婷", "陈艳莉", "路传伟", "郭森良", "曾鹏", "扬娜", "葛江燕", "张鑫", "谷丽娟", "邢天棋", "梅慧敏", "袁冰"]
+  def assign_score(assign_score)
+    return false if assign_score.blank?
 
-    update(score: (score.to_i + score), available_score: (available_score.to_i + score))
+    update(score: (score + assign_score), available_score: (available_score + assign_score))
+  end
+
+  def is_golden_idea_admin?
+    isadmin? || GoldenIdeaMembers.include?(name)
   end
 end

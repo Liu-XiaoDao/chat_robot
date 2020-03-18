@@ -29,18 +29,24 @@
     </ul><!--/.widget-nav-->
 
     <ul class="widget widget-menu unstyled">
-      <% if signed_in? && current_employee.isadmin? %>
+      <% if signed_in? && current_employee.is_golden_idea_admin? %>
         <li>
           <a href="<%= index_admin_golden_idea_goods_path %>">
             <i class="menu-icon icon-tasks"></i>
             积分兑换-管理
           </a>
         </li>
+        <li>
+          <a href="<%= index_admin_golden_idea_goods_path %>">
+            <i class="menu-icon icon-tasks"></i>
+            员工积分-管理
+          </a>
+        </li>
       <% end %>
     </ul><!--/.widget-nav-->
 
     <ul class="widget widget-menu unstyled">
-      <% if signed_in? && current_employee.isadmin? %>
+      <% if signed_in? && current_employee.is_golden_idea_admin? %>
         <li>
           <a class="collapsed" data-toggle="collapse" href="#togglePages_admin">
             <i class="menu-icon icon-cog"></i>

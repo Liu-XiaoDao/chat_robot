@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200311063739) do
+ActiveRecord::Schema.define(version: 20200312170711) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -122,8 +122,8 @@ ActiveRecord::Schema.define(version: 20200311063739) do
     t.date "hired_date"
     t.integer "is_leave", limit: 1, default: 0, comment: "记录员工是否离职,已离职:1,未离职:0"
     t.decimal "credits", precision: 8, scale: 3
-    t.decimal "score", precision: 8, scale: 3
-    t.decimal "available_score", precision: 8, scale: 3
+    t.decimal "score", precision: 8, scale: 3, default: "0.0"
+    t.decimal "available_score", precision: 8, scale: 3, default: "0.0"
   end
 
   create_table "expresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -260,6 +260,7 @@ ActiveRecord::Schema.define(version: 20200311063739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remote_ip"
+    t.integer "employee_id"
   end
 
   add_foreign_key "comments", "books"
