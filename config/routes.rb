@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'golden_ideas',        on: :member
     get 'exchange_records',    on: :member
     get 'assign_score_records',    on: :member
+    get 'score_lists',    on: :collection
   end
 
   resources :apis do
@@ -90,6 +91,8 @@ Rails.application.routes.draw do
   get '/library/comments' => 'library#comments' #图书管理评论
   get '/library/return_records' => 'library#return_records' #图书管理归还记录
 
+  resources :attachments
+
   # 下面是金点子相关
   get '/golden_idea' => 'golden_idea/application#index'
   get '/golden_idea_exchange_records' => 'golden_idea/application#exchange_records'
@@ -111,7 +114,8 @@ Rails.application.routes.draw do
       get 'score_view',  on: :member
       get 'employee_score_view',  on: :member
       post 'employee_score',  on: :member
-      post 'import',     on: :collection
+      get 'import',     on: :collection
+      post 'import_preview',     on: :collection
     end
     resources :goods do
       get 'index_admin', on: :collection

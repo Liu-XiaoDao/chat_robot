@@ -9,6 +9,7 @@ module GoldenIdea
     after_create :assign_score
 
     validates :title, :category, :proposers, :department, presence: true
+    validates :title, uniqueness: true
 
     #def proposer=(str)
     #  binding.pry
@@ -76,15 +77,32 @@ module GoldenIdea
     end
 
     # 导入文件
-    def self.import(file)
+    # def self.import(file)
+      # spreadsheet = SpreadsheetService.new.parse(file)
+      # headers = spreadsheet.row(1)
+      # (2..spreadsheet.last_row).each do |i|
+        # row = Hash[[headers, spreadsheet.row(i).map(&:to_s)].transpose]
+
+        # idea = find_by_title(row['title'])
+        # idea ||= new
+        # idea.attributes = row.to_hash.slice(*["title", "description", "department", "category", "proposer_names", "season_name", "score"])
+        # idea.save
+      # end
+    # end
+
+    def self.import_preview(file)
+      create_record = []
+
       spreadsheet = SpreadsheetService.new.parse(file)
       headers = spreadsheet.row(1)
       (2..spreadsheet.last_row).each do |i|
         row = Hash[[headers, spreadsheet.row(i).map(&:to_s)].transpose]
-        idea = new
+        idea = find_by_title(row['title'])
+        idea ||= new
         idea.attributes = row.to_hash.slice(*["title", "description", "department", "category", "proposer_names", "season_name", "score"])
-        idea.save
+        create_record << idea
       end
+      create_record
     end
 
   end

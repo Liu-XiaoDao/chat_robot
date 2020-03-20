@@ -112,13 +112,35 @@ module GoldenIdea
     end
 
     #批量上传
-    def import
+    # def import
+      # if !params[:import][:file]
+        # redirect_to golden_idea_ideas_path, alert: "You need select a file"
+      # else
+        # Idea.import(params[:import][:file])
+        # redirect_to golden_idea_ideas_path, notice: "导入成功"
+      # end
+    # end
+
+    def import_preview
       if !params[:import][:file]
         redirect_to golden_idea_ideas_path, alert: "You need select a file"
       else
-        Idea.import(params[:import][:file])
-        redirect_to golden_idea_ideas_path, notice: "导入成功"
+        @ideas = Idea.import_preview(params[:import][:file])
+        @ideas_cache_key = "ideas_#{SecureRandom.hex}"
+        Rails.cache.write(@ideas_cache_key, @ideas, expires_in: 1.days)
       end
+    end
+
+    def import
+      cr, er = 0, 0
+      @ideas = Rails.cache.read(params[:cache_key])
+      @ideas.map do |t|
+        t.save ? cr += 1 : er += 1
+      end
+      Rails.cache.delete(params[:cache_key])
+      info = (er == 0) ? :success : :danger
+      flash[info] = "成功: " + cr.to_s  + " 失败: " + er.to_s
+      redirect_to golden_idea_ideas_url
     end
 
     private

@@ -44,7 +44,7 @@
               </div>
               <div class="pull-right">
                 <!--批量上传表单-->
-                <%= form_for :import, url: import_golden_idea_ideas_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
+                <%= form_for :import, url: import_preview_golden_idea_ideas_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
                   <%= f.file_field :file, id: "upload-file-input" %>
                   <%= f.submit '', id: "file-submit" %>
                 <% end %>
