@@ -114,7 +114,8 @@ Rails.application.routes.draw do
       get 'score_view',  on: :member
       get 'employee_score_view',  on: :member
       post 'employee_score',  on: :member
-      post 'import',     on: :collection
+      get 'import',     on: :collection
+      post 'import_preview',     on: :collection
     end
     resources :goods do
       get 'index_admin', on: :collection

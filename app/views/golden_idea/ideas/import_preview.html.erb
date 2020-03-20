@@ -1,0 +1,74 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <%= render "golden_idea/application/flash" %>
+        <div class="content">
+          <div class="module">
+            <div class="module-head">
+               <h3>金点子上传预览</h3>
+            </div>
+            <div class="module-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>分类</th>
+                    <th>标题</th>
+                    <th>期</th>
+                    <th>提议人</th>
+                    <th>部门</th>
+                    <th>得分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @ideas.each do |golden_idea| %>
+                    <%
+                      if golden_idea.new_record?
+                        tag = "success"
+                      elsif golden_idea.changes.any?
+                        tag = "warning"
+                      end
+                    %>
+                      <tr class="<%= tag %>">
+                      <td><%= golden_idea.id %></td>
+                      <td><%= golden_idea.category %></td>
+                      <td><%= golden_idea.title %></td>
+                      <td><%= golden_idea.season.try :name %></td>
+                      <td>
+                        <% if golden_idea.proposers.present? %>
+                          <% golden_idea.proposers.split(',').each do |u_id| %>
+                            <% user = Employee.find(u_id) %>
+                            <%= link_to user.name, user %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                      <td><%= golden_idea.department %></td>
+                      <td><%= golden_idea.score %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <p><strong>请确认上面数据是否正确！</strong> 确认无误后点右侧按钮导入. <a class="btn btn-primary" href="/golden_idea/ideas/import?cache_key=<%=@ideas_cache_key%>">Import</a></p>
+            </div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
+
+
+
+<style type="text/css">
+  .modal-backdrop, .modal-backdrop.fade.in {
+    background: #000000;
+    opacity: .8
+  }
+  .form_contains {
+    display: contents;
+  }
+  .span1_2 {
+    width: 100px;
+  }
+</style>
