@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'golden_ideas',        on: :member
     get 'exchange_records',    on: :member
     get 'assign_score_records',    on: :member
+    get 'score',    on: :member
     get 'score_lists',    on: :collection
   end
 

@@ -50,7 +50,8 @@
                 <% end %>
 
                 <%= link_to '导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
-                <%= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
+                <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
+                <%= link_to '导出', golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
               </div>
             </div>
             <div class="module-body">

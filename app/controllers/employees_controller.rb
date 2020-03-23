@@ -93,6 +93,11 @@ class EmployeesController < ApplicationController
     render layout: "golden_idea"
   end
 
+  def score
+    @employee = Employee.find params[:id]
+    render layout: "golden_idea"
+  end
+
   def score_lists
     @employees = Employee.ransack(params[:q]).result(distinct: true)
     @employees = @employees.paginate page: params[:page], per_page: 15

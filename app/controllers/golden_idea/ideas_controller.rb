@@ -15,6 +15,11 @@ module GoldenIdea
         @golden_ideas = @golden_ideas.result(distinct: true)
       end
       @golden_ideas = @golden_ideas.paginate page: params[:page], per_page: 10
+
+      respond_to { |format|
+        format.html
+        format.xlsx { send_data Idea.to_xlsx(@golden_ideas).stream.string, filename: "golden_ideas.xlsx", disposition: 'attachment' }
+      }
     end
 
     #def index_admin
@@ -23,6 +28,10 @@ module GoldenIdea
 
     def current_season_index
       @golden_ideas = Idea.where(season_id: Season.last.id)
+      respond_to { |format|
+        format.html
+        format.xlsx { send_data Idea.to_xlsx(@golden_ideas).stream.string, filename: "golden_ideas.xlsx", disposition: 'attachment' }
+      }
     end
 
     #def current_season_index_admin
