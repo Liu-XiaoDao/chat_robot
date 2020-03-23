@@ -1,0 +1,60 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <%= render 'golden_idea/application/left' %>
+      <div class="span9">
+        <div class="content">
+          <div class="btn-controls">
+            <div class="btn-box-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <div class="span12">
+                    <a href="#" class="btn-box small span6"><i class="icon-book"></i><b>总积分: <%= current_employee.score %></b></a>
+                    <a href="#" class="btn-box small span6"><i class="icon-tasks"></i><b>可用积分: <%= current_employee.available_score %></b></a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <%
+            rowno = ActiveRecord::Base.connection.execute("select rowno from (select id,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b order by score desc) c where id = #{current_employee.id};")
+            rowno = Integer(rowno.to_a[0][0])
+            offset = (rowno - 3) < 0 ? 0 : (rowno - 3)
+            results = ActiveRecord::Base.connection.execute("select * from (select name,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b order by score desc) as t limit 5 offset #{offset};")
+          %>
+          <div class="module">
+            <div class="module-head">
+               <h3>当前排名:<%= rowno %></h3>
+            </div>
+            <div class="module-body">
+              <%= render "golden_idea/application/flash" %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>姓名</th>
+                    <th>积分</th>
+                    <th>排名</th>
+                    <th>相差积分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% last_score = nil %>
+                  <% results.each do |name, score, rowno| %>
+                    <tr>
+                      <td><%= name %></td>
+                      <td><%= score %></td>
+                      <td><%= Integer(rowno) %></td>
+                      <td><%= (last_score - score) if last_score.present? %></td>
+                    </tr>
+                    <% last_score = score %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!--/.content-->
+      </div><!--/.span9-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->

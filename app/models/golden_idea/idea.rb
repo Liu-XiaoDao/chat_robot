@@ -6,7 +6,7 @@ module GoldenIdea
     scope :top_5, ->{order(score: :desc)}
 
     before_create :set_seasion
-    after_create :assign_score
+    after_update :assign_score, if: :score_changed?
 
     validates :title, :category, :proposers, :department, presence: true
     validates :title, uniqueness: true
@@ -27,6 +27,10 @@ module GoldenIdea
       end
 
       self.proposer = str
+    end
+
+    def proposer_names
+      proposer.split(",").map{|u_id| Employee.find(u_id).name }.join(",")
     end
 
     def proposer_names=(str)
@@ -65,6 +69,8 @@ module GoldenIdea
     def assign_score
       return if proposers.blank?
       return if score.blank?
+      return if assign_score_records.present?
+
 
       proposer_ids = proposers.split(",")
 
@@ -103,6 +109,11 @@ module GoldenIdea
         create_record << idea
       end
       create_record
+    end
+
+    def self.to_xlsx(records)
+      export_fields = ["title", "description", "department", "category", "proposer_names", "season_name", "score"]
+      SpreadsheetService.new.generate(export_fields, records)
     end
 
   end
