@@ -9,17 +9,17 @@
               <%= render "library/flash" %>
               <div class="profile-head media">
                 <a href="#" class="media-cover pull-left">
-                  <img src="<%= current_employee.avatar %>">
+                  <img src="<%= @employee.avatar %>">
                 </a>
                 <div class="media-body">
                   <h4>
                     <%= @employee.name %><small><%#= '@book.author' %></small>
                   </h4>
-                  <p class="profile-brief" title="<%='@book.intro'%>">积分:<span style="color:red;padding-left:5px;"><%= current_employee.score %></span></p>
+                  <p class="profile-brief" title="<%='@book.intro'%>">积分:<span style="color:red;padding-left:5px;"><%= @employee.score %></span></p>
                   <div class="profile-details muted">
-                    <a href="<%#= borrow_view_book_path %>" class="btn" ><i class="icon-plus shaded"></i>借阅</a>
-                    <a href="<%#= praise_book_path(@book) %>"  class="btn" data-remote="true"><i class="icon-thumbs-up shaded"></i>赞 <span id="praise_count"><%#= @book.praise_count %></span></a>
-                    <a href="<%#= rubbish_book_path(@book) %>" class="btn" data-remote="true"><i class="icon-thumbs-down shaded"></i>踩 <span id="rubbish_count"><%#= @book.rubbish_count %></span></a>
+                    <a href="<%#= borrow_view_book_path %>" class="btn" ><i class="icon-plus shaded"></i></a>
+                    <a href="<%#= praise_book_path(@book) %>"  class="btn" data-remote="true"><i class="icon-thumbs-up shaded"></i> <span id="praise_count"><%#= @book.praise_count %></span></a>
+                    <a href="<%#= rubbish_book_path(@book) %>" class="btn" data-remote="true"><i class="icon-thumbs-down shaded"></i> <span id="rubbish_count"><%#= @book.rubbish_count %></span></a>
                   </div>
                 </div>
               </div>
@@ -65,7 +65,7 @@
                             <td><%= golden_idea.score %></td>
                             <% if golden_idea.is_complate? %>
                               <td class="cell-btn align-right"></td>
-                            <% elsif golden_idea.is_edit?(current_employee.id) %>
+                            <% elsif golden_idea.is_edit?(@employee.id) %>
                               <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                             <% else %>
                               <td class="cell-btn align-right"></td>
