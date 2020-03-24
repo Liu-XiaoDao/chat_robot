@@ -149,7 +149,7 @@ module GoldenIdea
       Rails.cache.delete(params[:cache_key])
       info = (er == 0) ? :success : :danger
       flash[info] = "成功: " + cr.to_s  + " 失败: " + er.to_s
-      redirect_to golden_idea_ideas_url
+      redirect_to current_season_index_golden_idea_ideas_url
     end
 
     private

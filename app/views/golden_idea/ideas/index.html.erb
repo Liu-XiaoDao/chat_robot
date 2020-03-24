@@ -42,17 +42,19 @@
                 <% end %>
 
               </div>
-              <div class="pull-right">
-                <!--批量上传表单-->
-                <%= form_for :import, url: import_preview_golden_idea_ideas_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
-                  <%= f.file_field :file, id: "upload-file-input" %>
-                  <%= f.submit '', id: "file-submit" %>
-                <% end %>
+              <% if signed_in? && current_employee.is_golden_idea_admin? %>
+                <div class="pull-right">
+                  <!--批量上传表单-->
+                  <%= form_for :import, url: import_preview_golden_idea_ideas_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
+                    <%= f.file_field :file, id: "upload-file-input" %>
+                    <%= f.submit '', id: "file-submit" %>
+                  <% end %>
 
-                <%= link_to '导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
-                <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
-                <%= link_to '导出', golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
-              </div>
+                  <%= link_to '导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+                  <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
+                  <%= link_to '导出', golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
+                </div>
+              <% end %>
             </div>
             <div class="module-body">
               <table class="table table-striped">
