@@ -11,7 +11,15 @@
             </div>
             <div class="module-option clearfix">
               <div class="pull-right">
-                <%= link_to '导出', current_season_index_golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
+                <% if signed_in? && current_employee.is_golden_idea_admin? %>
+                  <!--批量上传表单-->
+                  <%= form_for :import, url: import_preview_golden_idea_ideas_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
+                    <%= f.file_field :file, id: "upload-file-input" %>
+                    <%= f.submit '', id: "file-submit" %>
+                  <% end %>
+                  <%= link_to '导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+                  <%= link_to '导出', current_season_index_golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
+                <% end %>
                 <%= link_to '新建', new_golden_idea_idea_path, class: "btn btn-primary" %>
               </div>
             </div>
@@ -108,3 +116,12 @@
   opacity: .8
 }
 </style>
+<script>
+  $("#upload-file-btn").click(function () {
+    $("#upload-file-input").click();
+  });
+  $("#upload-file-input").on("change", function(){
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    $("#file-submit").click();
+  });
+</script>
