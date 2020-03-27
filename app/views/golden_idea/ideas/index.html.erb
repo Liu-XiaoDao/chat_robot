@@ -66,7 +66,8 @@
                     <th><%= sortable "season_id", "期" %></th>
                     <th><%= sortable "proposer", "提议人" %></th>
                     <th><%= sortable "department", "部门" %></th>
-                    <!--<th>内容描述</th>-->
+                    <th><%= sortable "status", "状态" %></th>
+                    <th><%= sortable "description", "内容描述" %></th>
                     <th><%= sortable "score", "得分" %></th>
                     <!--<th class="cell-btn align-right">操作</th>
                     <th class="cell-btn align-right"></th>-->
@@ -88,7 +89,8 @@
                         <% end %>
                       </td>
                       <td><%= golden_idea.department %></td>
-                      <!--<td><%#= golden_idea.description %></td>-->
+                      <td><%= golden_idea.status %></td>
+                      <td title="<%= golden_idea.description %>" data-mtpis="<%= golden_idea.description %>"><%= truncate(golden_idea.description, length: 20) %></td>
                       <td><%= golden_idea.score %></td>
                       <!--
                       <% if golden_idea.is_complate? %>

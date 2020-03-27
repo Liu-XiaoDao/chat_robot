@@ -105,14 +105,14 @@ module GoldenIdea
         row = Hash[[headers, spreadsheet.row(i).map(&:to_s)].transpose]
         idea = find_by_title(row['title'])
         idea ||= new
-        idea.attributes = row.to_hash.slice(*["title", "description", "department", "category", "proposer_names", "season_name", "score"])
+        idea.attributes = row.to_hash.slice(*["title", "description", "department", "status", "category", "proposer_names", "season_name", "score"])
         create_record << idea
       end
       create_record
     end
 
     def self.to_xlsx(records)
-      export_fields = ["title", "description", "department", "category", "proposer_names", "season_name", "score"]
+      export_fields = ["title", "description", "department", "status", "category", "proposer_names", "season_name", "score"]
       SpreadsheetService.new.generate(export_fields, records)
     end
 
