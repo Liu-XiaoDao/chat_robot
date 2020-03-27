@@ -58,7 +58,13 @@
                     </div>
                   </div>
                   <div class="control-group">
-                    <label class="control-label" for="basicinput">内容描述</label>
+                    <label class="control-label" for="basicinput">状态</label>
+                    <div class="controls">
+                      <%= f.select  :status, [['进行中', '进行中'], ['暂停', '暂停'], ['已完成', '已完成'], ['转CI项目', '转CI项目'], ['终止', '终止']], include_blank: false, placeholder: "Type something here...", class: "span8" %>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="basicinput">内容详情</label>
                     <div class="controls">
                       <%= f.text_area  :content, rows: 20, class: "span8", style: "display:none;" %>
                       <div id="editor">
