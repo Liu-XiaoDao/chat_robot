@@ -13,7 +13,6 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>url</th>
                     <th>time</th>
                     <th>params</th>
@@ -25,7 +24,6 @@
                 <tbody>
                   <% @user_requests.order(id: :desc).each do |user_request| %>
                     <tr>
-                      <td><%= user_request.id %></td>
                       <td title="<%= user_request.path %>"><%= truncate(user_request.path, length: 30) %></td>
                       <td title="<%= user_request.time %>"><%= user_request.time %></td>
                       <td title="<%= user_request.params %>"><%= truncate(user_request.params, length:50) %></td>

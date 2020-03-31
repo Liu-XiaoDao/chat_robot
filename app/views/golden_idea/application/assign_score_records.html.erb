@@ -13,7 +13,6 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>金点子</th>
                     <th>提议人</th>
                     <th>获得积分</th>
@@ -23,7 +22,6 @@
                 <tbody>
                   <% @assign_score_records.each do |assign_score_record| %>
                     <tr>
-                      <td><%= assign_score_record.id %></td>
                       <td><%= link_to assign_score_record.idea.title, golden_idea_idea_path(assign_score_record.idea) %></td>
                       <td><%= link_to assign_score_record.employee.name, employee_path(assign_score_record.employee) %></td>
                       <td><%= assign_score_record.score %></td>

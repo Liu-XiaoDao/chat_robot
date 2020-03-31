@@ -24,5 +24,8 @@ module GoldenIdea
     def employee_score_order
       @employees = Employee.order(score: :desc)
     end
+
+    def dashboard
+    end
   end
 end

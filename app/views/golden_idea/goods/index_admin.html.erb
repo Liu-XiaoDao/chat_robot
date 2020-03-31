@@ -7,7 +7,7 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>积分兑换-管理</h3>
+               <h3>积分商品-管理</h3>
             </div>
             <div class="module-option clearfix">
               <div class="pull-left">
@@ -32,7 +32,6 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>名称</th>
                     <th>描述</th>
                     <th>图片</th>
@@ -45,7 +44,6 @@
                 <tbody>
                   <% @goods.each do |good| %>
                     <tr>
-                      <td><%= good.id %></td>
                       <td><%= link_to good.name, show_admin_golden_idea_good_path(good) %></td>
                       <td><%= good.description %></td>
                       <td><%= image_tag good.avatar.url(:thumb), size:'50' %></td>

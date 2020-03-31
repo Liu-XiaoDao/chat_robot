@@ -3,49 +3,33 @@
     <div class="row">
       <%= render 'golden_idea/application/left' %>
       <div class="span9">
+        <%= render "golden_idea/application/flash" %>
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>我的金点子</h3>
+               <h3>待兑换</h3>
             </div>
             <div class="module-body">
-              <%= render "golden_idea/application/flash" %>
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>分类</th>
-                    <th>标题</th>
-                    <th>提议人</th>
-                    <th>部门</th>
-                    <th>内容描述</th>
-                    <th>得分</th>
-                    <th class="cell-btn align-right">操作</th>
-                    <th class="cell-btn align-right"></th>
+                    <th>兑换商品</th>
+                    <th>兑换人</th>
+                    <th>数量</th>
+                    <th>使用积分</th>
+                    <th>时间</th>
+                    <th>操作</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @golden_ideas.each do |golden_idea| %>
+                  <% @exchange_records.each do |exchange_record| %>
                     <tr>
-                      <td><%= golden_idea.category %></td>
-                      <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
-                      <td>
-                        <% if golden_idea.proposers.present? %>
-                          <% golden_idea.proposers.split(',').each do |u_id| %>
-                            <% user = Employee.find(u_id) %>
-                            <%= link_to user.name, user %>
-                          <% end %>
-                        <% end %>
-                      </td>
-                      <td><%= golden_idea.department %></td>
-                      <td><%= golden_idea.description %></td>
-                      <td><%= golden_idea.score %></td>
-                      <% if golden_idea.is_complate? %>
-                        <td class="cell-btn align-right"></td>
-                      <% elsif golden_idea.is_edit?(current_employee.id) %>
-                        <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
-                      <% else %>
-                        <td class="cell-btn align-right"></td>
-                      <% end %>
+                      <td><%= link_to exchange_record.good.name, golden_idea_good_path(exchange_record.good) %></td>
+                      <td><%= link_to exchange_record.employee.name, employee_path(exchange_record.employee) %></td>
+                      <td><%= exchange_record.quantity %></td>
+                      <td><%= exchange_record.used_score %></td>
+                      <td><%= exchange_record.created_at %></td>
+                      <td class="cell-btn align-right"><%= link_to '完成', complete_golden_idea_exchange_record_path(exchange_record), class: "btn btn-mini btn-primary" %></td>
                     </tr>
                   <% end %>
                 </tbody>
@@ -64,7 +48,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>编辑</h3>
+       <h3>新建&编辑</h3>
     </div>
     <div class="modal-content">
       <div class="modal-body">
@@ -94,3 +78,12 @@
   opacity: .8
 }
 </style>
+<script>
+  $("#upload-file-btn").click(function () {
+    $("#upload-file-input").click();
+  });
+  $("#upload-file-input").on("change", function(){
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    $("#file-submit").click();
+  });
+</script>

@@ -96,11 +96,12 @@ Rails.application.routes.draw do
 
   # 下面是金点子相关
   get '/golden_idea' => 'golden_idea/application#index'
-  get '/golden_idea_exchange_records' => 'golden_idea/application#exchange_records'
+  get '/golden_idea_good_exchange_records' => 'golden_idea/application#exchange_records'
   get '/golden_idea_assign_score_records' => 'golden_idea/application#assign_score_records'
   get '/golden_idea_employee_score_order' => 'golden_idea/application#employee_score_order'
   get '/golden_idea_score_order' => 'golden_idea/application#golden_idea_score_order'
   get '/golden_idea_user_requests' => 'golden_idea/application#user_requests'
+  get '/golden_idea_dashboard' => 'golden_idea/application#dashboard'
   namespace :golden_idea do
     resources :seasons do
       # get 'index_admin', on: :collection
@@ -123,6 +124,9 @@ Rails.application.routes.draw do
       get 'show_admin',  on: :member
       get 'exchange_view',  on: :member
       patch 'exchange',  on: :member
+    end
+    resources :exchange_records do
+      get 'complete',  on: :member
     end
   end
 
