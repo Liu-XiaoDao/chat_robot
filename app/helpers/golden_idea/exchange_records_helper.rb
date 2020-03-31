@@ -1,0 +1,2 @@
+module GoldenIdea::ExchangeRecordsHelper
+end

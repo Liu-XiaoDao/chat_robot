@@ -20,7 +20,6 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>标题</th>
                     <th>开始时间</th>
                     <th>结束时间</th>
@@ -35,7 +34,6 @@
                 <tbody>
                   <% @seasons.each do |season| %>
                     <tr>
-                      <td><%= season.id %></td>
                       <td><%= link_to season.name, golden_idea_season_path(season) %></td>
                       <td><%= season.start_date %></td>
                       <td><%= season.end_date %></td>

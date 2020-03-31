@@ -27,7 +27,6 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>分类</th>
                     <th>标题</th>
                     <th>提议人</th>
@@ -42,7 +41,6 @@
                 <tbody>
                   <% @golden_ideas.each do |golden_idea| %>
                     <tr>
-                      <td><%= golden_idea.id %></td>
                       <td><%= golden_idea.category %></td>
                       <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
                       <td>

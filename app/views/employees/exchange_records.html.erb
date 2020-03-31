@@ -13,21 +13,21 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>兑换商品</th>
                     <th>数量</th>
                     <th>使用积分</th>
                     <th>时间</th>
+                    <th>状态</th>
                   </tr>
                 </thead>
                 <tbody>
                   <% @exchange_records.each do |exchange_record| %>
                     <tr>
-                      <td><%= exchange_record.id %></td>
                       <td><%= link_to exchange_record.good.name, golden_idea_good_path(exchange_record.good) %></td>
                       <td><%= exchange_record.quantity %></td>
                       <td><%= exchange_record.used_score %></td>
                       <td><%= exchange_record.created_at %></td>
+                      <td><%= exchange_record.status %></td>
                     </tr>
                   <% end %>
                 </tbody>
