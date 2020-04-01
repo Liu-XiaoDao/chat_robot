@@ -6,7 +6,7 @@ module GoldenIdea
     scope :top_5, ->{order(score: :desc)}
 
     before_create :set_seasion
-    after_update :assign_score, if: :score_changed?
+    # after_update :assign_score, if: :score_changed?
 
     validates :title, :category, :proposers, :department, presence: true
     validates :title, uniqueness: true
