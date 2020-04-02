@@ -7,7 +7,22 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>待兑换</h3>
+              <h3>待兑换</h3>
+            </div>
+            <div class="module-option clearfix">
+              <div class="pull-left">
+              </div>
+              <div class="pull-right">
+                <!--批量上传表单-->
+                <%= form_for :import, url: import_preview_golden_idea_ideas_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
+                  <%= f.file_field :file, id: "upload-file-input" %>
+                  <%= f.submit '', id: "file-submit" %>
+                <% end %>
+
+                <%= link_to '导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn11", title: "点击完成应该会更方便" %>
+                <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
+                <%= link_to '导出', golden_idea_exchange_records_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
+              </div>
             </div>
             <div class="module-body">
               <table class="table table-striped">
