@@ -132,7 +132,7 @@ module GoldenIdea
                 { multi_match:
                   {
                     query: token.to_s,
-                    fields: ['name']
+                    fields: ['title']
                   }
                 }
               ]
