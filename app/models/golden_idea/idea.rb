@@ -144,7 +144,7 @@ module GoldenIdea
             number_of_fragments: 1,
             fragment_size: 100,
             fields: {
-              name: { number_of_fragments: 0 },
+              title: { number_of_fragments: 0 },
               content: {}
             }
           }
