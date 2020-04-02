@@ -1,5 +1,8 @@
 module GoldenIdea
   class Idea < ApplicationRecord
+    include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
+
     belongs_to :season, optional: true
     has_many :assign_score_records
 
@@ -116,5 +119,39 @@ module GoldenIdea
       SpreadsheetService.new.generate(export_fields, records)
     end
 
+    class << self
+      # 根据关键字搜索金点子
+      # 最多返回100条记录
+      #只搜索name
+      def search_name_by_token(token)
+        opts = {
+          size: 100,
+          query: {
+            bool: {
+              must: [
+                { multi_match:
+                  {
+                    query: token.to_s,
+                    fields: ['name']
+                  }
+                }
+              ]
+            }
+          },
+          highlight: {
+            pre_tags: ["<strong>"],
+            post_tags: ["</strong>"],
+            number_of_fragments: 1,
+            fragment_size: 100,
+            fields: {
+              name: { number_of_fragments: 0 },
+              content: {}
+            }
+          }
+        }
+        Elasticsearch::Model.search(opts).records
+      end
+
+    end
   end
 end

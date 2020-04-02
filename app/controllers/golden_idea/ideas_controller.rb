@@ -120,6 +120,14 @@ module GoldenIdea
       redirect_to current_season_index_golden_idea_ideas_path
     end
 
+    def search
+      @golden_ideas = Idea.search_name_by_token params[:term]
+      @golden_ideas_size = @golden_ideas.size
+      respond_to do |format|
+        format.js { render :show }
+      end
+    end
+
     #批量上传
     # def import
       # if !params[:import][:file]

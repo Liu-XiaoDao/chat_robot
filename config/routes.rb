@@ -108,6 +108,7 @@ Rails.application.routes.draw do
       # get 'show_admin',  on: :member
     end
     resources :ideas do
+      get 'search',      on: :collection
       # get 'index_admin', on: :collection
       get 'current_season_index', on: :collection
       # get 'current_season_index_admin', on: :collection
