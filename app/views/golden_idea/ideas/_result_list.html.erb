@@ -1,6 +1,6 @@
 <% golden_ideas.each_with_hit do |record, hit| %>
   <li>
-    <% title = hit.highlight && hit.highlight.name ? (raw hit.highlight.name[0]) : record.title %>
+    <% title = hit.highlight.title ? (raw hit.highlight.title[0]) : record.title %>
     <a href="<%= golden_idea_idea_path(record.id) %>"><%= title %></a>
   </li>
 <% end %>
