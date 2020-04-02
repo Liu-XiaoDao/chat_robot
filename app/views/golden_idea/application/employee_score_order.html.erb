@@ -22,7 +22,11 @@
                 <tbody>
                   <% Employee.top_5.each do |employee| %>
                     <tr>
-                      <td><%= link_to employee.name, employee_path(employee) %></td>
+                      <% if employee.is_leave? %>
+                        <td><%= employee.name %></td>
+                      <% else %>
+                        <td><%= link_to employee.name, employee_path(employee) %></td>
+                      <% end %>
                       <td><%= employee.score %></td>
                       <td><%= employee.golden_ideas.count %></td>
                       <td><%= employee.department.try :name%></td>
