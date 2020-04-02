@@ -147,7 +147,7 @@ class Book < ApplicationRecord
           }
         }
       }
-      search(opts).records
+      Elasticsearch::Model.search(opts).records
     end
   end
 
