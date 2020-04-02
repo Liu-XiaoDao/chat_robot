@@ -1,0 +1,10 @@
+<% if @golden_ideas.any? %>
+   $("#search-form").removeClass("open");
+   $("#search-result").children("li").remove();
+
+   $("#search-form").addClass("open");
+   $("#search-result").append("<%= j render('result_list', golden_ideas: @golden_ideas) %>");
+<% else %>
+   $("#search-form").removeClass("open");
+   $("#search-result").children("li").remove();
+<% end %>
