@@ -63,8 +63,7 @@ class Employee < ApplicationRecord
   def assign_score(assign_score)
     return false if assign_score.blank?
 
-    # update(score: (score + assign_score), available_score: (available_score + assign_score))
-    update(score: (score + assign_score))
+    update(score: (score + assign_score), available_score: (available_score + assign_score))
   end
 
   def is_golden_idea_admin?
