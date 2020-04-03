@@ -47,6 +47,7 @@
                   <% end %>
                 </tbody>
               </table>
+              <%= will_paginate @seasons, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
             </div>
           </div>
         </div><!--/.content-->

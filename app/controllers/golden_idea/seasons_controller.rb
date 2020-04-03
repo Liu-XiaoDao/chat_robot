@@ -1,7 +1,7 @@
 class GoldenIdea::SeasonsController < ApplicationController
   layout 'golden_idea'
   def index
-    @seasons = GoldenIdea::Season.all
+    @seasons = GoldenIdea::Season.all.order(id: :desc).paginate page: params[:page], per_page: 10
   end
 
   # def index_admin
