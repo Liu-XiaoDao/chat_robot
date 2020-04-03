@@ -22,22 +22,28 @@
                 <thead>
                   <tr>
                     <th>姓名</th>
+                    <th>排名</th>
                     <th>积分</th>
                     <th>金点子个数</th>
                     <th>部门</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @employees.each do |employee| %>
+                  <%
+                    name = params[:q][:name_cont] if params && params[:q]
+                    results = ActiveRecord::Base.connection.execute("select * from (select id,name,score,(@rowno:=@rowno+1) as rowno, is_leave from employees,(select (@rowno:=0)) b order by score desc) as t where name like \"%#{name}%\";")
+                  %>
+                  <% results.each do |iid, name, score, rowno, is_leave| %>
                     <tr>
-                      <% if employee.is_leave? %>
-                        <td><%= employee.name %></td>
+                      <% if is_leave == 1 %>
+                        <td><%= name %></td>
                       <% else %>
-                        <td><%= link_to employee.name, employee_path(employee) %></td>
+                        <td><%= link_to name, employee_path(iid) %></td>
                       <% end %>
-                      <td><%= employee.score %></td>
-                      <td><%= employee.golden_ideas.count %></td>
-                      <td><%= employee.department.try :name%></td>
+                      <td><%= rowno %></td>
+                      <td><%= score %></td>
+                      <td><%= Employee.find(iid).golden_ideas.count %></td>
+                      <td><%= Employee.find(iid).department.try :name%></td>
                     </tr>
                   <% end %>
                 </tbody>
