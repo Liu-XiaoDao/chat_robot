@@ -9,7 +9,7 @@ module GoldenIdea
     scope :top_5, ->{order(score: :desc)}
 
     before_create :set_seasion
-    after_update :assign_score#, if: :score_changed?
+    after_update :assign_score, if: :score_changed?
 
     validates :title, :category, :proposers, :department, presence: true
     validates :title, uniqueness: true
@@ -72,7 +72,7 @@ module GoldenIdea
     def assign_score
       return if proposers.blank?
       return if score.blank?
-      # return if assign_score_records.present?
+      return if assign_score_records.present?
 
 
       proposer_ids = proposers.split(",")
@@ -80,7 +80,7 @@ module GoldenIdea
       average_score = (score/proposer_ids.count).round(1)
       proposer_ids.each do |p_id|
         if Employee.find(p_id).assign_score(average_score)
-          # AssignScoreRecord.create(employee_id: p_id, idea_id: self.id, score: average_score)
+          AssignScoreRecord.create(employee_id: p_id, idea_id: self.id, score: average_score)
         end
       end
     end
