@@ -8,6 +8,14 @@
             <div class="module-head">
                <h3>员工积分排名</h3>
             </div>
+            <div class="module-option clearfix">
+              <div class="pull-left">
+                <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
+                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[name_cont]" value='<%= params[:q]["name_cont"] if params[:q] %>' placeholder="姓名">
+                  <button type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="搜索...">搜索</button>
+                <% end %>
+              </div>
+            </div>
             <div class="module-body">
               <%= render "golden_idea/application/flash" %>
               <table class="table table-striped">
@@ -20,7 +28,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% Employee.top_5.each do |employee| %>
+                  <% @employees.each do |employee| %>
                     <tr>
                       <% if employee.is_leave? %>
                         <td><%= employee.name %></td>
