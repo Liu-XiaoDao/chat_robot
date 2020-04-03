@@ -22,8 +22,6 @@ module GoldenIdea
     end
 
     def employee_score_order
-      @employees = Employee.ransack(params[:q])
-      @employees = @employees.result(distinct: true)
     end
 
     def dashboard
