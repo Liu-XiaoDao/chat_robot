@@ -40,7 +40,7 @@
                       <% else %>
                         <td><%= link_to name, employee_path(iid) %></td>
                       <% end %>
-                      <td><%= rowno %></td>
+                      <td><%= Integer(rowno) %></td>
                       <td><%= score %></td>
                       <td><%= Employee.find(iid).golden_ideas.count %></td>
                       <td><%= Employee.find(iid).department.try :name%></td>
