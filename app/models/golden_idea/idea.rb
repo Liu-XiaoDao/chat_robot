@@ -13,6 +13,7 @@ module GoldenIdea
 
     validates :title, :category, :proposers, :department, presence: true
     validates :title, uniqueness: true
+    validates :description, length: { maximum: 230  }
 
     #def proposer=(str)
     #  binding.pry
