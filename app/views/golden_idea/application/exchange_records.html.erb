@@ -32,6 +32,7 @@
                   <% end %>
                 </tbody>
               </table>
+              <%= will_paginate @exchange_records, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
             </div>
           </div>
         </div><!--/.content-->
