@@ -30,6 +30,7 @@
                   <% end %>
                 </tbody>
               </table>
+              <%= will_paginate @assign_score_records, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
             </div>
           </div>
         </div><!--/.content-->
