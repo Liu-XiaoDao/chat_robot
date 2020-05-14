@@ -1,0 +1,12 @@
+<%= form_for @reply, url: golden_idea_suggests_path, html: { class: "form-horizontal row-fluid", id: "suggest_form" }  do |f| %>
+  <div class="control-group" style="text-align:center">
+    <%= @suggest.content %>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="basicinput">回复</label>
+    <div class="controls">
+      <%= f.hidden_field :suggest_id %>
+      <%= f.text_area  :content, placeholder: "回复", class: "span8" %>
+    </div>
+  </div>
+<% end %>

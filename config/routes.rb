@@ -129,6 +129,9 @@ Rails.application.routes.draw do
     resources :exchange_records do
       get 'complete',  on: :member
     end
+    resources :suggests do
+      get 'reply', on: :member
+    end
   end
 
   get '/signin' => 'sessions#new'
