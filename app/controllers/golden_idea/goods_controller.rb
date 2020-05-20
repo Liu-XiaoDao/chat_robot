@@ -2,7 +2,7 @@ module GoldenIdea
   class GoodsController < ApplicationController
     layout 'golden_idea'
     def index
-      @goods = Good.ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 8
+      @goods = Good.where("quantity > 0").ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 8
     end
 
     def index_admin
@@ -66,6 +66,21 @@ module GoldenIdea
       else
         # return render js: "$('#exchange_form').prepend('<h5 style=\'text-align: center;\'>您的积分不足或没有库存</h5>')"
         flash[:error] = "您的积分不足或没有库存"
+      end
+      redirect_to request.referer
+    end
+
+    def destroy
+      @good = Good.find(params[:id])
+
+      if @good.exchange_records.present?
+        flash["error"] = "#{@good.name}有兑换记录不能删除"
+      else
+        if @good.destroy
+          flash["success"] = "#{@good.name}删除成功"
+        else
+          flash["error"] = "删除失败:#{@good.errors.full_messages}"
+        end
       end
       redirect_to request.referer
     end
