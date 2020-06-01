@@ -162,7 +162,7 @@ module GoldenIdea
 
     private
       def golden_idea_params
-        params.require(:golden_idea_idea).permit(:title, :category, {:proposers => []}, :department, :description, :content, :score, :status)
+        params.require(:golden_idea_idea).permit(:title, :category, {:proposers => []}, :department, :description, :content, :score, :status, :reporter_id)
       end
   end
 end

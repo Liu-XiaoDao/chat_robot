@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200505140653) do
+ActiveRecord::Schema.define(version: 20200601133146) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20200505140653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "score"
+    t.integer "reporter_id"
     t.index ["season_id"], name: "index_golden_idea_ideas_on_season_id"
   end
 
