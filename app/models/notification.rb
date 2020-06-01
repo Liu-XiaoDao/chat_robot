@@ -4,15 +4,29 @@ class Notification < ApplicationRecord
 
   def send_notificaion
     accessToken = AuthService.new.getAccessToken()
-    data = {
-      "touser":target.employee.userid,
-      "agentid":180734473,
-      "msgtype":"markdown",
-      "markdown": {
-        "title": target_type == "Book" ? "还书提醒" : "快递提醒",
-        "text": "#{content}"
+
+    if target_type == "Suggest"
+      data = {
+        "touser":target.suggest.employee.userid,
+        "agentid":180734473,
+        "msgtype":"markdown",
+        "markdown": {
+          "title": "金点子系统",
+          "text": "#{content}"
+        }
       }
-    }
+    else
+      data = {
+        "touser":target.employee.userid,
+        "agentid":180734473,
+        "msgtype":"markdown",
+        "markdown": {
+          "title": target_type == "Book" ? "还书提醒" : "快递提醒",
+          "text": "#{content}"
+        }
+      }
+    end
+
     msg = MessageService.new.send(accessToken,data)
     LogService.i("[发送消息反馈通知] INFO: #{msg}")
     if msg.code == 200
