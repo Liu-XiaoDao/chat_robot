@@ -5,7 +5,7 @@ class Notification < ApplicationRecord
   def send_notificaion
     accessToken = AuthService.new.getAccessToken()
 
-    if target_type == "Suggest"
+    if target_type == "GoldenIdea::Suggest"
       data = {
         "touser":target.suggest.employee.userid,
         "agentid":180734473,
