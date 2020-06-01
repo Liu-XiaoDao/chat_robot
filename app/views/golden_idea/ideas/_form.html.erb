@@ -11,6 +11,13 @@
   </div>
 </div>
 <div class="control-group">
+  <label class="control-label" for="basicinput">主讲人</label>
+  <div class="controls">
+    <%#= f.select  :reporter_id, options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:placeholder => "Please select"}, {:multiple => true, :class => 'span8 select2'} %>
+    <%= f.select  :reporter_id, Employee.all.collect { |e| [ e.name, e.id ] }, include_blank: false, placeholder: "Type something here...", class: "span8" %>
+  </div>
+</div>
+<div class="control-group">
   <label class="control-label" for="basicinput">提议人</label>
   <div class="controls">
     <% selected = f.object.proposers.split(',') if f.object.proposers.present?  %>

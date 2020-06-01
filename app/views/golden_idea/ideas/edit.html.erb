@@ -30,6 +30,14 @@
                     </div>
                   </div>
                   <div class="control-group">
+                    <label class="control-label" for="basicinput">主讲人</label>
+                    <div class="controls">
+                      <%#= f.select  :reporter_id, options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, ), {:placeholder => "Please select"}, {:class => 'span8 select2'} %>
+                      <%= f.select  :reporter_id, Employee.all.collect { |e| [ e.name, e.id ] }, include_blank: true, placeholder: "Type something here...", class: "span8 select2" %>
+                      <span class="help-inline">默认为创建人(不作为积分分配依据)</span>
+                    </div>
+                  </div>
+                  <div class="control-group">
                     <label class="control-label" for="basicinput">提议人</label>
                     <div class="controls">
                       <% selected = f.object.proposers.split(',') if f.object.proposers.present?  %>

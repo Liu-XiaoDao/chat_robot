@@ -4,11 +4,13 @@ module GoldenIdea
     include Elasticsearch::Model::Callbacks
 
     belongs_to :season, optional: true
+    belongs_to :reporter, class_name: "Employee", optional: true
     has_many :assign_score_records
 
     scope :top_5, ->{order(score: :desc)}
 
     before_create :set_seasion
+    before_create :set_reporter
     after_update :assign_score, if: :score_changed?
 
     validates :title, :category, :proposers, :department, presence: true
@@ -68,6 +70,10 @@ module GoldenIdea
 
     def set_seasion
       self.season_id = Season.last.id if season_id.blank?
+    end
+
+    def set_reporter
+      self.reporter_id = Employee.current_employee.id if reporter_id.blank?
     end
 
     def assign_score
