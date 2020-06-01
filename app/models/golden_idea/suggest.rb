@@ -19,7 +19,7 @@ module GoldenIdea
     def create_notificaion
       return if suggest.blank?
 
-      Notification.create(target_type: self.class.name, target_id: self.id, content: "# 收到新的回复!!! \n##### #{content}.(dingtalk://dingtalkclient/page/link?url=http%3A%2F%2Fhan-express.abcam.com%2questions%22&pc_slide=true) \n###### #{Time.now.try(:strftime, "%Y-%m-%d %H:%M:%S")}")
+      Notification.create(target_type: self.class.name, target_id: self.id, content: "# 收到新的回复!!! \n##### #{content}. [查看详情](dingtalk://dingtalkclient/page/link?url=http%3A%2F%2Fhan-express.abcam.com%2questions%22&pc_slide=true) \n###### #{Time.now.try(:strftime, "%Y-%m-%d %H:%M:%S")}")
     end
 
   end
