@@ -131,6 +131,7 @@ Rails.application.routes.draw do
     end
     resources :suggests do
       get 'reply', on: :member
+      get 'slide_show', on: :member
     end
   end
 

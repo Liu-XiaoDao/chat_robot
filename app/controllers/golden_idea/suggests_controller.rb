@@ -37,6 +37,10 @@ module GoldenIdea
       @suggest = Suggest.find params[:id]
     end
 
+    def slide_show
+      @suggest = Suggest.find params[:id]
+    end
+
     private
       def suggest_params
         params.require(:golden_idea_suggest).permit(:content, :suggest_id)

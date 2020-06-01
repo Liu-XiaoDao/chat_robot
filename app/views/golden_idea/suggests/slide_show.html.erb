@@ -1,0 +1,40 @@
+<div class="wrapper wrapper-library">
+  <div class="container">
+    <div class="row">
+      <div class="span9">
+        <%= render "golden_idea/application/flash" %>
+				<div class="content">
+					<div class="module">
+						<div class="module-head">
+              <h3>意见及建议</h3>
+						</div>
+            <div class="module-option clearfix">
+              <div class="pull-left">
+											<h5 class="stream-author">提问人：<%= @suggest.employee_name %></h5>
+              </div>
+            </div>
+						<div class="module-body" style="padding:0px;">
+								<div class="media stream">
+									<div class="media-body">
+										<div class="stream-headline">
+                      提问内容:
+											<div class="stream-text" style="font-size: 20px;margin-top:20px;"><%= @suggest.content %></div>
+                      <hr>
+                      管理员回复:
+                      <% @suggest.replys.each do |reply| %>
+                        <div class="stream-text" style="margin-top:20px;">
+                          <%= reply.employee_name %>: <%= reply.content %>
+                        </div>
+                      <% end %>
+										</div><!--/.stream-headline-->
+										<div class="stream-options">
+										</div>
+									</div>
+								</div><!--/.media .stream-->
+						</div><!--/.module-body-->
+					</div><!--/.module-->
+				</div><!--/.content-->
+			</div>
+    </div>
+  </div><!--/.container-->
+</div><!--/.wrapper-->
