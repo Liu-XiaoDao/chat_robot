@@ -63,6 +63,7 @@
                     <th><%= sortable "category", "分类" %></th>
                     <th><%= sortable "title", "标题" %></th>
                     <th><%= sortable "season_id", "期" %></th>
+                    <th><%= sortable "reporter_id", "主讲人" %></th>
                     <th><%= sortable "proposer", "提议人" %></th>
                     <th><%= sortable "department", "部门" %></th>
                     <th><%= sortable "status", "状态" %></th>
@@ -78,6 +79,7 @@
                       <td><%= golden_idea.category %></td>
                       <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
                       <td><%= link_to golden_idea.season.name, golden_idea_season_path(golden_idea.season) %></td>
+                      <td><%= golden_idea.reporter.try :name %></td>
                       <td>
                         <% if golden_idea.proposers.present? %>
                           <% golden_idea.proposers.split(',').each do |u_id| %>
