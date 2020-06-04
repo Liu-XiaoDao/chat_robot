@@ -30,7 +30,10 @@
         <a href="<%= golden_idea_suggests_path %>">
           <i class="menu-icon icon-tasks"></i>
           意见及建议
-          <b class="label orange pull-right"><%= GoldenIdea::Suggest.where(suggest_id: nil).count %></b>
+          <% count = GoldenIdea::Suggest.unreply_count %>
+          <% if count > 0 %>
+            <b class="label orange pull-right"><%= count %></b>
+          <% end %>
         </a>
       </li>
     </ul><!--/.widget-nav-->
@@ -47,6 +50,7 @@
           <a href="<%= golden_idea_exchange_records_path %>">
             <i class="menu-icon icon-tasks"></i>
             兑换-管理
+            <b class="label red pull-right"><%= GoldenIdea::ExchangeRecord.where(status: '待兑换').count %></b>
           </a>
         </li>
         <li>
