@@ -22,5 +22,8 @@ module GoldenIdea
       Notification.create(target_type: self.class.name, target_id: self.id, content: "# 收到新的回复!!! \n##### #{content}. [查看详情](dingtalk://dingtalkclient/page/link?url=http%3a%2f%2fhan-express.abcam.com%2fgolden_idea%2fsuggests%2f#{suggest.id}%2fslide_show&pc_slide=true) \n###### #{Time.now.try(:strftime, "%Y-%m-%d %H:%M:%S")}")
     end
 
+    def self.unreply_count
+      Suggest.where(suggest_id: nil).select{|s| s.replys.blank? }.count
+    end
   end
 end
