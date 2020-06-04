@@ -30,6 +30,7 @@
         <a href="<%= golden_idea_suggests_path %>">
           <i class="menu-icon icon-tasks"></i>
           意见及建议
+          <b class="label orange pull-right"><%= GoldenIdea::Suggest.where(suggest_id: nil).count %></b>
         </a>
       </li>
     </ul><!--/.widget-nav-->
