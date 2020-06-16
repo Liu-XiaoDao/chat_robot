@@ -24,6 +24,10 @@ module GoldenIdea
     def employee_score_order
     end
 
+    def golden_idea_score_standard
+
+    end
+
     def dashboard
     end
   end
