@@ -22,6 +22,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #上传sop附件
+  def save_sop_attachments
+    params[:sop_files].each do |attachment|
+      @golden_idea.attachments.create(attachment: attachment, notes: 'sop_file')
+    end
+  end
+
   def process_action *args
     time = Time.now
     rslt = super

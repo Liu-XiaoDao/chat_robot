@@ -102,6 +102,7 @@ Rails.application.routes.draw do
   get '/golden_idea_score_order' => 'golden_idea/application#golden_idea_score_order'
   get '/golden_idea_user_requests' => 'golden_idea/application#user_requests'
   get '/golden_idea_dashboard' => 'golden_idea/application#dashboard'
+  get '/golden_idea_score_standard' => 'golden_idea/application#golden_idea_score_standard'
   namespace :golden_idea do
     resources :seasons do
       # get 'index_admin', on: :collection
