@@ -47,6 +47,7 @@ module GoldenIdea
       @golden_idea = Idea.new(golden_idea_params)
       if @golden_idea.save
         save_attachments if params[:attachment_files]
+        save_sop_attachments if params[:sop_files]
         flash["success"] = "金点子创建成功，点‘击编辑内容’按钮编辑详情"
         redirect_to golden_idea_idea_path(@golden_idea)
       else
@@ -67,6 +68,7 @@ module GoldenIdea
       @golden_idea = Idea.find(params[:id])
       if @golden_idea.update_attributes(golden_idea_params)
         save_attachments if params[:attachment_files]
+        save_sop_attachments if params[:sop_files]
         flash["success"] = "编辑成功"
         redirect_to golden_idea_idea_path(@golden_idea)
       else
@@ -162,7 +164,7 @@ module GoldenIdea
 
     private
       def golden_idea_params
-        params.require(:golden_idea_idea).permit(:title, :category, {:proposers => []}, :department, :description, :content, :score, :status, :reporter_id)
+        params.require(:golden_idea_idea).permit(:title, :category, {:proposers => []}, :department, :description, :content, :score, :status, :reporter_id, :is_involve_sop)
       end
   end
 end

@@ -24,6 +24,15 @@
                 </h5>
                 附件:
                 <% if @golden_idea.attachments.present? %>
+                  <% @golden_idea.attachments.where(notes: nil).each do |attachment| %>
+                    <%= link_to attachment.attachment_file_name, attachment.attachment.url %><%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>
+                  <% end %>
+                <% else %>
+                  无
+                <% end %>
+                <br/>
+                SOP文件:
+                <% if @golden_idea.attachments.where(notes: 'sop_file').present? %>
                   <% @golden_idea.attachments.each do |attachment| %>
                     <%= link_to attachment.attachment_file_name, attachment.attachment.url %><%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>
                   <% end %>
