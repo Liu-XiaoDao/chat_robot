@@ -16,25 +16,31 @@
       </li>
       <li>
         <a href="<%= golden_idea_ideas_path %>">
-          <i class="menu-icon icon-tasks"></i>
+          <i class="menu-icon icon-list"></i>
           所有金点子
         </a>
       </li>
       <li>
         <a href="<%= golden_idea_goods_path %>">
-          <i class="menu-icon icon-tasks"></i>
+          <i class="menu-icon icon-shopping-cart"></i>
           积分兑换
         </a>
       </li>
       <li>
         <a href="<%= golden_idea_score_standard_path %>">
-          <i class="menu-icon icon-tasks"></i>
+          <i class="menu-icon icon-th-large"></i>
           评分标准
         </a>
       </li>
       <li>
+        <a href="<%= golden_idea_template_path %>">
+          <i class="menu-icon icon-file"></i>
+          金点子模板
+        </a>
+      </li>
+      <li>
         <a href="<%= golden_idea_suggests_path %>">
-          <i class="menu-icon icon-tasks"></i>
+          <i class="menu-icon icon-comments-alt"></i>
           意见及建议
           <% count = GoldenIdea::Suggest.unreply_count %>
           <% if count > 0 %>
@@ -48,20 +54,20 @@
       <% if signed_in? && current_employee.is_golden_idea_admin? %>
         <li>
           <a href="<%= index_admin_golden_idea_goods_path %>">
-            <i class="menu-icon icon-tasks"></i>
+            <i class="menu-icon icon-cogs"></i>
             积分商品-管理
           </a>
         </li>
         <li>
           <a href="<%= golden_idea_exchange_records_path %>">
-            <i class="menu-icon icon-tasks"></i>
+            <i class="menu-icon icon-exchange"></i>
             兑换-管理
             <b class="label orange pull-right"><%= GoldenIdea::ExchangeRecord.where(status: '待兑换').count %></b>
           </a>
         </li>
         <li>
           <a href="<%= golden_idea_dashboard_path %>">
-            <i class="menu-icon icon-tasks"></i>
+            <i class="menu-icon icon-bar-chart"></i>
             统计
           </a>
         </li>
@@ -91,7 +97,7 @@
         </li>
       <% end %>
       <% if signed_in? %>
-        <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-group"></i>我的金点子</a></li>
+        <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的金点子</a></li>
         <li><a href="<%= exchange_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的兑换记录</a></li>
         <li><a href="<%= assign_score_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的积分分配记录</a></li>
       <% end %>

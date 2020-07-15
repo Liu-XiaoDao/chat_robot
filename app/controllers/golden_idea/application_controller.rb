@@ -28,6 +28,9 @@ module GoldenIdea
 
     end
 
+    def golden_idea_template
+    end
+
     def dashboard
     end
   end
