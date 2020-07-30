@@ -45,6 +45,6 @@ class GoldenIdea::SeasonsController < ApplicationController
 
   private
     def season_params
-      params.require(:golden_idea_season).permit(:name, :start_date, :end_date, :description)
+      params.require(:golden_idea_season).permit(:name, :start_date, :end_date, {:collecters => []}, :description)
     end
 end

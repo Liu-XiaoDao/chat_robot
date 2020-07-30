@@ -10,6 +10,15 @@
                <h3>本期金点子-<%= GoldenIdea::Season.last.name %>(<%= @golden_ideas.count %>)</h3>
             </div>
             <div class="module-option clearfix">
+              <div class="pull-left">
+                收集人:
+                <% if GoldenIdea::Season.last.collecters.present? %>
+                  <% GoldenIdea::Season.last.collecters.split(',').each do |u_id| %>
+                    <% user = Employee.find(u_id) %>
+                    <%= link_to user.name, user %>
+                  <% end %>
+                <% end %>
+              </div>
               <div class="pull-right">
                 <% if signed_in? && current_employee.is_golden_idea_admin? %>
                   <!--批量上传表单-->

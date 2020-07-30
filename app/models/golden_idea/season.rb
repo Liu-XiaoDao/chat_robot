@@ -9,6 +9,20 @@ module GoldenIdea
       ideas.update_all(season_id: id)
     end
 
+    def collecters
+      collecter
+    end
+
+    def collecters=(str)
+      return unless str.present?
+
+      if str.is_a?(Array)
+        str = str.reject(&:blank?).join(",")
+      end
+
+      self.collecter = str
+    end
+
     def self.pre_season
      order(id: :desc).second
     end
