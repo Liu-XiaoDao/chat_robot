@@ -8,4 +8,9 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to title, params.merge(sort: column, direction: direction).permit!, class: css_class
   end
+
+  # idea是否从上期转移过来
+  def is_transfer?(idea)
+    idea.season_id != idea.origin_season_id ? "warning" : ""
+  end
 end

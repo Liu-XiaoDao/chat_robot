@@ -35,6 +35,16 @@ module GoldenIdea
       self.proposer = str
     end
 
+    def reporter_name
+      reporter.try :name
+    end
+
+    def reporter_name=(str)
+      return if str.blank?
+
+      self.reporter = Employee.find_by_name(str)
+    end
+
     def proposer_names
       proposer.split(",").map{|u_id| Employee.find(u_id).name }.join(",")
     end
@@ -70,6 +80,7 @@ module GoldenIdea
 
     def set_seasion
       self.season_id = Season.last.id if season_id.blank?
+      self.origin_season_id = season_id
     end
 
     def set_reporter
@@ -122,7 +133,7 @@ module GoldenIdea
     end
 
     def self.to_xlsx(records)
-      export_fields = ["title", "description", "department", "status", "category", "proposer_names", "season_name", "score"]
+      export_fields = ["title", "description", "department", "status", "category", "reporter_name", "proposer_names", "season_name", "score"]
       SpreadsheetService.new.generate(export_fields, records)
     end
 
