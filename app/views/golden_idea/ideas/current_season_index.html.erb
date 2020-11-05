@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                   <% @golden_ideas.each do |golden_idea| %>
-                    <tr>
+                    <tr class="<%= is_transfer?(golden_idea) %>">
                       <td><%= golden_idea.category %></td>
                       <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
                       <td><%= golden_idea.reporter.try :name %></td>

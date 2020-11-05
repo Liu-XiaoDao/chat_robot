@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200730062920) do
+ActiveRecord::Schema.define(version: 20201105022709) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20200730062920) do
     t.integer "reporter_id"
     t.integer "is_involve_sop"
     t.string "sop_file_path"
+    t.integer "origin_season_id"
     t.index ["season_id"], name: "index_golden_idea_ideas_on_season_id"
   end
 
