@@ -11,14 +11,16 @@ namespace :sync_dep_emp do
 
   desc "每天提醒员工周年庆"
   task(:annual_blessing => :environment) do
-    Employee.where(is_leave: 0).each do |employee|
+    # Suki, Summer, Roy, Sha Ni, 方夏为上海员工这里不发送邮件
+    Employee.where(is_leave: 0).where.not(id: [302, 305, 306, 330, 296]).each do |employee|
       employee.annual_blessing(true)
     end
   end
 
   desc "每天提醒员工周年庆to chunliang"
   task(:annual_blessing_to_chunliang => :environment) do
-    Employee.where(is_leave: 0).each do |employee|
+    # Suki, Summer, Roy, Sha Ni, 方夏为上海员工这里不发送邮件
+    Employee.where(is_leave: 0).where.not(id: [302, 305, 306, 330, 296]).each do |employee|
       employee.annual_blessing(false)
     end
   end
