@@ -1,6 +1,6 @@
 module GoldenIdea
   class ApplicationController < ::ApplicationController
-    layout 'golden_idea'
+    layout 'golden_idea_new'
     def index
 
     end

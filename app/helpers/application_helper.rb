@@ -13,4 +13,19 @@ module ApplicationHelper
   def is_transfer?(idea)
     idea.season_id != idea.origin_season_id ? "warning" : ""
   end
+
+  # 检查当前页
+  def active?(text, path)
+    text == path ? "active" : ""
+  end
+
+  # 检查当前页的上级
+  def active_patent?(text, path)
+    path.include?(text) ? "active" : ""
+  end
+
+  # 是否打开折叠菜单
+  def menu_open?(text, path)
+    path.include?(text) ? "menu-open" : ""
+  end
 end

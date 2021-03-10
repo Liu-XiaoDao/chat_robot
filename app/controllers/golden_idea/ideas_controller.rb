@@ -1,6 +1,6 @@
 module GoldenIdea
   class IdeasController < ApplicationController
-    layout 'golden_idea'
+    layout 'golden_idea_new'
     def index
       @golden_ideas = Idea.ransack(params[:q])
       @golden_ideas.sorts = sort_params || "id DESC"

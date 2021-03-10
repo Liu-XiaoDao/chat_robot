@@ -1,96 +1,23 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <%= render "golden_idea/application/flash" %>
-        <div class="content">
-          <div class="module">
-            <div class="module-head">
-              <h3>金点子-<%=@golden_idea.title%><%= "(#{@golden_idea.score})" if @golden_idea.score.present? %></h3>
-            </div>
-            <div class="module-option clearfix">
-              <div class="pull-left">
-                <h5 class="stream-author">
-                  分类:<%= @golden_idea.category %>,
-                  &nbsp;&nbsp;提议人:
-                    <% if @golden_idea.proposers.present? %>
-                      <% @golden_idea.proposers.split(',').each do |u_id| %>
-                        <% user = Employee.find(u_id) %>
-                        <%= link_to user.name, user %>
-                      <% end %>
-                    <% end %>,
-                  &nbsp;&nbsp;部门:<%= @golden_idea.department %>
-                </h5>
-                附件:
-                <% if @golden_idea.attachments.present? %>
-                  <% @golden_idea.attachments.where(notes: nil).each do |attachment| %>
-                    <%= link_to attachment.attachment_file_name, attachment.attachment.url %><%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>
-                  <% end %>
-                <% else %>
-                  无
-                <% end %>
-                <br/>
-                SOP文件:
-                <% if @golden_idea.attachments.where(notes: 'sop_file').present? %>
-                  <% @golden_idea.attachments.each do |attachment| %>
-                    <%= link_to attachment.attachment_file_name, attachment.attachment.url %><%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>
-                  <% end %>
-                <% else %>
-                  无
-                <% end %>
-              </div>
-              <div class="pull-right">
-                <a href="<%= request.referer %>" class="btn btn-primary">返回</a>
-                <% if current_employee.is_golden_idea_admin? %>
-                  <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
-                  <%= link_to '打分', score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
-                  <%#= link_to '员工积分', employee_score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#employee_score_modal" %>
-                  <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
-                <% elsif !@golden_idea.is_complate? && @golden_idea.is_edit?(current_employee.id) %>
-                  <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
-                  <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
-                <% end %>
-              </div>
-            </div>
-            <div class="module-body">
-              <div class="media stream" style="padding-top: 0px;">
-                <div class="media-body">
-                  <div class="stream-headline">
-                    <div class="stream-text"><%= @golden_idea.content.html_safe if @golden_idea.content.present? %></div>
-                  </div><!--/.stream-headline-->
-                  <div class="stream-options">
-                    <a href="javascript:void(0)" class="btn btn-small" data-remote="true"><i class="icon-eye-open shaded"></i><span id="view_count"><%#= @question.view_count %></span></a>
-                    <a href="<%#= praise_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-up shaded"></i><span id="praise_count"><%#= @question.praise_count %></span></a>
-                    <a href="<%#= rubbish_question_path(@question) %>" class="btn btn-small" data-remote="true"><i class="icon-thumbs-down shaded"></i><span id="rubbish_count"><%#= @question.rubbish_count %></span></a>
-                  </div>
-                </div>
-	            </div><!--/.media .stream-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
-
-<!--编辑弹框-->
-<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modal-score" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>Edit Golden Idea</h3>
-    </div>
     <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Golden Idea</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
       <div class="modal-body">
-        <div style="width:10px;height:10px;"></div>
+        <p>One fine body…</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('golden_idea_score_form').submit();">Save changes</button>
       </div>
     </div>
-    <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-       <button type="submit" class="btn btn-primary" onclick="document.getElementById('season_form').submit();">Submit</button>
-    </div>
-   </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>
 
 <!--员工积分分配弹框-->
@@ -111,25 +38,154 @@
     </div>
    </div>
 </div>
-<script type="text/javascript">
-  $("#myModal").on("hidden", function() {
-    $(this).removeData("modal");
-  });
-  $("#employee_score_modal").on("hidden", function() {
-    $(this).removeData("modal");
-  });
 
-  $('#closebtn').on('click', function(){
-    $(".modal-body input[value='Save']").click();
-    setTimeout("location.reload()",500);
-  });
-</script>
-<style media="screen">
-  .wrapper {
-    min-height: 0;
-  }
-  .modal-backdrop, .modal-backdrop.fade.in {
-    background: #000000;
-    opacity: .8
-  }
-</style>
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Golden Idea Detail</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item"><a href="/golden_idea/ideas">Golden Idea</a></li>
+            <li class="breadcrumb-item active">Golden Idea Detail</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= @golden_idea.title %><small><%= "(#{@golden_idea.score})" if @golden_idea.score.present? %></small></h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+            <div class="row">
+              <div class="col-12">
+                <div class="text-muted">
+                  <p class="text-sm">分类:
+                    <b><%= @golden_idea.category %></b>
+                  </p>
+                  <p class="text-sm">提议人:
+                    <b>
+                      <% if @golden_idea.proposers.present? %>
+                        <% @golden_idea.proposers.split(',').each do |u_id| %>
+                          <% user = Employee.find(u_id) %>
+                          <%= link_to user.name, user %>
+                        <% end %>
+                      <% end %>
+                    </b>
+                  </p>
+                  <p class="text-sm">部门:
+                    <b><%= @golden_idea.department %></b>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <h4></h4>
+                <div class="post">
+                  <div class="user-block">
+                    <span class="username" style="margin-left:0;">
+                      <a href="#"><%= @golden_idea.reporter_name %></a>
+                    </span>
+                    <span class="description" style="margin-left:0;">Created at - <%= @golden_idea.created_at %></span>
+                  </div>
+                  <!-- /.user-block -->
+                  <p>
+                    <%= @golden_idea.content.html_safe if @golden_idea.content.present? %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-5 mb-3">
+              <a href="<%= request.referer %>" class="btn btn-sm btn-warning">返回</a>
+              <% if current_employee.is_golden_idea_admin? %>
+                <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary" %>
+                <%= link_to '打分', score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-score", "data-remote"=>"#{score_view_golden_idea_idea_path(@golden_idea)}" %>
+                <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
+              <% elsif !@golden_idea.is_complate? && @golden_idea.is_edit?(current_employee.id) %>
+                <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary" %>
+                <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+            <h5 class="mt-5 text-muted">附件:</h5>
+            <ul class="list-unstyled">
+              <% if @golden_idea.attachments.present? %>
+                <% @golden_idea.attachments.where(notes: nil).each do |attachment| %>
+                  <li>
+                    <a href="<%= attachment.attachment.url %>" class="btn-link text-secondary"><i class="fas fa-link mr-1"></i> <%= attachment.attachment_file_name %></a>
+                    <%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>
+                  </li>
+                <% end %>
+              <% else %>
+                无
+              <% end %>
+            </ul>
+            <h5 class="mt-5 text-muted">SOP文件:</h5>
+            <ul class="list-unstyled">
+              <% if @golden_idea.attachments.where(notes: 'sop_file').present? %>
+                <% @golden_idea.attachments.each do |attachment| %>
+                  <li>
+                    <a href="<%= attachment.attachment.url %>" class="btn-link text-secondary"><i class="fas fa-link mr-1"></i> <%= attachment.attachment_file_name %></a>
+                    <%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>
+                  </li>
+                <% end %>
+              <% else %>
+                无
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+
+<% content_for :custom_js_css do %>
+  <!-- 历史个期 -->
+  <script>
+   $('#modal-score').on('hidden.bs.modal', function (e) {
+     $(this).find('.modal-body').html('Loading...');
+     $(this).removeData('bs.modal');
+   }).on('show.bs.modal', function (e) {
+
+     var button = $(e.relatedTarget);
+     var modal = $(this);
+
+     modal.find('.modal-body').load(button.data("remote"));
+   });
+  </script>
+<% end %>
