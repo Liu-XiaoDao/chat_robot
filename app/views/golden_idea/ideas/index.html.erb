@@ -7,7 +7,7 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>所有金点子(<%= @golden_ideas.count %>)</h3>
+               <h3><%= t 'menu.all_idea' %>(<%= @golden_ideas.count %>)</h3>
             </div>
             <div class="module-option clearfix">
               <div class="pull-left">
@@ -38,7 +38,7 @@
                   <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="部门">
                   <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder=">分数">
 
-                  <button type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="搜索...">搜索</button>
+                  <button type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="<%= t :search %>..."><%= t 'search' %></button>
                 <% end %>
 
               </div>
@@ -50,9 +50,9 @@
                     <%= f.submit '', id: "file-submit" %>
                   <% end %>
 
-                  <%= link_to '导入', "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+                  <%#= link_to t('import'), "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
                   <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
-                  <%= link_to '导出', golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
+                  <%= link_to t('export'), golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
                 </div>
               <% end %>
             </div>

@@ -6,7 +6,7 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>我的金点子</h3>
+               <h3><%= t 'menu.my_idea' %></h3>
             </div>
             <div class="module-body">
               <%= render "golden_idea/application/flash" %>
@@ -42,7 +42,7 @@
                       <% if golden_idea.is_complate? %>
                         <td class="cell-btn align-right"></td>
                       <% elsif golden_idea.is_edit?(current_employee.id) %>
-                        <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                        <td class="cell-btn align-right"><%= link_to t('edit'), edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                       <% else %>
                         <td class="cell-btn align-right"></td>
                       <% end %>

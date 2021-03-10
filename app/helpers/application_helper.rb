@@ -13,4 +13,11 @@ module ApplicationHelper
   def is_transfer?(idea)
     idea.season_id != idea.origin_season_id ? "warning" : ""
   end
+
+  ## 切换语系
+  def link_to_locale(path)
+    link_text = I18n.t(:lang) == "EN" ? "中文" : "EN"
+    link_url = I18n.t(:lang) == "EN" ? path + "?locale=zh-CN" : path + "?locale=en"
+    link_to content_tag(:i, '', class: "icon-retweet")+" "+link_text, link_url
+  end
 end

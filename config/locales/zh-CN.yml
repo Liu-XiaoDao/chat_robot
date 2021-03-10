@@ -1,0 +1,55 @@
+# To use the locales, use `I18n.t`:
+#     I18n.t 'login'
+#
+# In views, this is aliased to just `t`:
+#     <%= t('login.remember_me') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#     I18n.locale = :es
+#
+# For paramater
+#     user_hello: "hello %{name}"
+#     <%= t('user_hello', username: @user.name) %>
+#
+# Support new locale to see application_controller#set_locale
+
+zh-CN:
+  lang: 中文
+  title: 金点子
+  create_idea: 创建金点子
+  ideas: 金点子
+  seasons: 金点子期数
+  friend_link: 友情链接
+  search_site: 搜索本站内容
+  idea_top: '金点子TOP 5'
+  user_top: '员工积分TOP 5'
+  more: 查看更多
+  not_logged_in: 未登录
+  profile: 个人主页
+  my_point: 我的积分
+  import: 导入
+  export: 导出
+  new: 新建
+  edit: 编辑
+  delete: 删除
+  search: 搜索
+  template_download: 模板下载
+  menu:
+    current_season_idea: 本期金点子
+    all_season: 历史个期
+    all_idea: 所有金点子
+    point_exchange: 积分兑换
+    scoring_standard: 评分标准
+    gi_template: 金点子模板
+    comment_suggestion: 意见及建议
+    good_admin: 积分商品-管理
+    exchange_admin: 兑换-管理
+    statistics: 统计
+    administrator: 管理员
+    exchange_record: 兑换记录-管理
+    assign_point: 积分分配-管理
+    log: 操作日志-管理
+    my_idea: 我的金点子
+    my_exchange_record: 我的兑换记录
+    my_point_list: 我的积分分配记录
+

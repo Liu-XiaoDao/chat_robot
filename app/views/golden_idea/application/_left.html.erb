@@ -5,43 +5,43 @@
       <li class="active">
         <a href="<%= current_season_index_golden_idea_ideas_path %>">
           <i class="menu-icon icon-book"></i>
-          本期金点子
+          <%= t 'menu.current_season_idea' %>
         </a>
       </li>
       <li>
         <a href="<%= golden_idea_seasons_path %>">
           <i class="menu-icon icon-tasks"></i>
-          历史各期
+          <%= t 'menu.all_season' %>
         </a>
       </li>
       <li>
         <a href="<%= golden_idea_ideas_path %>">
           <i class="menu-icon icon-list"></i>
-          所有金点子
+          <%= t 'menu.all_idea' %>
         </a>
       </li>
       <li>
         <a href="<%= golden_idea_goods_path %>">
           <i class="menu-icon icon-shopping-cart"></i>
-          积分兑换
+          <%= t 'menu.point_exchange' %>
         </a>
       </li>
       <li>
         <a href="<%= golden_idea_score_standard_path %>">
           <i class="menu-icon icon-th-large"></i>
-          评分标准
+          <%= t 'menu.scoring_standard' %>
         </a>
       </li>
       <li>
         <a href="<%= golden_idea_template_path %>">
           <i class="menu-icon icon-file"></i>
-          金点子模板
+          <%= t 'menu.gi_template' %>
         </a>
       </li>
       <li>
         <a href="<%= golden_idea_suggests_path %>">
           <i class="menu-icon icon-comments-alt"></i>
-          意见及建议
+          <%= t 'menu.comment_suggestion' %>
           <% count = GoldenIdea::Suggest.unreply_count %>
           <% if count > 0 %>
             <b class="label orange pull-right"><%= count %></b>
@@ -55,20 +55,20 @@
         <li>
           <a href="<%= index_admin_golden_idea_goods_path %>">
             <i class="menu-icon icon-cogs"></i>
-            积分商品-管理
+            <%= t 'menu.good_admin' %>
           </a>
         </li>
         <li>
           <a href="<%= golden_idea_exchange_records_path %>">
             <i class="menu-icon icon-exchange"></i>
-            兑换-管理
+            <%= t 'menu.exchange_admin' %>
             <b class="label orange pull-right"><%= GoldenIdea::ExchangeRecord.where(status: '待兑换').count %></b>
           </a>
         </li>
         <li>
           <a href="<%= golden_idea_dashboard_path %>">
             <i class="menu-icon icon-bar-chart"></i>
-            统计
+            <%= t 'menu.statistics' %>
           </a>
         </li>
         <!--<li>
@@ -87,19 +87,19 @@
             <i class="menu-icon icon-cog"></i>
             <i class="icon-chevron-down pull-right"></i>
             <i class="icon-chevron-up pull-right"></i>
-            管理员
+            <%= t 'menu.administrator' %>
           </a>
           <ul id="togglePages_admin" class="collapse unstyled">
-            <li><a href="<%= golden_idea_good_exchange_records_path %>">兑换记录-管理</a></li>
-            <li><a href="<%= golden_idea_assign_score_records_path %>">积分分配-管理</a></li>
-            <li><a href="<%= golden_idea_user_requests_path %>">操作日志-管理</a></li>
+            <li><a href="<%= golden_idea_good_exchange_records_path %>"><%= t 'menu.exchange_record' %></a></li>
+            <li><a href="<%= golden_idea_assign_score_records_path %>"><%= t 'menu.assign_point' %></a></li>
+            <li><a href="<%= golden_idea_user_requests_path %>"><%= t 'menu.log' %></a></li>
           </ul>
         </li>
       <% end %>
       <% if signed_in? %>
-        <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的金点子</a></li>
-        <li><a href="<%= exchange_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的兑换记录</a></li>
-        <li><a href="<%= assign_score_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i>我的积分分配记录</a></li>
+        <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i><%= t 'menu.my_idea' %></a></li>
+        <li><a href="<%= exchange_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i><%= t 'menu.my_exchange_record' %></a></li>
+        <li><a href="<%= assign_score_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i><%= t 'menu.my_point_list' %></a></li>
       <% end %>
     </ul>
 

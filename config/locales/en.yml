@@ -30,4 +30,41 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  lang: EN
+  title: Golden Idea
+  create_idea: Submit Golden Idea
+  ideas: Count of GI
+  seasons: GI Periods
+  friend_link: LINKS
+  search_site: Search the site
+  idea_top: 'GI Score TOP 5'
+  user_top: 'Employee: Gain Points TOP 5'
+  more: More
+  not_logged_in: Not logged in
+  profile: Profile
+  my_point: My Point
+  import: Import
+  export: Export
+  new: New
+  edit: Edit
+  delete: Delete
+  search: Search
+  template_download: Download
+  menu:
+    current_season_idea: Current Period
+    all_season: History
+    all_idea: All GIs
+    point_exchange: Point Exchange
+    scoring_standard: Scoring Standard
+    gi_template: GI Template
+    comment_suggestion: Comments & Suggestions
+    good_admin: Point Reward
+    exchange_admin: Exchange Mgt.
+    statistics: Statistics
+    administrator: Administrator
+    exchange_record: Exchange Record
+    assign_point: Assign Point
+    log: Log
+    my_idea: My GI
+    my_exchange_record: My Exchange Record
+    my_point_list: My Point list

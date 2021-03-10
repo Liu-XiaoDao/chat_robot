@@ -9,9 +9,9 @@
               <div class="span12">
                 <div class="row-fluid">
                   <div class="span12">
-                    <a href="<%= new_golden_idea_idea_path %>" class="btn-box small span4"><i class="icon-lightbulb"></i><b>创建金点子</b></a>
-                    <a href="<%= golden_idea_ideas_path %>" class="btn-box small span4"><i class="icon-book"></i><b>金点子: <%= GoldenIdea::Idea.all.count %></b></a>
-                    <a href="<%= golden_idea_seasons_path %>" class="btn-box small span4"><i class="icon-tasks"></i><b>金点子期数: <%= GoldenIdea::Season.all.count %></b></a>
+                    <a href="<%= new_golden_idea_idea_path %>" class="btn-box small span4"><i class="icon-lightbulb"></i><b><%= t 'create_idea' %></b></a>
+                    <a href="<%= golden_idea_ideas_path %>" class="btn-box small span4"><i class="icon-book"></i><b><%= t 'ideas' %>: <%= GoldenIdea::Idea.all.count %></b></a>
+                    <a href="<%= golden_idea_seasons_path %>" class="btn-box small span4"><i class="icon-tasks"></i><b><%= t 'seasons' %>: <%= GoldenIdea::Season.all.count %></b></a>
                   </div>
                 </div>
               </div>
@@ -20,8 +20,8 @@
           </div>
           <div class="module">
             <div class="module-head">
-              <h3 style="float: inherit;display: contents;">员工积分TOP 5</h3>
-              <a href="<%= golden_idea_employee_score_order_path %>" style="float: right;">查看更多></a>
+              <h3 style="float: inherit;display: contents;"><%= t 'user_top' %></h3>
+              <a href="<%= golden_idea_employee_score_order_path %>" style="float: right;"><%= t 'more' %>></a>
             </div>
             <div class="module-body">
               <table class="table table-striped">
@@ -49,8 +49,8 @@
 
           <div class="module">
             <div class="module-head">
-              <h3 style="float: inherit;display: contents;">金点子TOP 5</h3>
-              <a href="<%= golden_idea_score_order_path %>" style="float: right;">查看更多></a>
+              <h3 style="float: inherit;display: contents;"><%= t 'idea_top' %></h3>
+              <a href="<%= golden_idea_score_order_path %>" style="float: right;"><%= t 'more' %>></a>
             </div>
             <div class="module-body">
               <table class="table table-striped">

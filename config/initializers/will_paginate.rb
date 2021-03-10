@@ -25,7 +25,7 @@ module WillPaginate
 
       def previous_or_next_page(page, text, classname)
         if page
-          text = text.match(/Pre/) ? "上一页" : "下一页"
+          text = text.match(/Pre/) ? "<<" : ">>"
           tag :li, link(text, page, class: ('page-number' if @options[:page_links]))
         end
       end

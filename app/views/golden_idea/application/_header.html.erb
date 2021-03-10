@@ -6,7 +6,7 @@
       </a>
 
         <a class="brand" href="/golden_idea">
-          ABCAM·金点子
+          ABCAM·<%= t 'title' %>
         </a>
       <% if params[:controller] != "sessions" %>
         <div class="nav-collapse collapse navbar-inverse-collapse">
@@ -17,7 +17,7 @@
           </ul>
 
           <form class="navbar-search pull-left input-append dropdown" action="/golden_idea/ideas/search" accept-charset="UTF-8" data-remote="true" method="get" id="search-form" >
-            <input type="text" class="span3" id="search_in_keyword" name="term" placeholder="搜索本站内容">
+            <input type="text" class="span3" id="search_in_keyword" name="term" placeholder="<%= t 'search_site' %>">
             <button class="btn" type="submit" id="search" value="Submit">
               <i class="icon-search"></i>
             </button>
@@ -31,13 +31,14 @@
 
 
           <ul class="nav pull-right">
+            <li><%= link_to_locale request.path %></li>
             <li>
               <% if signed_in? %>
                 <a href="#" >总积分:<%= current_employee.score %>,可用积分<%= current_employee.available_score %></a>
               <% end %>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">友情链接 <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'friend_link' %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="http://han-limsplus.abcam.com/">LimsPlus</a></li>
                 <li><a href="http://han-op.abcam.com/">考勤系统</a></li>
@@ -49,16 +50,16 @@
                 <% if signed_in? %>
                   <img src="<%= current_employee.avatar %>" class="nav-avatar" id="nav-avatar">
                 <% else %>
-                  未登录
+                  <%= t 'not_logged_in' %>
                 <% end %>
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <% if signed_in? %>
-                  <li><a href="<%= employee_path(current_employee) %>">个人主页</a></li>
-                  <li><a href="<%= golden_ideas_employee_path(current_employee) %>">我的金点子</a></li>
-                  <li><a href="<%= exchange_records_employee_path(current_employee) %>">我的兑换记录</a></li>
-                  <li><a href="<%= score_employee_path(current_employee) %>">我的积分</a></li>
+                  <li><a href="<%= employee_path(current_employee) %>"><%= t 'profile' %></a></li>
+                  <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><%= t 'menu.my_idea' %></a></li>
+                  <li><a href="<%= exchange_records_employee_path(current_employee) %>"><%= t 'menu.my_exchange_record' %></a></li>
+                  <li><a href="<%= score_employee_path(current_employee) %>"><%= t 'my_point' %></a></li>
                 <% end %>
               </ul>
             </li>

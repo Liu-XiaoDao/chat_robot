@@ -2,8 +2,17 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   include LibraryHelper
 
+  before_action :set_locale
   before_action :left_data_init, :check_signed_in
   helper_method :sort_params, :sort_column, :sort_direction
+
+  def set_locale
+    supported_locale = %w(zh-CN en)
+    if params[:locale] && I18n.locale_available?( params[:locale].to_sym ) && supported_locale.include?( params[:locale] )
+      cookies.permanent[:locale] = params[:locale]  #cookies.permanent  这个存储的值过期时间为20年，可以认为是永久
+    end
+    I18n.locale = cookies[:locale] || I18n.default_locale
+  end
   #侧边数据初始化
   def left_data_init
   end
