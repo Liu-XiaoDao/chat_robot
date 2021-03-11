@@ -7,22 +7,22 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-              <h3>金点子-<%=@golden_idea.title%><%= "(#{@golden_idea.score})" if @golden_idea.score.present? %></h3>
+              <h3><%= t 'title' %>-<%=@golden_idea.title%><%= "(#{@golden_idea.score})" if @golden_idea.score.present? %></h3>
             </div>
             <div class="module-option clearfix">
               <div class="pull-left">
                 <h5 class="stream-author">
-                  分类:<%= @golden_idea.category %>,
-                  &nbsp;&nbsp;提议人:
+                  <%= t 'form.category' %>:<%= @golden_idea.category %>,
+                  &nbsp;&nbsp;<%= t 'form.proposer' %>:
                     <% if @golden_idea.proposers.present? %>
                       <% @golden_idea.proposers.split(',').each do |u_id| %>
                         <% user = Employee.find(u_id) %>
                         <%= link_to user.name, user %>
                       <% end %>
                     <% end %>,
-                  &nbsp;&nbsp;部门:<%= @golden_idea.department %>
+                  &nbsp;&nbsp;<%= t 'form.department' %>:<%= @golden_idea.department %>
                 </h5>
-                附件:
+                <%= t 'form.attachment' %>:
                 <% if @golden_idea.attachments.present? %>
                   <% @golden_idea.attachments.where(notes: nil).each do |attachment| %>
                     <%= link_to attachment.attachment_file_name, attachment.attachment.url %><%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>
@@ -31,7 +31,7 @@
                   无
                 <% end %>
                 <br/>
-                SOP文件:
+                <%= t 'form.sop_attachment' %>:
                 <% if @golden_idea.attachments.where(notes: 'sop_file').present? %>
                   <% @golden_idea.attachments.each do |attachment| %>
                     <%= link_to attachment.attachment_file_name, attachment.attachment.url %><%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>
@@ -41,15 +41,15 @@
                 <% end %>
               </div>
               <div class="pull-right">
-                <a href="<%= request.referer %>" class="btn btn-primary">返回</a>
+                <a href="<%= request.referer %>" class="btn btn-primary"><%= t 'back' %></a>
                 <% if current_employee.is_golden_idea_admin? %>
-                  <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
-                  <%= link_to '打分', score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+                  <%= link_to t('edit'), edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
+                  <%= link_to t('scoring'), score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
                   <%#= link_to '员工积分', employee_score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#employee_score_modal" %>
-                  <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
+                  <%= link_to t('delete'), golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
                 <% elsif !@golden_idea.is_complate? && @golden_idea.is_edit?(current_employee.id) %>
-                  <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
-                  <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
+                  <%= link_to t('edit'), edit_golden_idea_idea_path(@golden_idea), class: "btn btn-mini btn-primary" %>
+                  <%= link_to t('delete'), golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-danger" %></td>
                 <% end %>
               </div>
             </div>

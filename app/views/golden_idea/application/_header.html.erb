@@ -34,7 +34,7 @@
             <li><%= link_to_locale request.path %></li>
             <li>
               <% if signed_in? %>
-                <a href="#" >总积分:<%= current_employee.score %>,可用积分<%= current_employee.available_score %></a>
+                <a href="#" ><%= t 'point' %>:<%= current_employee.score %>/<%= current_employee.available_score %></a>
               <% end %>
             </li>
             <li class="dropdown">

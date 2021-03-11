@@ -11,7 +11,7 @@
             </div>
             <div class="module-option clearfix">
               <div class="pull-left">
-                收集人:
+                <%= t 'table.collector' %>:
                 <% if GoldenIdea::Season.last.collecters.present? %>
                   <% GoldenIdea::Season.last.collecters.split(',').each do |u_id| %>
                     <% user = Employee.find(u_id) %>
@@ -36,15 +36,15 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>分类</th>
-                    <th>标题</th>
-                    <th>主讲人</th>
-                    <th>提议人</th>
-                    <th>部门</th>
-                    <th>状态</th>
-                    <th>内容描述</th>
-                    <th>得分</th>
-                    <th class="cell-btn align-right">操作</th>
+                    <th><%= t 'table.category' %></th>
+                    <th><%= t 'table.title' %></th>
+                    <th><%= t 'table.speaker' %></th>
+                    <th><%= t 'table.proposer' %></th>
+                    <th><%= t 'table.department' %></th>
+                    <th><%= t 'table.status' %></th>
+                    <th><%= t 'table.description' %></th>
+                    <th><%= t 'table.score' %></th>
+                    <th class="cell-btn align-right"><%= t 'table.action' %></th>
                     <th class="cell-btn align-right"></th>
                   </tr>
                 </thead>

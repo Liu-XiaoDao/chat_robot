@@ -7,7 +7,7 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3><%= t 'history' %></h3>
+               <h3><%= t 'menu.all_season' %></h3>
             </div>
             <% if signed_in? && current_employee.is_golden_idea_admin? %>
               <div class="module-option clearfix">
@@ -20,14 +20,14 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>标题</th>
-                    <th>开始时间</th>
-                    <th>结束时间</th>
-                    <th>收集人</th>
-                    <th>描述</th>
-                    <th>数量</th>
+                    <th><%= t 'table.title' %></th>
+                    <th><%= t 'table.begin_time' %></th>
+                    <th><%= t 'table.end_date' %></th>
+                    <th><%= t 'table.collector' %></th>
+                    <th><%= t 'table.description' %></th>
+                    <th><%= t 'table.idea_count' %></th>
                     <% if signed_in? && current_employee.is_golden_idea_admin? %>
-                      <th class="cell-btn align-right">操作</th>
+                      <th class="cell-btn align-right"><%= t 'table.action' %></th>
                       <th class="cell-btn align-right"></th>
                     <% end %>
                   </tr>

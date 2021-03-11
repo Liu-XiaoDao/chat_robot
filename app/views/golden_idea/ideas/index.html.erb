@@ -25,18 +25,18 @@
                 </div>-->
                 <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
                   <% selected = params[:q][:category_eq].split(',') if params[:q] && params[:q][:category_eq] %>
-                  <%= select_tag  'q[category_eq]', options_for_select([['分类', ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'span1_2'} %>
+                  <%= select_tag  'q[category_eq]', options_for_select([[t('table.category'), ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'span1_2'} %>
 
-                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="标题">
+                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="<%= t 'table.title' %>">
 
                   <% selected = params[:q][:season_id_eq_any] if params[:q] && params[:q][:season_id_eq_any] %>
-                  <%= select_tag  'q[season_id_eq_any]', options_for_select(GoldenIdea::Season.all.collect { |s| [ s.name, s.id ] }, :selected => selected), {:multiple => true, :class => 'span1_2 select2', 'data-placeholder' => '搜索哪一期'} %>
+                  <%= select_tag  'q[season_id_eq_any]', options_for_select(GoldenIdea::Season.all.collect { |s| [ s.name, s.id ] }, :selected => selected), {:multiple => true, :class => 'span1_2 select2', 'data-placeholder' => t('table.search_season')} %>
 
                   <% selected = params[:q][:proposer] if params[:q] && params[:q][:proposer] %>
-                  <%= select_tag  'q[proposer]', options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:multiple => true, :class => 'span1_2 select2', 'data-placeholder' => '提议人'} %>
+                  <%= select_tag  'q[proposer]', options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:multiple => true, :class => 'span1_2 select2', 'data-placeholder' => t('table.proposer')} %>
 
-                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="部门">
-                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder=">分数">
+                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="<%= t 'table.department' %>">
+                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder="><%= t 'table.score' %>">
 
                   <button type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="<%= t :search %>..."><%= t 'search' %></button>
                 <% end %>
@@ -60,15 +60,15 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th><%= sortable "category", "分类" %></th>
-                    <th><%= sortable "title", "标题" %></th>
-                    <th><%= sortable "season_id", "期" %></th>
-                    <th><%= sortable "reporter_id", "主讲人" %></th>
-                    <th><%= sortable "proposer", "提议人" %></th>
-                    <th><%= sortable "department", "部门" %></th>
-                    <th><%= sortable "status", "状态" %></th>
-                    <th><%= sortable "description", "内容描述" %></th>
-                    <th><%= sortable "score", "得分" %></th>
+                    <th><%= sortable "category", t('table.category') %></th>
+                    <th><%= sortable "title", t('table.title') %></th>
+                    <th><%= sortable "season_id", t('season') %></th>
+                    <th><%= sortable "reporter_id", t('table.speaker') %></th>
+                    <th><%= sortable "proposer", t('table.proposer') %></th>
+                    <th><%= sortable "department", t('table.department') %></th>
+                    <th><%= sortable "status", t('table.status') %></th>
+                    <th><%= sortable "description", t('table.description') %></th>
+                    <th><%= sortable "score", t('table.score') %></th>
                     <!--<th class="cell-btn align-right">操作</th>
                     <th class="cell-btn align-right"></th>-->
                   </tr>

@@ -17,6 +17,8 @@ zh-CN:
   lang: 中文
   title: 金点子
   create_idea: 创建金点子
+  new_idea: 新建金点子
+  edit_idea: 修改金点子
   ideas: 金点子
   seasons: 金点子期数
   friend_link: 友情链接
@@ -31,9 +33,19 @@ zh-CN:
   export: 导出
   new: 新建
   edit: 编辑
+  replying: 回复
   delete: 删除
   search: 搜索
+  scoring: 打分
   template_download: 模板下载
+  total_available_point: 总积分&可用积分
+  point: 积分
+  season: 期
+  back: 返回
+  golden_idea: 金点子
+  ask_question: 提问
+  reward_point_record: 积分分配记录
+  reward_point: 获得积分
   menu:
     current_season_idea: 本期金点子
     all_season: 历史个期
@@ -52,4 +64,61 @@ zh-CN:
     my_idea: 我的金点子
     my_exchange_record: 我的兑换记录
     my_point_list: 我的积分分配记录
+    golden_idea_scoring_standard: 金点子评分标准
+  table:
+    name: 姓名
+    point: 积分
+    idea_count: 金点子个数
+    department: 部门
+    title: 标题
+    category: 分类
+    proposer: 提议人
+    description: 描述
+    score: 得分
+    action: 操作
+    begin_time: 开始时间
+    end_date: 结束时间
+    date: 时间
+    collector: 收集人
+    status: 状态
+    speaker: 主讲人
+    search_season: 搜索哪一期
+    count: 数量
+    used_score: 使用积分
+    reply: 回复
+    questioner: 提问人
+    exchange: 兑换
+    inventory: 库存
+    exchange_record: 兑换记录
+    detail: 详情
+    exchange_person: 兑换人
+    quantity: 数量
+  form:
+    point: 积分
+    idea_count: 金点子个数
+    department: 部门
+    title: 标题
+    category: 分类
+    proposer: 提议人
+    description: 内容描述
+    score: 得分
+    action: 操作
+    begin_time: 开始时间
+    end_date: 结束时间
+    collector: 收集人
+    status: 状态
+    speaker: 主讲人
+    search_season: 搜索哪一期
+    is_involve_sop: 是否涉及SOP
+    attachment: 附件
+    sop_attachment: SOP附件
+    detail: 内容详情
+    back: 返回
+    submit: 提交
+    preview: 预览
+    reporter_prompt: 默认为创建人(不作为积分分配依据)
+    idea_title: 金点子名称
+    department_prompt: 多部门用&连接
+    description_prompt: 简单描述
+    exchange_quantity: 兑换数量
 

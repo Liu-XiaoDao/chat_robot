@@ -13,17 +13,17 @@
                 </a>
                 <div class="media-body">
                   <h4>
-                    <%= @good.name %><small>库存:<%= @good.quantity %>, 需要积分:<%= @good.score %></small>
+                    <%= @good.name %><small><%= t 'table.inventory' %>:<%= @good.quantity %>, <%= t 'table.point' %>:<%= @good.score %></small>
                   </h4>
                   <p class="profile-brief" title="<%= @good.description %>"><%= truncate(@good.description,length: 100) %></p>
                   <div class="profile-details muted">
-                    <a href="<%= exchange_view_golden_idea_good_path %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i>兑换</a>
+                    <a href="<%= exchange_view_golden_idea_good_path %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i><%= t 'table.exchange' %></a>
                   </div>
                 </div>
               </div>
               <ul class="profile-tab nav nav-tabs">
-                <li class="active"><a href="#detial" data-toggle="tab">详情</a></li>
-                <li><a href="#borrow_records" data-toggle="tab">兑换记录</a></li>
+                <li class="active"><a href="#detial" data-toggle="tab"><%= t 'table.detail' %></a></li>
+                <li><a href="#borrow_records" data-toggle="tab"><%= t 'table.exchange_record' %></a></li>
               </ul>
               <div class="profile-tab-content tab-content">
                 <div class="tab-pane fade active in" id="detial">
@@ -38,9 +38,9 @@
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>兑换人</th>
-                          <th>数量</th>
-                          <th>时间</th>
+                          <th><%= t 'table.exchange_person' %></th>
+                          <th><%= t 'table.count' %></th>
+                          <th><%= t 'table.date' %></th>
                         </tr>
                       </thead>
                       <tbody>

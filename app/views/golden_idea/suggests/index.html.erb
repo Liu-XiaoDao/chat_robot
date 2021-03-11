@@ -7,21 +7,21 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>意见及建议</h3>
+               <h3><%= t 'menu.comment_suggestion' %></h3>
             </div>
             <div class="module-option clearfix">
                 <div class="pull-right">
-                   <%= link_to '提问', new_golden_idea_suggest_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
+                   <%= link_to t('ask_question'), new_golden_idea_suggest_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
                 </div>
             </div>
             <div class="module-body">
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th width="10%">提问人</th>
-                    <th>描述</th>
-                    <th width="8%">回复</th>
-                    <th class="cell-btn align-right">操作</th>
+                    <th width="10%"><%= t 'table.questioner' %></th>
+                    <th><%= t 'table.description' %></th>
+                    <th width="8%"><%= t 'table.reply' %></th>
+                    <th class="cell-btn align-right"><%= t 'table.action' %></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -30,9 +30,9 @@
                       <td><%= suggest.employee_name %></td>
                       <td><%= link_to suggest.content, golden_idea_suggest_path(suggest) %></td>
                       <td><%= link_to suggest.replys.count, golden_idea_suggest_path(suggest) %></td>
-                      <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_suggest_path(suggest), class: "btn btn-mini btn-primary", "data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td class="cell-btn align-right"><%= link_to t('edit'), edit_golden_idea_suggest_path(suggest), class: "btn btn-mini btn-primary", "data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
                     <% if signed_in? && current_employee.is_golden_idea_admin? %>
-                      <td class="cell-btn align-right"><%= link_to '回复', reply_golden_idea_suggest_path(suggest), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
+                      <td class="cell-btn align-right"><%= link_to t('replying'), reply_golden_idea_suggest_path(suggest), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
                     <% end %>
                     </tr>
                   <% end %>
@@ -53,7 +53,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>意见及建议</h3>
+       <h3><%= t 'menu.comment_suggestion' %></h3>
     </div>
     <div class="modal-content">
       <div class="modal-body">

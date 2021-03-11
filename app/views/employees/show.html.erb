@@ -15,7 +15,7 @@
                   <h4>
                     <%= @employee.name %><small><%#= '@book.author' %></small>
                   </h4>
-                  <p class="profile-brief" title="<%='@book.intro'%>">积分:<span style="color:red;padding-left:5px;"><%= @employee.score %></span></p>
+                  <p class="profile-brief" title="<%='@book.intro'%>"><%= t 'point' %>:<span style="color:red;padding-left:5px;"><%= @employee.score %></span></p>
                   <div class="profile-details muted">
                     <a href="<%#= borrow_view_book_path %>" class="btn" ><i class="icon-plus shaded"></i></a>
                     <a href="<%#= praise_book_path(@book) %>"  class="btn" data-remote="true"><i class="icon-thumbs-up shaded"></i> <span id="praise_count"><%#= @book.praise_count %></span></a>
@@ -25,8 +25,8 @@
               </div>
               <ul class="profile-tab nav nav-tabs">
                 <!--<li class="active"><a href="#activity" data-toggle="tab">评论</a></li>-->
-                <li class="active"><a href="#borrow_records" data-toggle="tab">金点子</a></li>
-                <li><a href="#detial" data-toggle="tab">兑换记录</a></li>
+                <li class="active"><a href="#borrow_records" data-toggle="tab"><%= t 'golden_idea' %></a></li>
+                <li><a href="#detial" data-toggle="tab"><%= t 'exchange_record' %></a></li>
                 <!--<li><a href="#chapters" data-toggle="tab">目录</a></li>-->
               </ul>
               <div class="profile-tab-content tab-content">
@@ -35,13 +35,13 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>分类</th>
-                          <th>标题</th>
-                          <th>提议人</th>
-                          <th>部门</th>
-                          <th>内容描述</th>
-                          <th>得分</th>
-                          <th class="cell-btn align-right">操作</th>
+                          <th><%= t 'table.category' %></th>
+                          <th><%= t 'table.title' %></th>
+                          <th><%= t 'table.proposer' %></th>
+                          <th><%= t 'table.department' %></th>
+                          <th><%= t 'table.description' %></th>
+                          <th><%= t 'table.score' %></th>
+                          <th class="cell-btn align-right"><%= t 'table.action' %></th>
                           <th class="cell-btn align-right"></th>
                         </tr>
                       </thead>
@@ -64,7 +64,7 @@
                             <% if golden_idea.is_complate? %>
                               <td class="cell-btn align-right"></td>
                             <% elsif golden_idea.is_edit?(@employee.id) %>
-                              <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                              <td class="cell-btn align-right"><%= link_to t('edit'), edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                             <% else %>
                               <td class="cell-btn align-right"></td>
                             <% end %>
@@ -80,10 +80,10 @@
                     <thead>
                       <tr>
                         <th>兑换商品</th>
-                        <th>数量</th>
+                        <th><%= t 'table.quantity' %></th>
                         <th>使用积分</th>
-                        <th>时间</th>
-                        <th>状态</th>
+                        <th><%= t 'table.date' %></th>
+                        <th><%= t 'table.status' %></th>
                       </tr>
                     </thead>
                     <tbody>

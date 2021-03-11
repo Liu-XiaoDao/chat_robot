@@ -33,6 +33,8 @@ en:
   lang: EN
   title: Golden Idea
   create_idea: Submit Golden Idea
+  new_idea: Create Golden Idea
+  edit_idea: Edit Golden Idea
   ideas: Count of GI
   seasons: GI Periods
   friend_link: LINKS
@@ -47,9 +49,20 @@ en:
   export: Export
   new: New
   edit: Edit
+  replying: Replying
   delete: Delete
   search: Search
+  scoring: Scoring
   template_download: Download
+  total_available_point: Total points & points Available
+  point: Point
+  season: Season
+  back: Back
+  idea: Idea
+  golden_idea: Golden Idea
+  ask_question: Asking Questions
+  reward_point_record: Reward Points Record
+  reward_point: Reward Points
   menu:
     current_season_idea: Current Period
     all_season: History
@@ -68,3 +81,61 @@ en:
     my_idea: My GI
     my_exchange_record: My Exchange Record
     my_point_list: My Point list
+    golden_idea_scoring_standard: Golden Idea Scoring Standard
+  table:
+    name: Name
+    point: Points
+    idea_count: GI No.
+    department: Depts.
+    title: Title
+    category: Category
+    proposer: Proposer
+    description: Description
+    score: Scores
+    action: Actions
+    begin_time: Start Date
+    end_date: End Date
+    date: Date
+    collector: Collector
+    status: Status
+    speaker: Speaker
+    search_season: Search season
+    count: Count
+    used_score: Used point
+    reply: Reply
+    questioner: Questioner
+    exchange: Exchange
+    inventory: Inventory
+    exchange_record: Exchange Record
+    detail: Deatils
+    exchange_person: Operator
+    quantity: Quantity
+  form:
+    point: Points
+    idea_count: GI No.
+    department: Department
+    title: Title
+    category: Category
+    proposer: Proposer
+    description: Description
+    score: Scores
+    action: Actions
+    begin_time: Start Date
+    end_date: End Date
+    collector: Collector
+    status: Status
+    speaker: Speaker
+    search_season: Search season
+    is_involve_sop: Is it involve SOP
+    attachment: Attachement
+    sop_attachment: SOP Attachement
+    detail: Details
+    back: Back
+    submit: Submit
+    preview: Preview
+    reporter_prompt: ''
+    idea_title: Golden Idea Title
+    department_prompt: ''
+    description_prompt: ''
+    exchange_quantity: Quantity
+

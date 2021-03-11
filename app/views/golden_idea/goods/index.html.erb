@@ -7,7 +7,7 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-              <h3>所有商品</h3>
+              <h3><%= t 'menu.point_exchange' %></h3>
             </div>
             <div class="module-option clearfix">
               <%= form_tag nil, method: 'get' do %>
@@ -36,9 +36,9 @@
                           <%= truncate(good_a.description, length: 30) %></small>
                         </p>
                         <div class="media-option btn-group shaded-icon">
-                          <button class="btn btn-small">积分:<%= good_a.score %></button>
-                          <button class="btn btn-small">库存:<%= good_a.quantity %></button>
-                          <a href="<%= exchange_view_golden_idea_good_path(good_a) %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i>兑换</a>
+                          <button class="btn btn-small"><%= t 'table.point' %>:<%= good_a.score %></button>
+                          <button class="btn btn-small"><%= t 'table.inventory' %>:<%= good_a.quantity %></button>
+                          <a href="<%= exchange_view_golden_idea_good_path(good_a) %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i><%= t 'table.exchange' %></a>
                         </div>
                       </div>
                     </div>
@@ -53,9 +53,9 @@
                           <h3 class="media-title"><%= good_b.name %> </h3>
                           <p><small class="muted" title="<%= good_b.description %>"><%= truncate(good_b.description, length: 30) %></small></p>
                           <div class="media-option btn-group shaded-icon">
-                            <button class="btn btn-small">积分:<%= good_b.score %></button>
-                            <button class="btn btn-small">库存:<%= good_b.quantity %></button>
-                            <a href="<%= exchange_view_golden_idea_good_path(good_b) %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i>兑换</a>
+                            <button class="btn btn-small"><%= t 'table.point' %>:<%= good_b.score %></button>
+                            <button class="btn btn-small"><%= t 'table.inventory' %>:<%= good_b.quantity %></button>
+                            <a href="<%= exchange_view_golden_idea_good_path(good_b) %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i><%= t 'table.exchange' %></a>
                           </div>
                         </div>
                       </div>
