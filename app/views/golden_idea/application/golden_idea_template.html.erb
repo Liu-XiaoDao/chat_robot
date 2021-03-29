@@ -1,20 +1,36 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <div class="content">
-          <div class="module">
-            <div class="module-head">
-               <h3>金点子模板</h3>
-            </div>
-            <div class="module-body">
-              <%= render "golden_idea/application/flash" %>
-              <a class="btn btn-large btn-primary" href="/（非）技术类+标题+提交人+（未）完成+日期—Golden Idea Submit Template V2.pptx">模板下载</a>
-            </div>
-          </div>
-        </div><!--/.content-->
-      </div><!--/.span9-->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>金点子模板</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">金点子模板</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= render 'golden_idea/application/flash' %>
+    <!-- Default box -->
+    <div class="card card-solid">
+      <div class="card-body">
+        <div class="row">
+          <a class="btn btn-large btn-primary" href="/（非）技术类+标题+提交人+（未）完成+日期—Golden Idea Submit Template V2.pptx">模板下载</a>
+        </div>
+      </div>
+      <!-- /.card-body -->
     </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
