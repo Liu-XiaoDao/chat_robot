@@ -46,7 +46,7 @@ module WillPaginate
 
       def gap
         # tag :span, '&hellip;'.html_safe, class: 'space'
-        tag :li, link('&hellip;', "#")
+        tag :li, link('&hellip;', "javascript:void(0)", class: ('page-link' if @options[:page_links])), class: 'page-item'
       end
 
       def previous_or_next_page(page, text, classname)

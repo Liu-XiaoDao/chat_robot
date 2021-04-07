@@ -1,154 +1,146 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <div class="content">
-          <div class="module">
-              <div class="module-head">
-                <h3>修改金点子</h3>
-              </div>
-              <div class="module-body">
-                <% if @golden_idea && @golden_idea.errors.any? %>
-                  <div class="alert alert-error">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong></strong><%= @golden_idea.errors.full_messages[0] %>
-                  </div>
-                  <br />
-                <% end %>
-                <%= form_for @golden_idea, url: golden_idea_idea_path(@golden_idea), html: { class: "form-horizontal row-fluid", id: "season_form", enctype: "multipart/form-data" }  do |f| %>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">标题</label>
-                    <div class="controls">
-                      <%= f.text_field  :title, placeholder: "金点子名称", class: "span8" %>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">分类</label>
-                    <div class="controls">
-                      <%= f.select  :category, [['非技术类', '非技术类'],['技术类', '技术类']], include_blank: false, placeholder: "Type something here...", class: "span8" %>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">主讲人</label>
-                    <div class="controls">
-                      <%#= f.select  :reporter_id, options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, ), {:placeholder => "Please select"}, {:class => 'span8 select2'} %>
-                      <%= f.select  :reporter_id, Employee.all.collect { |e| [ e.name, e.id ] }, include_blank: true, placeholder: "Type something here...", class: "span8 select2" %>
-                      <span class="help-inline">默认为创建人(不作为积分分配依据)</span>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">提议人</label>
-                    <div class="controls">
-                      <% selected = f.object.proposers.split(',') if f.object.proposers.present?  %>
-                      <%= f.select  :proposers, options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:placeholder => "Please select"}, {:multiple => true, :class => 'span8 select2'} %>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">部门</label>
-                    <div class="controls">
-                      <%= f.text_field  :department, placeholder: "多部门用&连接", class: "span8" %>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">是否涉及SOP</label>
-                    <div class="controls">
-                      <%= f.select  :is_involve_sop, [[ '是', 1], ['否', 0] ], include_blank: true, placeholder: "Type something here...", class: "span8" %>
-                      <%= file_field_tag "sop_files[]", multiple: true, type: :file %>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">内容描述</label>
-                    <div class="controls">
-                      <%= f.text_area  :description, placeholder: "简单描述", class: "span8" %>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">附件</label>
-                    <div class="controls">
-                      <%= file_field_tag "attachment_files[]", multiple: true, type: :file %>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">状态</label>
-                    <div class="controls">
-                      <%= f.select  :status, [['进行中', '进行中'], ['暂停', '暂停'], ['已完成', '已完成'], ['转CI项目', '转CI项目'], ['终止', '终止']], include_blank: false, placeholder: "Type something here...", class: "span8" %>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label" for="basicinput">内容详情</label>
-                    <div class="controls">
-                      <%= f.text_area  :content, rows: 20, class: "span8", style: "display:none;" %>
-                      <div id="editor">
-                      </div>
-                    </div>
-                  </div>
+<% provide :active, "current_period" %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>编辑金点子</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item active">Edit Idea</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-                  <div class="control-group">
-                    <div class="controls">
-                      <a href="<%= request.referer %>" class="btn btn-primary">返回</a>
-                      <button type="submit" class="btn btn-primary">提交</button>
-                    </div>
-                  </div>
-                <% end %>
+  <!-- Main content -->
+  <section class="content">
+
+    <% if @golden_idea && @golden_idea.errors.any? %>
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <%= @golden_idea.errors.full_messages[0] %>
+      </div>
+    <% end %>
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Edit Idea</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <%= form_for @golden_idea, url: golden_idea_idea_path(@golden_idea), html: { class: "form-horizontal", id: "idea_form", enctype: "multipart/form-data" }  do |f| %>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="inputEmail3">标题</label>
+            <%= f.text_field  :title, placeholder: "金点子名称", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">分类</label>
+            <%= f.select  :category, [['非技术类', '非技术类'],['技术类', '技术类']], {include_blank: false}, {placeholder: "Type something here...", class: "form-control"} %>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">主讲人</label>(<span class="help-inline">默认为创建人不作为积分分配依据</span>)
+            <%= f.select  :reporter_id, Employee.all.collect { |e| [ e.name, e.id ] }, {include_blank: true}, {placeholder: "Type something here...", class: "form-control"} %>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">提议人</label>
+            <% selected = f.object.proposers.split(',') if f.object.proposers.present?  %>
+            <%= f.select  :proposers, options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:placeholder => "Please select"}, {:multiple => true, :class => 'form-control select2'} %>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">部门</label>
+            <%= f.text_field  :department, placeholder: "多部门用&连接", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">是否涉及SOP</label>
+            <%= f.select  :is_involve_sop, [[ '是', 1], ['否', 0] ], {include_blank: true}, {placeholder: "Type something here...", class: "form-control"} %>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">SOP附件</label>
+            <div class="custom-file">
+              <%= file_field_tag "sop_files[]", multiple: true, type: :file, class: "custom-file-input" %>
+              <label class="custom-file-label" for="sop_files_">Choose file</label>
             </div>
           </div>
-
-        </div><!--/.content-->
-      </div><!--/.span9-->
-
+          <div class="form-group">
+            <label for="inputEmail3">内容描述</label>
+            <%= f.text_area  :description, placeholder: "简单描述", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">附件</label>
+            <div class="custom-file">
+              <%= file_field_tag "attachment_files[]", multiple: true, type: :file, class: "custom-file-input" %>
+              <label class="custom-file-label" for="attachment_files_">Choose file</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3">状态</label>
+            <%= f.select  :status, [['进行中', '进行中'], ['暂停', '暂停'], ['已完成', '已完成'], ['转CI项目', '转CI项目'], ['终止', '终止']], {include_blank: false}, {placeholder: "Type something here...", class: "form-control"} %>
+          </div>
+          <div class="form-group">
+            <label for="basicinput">内容详情</label>
+            <%= f.text_area  :content, rows: 20, class: "span8", style: "display:none;" %>
+            <div id="editor">
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">提交</button>
+          <a href="<%= request.referer %>" class="btn btn-default float-right">Cancel</a>
+        </div>
+      <% end %>
     </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
-<script>
-  $(document).ready(function() {
-    $('.select2').select2();
-  });
-</script>
-<div class="modal fade bs-example-modal-lg" id="preview" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>预览</h3>
-    </div>
-    <div class="modal-content">
-      <div id="preview_content" class="modal-body">
-      </div>
-    </div>
-    <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-    </div>
-   </div>
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
 </div>
-<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
-<script type="text/javascript">
-    var E = window.wangEditor
-    var editor = new E('#editor')
-    var $text1 = $('#golden_idea_idea_content')
-    editor.customConfig.onchange = function (html) {
-        // 监控变化，同步更新到 textarea
-        $text1.val(html);
+<!-- /.content-wrapper -->
+
+<% content_for :custom_js_css do %>
+  <script>
+    $(document).ready(function() {
+      $('.select2').select2();
+    });
+  </script>
+  <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+  <script type="text/javascript">
+      var E = window.wangEditor
+      var editor = new E('#editor')
+      var $text1 = $('#golden_idea_idea_content')
+      editor.customConfig.onchange = function (html) {
+          // 监控变化，同步更新到 textarea
+          $text1.val(html);
+      }
+      // 配置图片上传
+      editor.customConfig.uploadImgServer = '/questions/upload_img'
+      editor.customConfig.uploadFileName = 'fileimg'
+      editor.create()
+      // 初始化 textarea 的值
+      editor.txt.html($text1.val());
+  </script>
+  <script>
+    $(function () {
+      bsCustomFileInput.init();
+    });
+  </script>
+  <style type="text/css" media="screen">
+    .w-e-text-container {
+      height: 500px;
     }
-    // 配置图片上传
-    editor.customConfig.uploadImgServer = '/questions/upload_img'
-    editor.customConfig.uploadFileName = 'fileimg'
-    editor.create()
-    E.fullscreen.init('#editor');
-    // 初始化 textarea 的值
-    editor.txt.html($text1.val());
-</script>
-<style type="text/css" media="screen">
-  .w-e-text-container {
-    height: 500px;
-  }
-  .modal-backdrop, .modal-backdrop.fade.in {
-    background: #000000;
-    opacity: .8;
-    z-index: 10001;
-  }
-  .modal {
-    z-index: 10002;
-    width: 800px;
-    margin-left: -400px;
-  }
-</style>
+  </style>
+<% end %>

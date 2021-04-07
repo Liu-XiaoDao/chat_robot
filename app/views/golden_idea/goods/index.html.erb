@@ -1,4 +1,5 @@
-  <!-- Content Wrapper. Contains page content -->
+<% provide :active, "point_exchange" %>
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -72,13 +73,8 @@
                   </div>
                   <div class="card-footer">
                     <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
-                        <i class="fas fa-comments"></i>兑换
-                      </a>
                       <a href="<%= exchange_view_golden_idea_good_path(good) %>" class="btn btn-sm bg-teal" data-toggle="modal" data-target="#modal-exchange" data-remote="<%= exchange_view_golden_idea_good_path(good) %>"><i class="icon-shopping-cart shaded"></i>兑换</a>
-                      <a href="<%= golden_idea_good_path(good) %>" class="btn btn-sm btn-primary">
-                        <i class="fas fa-user"></i> View Profile
-                      </a>
+                      <a href="<%= golden_idea_good_path(good) %>" class="btn btn-sm btn-primary"> View</a>
                     </div>
                   </div>
                 </div>

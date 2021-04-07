@@ -1,20 +1,4 @@
-<div class="modal fade bs-example-modal-lg" id="preview" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>预览</h3>
-    </div>
-    <div class="modal-content">
-      <div id="preview_content" class="modal-body">
-      </div>
-    </div>
-    <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-    </div>
-   </div>
-</div>
-
-
+<% provide :active, "current_period" %>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -148,7 +132,6 @@
       editor.customConfig.uploadImgServer = '/questions/upload_img'
       editor.customConfig.uploadFileName = 'fileimg'
       editor.create()
-      E.fullscreen.init('#editor');
       // 初始化 textarea 的值
       editor.txt.html($text1.val());
   </script>
@@ -160,16 +143,6 @@
   <style type="text/css" media="screen">
     .w-e-text-container {
       height: 500px;
-    }
-    .modal-backdrop, .modal-backdrop.fade.in {
-      background: #000000;
-      opacity: .8;
-      z-index: 10001;
-    }
-    .modal {
-      z-index: 10002;
-      width: 800px;
-      margin-left: -400px;
     }
   </style>
 <% end %>

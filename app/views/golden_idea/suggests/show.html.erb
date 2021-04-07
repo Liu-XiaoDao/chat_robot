@@ -1,44 +1,72 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <%= render "golden_idea/application/flash" %>
-				<div class="content">
-					<div class="module">
-						<div class="module-head">
-              <h3>意见及建议</h3>
-						</div>
-            <div class="module-option clearfix">
-              <div class="pull-left">
-											<h5 class="stream-author">提问人：<%= @suggest.employee_name %></h5>
-              </div>
-              <div class="pull-right">
-                <a href="<%= request.referer %>" class="btn btn-primary">返回</a>
+<% provide :active, "comment_suggestion" %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>意见及建议</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item"><a href="/golden_idea/suggests">意见及建议</a></li>
+            <li class="breadcrumb-item active">意见及建议详情</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">意见及建议<small>(提问人：<%= @suggest.employee_name %>)</small></h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-12 order-2 order-md-1">
+            <h5>提问内容:</h5>
+            <p class="text-muted"><%= @suggest.content %></p>
+            <div class="row">
+              <div class="col-12">
+                <h5>管理员回复:</h5>
+                <% @suggest.replys.each do |reply| %>
+                  <div class="post">
+                    <div class="user-block">
+                      <img class="img-circle img-bordered-sm" src="<%= reply.employee.avatar %>" alt="user image">
+                      <span class="username">
+                        <a href="#"><%= reply.employee_name %></a>
+                      </span>
+                      <span class="description"><%= time_tag reply.created_at %></span>
+                    </div>
+                    <!-- /.user-block -->
+                    <p><%= reply.content %></p>
+                  </div>
+                <% end %>
               </div>
             </div>
-						<div class="module-body" style="padding:0px;">
-								<div class="media stream">
-									<div class="media-body">
-										<div class="stream-headline">
-                      提问内容:
-											<div class="stream-text" style="font-size: 20px;margin-top:20px;"><%= @suggest.content %></div>
-                      <hr>
-                      管理员回复:
-                      <% @suggest.replys.each do |reply| %>
-                        <div class="stream-text" style="margin-top:20px;">
-                          <%= reply.employee_name %>: <%= reply.content %>
-                        </div>
-                      <% end %>
-										</div><!--/.stream-headline-->
-										<div class="stream-options">
-										</div>
-									</div>
-								</div><!--/.media .stream-->
-						</div><!--/.module-body-->
-					</div><!--/.module-->
-				</div><!--/.content-->
-			</div>
+          </div>
+        </div>
+      </div>
+      <!-- /.card-body -->
     </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

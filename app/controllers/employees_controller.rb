@@ -10,7 +10,7 @@ class EmployeesController < ApplicationController
   def show
     #金点子在使用
     @employee =  Employee.find params[:id]
-    render layout: 'golden_idea'
+    render layout: 'golden_idea_new'
   end
 
   def phone_number
@@ -78,24 +78,24 @@ class EmployeesController < ApplicationController
   def golden_ideas
     @employee = Employee.find params[:id]
     @golden_ideas = @employee.golden_ideas
-    render layout: "golden_idea"
+    render layout: "golden_idea_new"
   end
 
   def exchange_records
     @employee = Employee.find params[:id]
     @exchange_records = @employee.exchange_records
-    render layout: "golden_idea"
+    render layout: "golden_idea_new"
   end
 
   def assign_score_records
     @employee = Employee.find params[:id]
     @assign_score_records = @employee.assign_score_records
-    render layout: "golden_idea"
+    render layout: "golden_idea_new"
   end
 
   def score
     @employee = Employee.find params[:id]
-    render layout: "golden_idea"
+    render layout: "golden_idea_new"
   end
 
   def score_lists

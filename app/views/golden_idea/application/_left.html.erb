@@ -14,7 +14,7 @@
         <img src="<%= current_employee.avatar %>" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block"><%= current_employee.name %></a>
+        <a href="<%= employee_path(current_employee) %>" class="d-block"><%= current_employee.name %></a>
       </div>
     </div>
 
@@ -155,6 +155,14 @@
             <i class="nav-icon fas fa-user"></i>
             <p>
               我的金点子
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= score_employee_path(current_employee) %>" class="nav-link <%= active? 'my_point', yield(:active) %>">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              我的积分
             </p>
           </a>
         </li>

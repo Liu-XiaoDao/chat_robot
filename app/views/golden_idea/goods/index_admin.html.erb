@@ -1,102 +1,122 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <%= render "golden_idea/application/flash" %>
-        <div class="content">
-          <div class="module">
-            <div class="module-head">
-               <h3>积分商品-管理</h3>
-            </div>
-            <div class="module-option clearfix">
-              <div class="pull-left">
-                <div class="btn-group">
-                  <button class="btn"><%= params[:q].present? && params[:q][:season_id_eq].present? ? current_filter(params[:q][:season_id_eq]) : "筛选"  %></button>
-                  <button class="btn dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="?">全部</a></li>
-                    <% GoldenIdea::Season.all.each do |season| %>
-                      <li><a href="?q[season_id_eq]=<%= season.id %>"><%= season.name %></a></li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
-              <div class="pull-right">
-                <%= link_to 'Create', new_golden_idea_good_path, class: "btn btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %>
-              </div>
-            </div>
-            <div class="module-body">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>名称</th>
-                    <th>描述</th>
-                    <th>图片</th>
-                    <th>数量</th>
-                    <th>积分</th>
-                    <th class="cell-btn align-right">操作</th>
-                    <th class="cell-btn align-right"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @goods.each do |good| %>
-                    <tr>
-                      <td><%= link_to good.name, show_admin_golden_idea_good_path(good) %></td>
-                      <td><%= good.description %></td>
-                      <td><%= image_tag good.avatar.url(:thumb), size:'50' %></td>
-                      <td><%= good.quantity %></td>
-                      <td><%= good.score %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Edit', edit_golden_idea_good_path(good), class: "btn btn-mini btn-primary","data-toggle"=>"modal", "data-target"=>"#myModal" %></td>
-                      <td class="cell-btn align-right"><%= link_to 'Del', golden_idea_good_path(good), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-mini btn-primary" %></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-              <%= will_paginate @goods, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
-            </div>
-          </div>
-        </div><!--/.content-->
-      </div><!--/.span9-->
-    </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
-
-
-
-<div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+<% provide :active, "point_reward" %>
+<div class="modal fade" id="modal-good" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>编辑</h3>
-    </div>
     <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">商品</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
       <div class="modal-body">
-        <div style="width:10px;height:10px;"></div>
+        <p>One fine body…</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('good_form').submit();">Save changes</button>
       </div>
     </div>
-    <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-       <button type="submit" class="btn btn-primary" onclick="document.getElementById('season_form').submit();">Submit</button>
-    </div>
-   </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>
-<script>
-  $("#myModal").on("hidden", function() {
-    $(this).removeData("modal");
-  });
 
-  $('#closebtn').on('click', function(){
-    $(".modal-body input[value='Save']").click();
-    setTimeout("location.reload()",500);
-  });
-</script>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>积分商品-管理</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item active">积分商品-管理</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-<style type="text/css">
-.modal-backdrop, .modal-backdrop.fade.in {
-  background: #000000;
-  opacity: .8
-}
-</style>
+  <!-- Main content -->
+  <section class="content">
+    <%= render "golden_idea/application/flash" %>
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <div class="text-center mt-2 mb-2">
+            <div class="module-option clearfix">
+                <div class="pull-right">
+                  <%= link_to '新建', new_golden_idea_good_path, class: "btn btn-primary", "data-toggle"=>"modal", "data-target"=>"#modal-good", "data-remote"=>"#{new_golden_idea_good_path}" %>
+                </div>
+            </div>
+          </div>
+        </h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th>描述</th>
+                <th>图片</th>
+                <th>数量</th>
+                <th>积分</th>
+                <th class="cell-btn align-right">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @goods.each do |good| %>
+                <tr>
+                  <td><%= link_to good.name, golden_idea_good_path(good) %></td>
+                  <td><%= good.description %></td>
+                  <td><%= image_tag good.avatar.url(:thumb), size:'50' %></td>
+                  <td><%= good.quantity %></td>
+                  <td><%= good.score %></td>
+                  <td class="cell-btn align-right">
+                    <%= link_to 'Edit', edit_golden_idea_good_path(good), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-good", "data-remote"=>"#{edit_golden_idea_good_path(good)}" %>
+                    <%= link_to 'Del', golden_idea_good_path(good), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer clearfix">
+        <%= will_paginate @goods, renderer: WillPaginate::ActionView::GoldenIdeaLinkRenderer %>
+      </div>
+    </div>
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<% content_for :custom_js_css do %>
+  <script>
+   $('#modal-good').on('hidden.bs.modal', function (e) {
+     $(this).find('.modal-body').html('Loading...');
+     $(this).removeData('bs.modal');
+   }).on('show.bs.modal', function (e) {
+
+     var button = $(e.relatedTarget);
+     var modal = $(this);
+
+     modal.find('.modal-body').load(button.data("remote"));
+   });
+  </script>
+<% end %>

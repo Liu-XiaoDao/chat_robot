@@ -1,50 +1,74 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <div class="content">
-          <div class="module">
-            <div class="module-head">
-               <h3>金点子得分排名</h3>
-            </div>
-            <div class="module-body">
-              <%= render "golden_idea/application/flash" %>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>标题</th>
-                    <th>分类</th>
-                    <th>提议人</th>
-                    <th>部门</th>
-                    <th>内容描述</th>
-                    <th>得分</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% GoldenIdea::Idea.top_5.each do |golden_idea| %>
-                    <tr>
-                      <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
-                      <td><%= golden_idea.category %></td>
-                      <td>
-                        <% if golden_idea.proposers.present? %>
-                          <% golden_idea.proposers.split(',').each do |u_id| %>
-                            <% user = Employee.find(u_id) %>
-                            <%= link_to user.name, user %>
-                          <% end %>
-                        <% end %>
-                      </td>
-                      <td><%= golden_idea.department %></td>
-                      <td><%= golden_idea.description %></td>
-                      <td><%= golden_idea.score%></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div><!--/.content-->
-      </div><!--/.span9-->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>金点子得分排名</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item active">金点子得分排名</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= render "golden_idea/application/flash" %>
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+              <tr>
+                <th>标题</th>
+                <th>分类</th>
+                <th>提议人</th>
+                <th>部门</th>
+                <th>内容描述</th>
+                <th>得分</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% GoldenIdea::Idea.top_5.each do |golden_idea| %>
+                <tr>
+                  <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
+                  <td><%= golden_idea.category %></td>
+                  <td>
+                    <% if golden_idea.proposers.present? %>
+                      <% golden_idea.proposers.split(',').each do |u_id| %>
+                        <% user = Employee.find(u_id) %>
+                        <%= link_to user.name, user %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td><%= golden_idea.department %></td>
+                  <td><%= golden_idea.description %></td>
+                  <td><%= golden_idea.score%></td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
     </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
