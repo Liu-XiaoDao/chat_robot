@@ -20,5 +20,6 @@
  *= require golden_idea/OverlayScrollbars.min
  *= require golden_idea/select2.min
  *= require golden_idea/select2-bootstrap4.min
+ *= require jquery.mloading
  *= require_self
  */

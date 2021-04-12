@@ -26,6 +26,8 @@
 // 这个是简单富文本编辑器
 //= require wangEditor.min
 //= require wangEditor_fullscreen_plugin
+// 加载遮照层
+//= require jquery.mloading
 // 提示框
 //= require mTips
 // 图片点击变大

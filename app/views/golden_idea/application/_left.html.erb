@@ -10,12 +10,14 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="<%= current_employee.avatar %>" class="img-circle elevation-2" alt="User Image">
-      </div>
-      <div class="info">
-        <a href="<%= employee_path(current_employee) %>" class="d-block"><%= current_employee.name %></a>
-      </div>
+      <% if signed_in? %>
+        <div class="image">
+          <img src="<%= current_employee.avatar %>" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="<%= employee_path(current_employee) %>" class="d-block"><%= current_employee.name %></a>
+        </div>
+      <% end %>
     </div>
 
     <!-- SidebarSearch Form -->
@@ -94,102 +96,108 @@
             </p>
           </a>
         </li>
+        <% if signed_in? && current_employee.is_golden_idea_admin? %>
+          <li class="nav-header"></li>
+          <li class="nav-item">
+            <a href="<%= index_admin_golden_idea_goods_path %>" class="nav-link <%= active? 'point_reward', yield(:active) %>">
+              <i class="nav-icon fas fa-cogs"></i>
+              <p>
+                积分商品-管理
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= golden_idea_exchange_records_path %>" class="nav-link <%= active? 'exchange_mgt', yield(:active) %>">
+              <i class="nav-icon fas fa-exchange-alt"></i>
+              <p>
+                兑换-管理
+                <span class="right badge badge-danger"><%= GoldenIdea::ExchangeRecord.where(status: '待兑换').count %></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= golden_idea_dashboard_path %>" class="nav-link <%= active? 'statistics', yield(:active) %>">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                统计
+              </p>
+            </a>
+          </li>
+        <% end %>
         <li class="nav-header"></li>
-        <li class="nav-item">
-          <a href="<%= index_admin_golden_idea_goods_path %>" class="nav-link <%= active? 'point_reward', yield(:active) %>">
-            <i class="nav-icon fas fa-cogs"></i>
-            <p>
-              积分商品-管理
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= golden_idea_exchange_records_path %>" class="nav-link <%= active? 'exchange_mgt', yield(:active) %>">
-            <i class="nav-icon fas fa-exchange-alt"></i>
-            <p>
-              兑换-管理
-              <span class="right badge badge-danger"><%= GoldenIdea::ExchangeRecord.where(status: '待兑换').count %></span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= golden_idea_dashboard_path %>" class="nav-link <%= active? 'statistics', yield(:active) %>">
-            <i class="nav-icon fas fa-chart-pie"></i>
-            <p>
-              统计
-            </p>
-          </a>
-        </li>
-        <li class="nav-header"></li>
-        <li class="nav-item <%= menu_open? 'admin', yield(:active) %>">
-          <a href="#" class="nav-link <%= active_patent? 'admin', yield(:active) %>">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              管理员
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<%= golden_idea_good_exchange_records_path %>" class="nav-link <%= active? 'exchange_admin', yield(:active) %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>兑换记录-管理</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<%= golden_idea_assign_score_records_path %>" class="nav-link <%= active? 'point_admin', yield(:active) %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>积分分配-管理</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<%= golden_idea_user_requests_path %>" class="nav-link <%= active? 'log_admin', yield(:active) %>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>操作日志-管理</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="<%= golden_ideas_employee_path(current_employee) %>" class="nav-link <%= active? 'my_gi', yield(:active) %>">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              我的金点子
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= score_employee_path(current_employee) %>" class="nav-link <%= active? 'my_point', yield(:active) %>">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              我的积分
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= exchange_records_employee_path(current_employee) %>" class="nav-link <%= active? 'my_exchange_record', yield(:active) %>">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              我的兑换记录
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= assign_score_records_employee_path(current_employee) %>" class="nav-link <%= active? 'my_point_list', yield(:active) %>">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              我的积分分配记录
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= golden_idea_search_path %>" class="nav-link <%= active? 'search', yield(:active) %>">
-            <i class="nav-icon fas fa-search"></i>
-            <p>
-              Search
-            </p>
-          </a>
-        </li>
+        <% if signed_in? && current_employee.is_golden_idea_admin? %>
+          <li class="nav-item <%= menu_open? 'admin', yield(:active) %>">
+            <a href="#" class="nav-link <%= active_patent? 'admin', yield(:active) %>">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                管理员
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<%= golden_idea_good_exchange_records_path %>" class="nav-link <%= active? 'exchange_admin', yield(:active) %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>兑换记录-管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%= golden_idea_assign_score_records_path %>" class="nav-link <%= active? 'point_admin', yield(:active) %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>积分分配-管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%= golden_idea_user_requests_path %>" class="nav-link <%= active? 'log_admin', yield(:active) %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>操作日志-管理</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+        <% if signed_in? %>
+          <li class="nav-item">
+            <a href="<%= golden_ideas_employee_path(current_employee) %>" class="nav-link <%= active? 'my_gi', yield(:active) %>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                我的金点子
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= score_employee_path(current_employee) %>" class="nav-link <%= active? 'my_point', yield(:active) %>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                我的积分
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= exchange_records_employee_path(current_employee) %>" class="nav-link <%= active? 'my_exchange_record', yield(:active) %>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                我的兑换记录
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= assign_score_records_employee_path(current_employee) %>" class="nav-link <%= active? 'my_point_list', yield(:active) %>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                我的积分分配记录
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= golden_idea_search_path %>" class="nav-link <%= active? 'search', yield(:active) %>">
+              <i class="nav-icon fas fa-search"></i>
+              <p>
+                Search
+              </p>
+            </a>
+          </li>
+        <% end %>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
