@@ -1,71 +1,103 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <%= render "golden_idea/application/flash" %>
-        <div class="content">
-          <div class="module">
-            <div class="module-body">
-              <div class="profile-head media">
-                <a href="<%= @good.avatar.url %>" data-fancybox="gallery" class="media-cover pull-left fancybox">
-                  <img src="<%= @good.avatar.url %>">
-                </a>
-                <div class="media-body">
-                  <h4>
-                    <%= @good.name %><small><%= t 'table.inventory' %>:<%= @good.quantity %>, <%= t 'table.point' %>:<%= @good.score %></small>
-                  </h4>
-                  <p class="profile-brief" title="<%= @good.description %>"><%= truncate(@good.description,length: 100) %></p>
-                  <div class="profile-details muted">
-                    <a href="<%= exchange_view_golden_idea_good_path %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i><%= t 'table.exchange' %></a>
-                  </div>
-                </div>
-              </div>
-              <ul class="profile-tab nav nav-tabs">
-                <li class="active"><a href="#detial" data-toggle="tab"><%= t 'table.detail' %></a></li>
-                <li><a href="#borrow_records" data-toggle="tab"><%= t 'table.exchange_record' %></a></li>
-              </ul>
-              <div class="profile-tab-content tab-content">
-                <div class="tab-pane fade active in" id="detial">
-                   <div class="module-body" style="">
-                     <%= @good.content.html_safe %>
-                  </div>
-                </div>
+<% provide :active, "point_exchange" %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>商品详情</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item active">商品详情</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-                <div class="tab-pane fade" id="borrow_records">
-                  <div class="module-body">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th><%= t 'table.exchange_person' %></th>
-                          <th><%= t 'table.count' %></th>
-                          <th><%= t 'table.date' %></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% @good.exchange_records.each do |exchange_record| %>
-                          <tr>
-                            <td><%= exchange_record.id %></td>
-                            <td><%= exchange_record.employee.name %></td>
-                            <td><%= exchange_record.quantity %></td>
-                            <td><%= exchange_record.created_at %></td>
-                          </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-              </div>
+  <!-- Main content -->
+  <section class="content">
+    <%= render "golden_idea/application/flash" %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">商品详情</h3>
+              (<%= @good.name %><small>库存:<%= @good.quantity %>, 需要积分:<%= @good.score %></small>)
+            </div>
+            <!-- ./card-header -->
+            <div class="card-body">
+              <%= @good.description %>
+              <%= @good.content.html_safe %>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <a href="<%= exchange_view_golden_idea_good_path %>" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-exchange" data-remote="<%= exchange_view_golden_idea_good_path %>"><i class="icon-shopping-cart shaded"></i>兑换</a>
             </div>
           </div>
+          <!-- /.card -->
         </div>
-      </div><!--/.span9-->
-
-    </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Exchange Records</h3>
+            </div>
+            <!-- ./card-header -->
+            <div class="card-body">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>兑换人</th>
+                    <th>数量</th>
+                    <th>时间</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @good.exchange_records.each do |exchange_record| %>
+                    <tr>
+                      <td><%= exchange_record.id %></td>
+                      <td><%= exchange_record.employee.name %></td>
+                      <td><%= exchange_record.quantity %></td>
+                      <td><%= exchange_record.created_at %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 <!--兑换弹框-->
 <%= render 'modal_exchange' %>
+
+<% content_for :custom_js_css do %>
+  <script>
+   $('#modal-exchange').on('hidden.bs.modal', function (e) {
+     $(this).find('.modal-body').html('Loading...');
+     $(this).removeData('bs.modal');
+   }).on('show.bs.modal', function (e) {
+
+     var button = $(e.relatedTarget);
+     var modal = $(this);
+
+     modal.find('.modal-body').load(button.data("remote"));
+   });
+  </script>
+<% end %>

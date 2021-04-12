@@ -104,6 +104,7 @@ Rails.application.routes.draw do
   get '/golden_idea_dashboard' => 'golden_idea/application#dashboard'
   get '/golden_idea_score_standard' => 'golden_idea/application#golden_idea_score_standard'
   get '/golden_idea_template' => 'golden_idea/application#golden_idea_template'
+  get '/golden_idea_search' => 'golden_idea/application#golden_idea_search'
   namespace :golden_idea do
     resources :seasons do
       # get 'index_admin', on: :collection

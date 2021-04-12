@@ -1,50 +1,46 @@
-<div class="control-group">
-  <label class="control-label" for="basicinput">名称</label>
-  <div class="controls">
-    <%= f.text_field  :name, placeholder: "Type something here...", class: "span8" %>
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">名称</label>
+  <div class="col-sm-10">
+    <%= f.text_field :name, placeholder: "Type something here...", class: "form-control" %>
   </div>
 </div>
-<div class="control-group">
-  <label class="control-label" for="basicinput">商品数量</label>
-  <div class="controls">
-    <%= f.text_field  :quantity, placeholder: "Type something here...", class: "span8" %>
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">商品数量</label>
+  <div class="col-sm-10">
+    <%= f.text_field :quantity, placeholder: "Type something here...", class: "form-control" %>
   </div>
 </div>
-<div class="control-group">
-  <label class="control-label" for="basicinput">兑换积分</label>
-  <div class="controls">
-    <%= f.number_field  :score, placeholder: "Type something here...", class: "span8" %>
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">兑换积分</label>
+  <div class="col-sm-10">
+    <%= f.number_field :score, placeholder: "Type something here...", class: "form-control" %>
   </div>
 </div>
-<div class="control-group">
-  <label class="control-label" for="basicinput">商品描述</label>
-  <div class="controls">
-    <%= f.text_area  :description, placeholder: "Type something here...", class: "span8" %>
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">商品描述</label>
+  <div class="col-sm-10">
+    <%= f.text_area :description, placeholder: "Type something here...", class: "form-control" %>
   </div>
 </div>
-
-<div class="control-group">
-  <label class="control-label" for="basicinput">商品详情</label>
-  <div class="controls">
-    <%= f.text_area  :content, rows: 8, class: "span8", style: "display:none;" %>
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">商品详情</label>
+  <div class="col-sm-10">
+    <%= f.text_area :content, rows: 8, class: "form-control", style: "display:none;" %>
     <div id="editor">
     </div>
   </div>
 </div>
-
-<div class="control-group">
-  <label class="control-label" for="basicinput">图片</label>
-  <div class="controls">
-    <%= image_tag(@good.avatar.url, size: '100') if @good.avatar.present? %>
-    <%= f.file_field :avatar, class: "span8", "data-placeholder": "Select here..",tabindex: "1" %>
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">图片</label>
+  <div class="col-sm-10">
+    <% if @good.avatar.present? %>
+      <%= image_tag(@good.avatar.url, size: '100') %>
+      <br/>
+    <% end %>
+    <%= f.file_field :avatar, "data-placeholder": "Select here..",tabindex: "1" %>
   </div>
 </div>
 
-<script>
-  $(document).ready(function() {
-    $('.select2').select2();
-  });
-</script>
 <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
 <script type="text/javascript">
     var E = window.wangEditor
@@ -57,8 +53,24 @@
     // 配置图片上传
     editor.customConfig.uploadImgServer = '/questions/upload_img'
     editor.customConfig.uploadFileName = 'fileimg'
+    editor.customConfig.menus = [
+      'head',  // 标题
+      'bold',  // 粗体
+      'fontSize',  // 字号
+      'fontName',  // 字体
+      'italic',  // 斜体
+      'foreColor',  // 文字颜色
+      'backColor',  // 背景颜色
+      'link',  // 插入链接
+      'list',  // 列表
+      'justify',  // 对齐方式
+      'image',  // 插入图片
+      'table',  // 表格
+      'video',  // 插入视频
+      'undo',  // 撤销
+      'redo'  // 重复
+    ]
     editor.create()
-    E.fullscreen.init('#editor');
     // 初始化 textarea 的值
     editor.txt.html($text1.val());
 </script>

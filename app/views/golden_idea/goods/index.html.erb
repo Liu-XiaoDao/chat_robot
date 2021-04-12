@@ -1,77 +1,101 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <%= render "golden_idea/application/flash" %>
-        <div class="content">
-          <div class="module">
-            <div class="module-head">
-              <h3><%= t 'menu.point_exchange' %></h3>
-            </div>
-            <div class="module-option clearfix">
-              <%= form_tag nil, method: 'get' do %>
-                <div class="input-append pull-left">
-                  <input type="text" class="span3" name="q[name_cont]" value="<%= params[:q]['name_cont']  if params[:q] %>" placeholder="Filter by name...">
-                  <button type="submit" class="btn"><i class="icon-search"></i></button>
-                </div>
+<% provide :active, "point_exchange" %>
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>所有商品</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">所有商品</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <%= render 'golden_idea/application/flash' %>
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-header">
+          <h3 class="card-title">
+            <div class="text-center mt-2 mb-2">
+              <%= form_tag nil, method: 'get', class: "form-inline form_contains", style: "display: contents;" do %>
+                <input type="text" class="form-control" name="q[name_cont]" value="<%= params[:q]['name_cont']  if params[:q] %>" placeholder="Filter by name...">
+                <button type="submit" class="btn btn-sm btn-warning">Search<i class="icon-search"></i></button>
               <% end %>
-              <div class="btn-group pull-right" data-toggle="buttons-radio">
-                <a href="<%= golden_idea_goods_path %>" class="btn" >All</a>
-                <a href="/golden_idea/goods?q[score_lteq]=50" class="btn" >< 50</a>
-                <a href="/golden_idea/goods?q[score_gteq]=50" class="btn" >> 50</a>
+
+              <div class="btn-group">
+                <a href="<%= golden_idea_goods_path %>" class="btn btn-sm btn-info" >All</a>
+                <a href="/golden_idea/goods?q[score_lteq]=50" class="btn btn-sm btn-info" >< 50</a>
+                <a href="/golden_idea/goods?q[score_gteq]=50" class="btn btn-sm btn-info" >> 50</a>
               </div>
             </div>
-            <div class="module-body">
-              <% @goods.each_slice(2) do |good_a, good_b| %>
-                <div class="row-fluid">
-                  <div class="span6 good" id="good_<%= good_a.id %>" date-href="<%= golden_idea_good_path(good_a) %>">
-                    <div class="media user">
-                      <a class="media-avatar pull-left" href="#">
-                        <%= image_tag(good_a.avatar.url, size: '100') %>
-                      </a>
-                      <div class="media-body">
-                        <h3 class="media-title"><%= good_a.name %> </h3>
-                        <p><small class="muted" title="<%= good_a.description %>">
-                          <%= truncate(good_a.description, length: 30) %></small>
-                        </p>
-                        <div class="media-option btn-group shaded-icon">
-                          <button class="btn btn-small"><%= t 'table.point' %>:<%= good_a.score %></button>
-                          <button class="btn btn-small"><%= t 'table.inventory' %>:<%= good_a.quantity %></button>
-                          <a href="<%= exchange_view_golden_idea_good_path(good_a) %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i><%= t 'table.exchange' %></a>
-                        </div>
+          </h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body pb-0">
+          <div class="row">
+            <% @goods.each do |good| %>
+              <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                <div class="card bg-light d-flex flex-fill">
+                  <div class="card-header text-muted border-bottom-0">
+                    <%#= good.name %>&nbsp;
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="row">
+                      <div class="col-7">
+                        <h2 class="lead"><b><%= good.name %></b></h2>
+                        <p class="text-muted text-sm" title="<%= good.description %>"><b>About: </b> <%= truncate(good.description, length: 30) %> </p>
+                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> 积分:<%= good.score %></li>
+                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> 库存:<%= good.quantity %></li>
+                        </ul>
+                      </div>
+                      <div class="col-5 text-center">
+                        <img src="<%= good.avatar.url %>" alt="user-avatar" class="img-circle img-fluid">
                       </div>
                     </div>
                   </div>
-                  <% if good_b.present? %>
-                    <div class="span6 good" id="good_<%= good_b.id %>" date-href="<%= golden_idea_good_path(good_b) %>">
-                      <div class="media user">
-                        <a class="media-avatar pull-left" href="<%= golden_idea_good_path(good_b) %>">
-                          <%= image_tag(good_b.avatar.url, size: '100') %>
-                        </a>
-                        <div class="media-body">
-                          <h3 class="media-title"><%= good_b.name %> </h3>
-                          <p><small class="muted" title="<%= good_b.description %>"><%= truncate(good_b.description, length: 30) %></small></p>
-                          <div class="media-option btn-group shaded-icon">
-                            <button class="btn btn-small"><%= t 'table.point' %>:<%= good_b.score %></button>
-                            <button class="btn btn-small"><%= t 'table.inventory' %>:<%= good_b.quantity %></button>
-                            <a href="<%= exchange_view_golden_idea_good_path(good_b) %>" class="btn" data-toggle="modal" data-target="#myModal" ><i class="icon-shopping-cart shaded"></i><%= t 'table.exchange' %></a>
-                          </div>
-                        </div>
-                      </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="<%= exchange_view_golden_idea_good_path(good) %>" class="btn btn-sm bg-teal" data-toggle="modal" data-target="#modal-exchange" data-remote="<%= exchange_view_golden_idea_good_path(good) %>"><i class="icon-shopping-cart shaded"></i>兑换</a>
+                      <a href="<%= golden_idea_good_path(good) %>" class="btn btn-sm btn-primary"> 查看</a>
                     </div>
-                  <% end %>
-                </div><!--/.row-fluid-->
-                <br>
-              <% end %>
-              <%= will_paginate @goods, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
-            </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
-        </div><!--/.content-->
-      </div><!--/.span9-->
-    </div>
-  </div> <!--/.container-->
-</div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <nav aria-label="Contacts Page Navigation">
+            <%= will_paginate @goods, renderer: WillPaginate::ActionView::GoldenIdeaLinkRenderer %>
+          </nav>
+        </div>
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
 <!--兑换弹框-->
 <%= render 'modal_exchange' %>
@@ -83,17 +107,23 @@
   .media .media-avatar {
     border-radius: 20px;
   }
+  .form_contains {
+    display: contents;
+  }
 </style>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.good').click(function(event){
-      var tar = event.target;
-      var current = event.currentTarget;    //使用target感觉也没有太大区别，具体鉴定需要多去尝试不同的demo
-      var tagName = tar.nodeName.toLowerCase();
-      if (tagName != "a") {
-        window.location.href = $(this).attr('date-href');
-      }
-      event.preventDefault();
-    });
-  });
-</script>
+
+<% content_for :custom_js_css do %>
+  <!-- 历史个期 -->
+  <script>
+   $('#modal-exchange').on('hidden.bs.modal', function (e) {
+     $(this).find('.modal-body').html('Loading...');
+     $(this).removeData('bs.modal');
+   }).on('show.bs.modal', function (e) {
+
+     var button = $(e.relatedTarget);
+     var modal = $(this);
+
+     modal.find('.modal-body').load(button.data("remote"));
+   });
+  </script>
+<% end %>

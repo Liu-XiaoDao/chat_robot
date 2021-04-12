@@ -19,6 +19,10 @@
  *= require bootstrap-responsive.min
  *= require theme
  *= require font-awesome
- *= require_tree .
+ *= require jquery.fancybox
+ *= require jquery.mloading
+ *= require mTips
+ *= require select2.min
+ *= require wangeditor_fullscreen_plugin
  *= require_self
  */

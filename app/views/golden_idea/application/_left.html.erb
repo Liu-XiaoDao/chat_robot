@@ -1,107 +1,206 @@
-<div class="span3">
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="/golden_idea" class="brand-link">
+    <img src="/images/duoli.png" alt="Golden Idea Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">Golden Idea System</span>
+  </a>
+
+  <!-- Sidebar -->
   <div class="sidebar">
-
-    <ul class="widget widget-menu unstyled">
-      <li class="active">
-        <a href="<%= current_season_index_golden_idea_ideas_path %>">
-          <i class="menu-icon icon-book"></i>
-          <%= t 'menu.current_season_idea' %>
-        </a>
-      </li>
-      <li>
-        <a href="<%= golden_idea_seasons_path %>">
-          <i class="menu-icon icon-tasks"></i>
-          <%= t 'menu.all_season' %>
-        </a>
-      </li>
-      <li>
-        <a href="<%= golden_idea_ideas_path %>">
-          <i class="menu-icon icon-list"></i>
-          <%= t 'menu.all_idea' %>
-        </a>
-      </li>
-      <li>
-        <a href="<%= golden_idea_goods_path %>">
-          <i class="menu-icon icon-shopping-cart"></i>
-          <%= t 'menu.point_exchange' %>
-        </a>
-      </li>
-      <li>
-        <a href="<%= golden_idea_score_standard_path %>">
-          <i class="menu-icon icon-th-large"></i>
-          <%= t 'menu.scoring_standard' %>
-        </a>
-      </li>
-      <li>
-        <a href="<%= golden_idea_template_path %>">
-          <i class="menu-icon icon-file"></i>
-          <%= t 'menu.gi_template' %>
-        </a>
-      </li>
-      <li>
-        <a href="<%= golden_idea_suggests_path %>">
-          <i class="menu-icon icon-comments-alt"></i>
-          <%= t 'menu.comment_suggestion' %>
-          <% count = GoldenIdea::Suggest.unreply_count %>
-          <% if count > 0 %>
-            <b class="label orange pull-right"><%= count %></b>
-          <% end %>
-        </a>
-      </li>
-    </ul><!--/.widget-nav-->
-
-    <ul class="widget widget-menu unstyled">
-      <% if signed_in? && current_employee.is_golden_idea_admin? %>
-        <li>
-          <a href="<%= index_admin_golden_idea_goods_path %>">
-            <i class="menu-icon icon-cogs"></i>
-            <%= t 'menu.good_admin' %>
-          </a>
-        </li>
-        <li>
-          <a href="<%= golden_idea_exchange_records_path %>">
-            <i class="menu-icon icon-exchange"></i>
-            <%= t 'menu.exchange_admin' %>
-            <b class="label orange pull-right"><%= GoldenIdea::ExchangeRecord.where(status: '待兑换').count %></b>
-          </a>
-        </li>
-        <li>
-          <a href="<%= golden_idea_dashboard_path %>">
-            <i class="menu-icon icon-bar-chart"></i>
-            <%= t 'menu.statistics' %>
-          </a>
-        </li>
-        <!--<li>
-          <a href="<%#= score_lists_employees_path %>">
-            <i class="menu-icon icon-tasks"></i>
-            员工积分-管理
-          </a>
-        </li>-->
-      <% end %>
-    </ul><!--/.widget-nav-->
-
-    <ul class="widget widget-menu unstyled">
-      <% if signed_in? && current_employee.is_golden_idea_admin? %>
-        <li>
-          <a class="collapsed" data-toggle="collapse" href="#togglePages_admin">
-            <i class="menu-icon icon-cog"></i>
-            <i class="icon-chevron-down pull-right"></i>
-            <i class="icon-chevron-up pull-right"></i>
-            <%= t 'menu.administrator' %>
-          </a>
-          <ul id="togglePages_admin" class="collapse unstyled">
-            <li><a href="<%= golden_idea_good_exchange_records_path %>"><%= t 'menu.exchange_record' %></a></li>
-            <li><a href="<%= golden_idea_assign_score_records_path %>"><%= t 'menu.reward_point_record' %></a></li>
-            <li><a href="<%= golden_idea_user_requests_path %>"><%= t 'menu.log' %></a></li>
-          </ul>
-        </li>
-      <% end %>
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <% if signed_in? %>
-        <li><a href="<%= golden_ideas_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i><%= t 'menu.my_idea' %></a></li>
-        <li><a href="<%= exchange_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i><%= t 'menu.my_exchange_record' %></a></li>
-        <li><a href="<%= assign_score_records_employee_path(current_employee) %>"><i class="menu-icon icon-user"></i><%= t 'menu.my_point_list' %></a></li>
+        <div class="image">
+          <img src="<%= current_employee.avatar %>" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="<%= employee_path(current_employee) %>" class="d-block"><%= current_employee.name %></a>
+        </div>
       <% end %>
-    </ul>
+    </div>
 
-  </div><!--/.sidebar-->
-</div><!--/.span3-->
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+        <li class="nav-item">
+          <a href="<%= current_season_index_golden_idea_ideas_path %>" class="nav-link <%= active? 'current_period', yield(:active) %>">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              本期金点子
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= golden_idea_seasons_path %>" class="nav-link <%= active? 'history', yield(:active) %>">
+            <i class="nav-icon fas fa-tasks"></i>
+            <p>
+              历史各期
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= golden_idea_ideas_path %>" class="nav-link <%= active? 'all_gis', yield(:active) %>">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              所有金点子
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= golden_idea_goods_path %>" class="nav-link <%= active? 'point_exchange', yield(:active) %>">
+            <i class="nav-icon fas fa-shopping-cart"></i>
+            <p>
+              积分兑换
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= golden_idea_score_standard_path %>" class="nav-link <%= active? 'scoring_standard', yield(:active) %>">
+            <i class="nav-icon fas fa-th-large"></i>
+            <p>
+              评分标准
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= golden_idea_template_path %>" class="nav-link  <%= active? 'gi_template', yield(:active) %>">
+            <i class="nav-icon fas fa-file"></i>
+            <p>
+              金点子模板
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= golden_idea_suggests_path %>" class="nav-link <%= active? 'comment_suggestion', yield(:active) %>">
+            <i class="nav-icon fas fa-comments"></i>
+            <p>
+              意见及建议
+              <% count = GoldenIdea::Suggest.unreply_count %>
+              <% if count > 0 %>
+                <span class="right badge badge-danger"><%= count %></span>
+              <% end %>
+            </p>
+          </a>
+        </li>
+        <% if signed_in? && current_employee.is_golden_idea_admin? %>
+          <li class="nav-header"></li>
+          <li class="nav-item">
+            <a href="<%= index_admin_golden_idea_goods_path %>" class="nav-link <%= active? 'point_reward', yield(:active) %>">
+              <i class="nav-icon fas fa-cogs"></i>
+              <p>
+                积分商品-管理
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= golden_idea_exchange_records_path %>" class="nav-link <%= active? 'exchange_mgt', yield(:active) %>">
+              <i class="nav-icon fas fa-exchange-alt"></i>
+              <p>
+                兑换-管理
+                <span class="right badge badge-danger"><%= GoldenIdea::ExchangeRecord.where(status: '待兑换').count %></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= golden_idea_dashboard_path %>" class="nav-link <%= active? 'statistics', yield(:active) %>">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                统计
+              </p>
+            </a>
+          </li>
+        <% end %>
+        <li class="nav-header"></li>
+        <% if signed_in? && current_employee.is_golden_idea_admin? %>
+          <li class="nav-item <%= menu_open? 'admin', yield(:active) %>">
+            <a href="#" class="nav-link <%= active_patent? 'admin', yield(:active) %>">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                管理员
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<%= golden_idea_good_exchange_records_path %>" class="nav-link <%= active? 'exchange_admin', yield(:active) %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>兑换记录-管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%= golden_idea_assign_score_records_path %>" class="nav-link <%= active? 'point_admin', yield(:active) %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>积分分配-管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%= golden_idea_user_requests_path %>" class="nav-link <%= active? 'log_admin', yield(:active) %>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>操作日志-管理</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+        <% if signed_in? %>
+          <li class="nav-item">
+            <a href="<%= golden_ideas_employee_path(current_employee) %>" class="nav-link <%= active? 'my_gi', yield(:active) %>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                我的金点子
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= score_employee_path(current_employee) %>" class="nav-link <%= active? 'my_point', yield(:active) %>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                我的积分
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= exchange_records_employee_path(current_employee) %>" class="nav-link <%= active? 'my_exchange_record', yield(:active) %>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                我的兑换记录
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= assign_score_records_employee_path(current_employee) %>" class="nav-link <%= active? 'my_point_list', yield(:active) %>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                我的积分分配记录
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= golden_idea_search_path %>" class="nav-link <%= active? 'search', yield(:active) %>">
+              <i class="nav-icon fas fa-search"></i>
+              <p>
+                Search
+              </p>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

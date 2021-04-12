@@ -11,4 +11,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w( ding/app.js library.js )
+Rails.application.config.assets.precompile += %w( ding/app.js library.js application_golden_idea.js application_golden_idea.css golden_idea/adminlte.min.js)

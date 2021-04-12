@@ -1,40 +1,70 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <div class="content">
-          <div class="module">
-            <div class="module-head">
-               <h3><%= t 'reward_point_record' %></h3>
-            </div>
-            <div class="module-body">
-              <%= render "golden_idea/application/flash" %>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th><%= t 'golden_idea' %></th>
-                    <th><%= t 'table.proposer' %></th>
-                    <th><%= t 'reward_point' %></th>
-                    <th><%= t 'table.date' %></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @assign_score_records.each do |assign_score_record| %>
-                    <tr>
-                      <td><%= link_to assign_score_record.idea.title, golden_idea_idea_path(assign_score_record.idea) %></td>
-                      <td><%= link_to assign_score_record.employee.name, employee_path(assign_score_record.employee) %></td>
-                      <td><%= assign_score_record.score %></td>
-                      <td><%= assign_score_record.created_at %></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-              <%= will_paginate @assign_score_records, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
-            </div>
-          </div>
-        </div><!--/.content-->
-      </div><!--/.span9-->
+<% provide :active, "point_admin" %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>积分分配记录</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item active">积分分配记录</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= render "golden_idea/application/flash" %>
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+              <tr>
+                <th>金点子</th>
+                <th>提议人</th>
+                <th>获得积分</th>
+                <th>时间</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @assign_score_records.each do |assign_score_record| %>
+                <tr>
+                  <td><%= link_to assign_score_record.idea.title, golden_idea_idea_path(assign_score_record.idea) %></td>
+                  <td><%= link_to assign_score_record.employee.name, employee_path(assign_score_record.employee) %></td>
+                  <td><%= assign_score_record.score %></td>
+                  <td><%= time_tag assign_score_record.created_at %></td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer">
+        <nav aria-label="Contacts Page Navigation">
+          <%= will_paginate @assign_score_records, renderer: WillPaginate::ActionView::GoldenIdeaLinkRenderer %>
+        </nav>
+      </div>
+      <!-- /.card-footer -->
     </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

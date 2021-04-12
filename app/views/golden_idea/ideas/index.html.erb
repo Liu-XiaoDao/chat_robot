@@ -1,97 +1,115 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <%= render "golden_idea/application/flash" %>
-        <div class="content">
-          <div class="module">
-            <div class="module-head">
-               <h3><%= t 'menu.all_idea' %>(<%= @golden_ideas.count %>)</h3>
-            </div>
-            <div class="module-option clearfix">
-              <div class="pull-left">
-                <!--<div class="btn-group">
-                  <button class="btn"><%#= params[:q].present? && params[:q][:season_id_eq].present? ? current_filter(params[:q][:season_id_eq]) : "筛选"  %></button>
-                  <button class="btn dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="?">全部</a></li>
-                    <%# GoldenIdea::Season.all.each do |season| %>
-                      <li><a href="?q[season_id_eq]=<%#= season.id %>"><%#= season.name %></a></li>
-                    <%# end %>
-                  </ul>
-                </div>-->
-                <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
-                  <% selected = params[:q][:category_eq].split(',') if params[:q] && params[:q][:category_eq] %>
-                  <%= select_tag  'q[category_eq]', options_for_select([[t('table.category'), ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'span1_2'} %>
+<% provide :active, "all_gis" %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>所有金点子(<%= @golden_ideas.count %>)</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item active">所有金点子</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="<%= t 'table.title' %>">
+  <!-- Main content -->
+  <section class="content">
 
-                  <% selected = params[:q][:season_id_eq_any] if params[:q] && params[:q][:season_id_eq_any] %>
-                  <%= select_tag  'q[season_id_eq_any]', options_for_select(GoldenIdea::Season.all.collect { |s| [ s.name, s.id ] }, :selected => selected), {:multiple => true, :class => 'span1_2 select2', 'data-placeholder' => t('table.search_season')} %>
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
 
-                  <% selected = params[:q][:proposer] if params[:q] && params[:q][:proposer] %>
-                  <%= select_tag  'q[proposer]', options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:multiple => true, :class => 'span1_2 select2', 'data-placeholder' => t('table.proposer')} %>
+          <div class="text-center mt-2 mb-2">
+            <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
 
-                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="<%= t 'table.department' %>">
-                  <input type="text" style="margin-bottom: 0;" class="span1_2" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder="><%= t 'table.score' %>">
+              <% selected = params[:q][:category_eq].split(',') if params[:q] && params[:q][:category_eq] %>
+              <%= select_tag  'q[category_eq]', options_for_select([['分类', ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'form-control'} %>
 
-                  <button type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="<%= t :search %>..."><%= t 'search' %></button>
-                <% end %>
+              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="标题">
 
-              </div>
-              <% if signed_in? && current_employee.is_golden_idea_admin? %>
-                <div class="pull-right">
-                  <!--批量上传表单-->
-                  <%= form_for :import, url: import_preview_golden_idea_ideas_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
-                    <%= f.file_field :file, id: "upload-file-input" %>
-                    <%= f.submit '', id: "file-submit" %>
-                  <% end %>
+              <% selected = params[:q][:season_id_eq_any] if params[:q] && params[:q][:season_id_eq_any] %>
+              <%= select_tag  'q[season_id_eq_any]', options_for_select(GoldenIdea::Season.all.collect { |s| [ s.name, s.id ] }, :selected => selected), {:multiple => true, :class => 'form-control select2', 'data-placeholder' => '搜索哪一期'} %>
 
-                  <%#= link_to t('import'), "javascript:void(0);", class: "btn btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
-                  <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
-                  <%= link_to t('export'), golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-info" %>
-                </div>
+              <% selected = params[:q][:proposer] if params[:q] && params[:q][:proposer] %>
+              <%= select_tag  'q[proposer]', options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:multiple => true, :class => 'form-control select2', 'data-placeholder' => '提议人'} %>
+
+              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="部门">
+              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder=">分数">
+
+              <button type="submit" name="commit" value="Search" class="btn btn-sm btn-warning" data-disable-with="搜索...">搜索</button>
+            <% end %>
+
+
+            <% if signed_in? && current_employee.is_golden_idea_admin? %>
+              <!--批量上传表单-->
+              <%= form_for :import, url: import_preview_golden_idea_ideas_path, method: 'post', html:{ multipart: true, style: "display: none;" } do |f| %>
+                <%= f.file_field :file, id: "upload-file-input" %>
+                <%= f.submit '', id: "file-submit" %>
               <% end %>
-            </div>
-            <div class="module-body">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th><%= sortable "category", t('table.category') %></th>
-                    <th><%= sortable "title", t('table.title') %></th>
-                    <th><%= sortable "season_id", t('season') %></th>
-                    <th><%= sortable "reporter_id", t('table.speaker') %></th>
-                    <th><%= sortable "proposer", t('table.proposer') %></th>
-                    <th><%= sortable "department", t('table.department') %></th>
-                    <th><%= sortable "status", t('table.status') %></th>
-                    <th><%= sortable "description", t('table.description') %></th>
-                    <th><%= sortable "score", t('table.score') %></th>
-                    <!--<th class="cell-btn align-right">操作</th>
-                    <th class="cell-btn align-right"></th>-->
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @golden_ideas.each do |golden_idea| %>
-                    <tr>
-                      <td><%= golden_idea.category %></td>
-                      <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
-                      <td><%= link_to golden_idea.season.name, golden_idea_season_path(golden_idea.season) %></td>
-                      <td><%= golden_idea.reporter.try :name %></td>
-                      <td>
-                        <% if golden_idea.proposers.present? %>
-                          <% golden_idea.proposers.split(',').each do |u_id| %>
-                            <% user = Employee.find(u_id) %>
-                            <%= link_to user.name, user %>
-                          <% end %>
+
+              <%= link_to '导入', "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+              <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
+              <%= link_to '导出', golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
+            <% end %>
+          </div>
+
+        </h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+              <tr>
+                <th style="width: 5%"><%= sortable "category", "分类" %></th>
+                <th style="width: 15%"><%= sortable "title", "标题" %></th>
+                <th style="width: 5%"><%= sortable "season_id", "期" %></th>
+                <th style="width: 5%"><%= sortable "reporter_id", "主讲人" %></th>
+                <th style="width: 10%"><%= sortable "proposer", "提议人" %></th>
+                <th style="width: 5%"><%= sortable "department", "部门" %></th>
+                <th style="width: 10%" class="text-center"><%= sortable "status", "状态" %></th>
+                <th style="width: 35%"><%= sortable "description", "内容描述" %></th>
+                <th style="width: 5%"><%= sortable "score", "得分" %></th>
+                <th style="width: 10%"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @golden_ideas.each do |golden_idea| %>
+                <tr class="<%= is_transfer?(golden_idea) %>">
+                    <td><%= golden_idea.category %></td>
+                    <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
+                    <td><%= link_to golden_idea.season.name, golden_idea_season_path(golden_idea.season) %></td>
+                    <td><%= golden_idea.reporter.try :name %></td>
+                    <td>
+                      <% if golden_idea.proposers.present? %>
+                        <% golden_idea.proposers.split(',').each do |u_id| %>
+                          <% user = Employee.find(u_id) %>
+                          <%= link_to user.name, user %>
                         <% end %>
-                      </td>
-                      <td><%= golden_idea.department %></td>
-                      <td><%= golden_idea.status %></td>
-                      <td title="<%= golden_idea.description %>" data-mtpis="<%= golden_idea.description %>"><%= truncate(golden_idea.description, length: 20) %></td>
-                      <td><%= golden_idea.score %></td>
+                      <% end %>
+                    </td>
+                    <td><%= golden_idea.department %></td>
+                    <td class="project-state">
+                      <span class="badge badge-success"><%= golden_idea.status %></span>
+                    </td>
+                    <td title="<%= golden_idea.description %>" data-mtpis="<%= golden_idea.description %>"><%= truncate(golden_idea.description, length: 20) %></td>
+                    <td><%= golden_idea.score %></td>
+
+                    <td class="project-actions text-right">
                       <!--
                       <% if golden_idea.is_complate? %>
                         <td class="cell-btn align-right"><%= link_to '查看', golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
@@ -104,19 +122,23 @@
                         <td class="cell-btn align-right"></td>
                       <% end %>
                       -->
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-              <%= will_paginate @golden_ideas, renderer: WillPaginate::ActionView::BlogLinkRenderer %>
-            </div>
-          </div>
-        </div><!--/.content-->
-      </div><!--/.span9-->
+                    </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer clearfix">
+        <%= will_paginate @golden_ideas, renderer: WillPaginate::ActionView::GoldenIdeaLinkRenderer %>
+      </div>
     </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
+    <!-- /.card -->
 
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
 <div class="modal fade production-task-model-config" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -136,40 +158,46 @@
     </div>
    </div>
 </div>
-<script>
-  $("#myModal").on("hidden", function() {
-    $(this).removeData("modal");
-  });
 
-  $('#closebtn').on('click', function(){
-    $(".modal-body input[value='Save']").click();
-    setTimeout("location.reload()",500);
-  });
-</script>
+<% content_for :custom_js_css do %>
+  <script>
+    $("#myModal").on("hidden", function() {
+      $(this).removeData("modal");
+    });
 
-<style type="text/css">
-  .modal-backdrop, .modal-backdrop.fade.in {
-    background: #000000;
-    opacity: .8
-  }
-  .form_contains {
-    display: contents;
-  }
-  .span1_2 {
-    width: 100px;
-  }
-</style>
-<script>
-  $("#upload-file-btn").click(function () {
-    $("#upload-file-input").click();
-  });
-  $("#upload-file-input").on("change", function(){
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    $("#file-submit").click();
-  });
-</script>
-<script>
-  $(document).ready(function() {
-    $('.select2').select2();
-  });
-</script>
+    $('#closebtn').on('click', function(){
+      $(".modal-body input[value='Save']").click();
+      setTimeout("location.reload()",500);
+    });
+  </script>
+
+  <style type="text/css">
+    .modal-backdrop, .modal-backdrop.fade.in {
+      background: #000000;
+      opacity: .8
+    }
+    .form_contains {
+      display: contents;
+    }
+    .select2-container {
+      display: inline-block;
+    }
+    .span1_2 {
+      width: 100px;
+    }
+  </style>
+  <script>
+    $("#upload-file-btn").click(function () {
+      $("#upload-file-input").click();
+    });
+    $("#upload-file-input").on("change", function(){
+      var size_in_megabytes = this.files[0].size/1024/1024;
+      $("#file-submit").click();
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('.select2').select2();
+    });
+  </script>
+<% end %>

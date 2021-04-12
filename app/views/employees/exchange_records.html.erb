@@ -1,41 +1,66 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <div class="content">
-          <div class="module">
-            <div class="module-head">
-               <h3><%= t 'menu.my_exchange_record' %></h3>
-            </div>
-            <div class="module-body">
-              <%= render "golden_idea/application/flash" %>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>兑换商品</th>
-                    <th><%= t 'table.count' %></th>
-                    <th><%= t 'table.used_score' %></th>
-                    <th><%= t 'table.date' %></th>
-                    <th><%= t 'table.status' %></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @exchange_records.each do |exchange_record| %>
-                    <tr>
-                      <td><%= link_to exchange_record.good.name, golden_idea_good_path(exchange_record.good) %></td>
-                      <td><%= exchange_record.quantity %></td>
-                      <td><%= exchange_record.used_score %></td>
-                      <td><%= exchange_record.created_at %></td>
-                      <td><%= exchange_record.status %></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div><!--/.content-->
-      </div><!--/.span9-->
+<% provide :active, "my_exchange_record" %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>我的兑换记录</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
+            <li class="breadcrumb-item active">我的兑换记录</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= render "golden_idea/application/flash" %>
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+              <tr>
+                <th>兑换商品</th>
+                <th>数量</th>
+                <th>使用积分</th>
+                <th>时间</th>
+                <th>状态</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @exchange_records.each do |exchange_record| %>
+                <tr>
+                  <td><%= link_to exchange_record.good.name, golden_idea_good_path(exchange_record.good) %></td>
+                  <td><%= exchange_record.quantity %></td>
+                  <td><%= exchange_record.used_score %></td>
+                  <td><%= time_tag exchange_record.created_at %></td>
+                  <td><%= exchange_record.status %></td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
     </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

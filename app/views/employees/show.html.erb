@@ -1,48 +1,83 @@
-<div class="wrapper wrapper-library">
-  <div class="container">
-    <div class="row">
-      <%= render 'golden_idea/application/left' %>
-      <div class="span9">
-        <div class="content">
-          <div class="module">
-            <div class="module-body">
-              <%= render "library/flash" %>
-              <div class="profile-head media">
-                <a href="#" class="media-cover pull-left">
-                  <img src="<%= @employee.avatar %>">
-                </a>
-                <div class="media-body">
-                  <h4>
-                    <%= @employee.name %><small><%#= '@book.author' %></small>
-                  </h4>
-                  <p class="profile-brief" title="<%='@book.intro'%>"><%= t 'point' %>:<span style="color:red;padding-left:5px;"><%= @employee.score %></span></p>
-                  <div class="profile-details muted">
-                    <a href="<%#= borrow_view_book_path %>" class="btn" ><i class="icon-plus shaded"></i></a>
-                    <a href="<%#= praise_book_path(@book) %>"  class="btn" data-remote="true"><i class="icon-thumbs-up shaded"></i> <span id="praise_count"><%#= @book.praise_count %></span></a>
-                    <a href="<%#= rubbish_book_path(@book) %>" class="btn" data-remote="true"><i class="icon-thumbs-down shaded"></i> <span id="rubbish_count"><%#= @book.rubbish_count %></span></a>
-                  </div>
-                </div>
+<%
+  rowno = ActiveRecord::Base.connection.execute("select rowno from (select id,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b order by score desc) c where id = #{current_employee.id};")
+  rowno = Integer(rowno.to_a[0][0])
+%>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Profile</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">User Profile</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= render "golden_idea/application/flash" %>
+    <!-- Default box -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img class="profile-user-img img-fluid img-circle" src="<%= @employee.avatar %>" alt="<%= @employee.name %>">
               </div>
-              <ul class="profile-tab nav nav-tabs">
-                <!--<li class="active"><a href="#activity" data-toggle="tab">评论</a></li>-->
-                <li class="active"><a href="#borrow_records" data-toggle="tab"><%= t 'golden_idea' %></a></li>
-                <li><a href="#detial" data-toggle="tab"><%= t 'exchange_record' %></a></li>
-                <!--<li><a href="#chapters" data-toggle="tab">目录</a></li>-->
+
+              <h3 class="profile-username text-center"><%= @employee.name %></h3>
+
+              <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                  <b>排名</b> <a class="float-right"><%= rowno %></a>
+                </li>
+                <li class="list-group-item">
+                  <b>总积分</b> <a class="float-right"><%= current_employee.score %></a>
+                </li>
+                <li class="list-group-item">
+                  <b>可用积分</b> <a class="float-right"><%= current_employee.available_score %></a>
+                </li>
               </ul>
-              <div class="profile-tab-content tab-content">
-                <div class="tab-pane fade active in" id="borrow_records">
-                  <div class="module-body">
-                    <table class="table table-striped">
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header p-2">
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" href="#golden_idea" data-toggle="tab">金点子</a></li>
+                <li class="nav-item"><a class="nav-link" href="#exchange_record" data-toggle="tab">兑换记录</a></li>
+              </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="active tab-pane" id="golden_idea">
+                  <table class="table table-striped projects">
                       <thead>
                         <tr>
-                          <th><%= t 'table.category' %></th>
-                          <th><%= t 'table.title' %></th>
-                          <th><%= t 'table.proposer' %></th>
-                          <th><%= t 'table.department' %></th>
-                          <th><%= t 'table.description' %></th>
-                          <th><%= t 'table.score' %></th>
-                          <th class="cell-btn align-right"><%= t 'table.action' %></th>
-                          <th class="cell-btn align-right"></th>
+                          <th>分类</th>
+                          <th>标题</th>
+                          <th>提议人</th>
+                          <th>部门</th>
+                          <th>内容描述</th>
+                          <th>得分</th>
+                          <th>操作</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -61,21 +96,16 @@
                             <td><%= golden_idea.department %></td>
                             <td><%= golden_idea.description %></td>
                             <td><%= golden_idea.score %></td>
-                            <% if golden_idea.is_complate? %>
-                              <td class="cell-btn align-right"></td>
-                            <% elsif golden_idea.is_edit?(@employee.id) %>
-                              <td class="cell-btn align-right"><%= link_to t('edit'), edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
-                            <% else %>
-                              <td class="cell-btn align-right"></td>
+                            <% if golden_idea.is_edit?(@employee.id) %>
+                              <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-sm btn-primary" %></td>
                             <% end %>
                           </tr>
                         <% end %>
                       </tbody>
-                    </table>
-                  </div>
+                  </table>
                 </div>
-
-                <div class="tab-pane fade" id="detial">
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="exchange_record">
                   <table class="table table-striped">
                     <thead>
                       <tr>
@@ -99,60 +129,18 @@
                     </tbody>
                   </table>
                 </div>
-
-                <div class="tab-pane fade" id="chapters">
-                  <div class="module-body">
-                    敬请期待
-                  </div>
-                </div>
-
+                <!-- /.tab-pane -->
               </div>
-            </div>
+              <!-- /.tab-content -->
+            </div><!-- /.card-body -->
           </div>
+          <!-- /.card -->
         </div>
-      </div><!--/.span9-->
-
-    </div>
-  </div><!--/.container-->
-</div><!--/.wrapper-->
-
-
-
-<script type="text/javascript">
-  $("#myModal").on("hidden", function() {
-    $(this).removeData("modal");
-  });
-
-  $('#closebtn').on('click', function(){
-    $(".modal-body input[value='Save']").click();
-    setTimeout("location.reload()",500);
-  });
-</script>
-<style media="screen">
-  .wrapper {
-    min-height: 0;
-  }
-  .modal-backdrop, .modal-backdrop.fade.in {
-    background: #000000;
-    opacity: .8
-  }
-</style>
-
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>借阅</h3>
-    </div>
-    <div class="modal-content">
-      <div class="modal-body">
-        <div style="width:10px;height:10px;"></div>
+        <!-- /.col -->
       </div>
-    </div>
-    <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-       <button type="submit" class="btn btn-primary" onclick="document.getElementById('borrow_book_form').submit();">Submit</button>
-    </div>
-   </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
 </div>
+<!-- /.content-wrapper -->

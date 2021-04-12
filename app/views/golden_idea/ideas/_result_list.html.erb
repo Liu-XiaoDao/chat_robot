@@ -1,6 +1,14 @@
 <% golden_ideas.each_with_hit do |record, hit| %>
-  <li>
-    <% title = hit.highlight.title ? (raw hit.highlight.title[0]) : record.title %>
-    <a href="<%= golden_idea_idea_path(record.id) %>"><%= title %></a>
-  </li>
+  <% title = hit.highlight.title ? (raw hit.highlight.title[0]) : record.title %>
+  <div class="list-group-item">
+    <div class="row">
+      <div class="col px-4">
+        <div>
+          <div class="float-right"><%= record.created_at %></div>
+          <h4><a href="<%= golden_idea_idea_path(record.id) %>"><%= title %></a></h4>
+          <p class="mb-0"><%= record.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

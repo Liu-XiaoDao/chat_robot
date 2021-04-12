@@ -1,6 +1,6 @@
 module GoldenIdea
   class GoodsController < ApplicationController
-    layout 'golden_idea'
+    layout 'golden_idea_new'
     def index
       @goods = Good.where("quantity > 0").ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 8
     end
@@ -61,11 +61,11 @@ module GoldenIdea
           flash[:success] = "兑换成功"
         else
           # return render js: "$('#exchange_form').prepend(<h5 style='text-align: center;'>兑换失败</h5>)"
-          flash[:error] = "兑换失败"
+          flash[:danger] = "兑换失败"
         end
       else
         # return render js: "$('#exchange_form').prepend('<h5 style=\'text-align: center;\'>您的积分不足或没有库存</h5>')"
-        flash[:error] = "您的积分不足或没有库存"
+        flash[:warning] = "您的积分不足或没有库存"
       end
       redirect_to request.referer
     end
