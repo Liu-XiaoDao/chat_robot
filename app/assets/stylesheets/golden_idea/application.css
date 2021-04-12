@@ -14,15 +14,11 @@
  *
  *
  *
- * 
- *= require bootstrap.min
- *= require bootstrap-responsive.min
- *= require theme
- *= require font-awesome
- *= require jquery.fancybox
- *= require jquery.mloading
- *= require mTips
- *= require select2.min
- *= require wangeditor_fullscreen_plugin
+ *
+ *= require golden_idea/all.min
+ *= require golden_idea/adminlte.min
+ *= require golden_idea/OverlayScrollbars.min
+ *= require golden_idea/select2.min
+ *= require golden_idea/select2-bootstrap4.min
  *= require_self
  */
