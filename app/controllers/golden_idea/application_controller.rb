@@ -33,5 +33,8 @@ module GoldenIdea
 
     def dashboard
     end
+
+    def golden_idea_search
+    end
   end
 end

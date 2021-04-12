@@ -28,13 +28,13 @@
             <div class="text-center mt-2 mb-2">
               <%= form_tag nil, method: 'get', class: "form-inline form_contains", style: "display: contents;" do %>
                 <input type="text" class="form-control" name="q[name_cont]" value="<%= params[:q]['name_cont']  if params[:q] %>" placeholder="Filter by name...">
-                <button type="submit" class="btn btn-warning">Search<i class="icon-search"></i></button>
+                <button type="submit" class="btn btn-sm btn-warning">Search<i class="icon-search"></i></button>
               <% end %>
 
               <div class="btn-group">
-                <a href="<%= golden_idea_goods_path %>" class="btn btn-info" >All</a>
-                <a href="/golden_idea/goods?q[score_lteq]=50" class="btn btn-info" >< 50</a>
-                <a href="/golden_idea/goods?q[score_gteq]=50" class="btn btn-info" >> 50</a>
+                <a href="<%= golden_idea_goods_path %>" class="btn btn-sm btn-info" >All</a>
+                <a href="/golden_idea/goods?q[score_lteq]=50" class="btn btn-sm btn-info" >< 50</a>
+                <a href="/golden_idea/goods?q[score_gteq]=50" class="btn btn-sm btn-info" >> 50</a>
               </div>
             </div>
           </h3>
@@ -74,7 +74,7 @@
                   <div class="card-footer">
                     <div class="text-right">
                       <a href="<%= exchange_view_golden_idea_good_path(good) %>" class="btn btn-sm bg-teal" data-toggle="modal" data-target="#modal-exchange" data-remote="<%= exchange_view_golden_idea_good_path(good) %>"><i class="icon-shopping-cart shaded"></i>兑换</a>
-                      <a href="<%= golden_idea_good_path(good) %>" class="btn btn-sm btn-primary"> View</a>
+                      <a href="<%= golden_idea_good_path(good) %>" class="btn btn-sm btn-primary"> 查看</a>
                     </div>
                   </div>
                 </div>
@@ -96,20 +96,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-
-
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-
-
-
 
 <!--兑换弹框-->
 <%= render 'modal_exchange' %>

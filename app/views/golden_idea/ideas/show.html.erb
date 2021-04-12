@@ -1,3 +1,4 @@
+<% provide :active, "current_period" %>
 <div class="modal fade" id="modal-score" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -149,7 +150,7 @@
             <h5 class="mt-5 text-muted">SOP文件:</h5>
             <ul class="list-unstyled">
               <% if @golden_idea.attachments.where(notes: 'sop_file').present? %>
-                <% @golden_idea.attachments.each do |attachment| %>
+                <% @golden_idea.attachments.where(notes: 'sop_file').each do |attachment| %>
                   <li>
                     <a href="<%= attachment.attachment.url %>" class="btn-link text-secondary"><i class="fas fa-link mr-1"></i> <%= attachment.attachment_file_name %></a>
                     <%= link_to 'X', attachment_path(attachment), method: :delete, data: {confirm: 'Are you sure?'}, style: "color:red" %></td>

@@ -182,23 +182,13 @@
             </p>
           </a>
         </li>
-        <li class="nav-header">SEARCH</li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="<%= golden_idea_search_path %>" class="nav-link <%= active? 'search', yield(:active) %>">
             <i class="nav-icon fas fa-search"></i>
             <p>
               Search
-              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="admin_lte/pages/search/simple.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Simple Search</p>
-              </a>
-            </li>
-          </ul>
         </li>
       </ul>
     </nav>

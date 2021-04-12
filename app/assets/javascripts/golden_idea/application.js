@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require turbolinks
 
 //= require golden_idea/jquery.min
 //= require golden_idea/jquery-ui.min
@@ -21,6 +19,9 @@
 //= require golden_idea/bs-custom-file-input.min
 //= require golden_idea/select2.full.min
 //= require golden_idea/adminlte.min
+
+//= require rails-ujs
+//= require turbolinks
 
 // 这个是简单富文本编辑器
 //= require wangEditor.min
