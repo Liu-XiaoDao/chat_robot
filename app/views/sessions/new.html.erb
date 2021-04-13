@@ -1,35 +1,36 @@
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="module module-login span4 offset4">
-        <%= form_for :session, url: signin_path, class: "form-vertical",role: "form" do |f| %>
-          <div class="module-head">
-            <h3>Sign In</h3>
-          </div>
-          <div class="module-body">
-            <div class="control-group">
-              <div class="controls row-fluid">
-                <%= f.text_field  :username, placeholder: "Username", value: "admin", class: "span12" %>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls row-fluid">
-                <%= f.password_field :password, placeholder: "Password", class: "span12", required: "required" %>
-              </div>
-            </div>
-          </div>
-          <div class="module-foot">
-            <div class="control-group">
-              <div class="controls clearfix">
-                <button type="submit" class="btn btn-primary pull-right">Login</button>
-                <label class="checkbox">
-                  <input type="checkbox"> Remember me
-                </label>
-              </div>
-            </div>
-          </div>
-        <% end %>
+<%= form_for :session, url: "/auth/ldap/callback", role: "form" do |f| %>
+  <div class="input-group mb-3">
+    <%= f.text_field :username, name: 'username', placeholder: "Username", class: "form-control", required: "required" %>
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <span class="fas fa-user"></span>
       </div>
     </div>
   </div>
-</div><!--/.wrapper-->
+  <div class="input-group mb-3">
+    <%= f.password_field :password, name: 'password', placeholder: "Password", class: "form-control", required: "required" %>
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <span class="fas fa-lock"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="icheck-primary">
+        <input type="checkbox" id="remember">
+        <label for="remember">
+          Remember Me
+        </label>
+      </div>
+    </div>
+    <!-- /.col -->
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+    </div>
+    <!-- /.col -->
+  </div>
+<% end %>
+
+
+<!-- <input class="btn btn-primary form-control" name="commit" type="submit" value="LDAP登录"> -->

@@ -69,6 +69,8 @@ gem "httparty", "~> 0.13.3"
 gem "paperclip", "~> 6.0.0"
 gem 'ransack', "~> 1.8.8"
 
+gem 'omniauth-ldap'     #ldap域登陆
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

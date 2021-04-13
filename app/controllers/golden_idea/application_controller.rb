@@ -1,6 +1,8 @@
 module GoldenIdea
   class ApplicationController < ::ApplicationController
     layout 'golden_idea_new'
+    # before_action :check_signed_in
+
     def index
 
     end
@@ -35,6 +37,17 @@ module GoldenIdea
     end
 
     def golden_idea_search
+    end
+
+    # 确保已登录, 否则转向登录页面
+    def check_signed_in
+      unless signed_in? || request.env['HTTP_USER_AGENT'] =~ /DingTalk/
+        flash[:warning] = "Please sign in first!"
+        store_location    #如果没登录会跳转到登录页,在这保存原本想要访问的页面,登陆后返回
+        redirect_to signin_path
+      else
+        Employee.current_employee = current_employee
+      end
     end
   end
 end

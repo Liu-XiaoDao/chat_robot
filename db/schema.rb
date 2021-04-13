@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201105022709) do
+ActiveRecord::Schema.define(version: 20210413141202) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20201105022709) do
     t.decimal "credits", precision: 8, scale: 3
     t.decimal "score", precision: 8, scale: 3, default: "0.0"
     t.decimal "available_score", precision: 8, scale: 3, default: "0.0"
+    t.string "email", limit: 50
+    t.string "site", limit: 30
   end
 
   create_table "expresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

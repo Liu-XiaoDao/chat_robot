@@ -21,6 +21,17 @@ class Employee < ApplicationRecord
   #   Thread.current[:employee] = employee
   # end
 
+  #ldap登录
+  def self.from_omniauth(auth)
+    employee = Employee.find_or_create_by(email: auth.info.email) do |employee|
+      employee.name = auth.info.name
+      employee.email = auth.info.email
+      employee.position = auth.info.title
+      employee.active = 1
+      employee.site = auth.extra.raw_info.l
+    end
+  end
+
   def golden_ideas
     GoldenIdea::Idea.where("find_in_set(#{id},proposer)")
   end

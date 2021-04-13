@@ -141,5 +141,7 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'
+  post "/auth/:provider/callback" => "sessions#create"
+  get "/auth/failure" => "sessions#new"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
