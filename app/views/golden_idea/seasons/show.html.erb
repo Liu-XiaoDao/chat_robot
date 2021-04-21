@@ -7,13 +7,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>金点子-<%=@season.name%></h1>
+          <h1><%= t :golden_idea %>-<%=@season.name%></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item"><a href="/golden_idea/seasons">历史各期</a></li>
-            <li class="breadcrumb-item active">各期详情</li>
+            <li class="breadcrumb-item"><a href="/golden_idea/seasons"><%= t 'menu.all_season' %></a></li>
+            <li class="breadcrumb-item active"><%= t 'detail' %></li>
           </ol>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <div class="text-center mt-2 mb-2">
             <div class="module-option clearfix">
               <div class="pull-right">
-                <%= link_to '返回', golden_idea_seasons_path, class: "btn btn-sm btn-primary" %>
+                <%= link_to t('back'), golden_idea_seasons_path, class: "btn btn-sm btn-primary" %>
               </div>
             </div>
           </div>
@@ -48,12 +48,12 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th>分类</th>
-                <th>标题</th>
-                <th>提议人</th>
-                <th>部门</th>
-                <th>内容描述</th>
-                <th>得分</th>
+                <th><%= t 'form.category' %></th>
+                <th><%= t 'form.title' %></th>
+                <th><%= t 'form.proposer' %></th>
+                <th><%= t 'form.department' %></th>
+                <th><%= t 'form.description' %></th>
+                <th><%= t 'form.score' %></th>
               </tr>
             </thead>
             <tbody>

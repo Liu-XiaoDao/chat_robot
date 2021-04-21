@@ -6,20 +6,20 @@
         <div class="content">
           <div class="module">
             <div class="module-head">
-               <h3>金点子上传预览</h3>
+               <h3><%= t 'idea_preview' %></h3>
             </div>
             <div class="module-body">
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>分类</th>
-                    <th>标题</th>
-                    <th>期</th>
-                    <th>提议人</th>
-                    <th>部门</th>
-                    <th>状态</th>
-                    <th>得分</th>
+                    <th><%= t('table.category') %></th>
+                    <th><%= t('table.title') %></th>
+                    <th><%= t('season') %></th>
+                    <th><%= t('table.proposer') %></th>
+                    <th><%= t('table.department') %></th>
+                    <th><%= t('table.status') %></th>
+                    <th><%= t('table.score') %></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,7 @@
                   <% end %>
                 </tbody>
               </table>
-              <p><strong>请确认上面数据是否正确！</strong><span style="background:#dff0d8;">新增</span>/<span style="background:#fcf8e3;">更新</span> 确认无误后点右侧按钮导入. <a class="btn btn-primary" href="/golden_idea/ideas/import?cache_key=<%=@ideas_cache_key%>">Import</a></p>
+              <p><strong>Please check the data is correct above.</strong><span style="background:#dff0d8;">New</span>/<span style="background:#fcf8e3;">Update</span> If everything is correct, click Import. <a class="btn btn-primary" href="/golden_idea/ideas/import?cache_key=<%=@ideas_cache_key%>">Import</a></p>
             </div>
           </div>
         </div><!--/.content-->

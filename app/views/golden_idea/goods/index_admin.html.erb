@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">商品</h4>
+        <h4 class="modal-title"><%= t :commodity %></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -28,12 +28,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>积分商品-管理</h1>
+          <h1><%= t 'menu.good_admin' %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active">积分商品-管理</li>
+            <li class="breadcrumb-item active"><%= t 'menu.good_admin' %></li>
           </ol>
         </div>
       </div>
@@ -50,7 +50,7 @@
           <div class="text-center mt-2 mb-2">
             <div class="module-option clearfix">
                 <div class="pull-right">
-                  <%= link_to '新建', new_golden_idea_good_path, class: "btn btn-sm btn-primary", "data-toggle"=>"modal", "data-target"=>"#modal-good", "data-remote"=>"#{new_golden_idea_good_path}" %>
+                  <%= link_to t('new'), new_golden_idea_good_path, class: "btn btn-sm btn-primary", "data-toggle"=>"modal", "data-target"=>"#modal-good", "data-remote"=>"#{new_golden_idea_good_path}" %>
                 </div>
             </div>
           </div>
@@ -69,12 +69,12 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th>名称</th>
-                <th>描述</th>
-                <th>图片</th>
-                <th>数量</th>
-                <th>积分</th>
-                <th class="cell-btn align-right">操作</th>
+                <th><%= t 'table.commodity_name' %></th>
+                <th><%= t 'table.description' %></th>
+                <th><%= t 'table.picture' %></th>
+                <th><%= t 'table.quantity' %></th>
+                <th><%= t 'table.point' %></th>
+                <th class="cell-btn align-right"><%= t 'table.action' %></th>
               </tr>
             </thead>
             <tbody>
@@ -86,8 +86,8 @@
                   <td><%= good.quantity %></td>
                   <td><%= good.score %></td>
                   <td class="cell-btn align-right">
-                    <%= link_to 'Edit', edit_golden_idea_good_path(good), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-good", "data-remote"=>"#{edit_golden_idea_good_path(good)}" %>
-                    <%= link_to 'Del', golden_idea_good_path(good), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+                    <%= link_to t('edit'), edit_golden_idea_good_path(good), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-good", "data-remote"=>"#{edit_golden_idea_good_path(good)}" %>
+                    <%= link_to t('delete'), golden_idea_good_path(good), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
                   </td>
                 </tr>
               <% end %>

@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>所有商品</h1>
+            <h1><%= t 'menu.point_exchange' %></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">所有商品</li>
+              <li class="breadcrumb-item active"><%= t 'menu.point_exchange' %></li>
             </ol>
           </div>
         </div>
@@ -62,8 +62,8 @@
                         <h2 class="lead"><b><%= good.name %></b></h2>
                         <p class="text-muted text-sm" title="<%= good.description %>"><b>About: </b> <%= truncate(good.description, length: 30) %> </p>
                         <ul class="ml-4 mb-0 fa-ul text-muted">
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> 积分:<%= good.score %></li>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> 库存:<%= good.quantity %></li>
+                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <%= t 'table.point' %>:<%= good.score %></li>
+                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <%= t 'table.inventory' %>:<%= good.quantity %></li>
                         </ul>
                       </div>
                       <div class="col-5 text-center">
@@ -73,8 +73,8 @@
                   </div>
                   <div class="card-footer">
                     <div class="text-right">
-                      <a href="<%= exchange_view_golden_idea_good_path(good) %>" class="btn btn-sm bg-teal" data-toggle="modal" data-target="#modal-exchange" data-remote="<%= exchange_view_golden_idea_good_path(good) %>"><i class="icon-shopping-cart shaded"></i>兑换</a>
-                      <a href="<%= golden_idea_good_path(good) %>" class="btn btn-sm btn-primary"> 查看</a>
+                      <a href="<%= exchange_view_golden_idea_good_path(good) %>" class="btn btn-sm bg-teal" data-toggle="modal" data-target="#modal-exchange" data-remote="<%= exchange_view_golden_idea_good_path(good) %>"><i class="icon-shopping-cart shaded"></i><%= t 'table.exchange' %></a>
+                      <a href="<%= golden_idea_good_path(good) %>" class="btn btn-sm btn-primary"> <%= t 'table.view' %></a>
                     </div>
                   </div>
                 </div>

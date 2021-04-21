@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>兑换记录</h1>
+          <h1><%= t 'table.exchange_record' %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active">兑换记录</li>
+            <li class="breadcrumb-item active"><%= t 'table.exchange_record' %></li>
           </ol>
         </div>
       </div>
@@ -37,11 +37,11 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th>兑换商品</th>
-                <th>兑换人</th>
-                <th>数量</th>
-                <th>使用积分</th>
-                <th>时间</th>
+                <th><%= t 'table.commodity' %></th>
+                <th><%= t 'table.exchange_person' %></th>
+                <th><%= t 'table.count' %></th>
+                <th><%= t 'table.used_score' %></th>
+                <th><%= t 'table.date' %></th>
               </tr>
             </thead>
             <tbody>

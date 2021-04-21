@@ -47,6 +47,8 @@ en:
   my_point: My Point
   import: Import
   export: Export
+  complete: Complete
+  score: Score
   new: New
   edit: Edit
   replying: Replying
@@ -63,6 +65,21 @@ en:
   ask_question: Asking Questions
   reward_point_record: Reward Points Record
   reward_point: Reward Points
+  employee_point_rank: Employee Points Ranking
+  idea_point_ranking: Golden Idea Ranking
+  idea_scoring_standard: Golden Idea Scoring Standard
+  operation_log: Operation Log
+  wating_for_exchange: Exchange
+  commodity: Commodity
+  idea_preview: Golden Idea Import Preview
+  employee_point_assign: Employee Poins Assign
+  detail: Deatils
+  question: Questions
+  admin_reply: Replys
+  statistics:
+    status: Status
+    department: Department
+    season: Season
   menu:
     current_season_idea: Current Period
     all_season: History
@@ -106,10 +123,15 @@ en:
     questioner: Questioner
     exchange: Exchange
     inventory: Inventory
+    view: View
     exchange_record: Exchange Record
     detail: Deatils
     exchange_person: Operator
     quantity: Quantity
+    ranking: Ranking
+    commodity: Commodity
+    picture: Picture
+    commodity_name: Commodity Name
   form:
     point: Points
     idea_count: GI No.
@@ -138,4 +160,10 @@ en:
     department_prompt: ''
     description_prompt: ''
     exchange_quantity: Quantity
+    name: Name
+    commodity_quantity: Commodity Quantity
+    commodity_description: Commodity Description
+    commodity_detail: Commodity Details
+    picture: Picture
+    exchange_point: Exchange Points
 

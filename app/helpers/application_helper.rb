@@ -21,6 +21,11 @@ module ApplicationHelper
     link_to content_tag(:i, '', class: "icon-retweet")+" "+link_text, link_url
   end
 
+  ## 切换语系
+  def link_to_locale_non(path)
+    I18n.t(:lang) == "EN" ? path + "?locale=zh-CN" : path + "?locale=en"
+  end
+
   # 检查当前页
   def active?(text, path)
     text == path ? "active" : ""

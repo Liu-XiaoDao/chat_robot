@@ -4,7 +4,7 @@
     <div class="control-group">
       <label class="control-label" for="basicinput"><%= employee.name %></label>
       <div class="controls">
-        <input placeholder="输入积分" class="span8" type="text" name="employees[<%= employee.id %>]">
+        <input placeholder="<%= t 'form.score' %>" class="span8" type="text" name="employees[<%= employee.id %>]">
       </div>
     </div>
   <% end %>

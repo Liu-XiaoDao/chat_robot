@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>商品详情</h1>
+          <h1><%= t 'form.commodity_detail' %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active">商品详情</li>
+            <li class="breadcrumb-item active"><%= t 'form.commodity_detail' %></li>
           </ol>
         </div>
       </div>
@@ -26,8 +26,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">商品详情</h3>
-              (<%= @good.name %><small>库存:<%= @good.quantity %>, 需要积分:<%= @good.score %></small>)
+              <h3 class="card-title"><%= t 'form.commodity_detail' %></h3>
+              (<%= @good.name %><small><%= t 'table.inventory' %>:<%= @good.quantity %>, <%= t 'table.point' %>:<%= @good.score %></small>)
             </div>
             <!-- ./card-header -->
             <div class="card-body">
@@ -36,7 +36,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <a href="<%= exchange_view_golden_idea_good_path %>" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-exchange" data-remote="<%= exchange_view_golden_idea_good_path %>"><i class="icon-shopping-cart shaded"></i>兑换</a>
+              <a href="<%= exchange_view_golden_idea_good_path %>" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-exchange" data-remote="<%= exchange_view_golden_idea_good_path %>"><i class="icon-shopping-cart shaded"></i><%= t 'table.exchange' %></a>
             </div>
           </div>
           <!-- /.card -->
@@ -55,9 +55,9 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>兑换人</th>
-                    <th>数量</th>
-                    <th>时间</th>
+                    <th><%= t 'table.exchange_person' %></th>
+                    <th><%= t 'table.count' %></th>
+                    <th><%= t 'table.date' %></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -66,7 +66,7 @@
                       <td><%= exchange_record.id %></td>
                       <td><%= exchange_record.employee.name %></td>
                       <td><%= exchange_record.quantity %></td>
-                      <td><%= exchange_record.created_at %></td>
+                      <td><%= time_tag exchange_record.created_at %></td>
                     </tr>
                   <% end %>
                 </tbody>

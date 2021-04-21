@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>所有金点子(<%= @golden_ideas.count %>)</h1>
+          <h1><%= t 'menu.all_idea' %>(<%= @golden_ideas.count %>)</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active">所有金点子</li>
+            <li class="breadcrumb-item active"><%= t 'menu.all_idea' %></li>
           </ol>
         </div>
       </div>
@@ -30,20 +30,20 @@
             <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
 
               <% selected = params[:q][:category_eq].split(',') if params[:q] && params[:q][:category_eq] %>
-              <%= select_tag  'q[category_eq]', options_for_select([['分类', ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'form-control'} %>
+              <%= select_tag  'q[category_eq]', options_for_select([[t('table.category'), ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'form-control'} %>
 
-              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="标题">
+              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="<%= t 'table.title' %>">
 
               <% selected = params[:q][:season_id_eq_any] if params[:q] && params[:q][:season_id_eq_any] %>
-              <%= select_tag  'q[season_id_eq_any]', options_for_select(GoldenIdea::Season.all.collect { |s| [ s.name, s.id ] }, :selected => selected), {:multiple => true, :class => 'form-control select2', 'data-placeholder' => '搜索哪一期'} %>
+              <%= select_tag  'q[season_id_eq_any]', options_for_select(GoldenIdea::Season.all.collect { |s| [ s.name, s.id ] }, :selected => selected), {:multiple => true, :class => 'form-control select2', 'data-placeholder' => t('table.search_season')} %>
 
               <% selected = params[:q][:proposer] if params[:q] && params[:q][:proposer] %>
-              <%= select_tag  'q[proposer]', options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:multiple => true, :class => 'form-control select2', 'data-placeholder' => '提议人'} %>
+              <%= select_tag  'q[proposer]', options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:multiple => true, :class => 'form-control select2', 'data-placeholder' => t('table.proposer')} %>
 
-              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="部门">
-              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder=">分数">
+              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[department_cont]" value='<%= params[:q]["department_cont"] if params[:q] %>' placeholder="<%= t 'table.department' %>">
+              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[score_gt]" value='<%= params[:q]["score_gt"] if params[:q] %>' placeholder="><%= t 'table.score' %>">
 
-              <button type="submit" name="commit" value="Search" class="btn btn-sm btn-warning" data-disable-with="搜索...">搜索</button>
+              <button type="submit" name="commit" value="Search" class="btn btn-sm btn-warning" data-disable-with="<%= t 'search' %>..."><%= t 'search' %></button>
             <% end %>
 
 
@@ -54,9 +54,9 @@
                 <%= f.submit '', id: "file-submit" %>
               <% end %>
 
-              <%= link_to '导入', "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+              <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
               <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
-              <%= link_to '导出', golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
+              <%= link_to t('export'), golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
             <% end %>
           </div>
 
@@ -75,15 +75,15 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th style="width: 5%"><%= sortable "category", "分类" %></th>
-                <th style="width: 15%"><%= sortable "title", "标题" %></th>
-                <th style="width: 5%"><%= sortable "season_id", "期" %></th>
-                <th style="width: 5%"><%= sortable "reporter_id", "主讲人" %></th>
-                <th style="width: 10%"><%= sortable "proposer", "提议人" %></th>
-                <th style="width: 5%"><%= sortable "department", "部门" %></th>
-                <th style="width: 10%" class="text-center"><%= sortable "status", "状态" %></th>
-                <th style="width: 35%"><%= sortable "description", "内容描述" %></th>
-                <th style="width: 5%"><%= sortable "score", "得分" %></th>
+                <th style="width: 5%"><%= sortable "category", t('table.category') %></th>
+                <th style="width: 15%"><%= sortable "title", t('table.title') %></th>
+                <th style="width: 5%"><%= sortable "season_id", t('season') %></th>
+                <th style="width: 5%"><%= sortable "reporter_id", t('table.speaker') %></th>
+                <th style="width: 10%"><%= sortable "proposer", t('table.proposer') %></th>
+                <th style="width: 5%"><%= sortable "department", t('table.department') %></th>
+                <th style="width: 10%" class="text-center"><%= sortable "status", t('table.status') %></th>
+                <th style="width: 35%"><%= sortable "description", t('table.description') %></th>
+                <th style="width: 5%"><%= sortable "score", t('table.score') %></th>
                 <th style="width: 10%"></th>
               </tr>
             </thead>
@@ -112,13 +112,13 @@
                     <td class="project-actions text-right">
                       <!--
                       <% if golden_idea.is_complate? %>
-                        <td class="cell-btn align-right"><%= link_to '查看', golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                        <td class="cell-btn align-right"><%= link_to t('view'), golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                         <td class="cell-btn align-right"></td>
                       <% elsif golden_idea.is_edit?(current_employee.id) %>
-                        <td class="cell-btn align-right"><%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                        <td class="cell-btn align-right"><%= link_to t('edit'), edit_golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                         <td class="cell-btn align-right"></td>
                       <% else %>
-                        <td class="cell-btn align-right"><%= link_to '查看', golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
+                        <td class="cell-btn align-right"><%= link_to t('view'), golden_idea_idea_path(golden_idea), class: "btn btn-mini btn-primary" %></td>
                         <td class="cell-btn align-right"></td>
                       <% end %>
                       -->
@@ -145,7 +145,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>编辑</h3>
+       <h3><%= t 'edit' %></h3>
     </div>
     <div class="modal-content">
       <div class="modal-body">

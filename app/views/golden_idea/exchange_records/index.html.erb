@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>待兑换</h1>
+          <h1><%= t :wating_for_exchange %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active">待兑换</li>
+            <li class="breadcrumb-item active"><%= t :wating_for_exchange %></li>
           </ol>
         </div>
       </div>
@@ -36,9 +36,9 @@
                       <%= f.submit '', id: "file-submit" %>
                     <% end %>
 
-                    <%= link_to '导入', "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn11", title: "点击完成应该会更方便" %>
+                    <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn11", title: "点击完成应该会更方便" %>
                     <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
-                    <%= link_to '导出', golden_idea_exchange_records_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
+                    <%= link_to t('export'), golden_idea_exchange_records_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
                   </div>
               </div>
             <% end %>
@@ -58,12 +58,12 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th>兑换商品</th>
-                <th>兑换人</th>
-                <th>数量</th>
-                <th>使用积分</th>
-                <th>时间</th>
-                <th>操作</th>
+                <th><%= t 'table.commodity' %></th>
+                <th><%= t 'table.exchange_person' %></th>
+                <th><%= t 'table.quantity' %></th>
+                <th><%= t 'table.used_score' %></th>
+                <th><%= t 'table.date' %></th>
+                <th><%= t 'table.action' %></th>
               </tr>
             </thead>
             <tbody>
@@ -74,7 +74,7 @@
                   <td><%= exchange_record.quantity %></td>
                   <td><%= exchange_record.used_score %></td>
                   <td><%= exchange_record.created_at %></td>
-                  <td class="cell-btn align-right"><%= link_to '完成', complete_golden_idea_exchange_record_path(exchange_record), class: "btn btn-sm btn-primary" %></td>
+                  <td class="cell-btn align-right"><%= link_to t('complete'), complete_golden_idea_exchange_record_path(exchange_record), class: "btn btn-sm btn-primary" %></td>
                 </tr>
               <% end %>
             </tbody>

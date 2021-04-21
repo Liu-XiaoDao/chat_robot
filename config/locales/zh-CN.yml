@@ -31,6 +31,8 @@ zh-CN:
   my_point: 我的积分
   import: 导入
   export: 导出
+  complete: 完成
+  score: 打分
   new: 新建
   edit: 编辑
   replying: 回复
@@ -46,6 +48,24 @@ zh-CN:
   ask_question: 提问
   reward_point_record: 积分分配记录
   reward_point: 获得积分
+  employee_point_rank: 员工积分排名
+  idea_point_ranking: 金点子得分排名
+  idea_scoring_standard: 金点子评分标准
+  operation_log: 操作日志
+  wating_for_exchange: 待兑换
+  commodity: 商品
+  idea_preview: 金点子上传预览
+  employee_point_assign: 员工积分分配
+  detail: 详情
+  question: 提问内容
+  admin_reply: 管理员回复
+  time:
+    formats:
+      long: '%Y-%m-%d %H:%M:%S'
+  statistics:
+    status: 状态统计
+    department: 部门统计
+    season: 各期金点子统计
   menu:
     current_season_idea: 本期金点子
     all_season: 历史个期
@@ -89,10 +109,15 @@ zh-CN:
     questioner: 提问人
     exchange: 兑换
     inventory: 库存
+    view: 查看
     exchange_record: 兑换记录
     detail: 详情
     exchange_person: 兑换人
     quantity: 数量
+    ranking: 排名
+    commodity: 兑换商品
+    picture: 图片
+    commodity_name: 商品名称
   form:
     point: 积分
     idea_count: 金点子个数
@@ -121,4 +146,11 @@ zh-CN:
     department_prompt: 多部门用&连接
     description_prompt: 简单描述
     exchange_quantity: 兑换数量
+    name: 名称
+    commodity_quantity: 商品数量
+    commodity_description: 商品描述
+    commodity_detail: 商品详情
+    picture: 图片
+    exchange_point: 兑换积分
+
 

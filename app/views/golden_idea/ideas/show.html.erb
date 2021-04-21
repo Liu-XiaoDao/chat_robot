@@ -26,7 +26,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal">x</button>
-       <h3>员工积分分配</h3>
+       <h3><%= t 'employee_point_assign' %></h3>
     </div>
     <div class="modal-content">
       <div class="modal-body">
@@ -85,10 +85,10 @@
             <div class="row">
               <div class="col-12">
                 <div class="text-muted">
-                  <p class="text-sm">分类:
+                  <p class="text-sm"><%= t 'form.category' %>:
                     <b><%= @golden_idea.category %></b>
                   </p>
-                  <p class="text-sm">提议人:
+                  <p class="text-sm"><%= t 'form.proposer' %>:
                     <b>
                       <% if @golden_idea.proposers.present? %>
                         <% @golden_idea.proposers.split(',').each do |u_id| %>
@@ -98,7 +98,7 @@
                       <% end %>
                     </b>
                   </p>
-                  <p class="text-sm">部门:
+                  <p class="text-sm"><%= t 'form.department' %>:
                     <b><%= @golden_idea.department %></b>
                   </p>
                 </div>
@@ -122,19 +122,19 @@
               </div>
             </div>
             <div class="text-center mt-5 mb-3">
-              <a href="<%= request.referer %>" class="btn btn-sm btn-warning">返回</a>
+              <a href="<%= request.referer %>" class="btn btn-sm btn-warning"><%= t 'back' %></a>
               <% if current_employee.is_golden_idea_admin? %>
-                <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary" %>
-                <%= link_to '打分', score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-score", "data-remote"=>"#{score_view_golden_idea_idea_path(@golden_idea)}" %>
-                <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
+                <%= link_to t('edit'), edit_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary" %>
+                <%= link_to t('score'), score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-score", "data-remote"=>"#{score_view_golden_idea_idea_path(@golden_idea)}" %>
+                <%= link_to t('delete'), golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
               <% elsif !@golden_idea.is_complate? && @golden_idea.is_edit?(current_employee.id) %>
-                <%= link_to '编辑', edit_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary" %>
-                <%= link_to '删除', golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
+                <%= link_to t('edit'), edit_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary" %>
+                <%= link_to t('delete'), golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
               <% end %>
             </div>
           </div>
           <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-            <h5 class="mt-5 text-muted">附件:</h5>
+            <h5 class="mt-5 text-muted"><%= t 'form.attachment' %>:</h5>
             <ul class="list-unstyled">
               <% if @golden_idea.attachments.present? %>
                 <% @golden_idea.attachments.where(notes: nil).each do |attachment| %>
@@ -144,10 +144,10 @@
                   </li>
                 <% end %>
               <% else %>
-                无
+                N/A
               <% end %>
             </ul>
-            <h5 class="mt-5 text-muted">SOP文件:</h5>
+            <h5 class="mt-5 text-muted">SOP<%= t 'form.attachment' %>:</h5>
             <ul class="list-unstyled">
               <% if @golden_idea.attachments.where(notes: 'sop_file').present? %>
                 <% @golden_idea.attachments.where(notes: 'sop_file').each do |attachment| %>
@@ -157,7 +157,7 @@
                   </li>
                 <% end %>
               <% else %>
-                无
+                N/A
               <% end %>
             </ul>
           </div>

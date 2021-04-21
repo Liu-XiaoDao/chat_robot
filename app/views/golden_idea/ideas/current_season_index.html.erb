@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>本期金点子-<%= GoldenIdea::Season.last.name %>(<%= @golden_ideas.count %>)</h1>
+          <h1><%= t 'menu.current_season_idea' %>-<%= GoldenIdea::Season.last.name %>(<%= @golden_ideas.count %>)</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active">本期金点子</li>
+            <li class="breadcrumb-item active"><%= t 'menu.current_season_idea' %></li>
           </ol>
         </div>
       </div>
@@ -25,7 +25,7 @@
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">
-          收集人:
+          <%= t 'table.collector' %>:
           <% if GoldenIdea::Season.last.collecters.present? %>
             <% GoldenIdea::Season.last.collecters.split(',').each do |u_id| %>
               <% user = Employee.find(u_id) %>
@@ -39,10 +39,10 @@
                 <%= f.file_field :file, id: "upload-file-input" %>
                 <%= f.submit '', id: "file-submit" %>
               <% end %>
-              <%= link_to '导入', "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
-              <%= link_to '导出', current_season_index_golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
+              <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+              <%= link_to t('export'), current_season_index_golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
             <% end %>
-            <%= link_to '新建', new_golden_idea_idea_path, class: "btn btn-sm btn-warning" %>
+            <%= link_to t('new'), new_golden_idea_idea_path, class: "btn btn-sm btn-warning" %>
           </div>
         </h3>
 
@@ -59,14 +59,14 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th style="width: 5%">分类</th>
-                <th style="width: 15%">标题</th>
-                <th style="width: 5%">主讲人</th>
-                <th style="width: 10%">提议人</th>
-                <th style="width: 5%">部门</th>
-                <th style="width: 10%" class="text-center">状态</th>
-                <th style="width: 35%">内容描述</th>
-                <th style="width: 5%">得分</th>
+                <th style="width: 5%"><%= t 'table.category' %></th>
+                <th style="width: 15%"><%= t 'table.title' %></th>
+                <th style="width: 5%"><%= t 'table.speaker' %></th>
+                <th style="width: 10%"><%= t 'table.proposer' %></th>
+                <th style="width: 5%"><%= t 'table.department' %></th>
+                <th style="width: 10%" class="text-center"><%= t 'table.status' %></th>
+                <th style="width: 35%"><%= t 'table.description' %></th>
+                <th style="width: 5%"><%= t 'table.score' %></th>
                 <th style="width: 10%"></th>
               </tr>
             </thead>
@@ -92,10 +92,10 @@
                     <td><%= golden_idea.score %></td>
                     <td class="project-actions text-right">
                       <% if current_employee.is_golden_idea_admin? %>
-                        <%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-info btn-sm" %>
-                        <%= link_to '删除', golden_idea_idea_path(golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
+                        <%= link_to t('edit'), edit_golden_idea_idea_path(golden_idea), class: "btn btn-info btn-sm" %>
+                        <%= link_to t('delete'), golden_idea_idea_path(golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
                       <% elsif golden_idea.is_edit?(current_employee.id) %>
-                        <%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-primary btn-sm" %></td>
+                        <%= link_to t('edit'), edit_golden_idea_idea_path(golden_idea), class: "btn btn-primary btn-sm" %></td>
                       <% end %>
                     </td>
                 </tr>

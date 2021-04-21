@@ -6,13 +6,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>意见及建议</h1>
+          <h1><%= t 'menu.comment_suggestion' %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item"><a href="/golden_idea/suggests">意见及建议</a></li>
-            <li class="breadcrumb-item active">意见及建议详情</li>
+            <li class="breadcrumb-item"><a href="/golden_idea/suggests"><%= t 'menu.comment_suggestion' %></a></li>
+            <li class="breadcrumb-item active"><%= t 'menu.comment_suggestion' %> <%= t 'detail' %></li>
           </ol>
         </div>
       </div>
@@ -25,7 +25,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">意见及建议<small>(提问人：<%= @suggest.employee_name %>)</small></h3>
+        <h3 class="card-title"><%= t 'menu.comment_suggestion' %><small>(<%= t 'table.questioner' %>：<%= @suggest.employee_name %>)</small></h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -39,11 +39,11 @@
       <div class="card-body">
         <div class="row">
           <div class="col-12 col-md-12 col-lg-12 order-2 order-md-1">
-            <h5>提问内容:</h5>
+            <h5><%= t 'question' %>:</h5>
             <p class="text-muted"><%= @suggest.content %></p>
             <div class="row">
               <div class="col-12">
-                <h5>管理员回复:</h5>
+                <h5><%= t 'admin_reply' %>:</h5>
                 <% @suggest.replys.each do |reply| %>
                   <div class="post">
                     <div class="user-block">

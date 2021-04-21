@@ -5,12 +5,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>员工积分排名</h1>
+          <h1><%= t :employee_point_rank %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active">员工积分排名</li>
+            <li class="breadcrumb-item active"><%= t :employee_point_rank %></li>
           </ol>
         </div>
       </div>
@@ -26,9 +26,9 @@
         <h3 class="card-title">
           <div class="text-center mt-2 mb-2">
             <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
-              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[name_cont]" value='<%= params[:q]["name_cont"] if params[:q] %>' placeholder="姓名">
+              <input type="text" style="margin-bottom: 0;" class="form-control" name="q[name_cont]" value='<%= params[:q]["name_cont"] if params[:q] %>' placeholder="<%= t 'table.name' %>">
 
-              <button type="submit" name="commit" value="Search" class="btn btn-sm btn-primary" data-disable-with="搜索...">搜索</button>
+              <button type="submit" name="commit" value="Search" class="btn btn-sm btn-primary" data-disable-with="<%= t :search %>..."><%= t :search %></button>
             <% end %>
           </div>
         </h3>
@@ -45,11 +45,11 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th>姓名</th>
-                <th>排名</th>
-                <th>积分</th>
-                <th>金点子个数</th>
-                <th>部门</th>
+                <th><%= t 'table.name' %></th>
+                <th><%= t 'table.ranking' %></th>
+                <th><%= t 'table.point' %></th>
+                <th><%= t 'table.idea_count' %></th>
+                <th><%= t 'table.department' %></th>
               </tr>
             </thead>
             <tbody>
