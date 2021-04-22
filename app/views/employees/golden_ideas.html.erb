@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>我的金点子</h1>
+          <h1><%= t 'menu.my_idea' %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active">我的金点子</li>
+            <li class="breadcrumb-item active"><%= t 'menu.my_idea' %></li>
           </ol>
         </div>
       </div>
@@ -37,13 +37,13 @@
         <table class="table table-striped projects">
           <thead>
             <tr>
-              <th>分类</th>
-              <th>标题</th>
-              <th>提议人</th>
-              <th>部门</th>
-              <th>内容描述</th>
-              <th>得分</th>
-              <th>操作</th>
+              <th><%= t 'table.category' %></th>
+              <th><%= t 'table.title' %></th>
+              <th><%= t 'table.proposer' %></th>
+              <th><%= t 'table.department' %></th>
+              <th><%= t 'table.description' %></th>
+              <th><%= t 'table.score' %></th>
+              <th><%= t 'table.action' %></th>
             </tr>
           </thead>
           <tbody>
@@ -64,7 +64,7 @@
                 <td><%= golden_idea.score %></td>
                 <td>
                   <% if golden_idea.is_edit?(current_employee.id) %>
-                    <%= link_to '编辑', edit_golden_idea_idea_path(golden_idea), class: "btn btn-sm btn-primary" %>
+                    <%= link_to t('edit'), edit_golden_idea_idea_path(golden_idea), class: "btn btn-sm btn-primary" %>
                   <% end %>
                 </td>
               </tr>

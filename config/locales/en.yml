@@ -76,6 +76,11 @@ en:
   detail: Deatils
   question: Questions
   admin_reply: Replys
+  current_ranking: Currently Ranking
+  total_point: Total Points
+  available_point: Available Points
+  site: Site
+  email: Email
   statistics:
     status: Status
     department: Department
@@ -98,6 +103,7 @@ en:
     my_idea: My GI
     my_exchange_record: My Exchange Record
     my_point_list: My Point list
+    my_point: My Points
     golden_idea_scoring_standard: Golden Idea Scoring Standard
   table:
     name: Name
@@ -132,6 +138,8 @@ en:
     commodity: Commodity
     picture: Picture
     commodity_name: Commodity Name
+    idea: Golden Idea
+    lacked_score: Lacked Score
   form:
     point: Points
     idea_count: GI No.

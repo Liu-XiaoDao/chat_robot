@@ -59,6 +59,11 @@ zh-CN:
   detail: 详情
   question: 提问内容
   admin_reply: 管理员回复
+  current_ranking: 当前排名
+  total_point: 总积分
+  available_point: 可用积分
+  site: 位置
+  email: 邮箱
   time:
     formats:
       long: '%Y-%m-%d %H:%M:%S'
@@ -84,6 +89,7 @@ zh-CN:
     my_idea: 我的金点子
     my_exchange_record: 我的兑换记录
     my_point_list: 我的积分分配记录
+    my_point: 我的积分
     golden_idea_scoring_standard: 金点子评分标准
   table:
     name: 姓名
@@ -118,6 +124,8 @@ zh-CN:
     commodity: 兑换商品
     picture: 图片
     commodity_name: 商品名称
+    idea: 金点子
+    lacked_score: 相差积分
   form:
     point: 积分
     idea_count: 金点子个数

@@ -41,13 +41,19 @@
 
               <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
-                  <b>排名</b> <a class="float-right"><%= rowno %></a>
+                  <b><%= t 'current_ranking' %></b> <a class="float-right"><%= rowno %></a>
                 </li>
                 <li class="list-group-item">
-                  <b>总积分</b> <a class="float-right"><%= current_employee.score %></a>
+                  <b><%= t 'total_point' %></b> <a class="float-right"><%= current_employee.score %></a>
                 </li>
                 <li class="list-group-item">
-                  <b>可用积分</b> <a class="float-right"><%= current_employee.available_score %></a>
+                  <b><%= t 'available_point' %></b> <a class="float-right"><%= current_employee.available_score %></a>
+                </li>
+                <li class="list-group-item">
+                  <b><%= t 'site' %></b> <a class="float-right"><%= current_employee.site %></a>
+                </li>
+                <li class="list-group-item">
+                  <b><%= t 'email' %></b> <a class="float-right"><%= current_employee.email %></a>
                 </li>
               </ul>
             </div>
@@ -61,8 +67,8 @@
           <div class="card">
             <div class="card-header p-2">
               <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link active" href="#golden_idea" data-toggle="tab">金点子</a></li>
-                <li class="nav-item"><a class="nav-link" href="#exchange_record" data-toggle="tab">兑换记录</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#golden_idea" data-toggle="tab"><%= t 'golden_idea' %></a></li>
+                <li class="nav-item"><a class="nav-link" href="#exchange_record" data-toggle="tab"><%= t 'menu.point_exchange' %></a></li>
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -71,13 +77,13 @@
                   <table class="table table-striped projects">
                       <thead>
                         <tr>
-                          <th>分类</th>
-                          <th>标题</th>
-                          <th>提议人</th>
-                          <th>部门</th>
-                          <th>内容描述</th>
-                          <th>得分</th>
-                          <th>操作</th>
+                          <th><%= t 'table.category' %></th>
+                          <th><%= t 'table.title' %></th>
+                          <th><%= t 'table.proposer' %></th>
+                          <th><%= t 'table.department' %></th>
+                          <th><%= t 'table.description' %></th>
+                          <th><%= t 'table.score' %></th>
+                          <th><%= t 'table.action' %></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -109,9 +115,9 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th>兑换商品</th>
+                        <th><%= t 'table.commodity' %></th>
                         <th><%= t 'table.quantity' %></th>
-                        <th>使用积分</th>
+                        <th><%= t 'table.used_score' %></th>
                         <th><%= t 'table.date' %></th>
                         <th><%= t 'table.status' %></th>
                       </tr>
