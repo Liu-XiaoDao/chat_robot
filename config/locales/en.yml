@@ -77,6 +77,10 @@ en:
   question: Questions
   admin_reply: Replys
   current_ranking: Currently Ranking
+  total_point: Total Points
+  available_point: Available Points
+  site: Site
+  email: Email
   statistics:
     status: Status
     department: Department

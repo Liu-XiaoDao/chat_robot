@@ -60,6 +60,10 @@ zh-CN:
   question: 提问内容
   admin_reply: 管理员回复
   current_ranking: 当前排名
+  total_point: 总积分
+  available_point: 可用积分
+  site: 位置
+  email: 邮箱
   time:
     formats:
       long: '%Y-%m-%d %H:%M:%S'
