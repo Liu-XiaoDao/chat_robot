@@ -1,5 +1,5 @@
 <%
-  rowno = ActiveRecord::Base.connection.execute("select rowno from (select id,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b order by score desc) c where id = #{current_employee.id};")
+  rowno = ActiveRecord::Base.connection.execute("select rowno from (select id,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b order by score desc) c where id = #{@employee.id};")
   rowno = Integer(rowno.to_a[0][0])
 %>
 
@@ -44,16 +44,16 @@
                   <b><%= t 'current_ranking' %></b> <a class="float-right"><%= rowno %></a>
                 </li>
                 <li class="list-group-item">
-                  <b><%= t 'total_point' %></b> <a class="float-right"><%= current_employee.score %></a>
+                  <b><%= t 'total_point' %></b> <a class="float-right"><%= @employee.score %></a>
                 </li>
                 <li class="list-group-item">
-                  <b><%= t 'available_point' %></b> <a class="float-right"><%= current_employee.available_score %></a>
+                  <b><%= t 'available_point' %></b> <a class="float-right"><%= @employee.available_score %></a>
                 </li>
                 <li class="list-group-item">
-                  <b><%= t 'site' %></b> <a class="float-right"><%= current_employee.site %></a>
+                  <b><%= t 'site' %></b> <a class="float-right"><%= @employee.site %></a>
                 </li>
                 <li class="list-group-item">
-                  <b><%= t 'email' %></b> <a class="float-right"><%= current_employee.email %></a>
+                  <b><%= t 'email' %></b> <a class="float-right"><%= @employee.email %></a>
                 </li>
               </ul>
             </div>
