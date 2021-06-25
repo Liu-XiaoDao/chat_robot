@@ -163,7 +163,7 @@ en:
     back: Back
     submit: Submit
     preview: Preview
-    reporter_prompt: ''
+    reporter_prompt: '默认为创建人(不作为积分分配依据)'
     idea_title: Golden Idea Title
     department_prompt: ''
     description_prompt: ''

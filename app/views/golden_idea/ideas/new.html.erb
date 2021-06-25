@@ -54,7 +54,7 @@
           </div>
           <div class="form-group">
             <label for="inputEmail3"><%= t 'form.speaker' %></label>(<span class="help-inline"><%= t 'form.reporter_prompt' %></span>)
-            <%= f.select  :reporter_id, Employee.all.collect { |e| [ e.name, e.id ] }, {include_blank: true}, {placeholder: "Type something here...", class: "form-control"} %>
+            <%= f.select  :reporter_id, Employee.all.collect { |e| [ e.name, e.id ] }, {include_blank: true}, {placeholder: "Type something here...", class: "form-control select2"} %>
           </div>
           <div class="form-group">
             <label for="inputEmail3"><%= t 'form.proposer' %></label>
