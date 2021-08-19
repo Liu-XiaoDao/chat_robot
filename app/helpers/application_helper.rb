@@ -11,7 +11,7 @@ module ApplicationHelper
 
   # idea是否从上期转移过来
   def is_transfer?(idea)
-    idea.season_id != idea.origin_season_id ? "warning" : ""
+    idea.season_id != idea.origin_season_id ? "antiquewhite" : ""
   end
 
   ## 切换语系
