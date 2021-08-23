@@ -171,51 +171,53 @@
   </section>
   <!-- /.content -->
 
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">
-          <!-- jquery validation -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">评分</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <% if !@score_record.new_record? %>
-              <div class="card-body">
-                <div>
-                  <label>
-                    Benefit: <%= @score_record.benefit %>, Cost: <%= @score_record.cost %>, Risk: <%= @score_record.risk %> <br/>
-                    Score: <%= @score_record.score %> <br/>
-                    <%= link_to t('edit'), edit_golden_idea_score_record_path(@score_record), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-score", "data-remote"=>"#{edit_golden_idea_score_record_path(@score_record)}" %>
-                  </label>
-                </div>
+  <% if signed_in? && current_employee.is_golden_idea_score? %>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">评分</h3>
               </div>
-            <% else %>
-              <%= render('golden_idea/score_records/new', score_record: @score_record) %>
-            <% end %>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <% if !@score_record.new_record? %>
+                <div class="card-body">
+                  <div>
+                    <label>
+                      Benefit: <%= @score_record.benefit %>, Cost: <%= @score_record.cost %>, Risk: <%= @score_record.risk %> <br/>
+                      Score: <%= @score_record.score %> <br/>
+                      <%= link_to t('edit'), edit_golden_idea_score_record_path(@score_record), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-score", "data-remote"=>"#{edit_golden_idea_score_record_path(@score_record)}" %>
+                    </label>
+                  </div>
+                </div>
+              <% else %>
+                <%= render('golden_idea/score_records/new', score_record: @score_record) %>
+              <% end %>
 
-            <%# if @score_record.new_record? %>
-              <%#= render('golden_idea/score_records/new', score_record: @score_record) %>
-            <%# else %>
-              <%#= render('golden_idea/score_records/edit', score_record: @score_record) %>
-            <%# end %>
-          </div>
-          <!-- /.card -->
-          </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <div class="col-md-6">
+              <%# if @score_record.new_record? %>
+                <%#= render('golden_idea/score_records/new', score_record: @score_record) %>
+              <%# else %>
+                <%#= render('golden_idea/score_records/edit', score_record: @score_record) %>
+              <%# end %>
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
 
+          </div>
+          <!--/.col (right) -->
         </div>
-        <!--/.col (right) -->
-      </div>
-      <!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </section>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+<% end %>
 </div>
 <!-- /.content-wrapper -->
 
