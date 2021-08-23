@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Edit Golden Idea</h4>
+        <h4 class="modal-title">打分</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="document.getElementById('golden_idea_score_form').submit();">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('score_record_form').submit();">Save changes</button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -64,6 +64,7 @@
 
   <!-- Main content -->
   <section class="content">
+    <%= render "golden_idea/application/flash" %>
 
     <!-- Default box -->
     <div class="card">
@@ -125,7 +126,7 @@
               <a href="<%= request.referer %>" class="btn btn-sm btn-warning"><%= t 'back' %></a>
               <% if current_employee.is_golden_idea_admin? %>
                 <%= link_to t('edit'), edit_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary" %>
-                <%= link_to t('score'), score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-score", "data-remote"=>"#{score_view_golden_idea_idea_path(@golden_idea)}" %>
+                <%# = link_to t('score'), score_view_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-score", "data-remote"=>"#{score_view_golden_idea_idea_path(@golden_idea)}" %>
                 <%= link_to t('delete'), golden_idea_idea_path(@golden_idea), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
               <% elsif !@golden_idea.is_complate? && @golden_idea.is_edit?(current_employee.id) %>
                 <%= link_to t('edit'), edit_golden_idea_idea_path(@golden_idea), class: "btn btn-sm btn-primary" %>
@@ -169,6 +170,52 @@
 
   </section>
   <!-- /.content -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- jquery validation -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">评分</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <% if !@score_record.new_record? %>
+              <div class="card-body">
+                <div>
+                  <label>
+                    Benefit: <%= @score_record.benefit %>, Cost: <%= @score_record.cost %>, Risk: <%= @score_record.risk %> <br/>
+                    Score: <%= @score_record.score %> <br/>
+                    <%= link_to t('edit'), edit_golden_idea_score_record_path(@score_record), class: "btn btn-sm btn-primary","data-toggle"=>"modal", "data-target"=>"#modal-score", "data-remote"=>"#{edit_golden_idea_score_record_path(@score_record)}" %>
+                  </label>
+                </div>
+              </div>
+            <% else %>
+              <%= render('golden_idea/score_records/new', score_record: @score_record) %>
+            <% end %>
+
+            <%# if @score_record.new_record? %>
+              <%#= render('golden_idea/score_records/new', score_record: @score_record) %>
+            <%# else %>
+              <%#= render('golden_idea/score_records/edit', score_record: @score_record) %>
+            <%# end %>
+          </div>
+          <!-- /.card -->
+          </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <div class="col-md-6">
+
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
 </div>
 <!-- /.content-wrapper -->
 

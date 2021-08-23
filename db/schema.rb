@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210413141202) do
+ActiveRecord::Schema.define(version: 20210823023551) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -187,6 +187,17 @@ ActiveRecord::Schema.define(version: 20210413141202) do
     t.string "sop_file_path"
     t.integer "origin_season_id"
     t.index ["season_id"], name: "index_golden_idea_ideas_on_season_id"
+  end
+
+  create_table "golden_idea_score_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "employee_id"
+    t.integer "idea_id"
+    t.decimal "score", precision: 8, scale: 3
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "benefit", precision: 8, scale: 3
+    t.decimal "cost", precision: 8, scale: 3
+    t.decimal "risk", precision: 8, scale: 3
   end
 
   create_table "golden_idea_seasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

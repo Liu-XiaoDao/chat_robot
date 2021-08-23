@@ -6,6 +6,7 @@ module GoldenIdea
     belongs_to :season, optional: true
     belongs_to :reporter, class_name: "Employee", optional: true
     has_many :assign_score_records
+    has_many :score_records
 
     scope :top_5, ->{order(score: :desc)}
 

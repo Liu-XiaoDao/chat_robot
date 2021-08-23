@@ -1,0 +1,2 @@
+module GoldenIdea::ScoreRecordsHelper
+end

@@ -136,6 +136,7 @@ Rails.application.routes.draw do
       get 'reply', on: :member
       get 'slide_show', on: :member
     end
+    resources :score_records
   end
 
   get '/signin' => 'sessions#new'
