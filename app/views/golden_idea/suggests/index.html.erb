@@ -48,13 +48,11 @@
       <div class="card-header">
         <h3 class="card-title">
           <div class="text-center mt-2 mb-2">
-            <% if signed_in? && current_employee.is_golden_idea_admin? %>
               <div class="module-option clearfix">
                   <div class="pull-right">
                     <%= link_to t('ask_question'), new_golden_idea_suggest_path, class: "btn btn-sm btn-primary", "data-toggle"=>"modal", "data-target"=>"#modal-suggest", "data-remote"=>"#{new_golden_idea_suggest_path}" %>
                   </div>
               </div>
-            <% end %>
           </div>
         </h3>
 
