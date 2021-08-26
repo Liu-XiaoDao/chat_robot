@@ -193,7 +193,6 @@
                       <th>Benefit</th>
                       <th>Cost</th>
                       <th>Risk</th>
-                      <th><%= t 'table.date' %></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -204,7 +203,6 @@
                         <td><%= score_record.benefit %></td>
                         <td><%= score_record.cost %></td>
                         <td><%= score_record.risk %></td>
-                        <td><%= time_tag score_record.created_at %></td>
                       </tr>
                     <% end %>
                   </tbody>
