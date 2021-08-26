@@ -1,7 +1,7 @@
 module GoldenIdea
   class ScoreRecordsController < ApplicationController
     def index
-
+      @score_records = ScoreRecord.all.paginate page: params[:page], per_page: 10
     end
 
     def new
