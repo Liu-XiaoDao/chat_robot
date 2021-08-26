@@ -246,7 +246,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% @golden_idea.score_records.each do |score_record| %>
+                    <% @score_records.each do |score_record| %>
                       <tr>
                         <td><%= link_to score_record.idea.title, golden_idea_idea_path(score_record.idea) %></td>
                         <td><%= link_to score_record.employee.name, employee_path(score_record.employee) %></td>
