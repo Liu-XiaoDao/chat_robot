@@ -79,8 +79,6 @@ module GoldenIdea
 
     def show
       @golden_idea = Idea.find(params[:id])
-      @score_records = @golden_idea.score_records
-
       @score_record = @golden_idea.score_records.find_by_employee_id(current_employee.id)
       @score_record ||= @golden_idea.score_records.new
     end

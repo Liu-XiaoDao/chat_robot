@@ -171,6 +171,58 @@
   </section>
   <!-- /.content -->
 
+  <% if signed_in? && ['刘春良', '徐梦婷', '刘青新', '应宇倩'].include?(current_employee.name) %>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">评分</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th><%= t 'golden_idea' %></th>
+                      <th><%= t 'table.judge' %></th>
+                      <th><%= t 'table.score' %></th>
+                      <th>Benefit</th>
+                      <th>Cost</th>
+                      <th>Risk</th>
+                      <th><%= t 'table.date' %></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @golden_idea.score_records.each do |score_record| %>
+                      <tr>
+                        <td><%= link_to score_record.idea.title, golden_idea_idea_path(score_record.idea) %></td>
+                        <td><%= link_to score_record.employee.name, employee_path(score_record.employee) %></td>
+                        <td><%= score_record.score %></td>
+                        <td><%= score_record.benefit %></td>
+                        <td><%= score_record.cost %></td>
+                        <td><%= score_record.risk %></td>
+                        <td><%= time_tag score_record.created_at %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+  <% end %>
+
   <% if signed_in? && current_employee.is_golden_idea_score? %>
     <!-- Main content -->
     <section class="content">
@@ -219,57 +271,6 @@
     </section>
   <% end %>
 
-  <% if signed_in? && ['刘春良', '徐梦婷', '刘青新', '应宇倩'].include?(current_employee.name) %>
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- jquery validation -->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">评分</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th><%= t 'golden_idea' %></th>
-                      <th><%= t 'table.judge' %></th>
-                      <th><%= t 'table.score' %></th>
-                      <th>Benefit</th>
-                      <th>Cost</th>
-                      <th>Risk</th>
-                      <th><%= t 'table.date' %></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @score_records.each do |score_record| %>
-                      <tr>
-                        <td><%= link_to score_record.idea.title, golden_idea_idea_path(score_record.idea) %></td>
-                        <td><%= link_to score_record.employee.name, employee_path(score_record.employee) %></td>
-                        <td><%= score_record.score %></td>
-                        <td><%= score_record.benefit %></td>
-                        <td><%= score_record.cost %></td>
-                        <td><%= score_record.risk %></td>
-                        <td><%= time_tag score_record.created_at %></td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-            </div>
-          <!--/.col (left) -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-  <% end %>
 </div>
 <!-- /.content-wrapper -->
 
