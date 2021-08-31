@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210823023551) do
+ActiveRecord::Schema.define(version: 20210831012139) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 20210823023551) do
     t.bigint "season_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "score"
+    t.decimal "score", precision: 8, scale: 1
     t.integer "reporter_id"
     t.integer "is_involve_sop"
     t.string "sop_file_path"
