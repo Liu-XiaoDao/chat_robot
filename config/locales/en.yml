@@ -121,7 +121,7 @@ en:
     date: Date
     collector: Collector
     status: Status
-    speaker: Speaker
+    speaker: Presenter
     search_season: Search season
     count: Count
     used_score: Used point
@@ -154,7 +154,7 @@ en:
     end_date: End Date
     collector: Collector
     status: Status
-    speaker: Speaker
+    speaker: Presenter
     search_season: Search season
     is_involve_sop: Is it involve SOP
     attachment: Attachement

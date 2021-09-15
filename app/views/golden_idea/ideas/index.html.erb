@@ -30,7 +30,7 @@
             <%= form_tag nil, method: 'get', class: "form-inline form_contains" do %>
 
               <% selected = params[:q][:category_eq].split(',') if params[:q] && params[:q][:category_eq] %>
-              <%= select_tag  'q[category_eq]', options_for_select([[t('table.category'), ''], ['技术类', '技术类'], ['非技术类', '非技术类']], :selected => selected), {:class => 'form-control'} %>
+              <%= select_tag  'q[category_eq]', options_for_select([[t('table.category'), ''], ['Technology', 'Technology'], ['Non-Technology', 'Non-Technology']], :selected => selected), {:class => 'form-control'} %>
 
               <input type="text" style="margin-bottom: 0;" class="form-control" name="q[title_cont]" value='<%= params[:q]["title_cont"] if params[:q] %>' placeholder="<%= t 'table.title' %>">
 
