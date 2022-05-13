@@ -72,6 +72,12 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="<%= golden_idea_proposal_path %>" class="nav-link  <%= active? 'proposal', yield(:active) %>">
+            <i class="nav-icon fas fa-file"></i>
+            <p><%= t 'menu.proposal' %></p>
+          </a>
+        </li>
         <% if signed_in? && current_employee.is_golden_idea_admin? %>
           <li class="nav-header"></li>
           <li class="nav-item">

@@ -1,0 +1,82 @@
+<% provide :active, "proposal" %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1><%= t 'menu.proposal' %></h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active"><%= t 'menu.proposal' %></li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= render 'golden_idea/application/flash' %>
+    <!-- Default box -->
+    <div class="card card-solid">
+      <%= form_for :proposal, url: submit_golden_idea_proposal_path, html: { class: "form-horizontal", id: "idea_form", enctype: "multipart/form-data" }  do |f| %>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="inputEmail3"><%= t 'form.title' %></label>
+            <%= f.text_field  :title, placeholder: t('form.title'), class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <label for="basicinput"><%= t 'form.detail' %></label>
+            <%= f.text_area  :content, rows: 20, class: "span8", style: "display:none;" %>
+            <div id="editor">
+            </div>
+          </div>
+          <div class="form-group mb-0">
+            <%= f.check_box :real_name %>
+            <label for="proposal_real_name">I agree to use real-name.</label>
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary"><%= t 'form.submit' %></button>
+        </div>
+      <% end %>
+    </div>
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<% content_for :custom_js_css do %>
+  <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+  <script type="text/javascript">
+      var E = window.wangEditor
+      var editor = new E('#editor')
+      var $text1 = $('#proposal_content')
+      editor.customConfig.onchange = function (html) {
+          // 监控变化，同步更新到 textarea
+          $text1.val(html);
+      }
+      // 配置图片上传
+      editor.customConfig.uploadImgServer = '/questions/upload_img'
+      editor.customConfig.uploadFileName = 'fileimg'
+      editor.create()
+      // 初始化 textarea 的值
+      editor.txt.html($text1.val());
+  </script>
+  <script>
+    $(function () {
+      bsCustomFileInput.init();
+    });
+  </script>
+  <style type="text/css" media="screen">
+    .w-e-text-container {
+      height: 500px;
+    }
+  </style>
+<% end %>

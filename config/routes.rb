@@ -105,6 +105,9 @@ Rails.application.routes.draw do
   get '/golden_idea_score_standard' => 'golden_idea/application#golden_idea_score_standard'
   get '/golden_idea_template' => 'golden_idea/application#golden_idea_template'
   get '/golden_idea_search' => 'golden_idea/application#golden_idea_search'
+  # 合理化建议
+  get '/golden_idea_proposal' => 'golden_idea/application#golden_idea_proposal'
+  post '/submit_golden_idea_proposal' => 'golden_idea/application#submit_golden_idea_proposal'
   namespace :golden_idea do
     resources :seasons do
       # get 'index_admin', on: :collection

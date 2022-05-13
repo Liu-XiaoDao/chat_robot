@@ -91,6 +91,7 @@ zh-CN:
     my_point_list: 我的积分分配记录
     my_point: 我的积分
     golden_idea_scoring_standard: 金点子评分标准
+    proposal: 合理化建议
   table:
     name: 姓名
     point: 积分

@@ -33,6 +33,20 @@ module GoldenIdea
     def golden_idea_template
     end
 
+    def golden_idea_proposal
+    end
+
+    def submit_golden_idea_proposal
+      title = params[:proposal][:title]
+      content = params[:proposal][:content]
+      real_name = current_employee.name if params[:proposal][:real_name] == "1"
+
+      NotificationMailer.proposal(title, content, real_name).deliver
+
+      flash["success"] = "Submit successfully"
+      redirect_to golden_idea_proposal_path
+    end
+
     def dashboard
     end
 
