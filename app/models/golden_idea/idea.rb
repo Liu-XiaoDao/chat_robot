@@ -13,6 +13,7 @@ module GoldenIdea
     before_create :set_seasion
     before_create :set_reporter
     after_update :assign_score, if: :score_changed?
+    after_create :send_email_to_committee
 
     validates :title, :category, :proposers, :department, presence: true
     validates :title, uniqueness: true
@@ -102,6 +103,10 @@ module GoldenIdea
           AssignScoreRecord.create(employee_id: p_id, idea_id: self.id, score: average_score)
         end
       end
+    end
+
+    def send_email_to_committee
+      NotificationMailer.send_email_to_committee(self).deliver
     end
 
     # 导入文件

@@ -1,0 +1,10 @@
+Creator: <%= @idea.reporter_name %>
+<br/>
+Proposers:
+<% if @idea.proposers.present? %>
+  <% @idea.proposers.split(',').each do |u_id| %>
+    <%= Employee.find(u_id).name %>
+  <% end %>
+<% end %>
+<br/>
+<%= raw @idea.description %>
