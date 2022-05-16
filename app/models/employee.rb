@@ -109,4 +109,12 @@ class Employee < ApplicationRecord
   def is_golden_idea_score?
     GoldenIdeaScoreMembers.include?(name)
   end
+
+  def self.all_user(orders)
+    return Employee.all if orders.blank?
+
+    Employee.all.sort_by do |e|
+      orders.index(e.id.to_s) || -1
+    end
+  end
 end

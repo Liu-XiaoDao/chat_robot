@@ -59,7 +59,7 @@
           <div class="form-group">
             <label for="inputEmail3"><%= t 'form.proposer' %></label>
             <% selected = f.object.proposers.split(',') if f.object.proposers.present?  %>
-            <%= f.select  :proposers, options_for_select(Employee.all.collect { |e| [ e.name, e.id ] }, :selected => selected), {:placeholder => "Please select"}, {:multiple => true, :class => 'form-control select2'} %>
+            <%= f.select  :proposers, options_for_select(Employee.all_user(selected).collect { |e| [ e.name, e.id ] }, :selected => selected), {:placeholder => "Please select"}, {:multiple => true, :class => 'form-control select2'} %>
           </div>
           <div class="form-group">
             <label for="inputEmail3"><%= t 'form.department' %></label>
@@ -115,6 +115,13 @@
   <script>
     $(document).ready(function() {
       $('.select2').select2();
+      $(".select2").on("select2:select", function (evt) {
+        var element = evt.params.data.element;
+        var $element = $(element);
+        $element.detach();
+        $(this).append($element);
+        $(this).trigger("change");
+      });
     });
   </script>
   <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
