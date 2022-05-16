@@ -125,6 +125,7 @@ Rails.application.routes.draw do
       post 'employee_score',  on: :member
       get 'import',     on: :collection
       post 'import_preview',     on: :collection
+      get 'calculate_all',     on: :collection
     end
     resources :goods do
       get 'index_admin', on: :collection

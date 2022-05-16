@@ -20,6 +20,7 @@
 
   <!-- Main content -->
   <section class="content">
+    <%= render "golden_idea/application/flash" %>
 
     <!-- Default box -->
     <div class="card">
@@ -41,6 +42,7 @@
               <% end %>
               <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
               <%= link_to t('export'), current_season_index_golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
+              <%= link_to t('calculate_all'), calculate_all_golden_idea_ideas_path, class: "btn btn-sm btn-info" %>
             <% end %>
             <%= link_to t('new'), new_golden_idea_idea_path, class: "btn btn-sm btn-warning" %>
           </div>

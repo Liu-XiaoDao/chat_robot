@@ -164,6 +164,21 @@ module GoldenIdea
       redirect_to current_season_index_golden_idea_ideas_url
     end
 
+    # 计算本期所有已完成的得分
+    def calculate_all
+      @golden_ideas = Idea.where(season_id: Season.last.id, score: nil)
+      @golden_ideas.each do |idea|
+        if idea.score_records.length > 3
+          scores = idea.score_records.map(&:score)
+          scores = scores.sort.slice(1..-2)
+          idea.update(score: scores.sum/scores.length)
+        end
+      end
+
+      flash["success"] = "Score successfully"
+      redirect_to current_season_index_golden_idea_ideas_path
+    end
+
     private
       def golden_idea_params
         params.require(:golden_idea_idea).permit(:title, :category, {:proposers => []}, :department, :description, :content, :score, :status, :reporter_id, :is_involve_sop)
