@@ -89,7 +89,17 @@
                       <span class="badge badge-success"><%= golden_idea.status %></span>
                     </td>
                     <td title="<%= golden_idea.description %>" data-mtpis="<%= golden_idea.description %>"><%= truncate(golden_idea.description, length: 20) %></td>
-                    <td><%= golden_idea.score %></td>
+                    <td>
+                      <%= golden_idea.score %>
+                      <% if signed_in? && current_employee.is_golden_idea_score? %>
+                        <% score_record =  golden_idea.score_records.find_by_employee_id(current_employee.id) %>
+                        <% if score_record.present? %>
+                          <%= "#{score_record.benefit}/#{score_record.cost}/#{score_record.risk}" %>
+                        <% else %>
+                          <%= "0/0/0" %>
+                        <% end %>
+                      <% end %>
+                    </td>
                     <td class="project-actions text-right">
                       <% if current_employee.is_golden_idea_admin? %>
                         <%= link_to t('edit'), edit_golden_idea_idea_path(golden_idea), class: "btn btn-info btn-sm" %>
