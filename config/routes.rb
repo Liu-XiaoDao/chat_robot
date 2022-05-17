@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root 'questions#index'
+  root 'golden_idea/application#index'
   get 'questions/search' => 'questions#search'
   resources :questions do
     post 'upload_img', on: :collection
