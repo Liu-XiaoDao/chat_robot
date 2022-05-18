@@ -5,6 +5,7 @@ module GoldenIdea
     has_many :replys, class_name: "Suggest", foreign_key: "suggest_id"
 
     before_create :set_employee
+    before_create :set_site
     # after_create :create_notificaion #收到回复后钉钉通知提问人
 
 
@@ -14,6 +15,10 @@ module GoldenIdea
 
     def set_employee
       self.employee_id = Employee.current_employee.id
+    end
+
+    def set_site
+      self.site = Employee.current_employee.site
     end
 
     def create_notificaion

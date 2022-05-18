@@ -12,6 +12,7 @@ module GoldenIdea
 
     before_create :set_seasion
     before_create :set_reporter
+    before_create :set_site
     after_update :assign_score, if: :score_changed?
     after_create :send_email_to_committee
 
@@ -87,6 +88,10 @@ module GoldenIdea
 
     def set_reporter
       self.reporter_id = Employee.current_employee.id if reporter_id.blank?
+    end
+
+    def set_site
+      self.site = Employee.current_employee.site
     end
 
     def assign_score

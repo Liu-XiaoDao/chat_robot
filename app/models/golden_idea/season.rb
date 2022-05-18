@@ -1,6 +1,7 @@
 module GoldenIdea
   class Season < ApplicationRecord
     after_create :transfer_pre_ideas
+    before_create :set_site
     has_many :ideas#, foreign_key: :golden_idea_season_id
 
     def transfer_pre_ideas
@@ -21,6 +22,10 @@ module GoldenIdea
       end
 
       self.collecter = str
+    end
+
+    def set_site
+      self.site = Employee.current_employee.site
     end
 
     def self.pre_season
