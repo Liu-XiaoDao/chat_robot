@@ -55,7 +55,8 @@
             <tbody>
               <%
                 name = params[:q][:name_cont] if params && params[:q]
-                results = ActiveRecord::Base.connection.execute("select * from (select id,name,score,(@rowno:=@rowno+1) as rowno, is_leave from employees,(select (@rowno:=0)) b order by score desc) as t where name like \"%#{name}%\";")
+                # results = ActiveRecord::Base.connection.execute("select * from (select id,name,score,(@rowno:=@rowno+1) as rowno, is_leave, site from employees,(select (@rowno:=0)) b order by score desc) as t where name like \"%#{name}%\" and site = '#{current_employee.site}';")
+                results = ActiveRecord::Base.connection.execute("select * from (select id,name,score,(@rowno:=@rowno+1) as rowno, is_leave, site from employees,(select (@rowno:=0)) b where site = '#{current_employee.site}' order by score desc) as t where name like \"%#{name}%\";")
               %>
               <% results.each do |iid, name, score, rowno, is_leave| %>
                 <tr>

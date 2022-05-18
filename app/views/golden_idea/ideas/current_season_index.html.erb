@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1><%= t 'menu.current_season_idea' %>-<%= GoldenIdea::Season.last.name %>(<%= @golden_ideas.count %>)</h1>
+          <h1><%= t 'menu.current_season_idea' %>-<%= GoldenIdea::Season.where(site: current_employee.site).last.name %>(<%= @golden_ideas.count %>)</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -27,8 +27,8 @@
       <div class="card-header">
         <h3 class="card-title">
           <%= t 'table.collector' %>:
-          <% if GoldenIdea::Season.last.collecters.present? %>
-            <% GoldenIdea::Season.last.collecters.split(',').each do |u_id| %>
+          <% if GoldenIdea::Season.where(site: current_employee.site).last.collecters.present? %>
+            <% GoldenIdea::Season.where(site: current_employee.site).last.collecters.split(',').each do |u_id| %>
               <% user = Employee.find(u_id) %>
               <%= link_to user.name, user %>
             <% end %>
@@ -40,7 +40,7 @@
                 <%= f.file_field :file, id: "upload-file-input" %>
                 <%= f.submit '', id: "file-submit" %>
               <% end %>
-              <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+              <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "You can click export to get the import template first" %>
               <%= link_to t('export'), current_season_index_golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
               <%= link_to t('calculate_all'), calculate_all_golden_idea_ideas_path, class: "btn btn-sm btn-info" %>
             <% end %>

@@ -36,7 +36,7 @@
                       <%= f.submit '', id: "file-submit" %>
                     <% end %>
 
-                    <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn11", title: "点击完成应该会更方便" %>
+                    <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn11", title: "" %>
                     <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
                     <%= link_to t('export'), golden_idea_exchange_records_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
                   </div>

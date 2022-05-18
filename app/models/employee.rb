@@ -111,9 +111,9 @@ class Employee < ApplicationRecord
   end
 
   def self.all_user(orders)
-    return Employee.all if orders.blank?
+    return Employee.where(site: Employee.current_employee.site) if orders.blank?
 
-    Employee.all.sort_by do |e|
+    Employee.where(site: Employee.current_employee.site).sort_by do |e|
       orders.index(e.id.to_s) || -1
     end
   end

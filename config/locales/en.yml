@@ -164,9 +164,9 @@ en:
     back: Back
     submit: Submit
     preview: Preview
-    reporter_prompt: '默认为创建人(不作为积分分配依据)'
+    reporter_prompt: ''
     idea_title: Golden Idea Title
-    department_prompt: ''
+    department_prompt: 'eg: IT&QA'
     description_prompt: ''
     exchange_quantity: Quantity
     name: Name

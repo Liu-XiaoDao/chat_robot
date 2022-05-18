@@ -54,7 +54,7 @@
                 <%= f.submit '', id: "file-submit" %>
               <% end %>
 
-              <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "可以先点导出获得导入模板" %>
+              <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "You can click export to get the import template first" %>
               <%#= link_to '模板', "/ideas.xlsx", class: "btn btn-info", title: "下载模板" %>
               <%= link_to t('export'), golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
             <% end %>

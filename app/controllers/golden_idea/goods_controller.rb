@@ -2,11 +2,11 @@ module GoldenIdea
   class GoodsController < ApplicationController
     layout 'golden_idea_new'
     def index
-      @goods = Good.where("quantity > 0").ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 8
+      @goods = Good.where(site: Employee.current_employee.site).where("quantity > 0").ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 8
     end
 
     def index_admin
-      @goods = Good.all.paginate page: params[:page], per_page: 10
+      @goods = Good.where(site: Employee.current_employee.site).paginate page: params[:page], per_page: 10
     end
 
     def new

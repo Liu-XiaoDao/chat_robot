@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210831012139) do
+ActiveRecord::Schema.define(version: 20220517004710) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "attachment"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20210831012139) do
     t.decimal "score", precision: 8, scale: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "site", limit: 50
   end
 
   create_table "golden_idea_exchange_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(version: 20210831012139) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.string "site", limit: 50
     t.index ["employee_id"], name: "index_golden_idea_exchange_records_on_employee_id"
     t.index ["good_id"], name: "index_golden_idea_exchange_records_on_good_id"
   end
@@ -168,6 +170,7 @@ ActiveRecord::Schema.define(version: 20210831012139) do
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer "score"
+    t.string "site", limit: 50
   end
 
   create_table "golden_idea_ideas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -186,6 +189,7 @@ ActiveRecord::Schema.define(version: 20210831012139) do
     t.integer "is_involve_sop"
     t.string "sop_file_path"
     t.integer "origin_season_id"
+    t.string "site", limit: 50
     t.index ["season_id"], name: "index_golden_idea_ideas_on_season_id"
   end
 
@@ -198,6 +202,7 @@ ActiveRecord::Schema.define(version: 20210831012139) do
     t.decimal "benefit", precision: 8, scale: 3
     t.decimal "cost", precision: 8, scale: 3
     t.decimal "risk", precision: 8, scale: 3
+    t.string "site", limit: 50
   end
 
   create_table "golden_idea_seasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -208,6 +213,7 @@ ActiveRecord::Schema.define(version: 20210831012139) do
     t.datetime "updated_at", null: false
     t.string "description"
     t.string "collecter"
+    t.string "site", limit: 50
   end
 
   create_table "golden_idea_suggests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -216,6 +222,7 @@ ActiveRecord::Schema.define(version: 20210831012139) do
     t.integer "suggest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "site", limit: 50
   end
 
   create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

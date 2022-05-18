@@ -27,7 +27,7 @@ module GoldenIdea
     #end
 
     def current_season_index
-      @golden_ideas = Idea.where(season_id: Season.last.id)
+      @golden_ideas = Idea.where(season_id: Season.where(site: current_employee.site).last.id, site: current_employee.site)
       respond_to { |format|
         format.html
         format.xlsx { send_data Idea.to_xlsx(@golden_ideas).stream.string, filename: "golden_ideas.xlsx", disposition: 'attachment' }

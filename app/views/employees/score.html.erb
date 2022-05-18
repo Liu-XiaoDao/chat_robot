@@ -1,8 +1,8 @@
 <%
-  rowno = ActiveRecord::Base.connection.execute("select rowno from (select id,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b order by score desc) c where id = #{current_employee.id};")
+  rowno = ActiveRecord::Base.connection.execute("select rowno from (select id,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b where site = '#{current_employee.site}' order by score desc) c where id = #{current_employee.id};")
   rowno = Integer(rowno.to_a[0][0])
   offset = (rowno - 3) < 0 ? 0 : (rowno - 3)
-  results = ActiveRecord::Base.connection.execute("select * from (select name,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b order by score desc) as t limit 5 offset #{offset};")
+  results = ActiveRecord::Base.connection.execute("select * from (select name,score,(@rowno:=@rowno+1) as rowno from employees,(select (@rowno:=0)) b where site = '#{current_employee.site}' order by score desc) as t limit 5 offset #{offset};")
 %>
 <% provide :active, "my_point" %>
 <!-- Content Wrapper. Contains page content -->

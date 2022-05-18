@@ -2,7 +2,7 @@ module GoldenIdea
   class SuggestsController < ApplicationController
     layout 'golden_idea_new'
     def index
-      @suggests = Suggest.where(suggest_id: nil)
+      @suggests = Suggest.where(suggest_id: nil, site: current_employee.site)
       @suggests = @suggests.ransack(params[:q]).result(distinct: true).paginate page: params[:page], per_page: 8
     end
 

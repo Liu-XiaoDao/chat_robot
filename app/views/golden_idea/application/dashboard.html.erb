@@ -141,7 +141,7 @@
     //--------------
 
     var areaChartData = {
-      labels  : <%= raw GoldenIdea::Idea.group(:season_id).count.keys %>,//['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : <%= raw GoldenIdea::Idea.where(site:current_employee.site).group(:season_id).count.keys %>,//['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
           label               : '期',
@@ -152,7 +152,7 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : <%= raw GoldenIdea::Idea.group(:season_id).count.values %>//[28, 48, 40, 19, 86, 27, 90]
+          data                : <%= raw GoldenIdea::Idea.where(site:current_employee.site).group(:season_id).count.values %>//[28, 48, 40, 19, 86, 27, 90]
         },
       ]
     }
@@ -198,10 +198,10 @@
     // Get context with jQuery - using jQuery's .get() method.
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var donutData        = {
-      labels: <%= raw GoldenIdea::Idea.group(:department).count.keys %>,//['Chrome', 'IE', 'FireFox', 'Safari', 'Opera', 'Navigator', ],
+      labels: <%= raw GoldenIdea::Idea.where(site:current_employee.site).group(:department).count.keys %>,//['Chrome', 'IE', 'FireFox', 'Safari', 'Opera', 'Navigator', ],
       datasets: [
         {
-          data: <%= raw GoldenIdea::Idea.group(:department).count.values %>,//[700,500,400,600,300,100],
+          data: <%= raw GoldenIdea::Idea.where(site:current_employee.site).group(:department).count.values %>,//[700,500,400,600,300,100],
           backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#FFB6C1', '#DA70D6', '#9400D3', '#7B68EE', '#6495ED', '#6495ED', '#87CEFA', '#00BFFF', '#00FFFF', '	#40E0D0', '#32CD32', '#ADFF2F', '#FFFF00', '#FFA500', '#FF8C00', '#FF7F50', '#8B0000'],
         }
       ]
@@ -224,10 +224,10 @@
     // Get context with jQuery - using jQuery's .get() method.
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
     var pieData        = {
-      labels: <%= raw GoldenIdea::Idea.group(:status).count.keys.map{|s| s.blank? ? "" : s} %>,//['Chrome', 'IE', 'FireFox', 'Safari', 'Opera', 'Navigator', ],
+      labels: <%= raw GoldenIdea::Idea.where(site:current_employee.site).group(:status).count.keys.map{|s| s.blank? ? "" : s} %>,//['Chrome', 'IE', 'FireFox', 'Safari', 'Opera', 'Navigator', ],
       datasets: [
         {
-          data: <%= raw GoldenIdea::Idea.group(:status).count.values %>,//[700,500,400,600,300,100],
+          data: <%= raw GoldenIdea::Idea.where(site:current_employee.site).group(:status).count.values %>,//[700,500,400,600,300,100],
           backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
         }
       ]

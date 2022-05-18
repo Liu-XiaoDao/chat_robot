@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">打分</h4>
+        <h4 class="modal-title">Score</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -171,7 +171,7 @@
   </section>
   <!-- /.content -->
 
-  <% if signed_in? && ['刘春良', '徐梦婷', '刘青新', '应宇倩'].include?(current_employee.name) %>
+  <% if signed_in? && ['刘春良', '徐梦婷', '刘青新', '应宇倩', 'Brian Hulsebus', '方雄', '钱晶'].include?(current_employee.name) %>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -181,7 +181,7 @@
             <!-- jquery validation -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">评分</h3>
+                <h3 class="card-title">Scores</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -234,7 +234,7 @@
             <!-- jquery validation -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">评分</h3>
+                <h3 class="card-title">Score</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->

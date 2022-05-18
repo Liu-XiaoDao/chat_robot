@@ -53,8 +53,8 @@
             <%= f.select  :category, [['Non-Technology', 'Non-Technology'],['Technology', 'Technology']], {include_blank: false}, {placeholder: "", class: "form-control"} %>
           </div>
           <div class="form-group">
-            <label for="inputEmail3"><%= t 'form.speaker' %></label>(<span class="help-inline"><%= t 'form.reporter_prompt' %></span>)
-            <%= f.select  :reporter_id, Employee.all.collect { |e| [ e.name, e.id ] }, {include_blank: true}, {placeholder: "", class: "form-control select2"} %>
+            <label for="inputEmail3"><%= t 'form.speaker' %></label><span class="help-inline"><%= t 'form.reporter_prompt' %></span>
+            <%= f.select  :reporter_id, Employee.where(site: current_employee.site).collect { |e| [ e.name, e.id ] }, {include_blank: true}, {placeholder: "", class: "form-control select2"} %>
           </div>
           <div class="form-group">
             <label for="inputEmail3"><%= t 'form.proposer' %></label>
@@ -63,11 +63,11 @@
           </div>
           <div class="form-group">
             <label for="inputEmail3"><%= t 'form.department' %></label>
-            <%= f.text_field  :department, placeholder: "多部门用&连接", class: "form-control" %>
+            <%= f.text_field  :department, placeholder: "eg: IT&QA", class: "form-control" %>
           </div>
           <div class="form-group">
             <label for="inputEmail3"><%= t 'form.is_involve_sop' %></label>
-            <%= f.select  :is_involve_sop, [[ '是', 1], ['否', 0] ], {include_blank: true}, {placeholder: "Type something here...", class: "form-control"} %>
+            <%= f.select  :is_involve_sop, [[ 'Yes', 1], ['No', 0] ], {include_blank: true}, {placeholder: "Type something here...", class: "form-control"} %>
           </div>
           <div class="form-group">
             <label for="inputEmail3">SOP<%= t 'form.attachment' %></label>
@@ -89,7 +89,7 @@
           </div>
           <div class="form-group">
             <label for="inputEmail3"><%= t 'form.status' %></label>
-            <%= f.select  :status, [['进行中', '进行中'], ['暂停', '暂停'], ['已完成', '已完成'], ['转CI项目', '转CI项目'], ['终止', '终止']], {include_blank: false}, {placeholder: "Type something here...", class: "form-control"} %>
+            <%= f.select  :status, [['in progress', 'in progress'], ['hold', 'hold'], ['complete', 'complete'], ['to CI', 'to CI'], ['terminated', 'terminated']], {include_blank: false}, {placeholder: "Type something here...", class: "form-control"} %>
           </div>
           <div class="form-group">
             <label for="basicinput"><%= t 'form.detail' %></label>

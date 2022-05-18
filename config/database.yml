@@ -3,4 +3,5 @@ development:
   encoding: utf8mb4
   database: chatrobot_development
   username: root
-  password: 123456
+  password: Abcam123
+  host: 10.8.1.37

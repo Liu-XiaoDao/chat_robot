@@ -45,7 +45,7 @@
               </tr>
             </thead>
             <tbody>
-              <% GoldenIdea::Idea.top_5.each do |golden_idea| %>
+              <% GoldenIdea::Idea.top_5.where(site:current_employee.site).each do |golden_idea| %>
                 <tr>
                   <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
                   <td><%= golden_idea.category %></td>

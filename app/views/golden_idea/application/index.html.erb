@@ -42,7 +42,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3><%= GoldenIdea::Idea.all.count %></h3>
+              <h3><%= GoldenIdea::Idea.where(site:current_employee.site).count %></h3>
 
               <p><%= t 'ideas' %></p>
             </div>
@@ -57,7 +57,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3><%= GoldenIdea::Season.all.count %></h3>
+              <h3><%= GoldenIdea::Season.where(site:current_employee.site).count %></h3>
 
               <p><%= t 'seasons' %></p>
             </div>
@@ -92,7 +92,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <% Employee.top_5.first(5).each do |employee| %>
+                  <% Employee.top_5.where(site:current_employee.site).first(5).each do |employee| %>
                     <tr>
                       <td><%= link_to employee.name, employee_path(employee) %></td>
                       <td><%= employee.score %></td>
@@ -130,7 +130,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <% GoldenIdea::Idea.top_5.first(5).each do |golden_idea| %>
+                  <% GoldenIdea::Idea.top_5.where(site:current_employee.site).first(5).each do |golden_idea| %>
                     <tr>
                       <td><%= link_to golden_idea.title, golden_idea_idea_path(golden_idea) %></td>
                       <td><%= golden_idea.category %></td>

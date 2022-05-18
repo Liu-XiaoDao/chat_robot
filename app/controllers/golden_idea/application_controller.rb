@@ -8,11 +8,11 @@ module GoldenIdea
     end
 
     def exchange_records
-      @exchange_records = ExchangeRecord.all.paginate page: params[:page], per_page: 8
+      @exchange_records = ExchangeRecord.where(site: Employee.current_employee.site).paginate page: params[:page], per_page: 8
     end
 
     def assign_score_records
-      @assign_score_records = AssignScoreRecord.all.paginate page: params[:page], per_page: 8
+      @assign_score_records = AssignScoreRecord.where(site: Employee.current_employee.site).paginate page: params[:page], per_page: 8
     end
 
     def user_requests

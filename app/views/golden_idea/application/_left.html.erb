@@ -93,7 +93,7 @@
               <i class="nav-icon fas fa-exchange-alt"></i>
               <p>
                 <%= t 'menu.exchange_admin' %>
-                <span class="right badge badge-danger"><%= GoldenIdea::ExchangeRecord.where(status: '待兑换').count %></span>
+                <span class="right badge badge-danger"><%= GoldenIdea::ExchangeRecord.where(status: 'pending').count %></span>
               </p>
             </a>
           </li>
