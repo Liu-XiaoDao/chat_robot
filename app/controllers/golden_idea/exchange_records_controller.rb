@@ -1,7 +1,7 @@
 module GoldenIdea
   class ExchangeRecordsController < ApplicationController
     def index
-      @exchange_records = ExchangeRecord.where(status: "pending")
+      @exchange_records = ExchangeRecord.where(status: "pending", site: current_employee.site)
       respond_to { |format|
         format.html
         format.xlsx { send_data ExchangeRecord.to_xlsx(@exchange_records).stream.string, filename: "exchange_records.xlsx", disposition: 'attachment' }

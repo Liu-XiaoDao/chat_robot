@@ -5,7 +5,7 @@ module GoldenIdea
     before_create :set_status
 
     def set_status
-      self.status = "待兑换"
+      self.status = "pending"
     end
 
     def good_name

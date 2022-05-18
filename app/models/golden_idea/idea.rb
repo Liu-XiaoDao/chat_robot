@@ -81,7 +81,7 @@ module GoldenIdea
     end
 
     def set_seasion
-      self.season_id = Season.last.id if season_id.blank?
+      self.season_id = Season.where(site: Employee.current_employee.site).last.id if season_id.blank?
       self.origin_season_id = season_id
     end
 

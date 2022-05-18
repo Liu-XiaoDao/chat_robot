@@ -15,11 +15,13 @@ module GoldenIdea
       @assign_score_records = AssignScoreRecord.where(site: Employee.current_employee.site).paginate page: params[:page], per_page: 8
     end
 
+    # 不放出链接
     def user_requests
       @user_requests = UserRequest.where('url like "%golden_idea%"').paginate page: params[:page], per_page: 8
     end
 
     def golden_idea_score_order
+      # 这里没用， view中直接取得
       @golden_ideas = GoldenIdea::Idea.order(score: :desc)
     end
 

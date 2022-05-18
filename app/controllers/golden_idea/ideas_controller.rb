@@ -48,7 +48,7 @@ module GoldenIdea
       if @golden_idea.save
         save_attachments if params[:attachment_files]
         save_sop_attachments if params[:sop_files]
-        flash["success"] = "金点子创建成功，点‘击编辑内容’按钮编辑详情"
+        flash["success"] = "Golden Idea create successfully"
         redirect_to golden_idea_idea_path(@golden_idea)
       else
         render :new
@@ -69,10 +69,10 @@ module GoldenIdea
       if @golden_idea.update_attributes(golden_idea_params)
         save_attachments if params[:attachment_files]
         save_sop_attachments if params[:sop_files]
-        flash["success"] = "编辑成功"
+        flash["success"] = "Edit successfully"
         redirect_to golden_idea_idea_path(@golden_idea)
       else
-        flash["error"] = "编辑错误:#{@golden_idea.errors.full_messages}"
+        flash["error"] = "Edit unsuccessfully:#{@golden_idea.errors.full_messages}"
         render :edit
       end
     end
@@ -106,12 +106,12 @@ module GoldenIdea
     def employee_score
       @golden_idea = Idea.find params[:id]
       employees = params[:employees]
-      flash[:success] = "积分分配成功"
+      flash[:success] = "Assign point successfully"
       employees.each do |i, v|
         if Employee.find(i).assign_score(v.to_i)
           AssignScoreRecord.create(employee_id: i, idea_id: params[:id], score: v)
         else
-          flash[:error] = "积分分配失败"
+          flash[:error] = "Assign point unsuccessfully"
         end
       end
       redirect_to golden_idea_idea_path(@golden_idea)
@@ -160,13 +160,13 @@ module GoldenIdea
       end
       Rails.cache.delete(params[:cache_key])
       info = (er == 0) ? :success : :danger
-      flash[info] = "成功: " + cr.to_s  + " 失败: " + er.to_s
+      flash[info] = "success: " + cr.to_s  + " error: " + er.to_s
       redirect_to current_season_index_golden_idea_ideas_url
     end
 
     # 计算本期所有已完成的得分
     def calculate_all
-      @golden_ideas = Idea.where(season_id: Season.last.id, score: nil)
+      @golden_ideas = Idea.where(season_id: Season.where(site: current_employee.site).last.id, score: nil, site: current_employee.site)
       @golden_ideas.each do |idea|
         if idea.score_records.length > 3
           scores = idea.score_records.map(&:score)

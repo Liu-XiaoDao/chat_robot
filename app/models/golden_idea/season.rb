@@ -5,7 +5,7 @@ module GoldenIdea
 
     def transfer_pre_ideas
       pre_season = Season.pre_season
-      ideas = pre_season.ideas.where(status: '进行中')
+      ideas = pre_season.ideas.where(status: 'in progress')
       ideas.update_all(season_id: id)
     end
 
@@ -24,7 +24,7 @@ module GoldenIdea
     end
 
     def self.pre_season
-     order(id: :desc).second
+      where(site: Employee.current_user.site).order(id: :desc).second
     end
   end
 end

@@ -26,9 +26,9 @@ class GoldenIdea::SeasonsController < ApplicationController
   def update
     @season = GoldenIdea::Season.find(params[:id])
     if @season.update_attributes(season_params)
-      flash["success"] = "编辑成功"
+      flash["success"] = "Edit successfully"
     else
-      flash["error"] = "编辑错误:#{@season.errors.full_messages}"
+      flash["error"] = "Edit unsuccessfully:#{@season.errors.full_messages}"
     end
     redirect_to golden_idea_seasons_path
   end
