@@ -29,7 +29,7 @@ module GoldenIdea
     end
 
     def self.pre_season
-      where(site: Employee.current_user.site).order(id: :desc).second
+      where(site: Employee.current_employee.site).order(id: :desc).second
     end
   end
 end
