@@ -28,7 +28,7 @@ module GoldenIdea
     end
 
     def self.unreply_count
-      Suggest.where(suggest_id: nil, site: Employee.current_employee.site).select{|s| s.replys.blank? }.count
+      Suggest.where(suggest_id: nil, site: Employee.current_employee.try(:site)).select{|s| s.replys.blank? }.count
     end
   end
 end
