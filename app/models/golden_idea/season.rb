@@ -6,6 +6,8 @@ module GoldenIdea
 
     def transfer_pre_ideas
       pre_season = Season.pre_season
+      return if pre_season.blank?
+
       ideas = pre_season.ideas.where(status: 'in progress')
       ideas.update_all(season_id: id)
     end

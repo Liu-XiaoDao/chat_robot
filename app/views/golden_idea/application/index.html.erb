@@ -97,7 +97,7 @@
                       <td><%= link_to employee.name, employee_path(employee) %></td>
                       <td><%= employee.score %></td>
                       <td><%= employee.golden_ideas.count %></td>
-                      <td><%= employee.department.name%></td>
+                      <td><%= employee.try(:department).try(:name)%></td>
                     </tr>
                   <% end %>
                 </tbody>

@@ -84,6 +84,7 @@
                 <th style="width: 10%" class="text-center"><%= sortable "status", t('table.status') %></th>
                 <th style="width: 35%"><%= sortable "description", t('table.description') %></th>
                 <th style="width: 5%"><%= sortable "score", t('table.score') %></th>
+                <th style="width: 5%"><%= sortable "score", 'site' %></th>
                 <th style="width: 10%"></th>
               </tr>
             </thead>
@@ -108,6 +109,7 @@
                     </td>
                     <td title="<%= golden_idea.description %>" data-mtpis="<%= golden_idea.description %>"><%= truncate(golden_idea.description, length: 20) %></td>
                     <td><%= golden_idea.score %></td>
+                    <td><%= golden_idea.site %></td>
 
                     <td class="project-actions text-right">
                       <!--
