@@ -14,7 +14,7 @@ module GoldenIdea
     before_create :set_reporter
     before_create :set_site
     after_update :assign_score, if: :score_changed?
-    after_create :send_email_to_committee
+    # after_create :send_email_to_committee
 
     validates :title, :category, :proposers, :department, presence: true
     validates :title, uniqueness: true
@@ -110,9 +110,9 @@ module GoldenIdea
       end
     end
 
-    def send_email_to_committee
-      NotificationMailer.send_email_to_committee(self).deliver
-    end
+    # def send_email_to_committee
+      # NotificationMailer.send_email_to_committee(self).deliver
+    # end
 
     # 导入文件
     # def self.import(file)

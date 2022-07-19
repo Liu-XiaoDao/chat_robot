@@ -48,6 +48,7 @@ module GoldenIdea
       if @golden_idea.save
         save_attachments if params[:attachment_files]
         save_sop_attachments if params[:sop_files]
+        NotificationMailer.send_email_to_committee(@golden_idea).deliver
         flash["success"] = "Golden Idea create successfully"
         redirect_to golden_idea_idea_path(@golden_idea)
       else
