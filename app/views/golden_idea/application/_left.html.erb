@@ -64,18 +64,12 @@
           <a href="<%= golden_idea_suggests_path %>" class="nav-link <%= active? 'comment_suggestion', yield(:active) %>">
             <i class="nav-icon fas fa-comments"></i>
             <p>
-              <%= t 'menu.comment_suggestion' %>
+              <%= t 'menu.proposal' %>
               <% count = GoldenIdea::Suggest.unreply_count %>
               <% if count > 0 %>
                 <span class="right badge badge-danger"><%= count %></span>
               <% end %>
             </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<%= golden_idea_proposal_path %>" class="nav-link  <%= active? 'proposal', yield(:active) %>">
-            <i class="nav-icon fas fa-file"></i>
-            <p><%= t 'menu.proposal' %></p>
           </a>
         </li>
         <% if signed_in? && current_employee.is_golden_idea_admin? %>

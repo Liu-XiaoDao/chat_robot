@@ -1,6 +1,6 @@
 module GoldenIdea
   class AssignScoreRecord < ApplicationRecord
-    belongs_to :idea
+    belongs_to :idea, optional: true
     belongs_to :employee
     before_create :set_site
 

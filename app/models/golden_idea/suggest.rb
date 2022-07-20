@@ -7,6 +7,9 @@ module GoldenIdea
     before_create :set_employee
     before_create :set_site
     # after_create :create_notificaion #收到回复后钉钉通知提问人
+    default_scope { order(id: :desc) }
+
+    after_save :set_score, if: :saved_change_to_status?
 
 
     def employee_name
@@ -19,6 +22,15 @@ module GoldenIdea
 
     def set_site
       self.site = Employee.current_employee.site
+    end
+
+    def set_score
+      return if status != "Approve"
+      return if real_name != 1
+      return if employee.blank?
+
+      employee.assign_score(5)
+      AssignScoreRecord.create(employee_id: employee.id, score: 5)
     end
 
     def create_notificaion

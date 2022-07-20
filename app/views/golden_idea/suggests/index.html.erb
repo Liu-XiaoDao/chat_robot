@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"><%= t 'menu.comment_suggestion' %></h4>
+        <h4 class="modal-title"><%= t 'menu.proposal' %></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -28,12 +28,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1><%= t 'menu.comment_suggestion' %></h1>
+          <h1><%= t 'menu.proposal' %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item active"><%= t 'menu.comment_suggestion' %></li>
+            <li class="breadcrumb-item active"><%= t 'menu.proposal' %></li>
           </ol>
         </div>
       </div>
@@ -50,7 +50,7 @@
           <div class="text-center mt-2 mb-2">
               <div class="module-option clearfix">
                   <div class="pull-right">
-                    <%= link_to t('ask_question'), new_golden_idea_suggest_path, class: "btn btn-sm btn-primary", "data-toggle"=>"modal", "data-target"=>"#modal-suggest", "data-remote"=>"#{new_golden_idea_suggest_path}" %>
+                    <%= link_to t('new'), new_golden_idea_suggest_path, class: "btn btn-sm btn-primary", "data-toggle"=>"modal", "data-target"=>"#modal-suggest", "data-remote"=>"#{new_golden_idea_suggest_path}" %>
                   </div>
               </div>
           </div>
@@ -69,23 +69,41 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th width="10%"><%= t 'table.questioner' %></th>
-                <th width="70%"><%= t 'table.description' %></th>
-                <th width="8%"><%= t 'table.reply' %></th>
-                <th><%= t 'table.action' %></th>
+                <th width="10%"><%= t 'table.proposer' %></th>
+                <th width="10%"><%= t 'table.title' %></th>
+                <th width="55%"><%= t 'table.description' %></th>
+                <th width="5%"><%= t 'table.status' %></th>
+                <th width="5%"><%= t 'table.reply' %></th>
+                <th width="10%"><%= t 'table.action' %></th>
               </tr>
             </thead>
             <tbody>
               <% @suggests.each do |suggest| %>
                 <tr>
-                  <td><%= suggest.employee_name %></td>
-                  <td><%= link_to suggest.content, golden_idea_suggest_path(suggest) %></td>
+                  <td><%= suggest.real_name == 1 ? suggest.employee_name : "N/A" %></td>
+                  <td><%= link_to suggest.title, golden_idea_suggest_path(suggest) %></td>
+                  <td><%= suggest.content %></td>
+                  <td><%= suggest.status %></td>
                   <td><%= link_to suggest.replys.count, golden_idea_suggest_path(suggest) %></td>
                   <td class="cell-btn align-right">
-                    <%= link_to t('edit'), edit_golden_idea_suggest_path(suggest), class: "btn btn-sm btn-primary", "data-toggle"=>"modal", "data-target"=>"#modal-suggest", "data-remote"=>"#{edit_golden_idea_suggest_path(suggest)}" %>
-                  <% if signed_in? && current_employee.is_golden_idea_admin? %>
-                    <%= link_to t('table.reply'), reply_golden_idea_suggest_path(suggest), class: "btn btn-sm btn-warning","data-toggle"=>"modal", "data-target"=>"#modal-suggest", "data-remote"=>"#{reply_golden_idea_suggest_path(suggest)}" %>
-                  <% end %>
+                    <% if signed_in? && current_employee.is_golden_idea_admin? %>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-warning">Action</button>
+                        <button type="button" class="btn btn-sm btn-warning dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu" style="">
+                          <%= link_to t('table.reply'), reply_golden_idea_suggest_path(suggest), class: "dropdown-item","data-toggle"=>"modal", "data-target"=>"#modal-suggest", "data-remote"=>"#{reply_golden_idea_suggest_path(suggest)}" %>
+                          <% if suggest.status.blank? %>
+                            <%= link_to 'Approve', approve_golden_idea_suggest_path(suggest), class: "dropdown-item" %>
+                            <%= link_to 'Reject', reject_golden_idea_suggest_path(suggest), class: "dropdown-item" %>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
+                    <% if suggest.status.blank? %>
+                      <%= link_to t('edit'), edit_golden_idea_suggest_path(suggest), class: "btn btn-sm btn-primary", "data-toggle"=>"modal", "data-target"=>"#modal-suggest", "data-remote"=>"#{edit_golden_idea_suggest_path(suggest)}" %>
+                    <% end %>
                   </td>
                 </tr>
               <% end %>

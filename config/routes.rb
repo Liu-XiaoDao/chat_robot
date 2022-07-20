@@ -139,6 +139,8 @@ Rails.application.routes.draw do
     resources :suggests do
       get 'reply', on: :member
       get 'slide_show', on: :member
+      get 'approve', on: :member
+      get 'reject', on: :member
     end
     resources :score_records
   end

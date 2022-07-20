@@ -45,7 +45,13 @@
             <tbody>
               <% @assign_score_records.each do |assign_score_record| %>
                 <tr>
-                  <td><%= link_to assign_score_record.idea.title, golden_idea_idea_path(assign_score_record.idea) %></td>
+                  <td>
+                    <% if assign_score_record.idea.present? %>
+                      <%= link_to assign_score_record.idea.title, golden_idea_idea_path(assign_score_record.idea) %>
+                    <% else %>
+                      合理化建议得分
+                    <% end %>
+                  </td>
                   <td><%= assign_score_record.score %></td>
                   <td><%= time_tag assign_score_record.created_at %></td>
                 </tr>

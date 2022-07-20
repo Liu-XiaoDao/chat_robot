@@ -41,9 +41,21 @@ module GoldenIdea
       @suggest = Suggest.find params[:id]
     end
 
+    def approve
+      @suggest = Suggest.find params[:id]
+      @suggest.update(status: 'Approve')
+      redirect_to golden_idea_suggests_path
+    end
+
+    def reject
+      @suggest = Suggest.find params[:id]
+      @suggest.update(status: 'Reject')
+      redirect_to golden_idea_suggests_path
+    end
+
     private
       def suggest_params
-        params.require(:golden_idea_suggest).permit(:content, :suggest_id)
+        params.require(:golden_idea_suggest).permit(:title, :content, :real_name, :suggest_id)
       end
   end
 end

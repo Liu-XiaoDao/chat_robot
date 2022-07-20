@@ -6,13 +6,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1><%= t 'menu.comment_suggestion' %></h1>
+          <h1><%= t 'menu.proposal' %></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/golden_idea">Home</a></li>
-            <li class="breadcrumb-item"><a href="/golden_idea/suggests"><%= t 'menu.comment_suggestion' %></a></li>
-            <li class="breadcrumb-item active"><%= t 'menu.comment_suggestion' %> <%= t 'detail' %></li>
+            <li class="breadcrumb-item"><a href="/golden_idea/suggests"><%= t 'menu.proposal' %></a></li>
+            <li class="breadcrumb-item active"><%= t 'menu.proposal' %> <%= t 'detail' %></li>
           </ol>
         </div>
       </div>
@@ -25,7 +25,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><%= t 'menu.comment_suggestion' %><small>(<%= t 'table.questioner' %>：<%= @suggest.employee_name %>)</small></h3>
+        <h3 class="card-title"><%= t 'menu.proposal' %><small>(<%= t 'table.proposer' %>：<%= @suggest.real_name == 1 ? @suggest.employee_name : "N/A" %>)</small></h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
