@@ -69,12 +69,13 @@
         <table class="table table-striped projects">
             <thead>
               <tr>
-                <th width="10%"><%= t 'table.proposer' %></th>
+                <th width="5%"><%= t 'table.proposer' %></th>
                 <th width="10%"><%= t 'table.title' %></th>
-                <th width="55%"><%= t 'table.description' %></th>
+                <th width="50%"><%= t 'table.description' %></th>
                 <th width="5%"><%= t 'table.status' %></th>
                 <th width="5%"><%= t 'table.reply' %></th>
-                <th width="10%"><%= t 'table.action' %></th>
+                <th width="10%"><%= t 'table.date' %></th>
+                <th width="15%"><%= t 'table.action' %></th>
               </tr>
             </thead>
             <tbody>
@@ -85,6 +86,7 @@
                   <td><%= suggest.content %></td>
                   <td><%= suggest.status %></td>
                   <td><%= link_to suggest.replys.count, golden_idea_suggest_path(suggest) %></td>
+                  <td><%= time_tag suggest.created_at %></td>
                   <td class="cell-btn align-right">
                     <% if signed_in? && current_employee.is_golden_idea_admin? %>
                       <div class="btn-group">
