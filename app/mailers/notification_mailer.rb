@@ -33,7 +33,7 @@ class NotificationMailer < ApplicationMailer
     @idea = idea
 
     @idea.attachments.each do |a|
-      attachments[a.attachment_file_name] = File.read(Rails.root.join("public#{a.attachment.url}"))
+      attachments[a.attachment_file_name] = File.read(a.attachment.path)
     end
     mail(to: GoldenIdeaReceivers, subject: "New Idea: #{@idea.title}")
   end
