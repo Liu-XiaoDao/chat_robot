@@ -3,21 +3,21 @@ class NotificationMailer < ApplicationMailer
   GoldenIdeaReceivers =  [
     "jing.qian@abcam.com",
     "chuanwei.lu@abcam.com",
-    "xin.zhang@abcam.com",
     "yanli.chen@abcam.com",
     "mengting.xu@abcam.com",
     "xingchao.lu@abcam.com",
     "sha.he@abcam.com",
     "peng.zeng@abcam.com",
     "tianqi.xing@abcam.com",
-    "yuqian.ying@abcam.com",
     "jingjing.zhang@abcam.com",
     "hui.wang@abcam.com",
     "wei.zhao@abcam.com",
     "xiong.fang@abcam.com",
     "jungang.chen@abcam.com",
     "yiting.zheng@abcam.com",
-    "chunliang.liu@abcam.com"
+    "tao.jiang@abcam.com",
+    "yingjie.li@abcam.com",
+    "huimin.ma@abcam.com"
   ]
 
   def proposal(title, content, real_name)
