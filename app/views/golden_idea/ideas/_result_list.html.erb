@@ -6,7 +6,7 @@
         <div>
           <div class="float-right"><%= record.created_at %></div>
           <h4><a href="<%= golden_idea_idea_path(record.id) %>"><%= title %></a></h4>
-          <p class="mb-0"><%= record.description %></p>
+          <p class="mb-0"><%= record.try :description %></p>
         </div>
       </div>
     </div>
