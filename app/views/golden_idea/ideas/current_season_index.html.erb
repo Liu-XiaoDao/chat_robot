@@ -42,7 +42,7 @@
               <% end %>
               <%= link_to t('import'), "javascript:void(0);", class: "btn btn-sm btn-primary", id: "upload-file-btn", title: "You can click export to get the import template first" %>
               <%= link_to t('export'), current_season_index_golden_idea_ideas_path(format: :xlsx, params: request.query_parameters), class: "btn btn-sm btn-info" %>
-              <% if ['刘春良', '徐梦婷', 'Brian Hulsebus', '方雄', '钱晶'].include?(current_employee.name) %>
+              <% if ['刘春良', '徐梦婷', 'Brian Hulsebus', '方雄', '钱晶', '李娜'].include?(current_employee.name) %>
                 <%= link_to t('calculate_all'), calculate_all_golden_idea_ideas_path, class: "btn btn-sm btn-info" %>
               <% end %>
             <% end %>
