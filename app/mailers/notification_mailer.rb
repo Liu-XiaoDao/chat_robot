@@ -14,6 +14,7 @@ class NotificationMailer < ApplicationMailer
     "wei.zhao@abcam.com",
     "xiong.fang@abcam.com",
     "na.li@abcam.com",
+    "jieru.wang@abcam.com",
     "jungang.chen@abcam.com",
     "yiting.zheng@abcam.com",
     "tao.jiang@abcam.com",
